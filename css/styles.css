@@ -292,10 +292,13 @@ p { font-weight: 300; }
     text-align: center;
     color: #fff;
     background-image: url('../img/hero.jpg');
-    background-position: center center;
+    background-position: no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
-    -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+    -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
+    padding: 65px 0; height: auto;}
+    .indicator { position: absolute; right: 0 !important; }
+    .pull { display: none; }
 .hero p { color: #d0e7e9; font-style: italic; font-size: 17px; }
 .hero a { color: #fff; }
 .hero-play-btn { height: 99px; width: 99px; background: url('../img/play-btn.png') no-repeat center center; display: block; text-indent: -99999px; margin: 80px auto 260px; transition: all 1s ease; -moz-transition: all 1s ease; -webkit-transition: all 1s ease; -o-transition: all 1s ease; }
