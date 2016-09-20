@@ -181,7 +181,7 @@ Headings
 ========================================================================== */
 
 .hero h1 { font-size: 60px; font-weight: 100; color: #fff; letter-spacing: -1px; margin: 100px 0 20px 0; }
-.download-now h1 { font-size: 55px; font-weight: 100; color: #fff; margin: 100px 0 20px 0; }
+.intro h1 { font-size: 55px; font-weight: 100; color: #fff; margin: 100px 0 20px 0; }
 .testimonials h1 { color: #fff; font-size: 43px; font-weight: 100; margin: 20px 0 80px 0; font-style: italic; }
 .features h1 { color: #9197a8; font-size: 15px; margin: 0 0 20px 0; text-transform: uppercase; }
 .design h1 { color: #abbcc3; font-size: 38px; font-weight: 300; margin-top: 0; }
@@ -305,8 +305,11 @@ p { font-weight: 300; }
 .hero-play-btn:hover, .hero-play-btn:focus { transform: translate(0, -15px); -webkit-transform: translate(0, -15px); -o-transform: translate(0, -15px); -moz-transform: translate(0, -15px); }
 .get-started-btn { background-color: #946846; padding: 20px 80px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; font-size: 22px; letter-spacing: 2px; box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.4); transition: all 0.5s ease; -moz-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; display: inline-block; }
 .get-started-btn:hover, .get-started-btn:focus { text-decoration: none; background-color: #912D19; }
-.download-now { background: #912D19 url('../img/ipadBG.png') no-repeat right 65px; background-size: 50%; }
-.download-now p { color: #fff; font-size: 16px; margin: 40px 30px 40px 0; line-height: 30px; }
+.intro { background: #912D19  no-repeat right 65px; background-size: 50%; }
+.intro p { color: #fff; font-size: 16px; margin: 40px 30px 40px 0; line-height: 30px;}
+.description  {  text-align:center; margin-left: auto;
+    margin-right: auto;
+  float:none;}
 .download-btn { border: solid 3px #fff; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; font-size: 17px; letter-spacing: 2px; transition: all 0.5s ease; padding: 15px 70px; display: inline-block; color: #fff; margin-bottom: 185px; }
 .download-btn:hover, .download-btn:focus { text-decoration: none; border-color: #a58347; color: #a58347; }
 .testimonials { background: #5b6869 url('../img/tBG01.jpg') no-repeat left center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 130px 0; }
