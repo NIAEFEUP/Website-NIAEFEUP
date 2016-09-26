@@ -344,6 +344,44 @@ footer p { color: #fff; line-height: 30px; }
 .footer-credit { font-size: 12px; text-transform: uppercase; letter-spacing: 5px; }
 footer a { color: #42817e; transition: all 0.5s ease; -moz-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; }
 footer a:hover, footer a:focus { color: #2f5c5a; text-decoration: none; }
+
+.members { position: relative;
+    width: 100%;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
+    background-image: url('../img/membersbg.jpg');
+    background-color: #000;
+    background-position: no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
+    padding: 65px 0; height: auto;}
+    .indicator { position: absolute; right: 0 !important; }
+    .pull { display: none; }
+.members p { color: #d0e7e9; font-style: italic; font-size: 17px; }
+.members a { color: #fff; }
+
+.team-member {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.team-member img {
+  margin: 0 auto;
+  border: 7px solid white;
+}
+.team-member h4 {
+  margin-top: 25px;
+  margin-bottom: 0;
+  text-transform: none;
+}
+.team-member p {
+  margin-top: 0;
+}
+
+.bg-light-gray {
+  background-color: #eeeeee;
+}
 /* ==========================================================================
 Animations
 ========================================================================== */
