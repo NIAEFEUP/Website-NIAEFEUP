@@ -5,6 +5,8 @@ HTML5 display definitions
 ========================================================================== */
 
 /* * Corrects `block` display not defined in IE 6/7/8/9 and Firefox 3. */
+@charset "utf-8";
+@import url("http://weloveiconfonts.com/api/?family=entypo");
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary { display: block; }
 /* * Corrects `inline-block` display not defined in IE 6/7/8/9 and Firefox 3. */
@@ -180,10 +182,10 @@ Clearfix
 Headings
 ========================================================================== */
 
-.hero h1 { font-size: 60px; font-weight: 100; color: #fff; letter-spacing: -1px; margin: 100px 0 20px 0; }
+.hero h1 { font-size: 60px; font-weight: 100; color: #fff; letter-spacing: -1px; margin: 100px 0 20px 0; padding-top: 10%;}
 .intro h1 { font-size: 55px; font-weight: 100; color: #fff; margin: 100px 0 20px 0; }
 .testimonials h1 { color: #fff; font-size: 43px; font-weight: 100; margin: 20px 0 80px 0; font-style: italic; }
-.features h1 { color: #9197a8; font-size: 15px; margin: 0 0 20px 0; text-transform: uppercase; }
+.features h1 { color: #9197a8; font-size: 15px; margin: 10% 0 20px 0; text-transform: uppercase; }
 .design h1 { color: #abbcc3; font-size: 38px; font-weight: 300; margin-top: 0; }
 /* ==========================================================================
 Custom Styles
@@ -286,6 +288,106 @@ p { font-weight: 300; }
     }
 }
 
+
+
+a[class*="entypo-"]:before {
+    font-family: 'entypo', sans-serif;
+}
+
+.social ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container-social {
+    height: 3em;
+    margin: auto;
+    padding-bottom: 7%;
+    padding-top: 7%;
+    width: 12em;
+}
+
+/* ---------- SOCIAL ---------- */
+
+.social {
+    position: relative;
+    height: 3em;
+    width: 12em;
+}
+
+.social li {
+    display: block;
+    height: 4em;
+    line-height: 4em;
+    margin: -2em;
+    position: absolute;
+    -webkit-transition: -webkit-transform .5s;
+    -moz-transition: -moz-transform .5s;
+    -ms-transition: -ms-transform .5s;
+    -o-transition: -o-transform .5s;
+    transition: transform .5s;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    text-align: center;
+    width: 4em;
+}
+
+.social a {
+    color: #fffdf0;
+    display: block;
+    height: 4em;
+    line-height: 4em;
+    text-align: center;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    width: 4em; 
+}
+
+.social li:hover {
+    -webkit-transform: rotate(405deg);
+    -moz-transform: rotate(405deg);
+    -ms-transform: rotate(405deg);
+    -o-transform: rotate(405deg);
+    transform: rotate(405deg);
+}
+
+.facebook {
+    background: #155b9d;
+    left: 0;
+    top: 0%;
+}
+
+.twitter {
+    background: #1a9ec4;
+    bottom: 0;
+    left: 25%;
+}
+
+.mail {
+    background: #912D19;
+    left: 50%;
+    top: 0%;
+}
+
+.github {
+    background: #6e5494;
+    bottom: 0;
+    left: 75%;
+}
+
+.linked-in {
+    background: #157f9d;
+    left: 100%;
+    top: 0%;
+}
+
 .hero { position: relative;
     width: 100%;
     min-height: auto;
@@ -307,14 +409,29 @@ p { font-weight: 300; }
 .get-started-btn:hover, .get-started-btn:focus { text-decoration: none; background-color: #912D19; }
 .intro { background: #912D19  no-repeat right 65px; background-size: 50%; }
 .intro p { color: #fff; font-size: 16px; margin: 40px 30px 40px 0; line-height: 30px;}
+.members .description { padding-bottom: 10%; padding-top: 10%; }
+.intro .description {padding-bottom: 7%;}
 .description  {  text-align:center; margin-left: auto;
     margin-right: auto;
   float:none;}
+.members {
+    width: 100%;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
+    background-image: url('../img/hero.jpg');
+    background-position: no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
+}
 .download-btn { border: solid 3px #fff; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; font-size: 17px; letter-spacing: 2px; transition: all 0.5s ease; padding: 15px 70px; display: inline-block; color: #fff; margin-bottom: 185px; }
 .download-btn:hover, .download-btn:focus { text-decoration: none; border-color: #a58347; color: #a58347; }
 .testimonials { background: #5b6869 url('../img/tBG01.jpg') no-repeat left center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 130px 0; }
 .features { background: #fff url('../img/arrowBG.png') no-repeat center -1px; padding: 70px 0; }
-.features p { color: #7a8387; font-size: 16px; word-spacing: 2px; line-height: 30px; }
+.features .col-md-6 { margin:auto; float: none; text-align: center; }
+.features h1 { font-size: 50px; font-weight: 200; }
+.features p { color: #7a8387; font-size: 16px; word-spacing: 2px; line-height: 30px; text-align: center; padding-top: 2%;}
 .features-leftcol { border-right: 1px solid rgba(208, 217, 226, 0.4); padding-right: 60px; }
 .features-rightcol { padding-left: 60px; }
 .margin-bottom { margin-bottom: 70px; }
@@ -323,9 +440,9 @@ p { font-weight: 300; }
 .design { padding: 100px 0; background-color: #f6f6f4; position: relative; }
 .flat-box { background-color: #fff; -webkit-box-shadow: 0px 3px 0px 0px rgba(234, 234, 234, 1); -moz-box-shadow: 0px 3px 0px 0px rgba(234, 234, 234, 1); box-shadow: 0px 3px 0px 0px rgba(234, 234, 234, 1); transition: all 0.5s ease; -moz-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; }
 .flat-box:hover, .flat-box:focus { transform: translate(0, -15px); -webkit-transform: translate(0, -15px); -o-transform: translate(0, -15px); -moz-transform: translate(0, -15px); }
-.colourway { height: 346px; }
-.colour1 { background-color: #f69679; }
-.colour2 { background-color: #e8b968; }
+.colourway { height: 346px;}
+.colour1 { background: url('../img/timetableselector.png') no-repeat center center; background-color: #222;}
+.colour2 { background: url('../img/destaque_feupload.jpg') no-repeat center center; background-color: #CCFB5D; }
 .colour3 { background-color: #7accc8; }
 .colour4 { background-color: #373b44; }
 .title { font-size: 15px; color: #9197a8; text-transform: uppercase; font-weight: 600; letter-spacing: 2px; padding: 20px 40px 0; }
@@ -334,7 +451,7 @@ p { font-weight: 300; }
 .controls a { color: #959595; transition: all 0.5s ease; -moz-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; }
 .controls a:hover, .controls a:focus { color: #555555; }
 .controls .prev { margin-right: 5px; }
-footer { background-color: #7accc8; padding: 75px 0 220px; }
+footer { background-color: #912D19; padding: 50px 0 50px; }
 footer p { color: #fff; line-height: 30px; }
 .footer-nav { list-style: none; padding: 0; }
 .footer-nav li a { display: block; color: #fff; padding: 5px; transition: all 0.5s ease; -moz-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; }
