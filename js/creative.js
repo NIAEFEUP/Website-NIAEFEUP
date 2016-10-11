@@ -28,7 +28,7 @@
     });
 
     // Fit Text Plugin for Main Header
-  
+
     // Offset for Main Navigation
     $('#mainNav').affix({
         offset: {
@@ -36,8 +36,6 @@
         }
     })
 
-    // Initialize WOW.js Scrolling Animations
 
-    new WOW().init();
 
 })(jQuery); // End of use strict

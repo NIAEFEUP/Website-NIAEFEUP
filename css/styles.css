@@ -347,7 +347,7 @@ a[class*="entypo-"]:before {
     -ms-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    width: 4em; 
+    width: 4em;
 }
 
 .social li:hover {
