@@ -287,11 +287,24 @@ p { font-weight: 300; }
     }
 }
 
-@media(max-width: 480px) {
+@media(max-width: 550px) {
     #socialmedia {
-        padding-bottom: 25%;
+        padding-bottom: 23%;
     }
 }
+
+@media(min-width: 550px) {
+    #socialmedia {
+        padding-bottom: 7%;
+    }
+}
+
+@media(min-width: 900px) {
+    #socialmedia {
+        padding-bottom: 3%;
+    }
+}
+
 
 
 
