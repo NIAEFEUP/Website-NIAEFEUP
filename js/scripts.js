@@ -69,7 +69,7 @@ $(function() {
   });
 });
 // fancyBox
-$(document).ready(function() {
+/*$(document).ready(function() {
   $(".various").fancybox({
     maxWidth: 800,
     maxHeight: 450,
@@ -81,4 +81,4 @@ $(document).ready(function() {
     openEffect: 'none',
     closeEffect: 'none'
   });
-});
+});*/
