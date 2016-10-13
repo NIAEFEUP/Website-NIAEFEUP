@@ -426,7 +426,7 @@ a[class*="entypo-"]:before {
 .get-started-btn { background-color: #946846; padding: 20px 80px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; font-size: 22px; letter-spacing: 2px; box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.4); transition: all 0.5s ease; -moz-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; display: inline-block; }
 .get-started-btn:hover, .get-started-btn:focus { text-decoration: none; background-color: #912D19; }
 .intro { background: #912D19  no-repeat right 65px; background-size: 50%; }
-.intro p { color: #fff; font-size: 16px; margin: 40px 30px 40px 0; line-height: 30px;}
+.intro p { color: #fff; font-size: 16px; margin: 40px 30px 40px 30px; line-height: 30px;}
 .members .description { padding-bottom: 10%; padding-top: 10%; }
 .intro .description {padding-bottom: 7%;}
 .description  {  text-align:center; margin-left: auto;
