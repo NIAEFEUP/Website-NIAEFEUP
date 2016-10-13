@@ -288,6 +288,12 @@ p { font-weight: 300; }
     }
 }
 
+@media(max-width: 480px) {
+    #socialmedia {
+        padding-bottom: 25%;
+    }
+}
+
 
 
 a[class*="entypo-"]:before {
@@ -486,6 +492,7 @@ footer a:hover, footer a:focus { color: #2f5c5a; text-decoration: none; }
 .team-member img {
   margin: 0 auto;
   border: 7px solid white;
+  width: 100%;
 }
 .team-member h4 {
   margin-top: 25px;
