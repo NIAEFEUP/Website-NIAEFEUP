@@ -1,12 +1,17 @@
 #card-recruitment {
   background-color: rgba(255, 255, 255, 0.6);
-  padding-bottom: 2%;
+  padding-top: 3%;
   border-radius: 5px;
+  padding-bottom: 2%;
 }
 
 .card-title {
   font-size:3rem;
   color: #007cff;
+}
+
+.card-img-top {
+  margin: auto;
 }
 
 .card-block {
