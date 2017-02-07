@@ -16,7 +16,8 @@ var profileForm = forms.create({
   surname: forms.fields.string({ required: true }),
   linkedin: forms.fields.string(),
   github: forms.fields.string(),
-  website: forms.fields.string()
+  website: forms.fields.string(),
+  about_me: forms.fields.string()
 });
  
 // A render function that will render our form and
@@ -31,7 +32,8 @@ function renderForm(req,res,locals){
     surname: req.user.surname,
     linkedin: req.user.customData.linkedin,
     github: req.user.customData.github,
-    website: req.user.customData.website
+    website: req.user.customData.website,
+    about_me: req.user.customData.about_me
   },locals||{}));
 }
  
@@ -65,6 +67,8 @@ module.exports = function profile(){
         req.user.customData.linkedin = form.data.linkedin;
         req.user.customData.github = form.data.github;
         req.user.customData.website = form.data.website;
+        console.log(form.data.about_me);
+        req.user.customData.about_me = form.data.about_me;
         req.user.customData.save();
         req.user.save(function(err){
           if(err){

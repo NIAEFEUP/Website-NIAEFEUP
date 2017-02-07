@@ -42,7 +42,7 @@ html
           label.col-sm-4 LinkedIn
           div.col-sm-8
             input.form-control(placeholder='https://www.linkedin.com/in/niaefeup-iz-da-best-1234b6969',
-              required=true,
+              required=false,
               name='linkedin',
               type='text',
               value=linkedin)
@@ -50,7 +50,7 @@ html
           label.col-sm-4 Github
           div.col-sm-8
             input.form-control(placeholder='https://github.com/niaefeupizdabest',
-              required=true,
+              required=false,
               name='github',
               type='text',
               value=github)
@@ -58,10 +58,19 @@ html
           label.col-sm-4 Website
           div.col-sm-8
             input.form-control(placeholder='https://niaefeupizdabest.me/',
-              required=true,
+              required=false,
               name='website',
               type='text',
               value=website)
+        div.form-group
+          label.col-sm-4 About me
+          div.col-sm-8
+            textarea.form-control(placeholder='NIAEFEUP is really the best nucleos that could ever exist. I\'m sworn to protect NIAEFEUP\'s interests',
+              required=false,
+              name='about_me',
+              type='text',
+              rows = 10,
+              style='height: 10em; resize:none') #{about_me}
         div.form-group
           div.col-sm-offset-4.col-sm-8
             button.login.btn.btn-primary(type='submit') Save
