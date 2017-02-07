@@ -15,16 +15,14 @@
   npm install
   ```
 
-3. Export the Stormpath API Key ID / Secret and Application HREF Environment Variables :
+3. Export the Stormpath API Key ID / Secret and Application HREF Environment Variables (Alternatively you can create an [API Key Pair](https://docs.stormpath.com/rest/product-guide/latest/quickstart.html#create-an-api-key-pair)) :
 
   ```bash
   export STORMPATH_CLIENT_APIKEY_ID=xxx
   export STORMPATH_CLIENT_APIKEY_SECRET=xxx
   export STORMPATH_APPLICATION_HREF=xxx
   ```
-
-..1. Alternatively you can create an [API Key Pair](https://docs.stormpath.com/rest/product-guide/latest/quickstart.html#create-an-api-key-pair)
-
+  
 4. Start the server:
 
   ```bash
