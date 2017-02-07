@@ -67,7 +67,6 @@ module.exports = function profile(){
         req.user.customData.linkedin = form.data.linkedin;
         req.user.customData.github = form.data.github;
         req.user.customData.website = form.data.website;
-        console.log(form.data.about_me);
         req.user.customData.about_me = form.data.about_me;
         req.user.customData.save();
         req.user.save(function(err){
