@@ -11,7 +11,7 @@ var collectFormErrors = require('express-stormpath/lib/helpers').collectFormErro
 
 /* GET Template listing. */
 router.get('/', function(req, res) {
-  res.render('index', {title: 'NIAEFEUP'});
+  res.render('home', {title: 'NIAEFEUP'});
 });
 
 

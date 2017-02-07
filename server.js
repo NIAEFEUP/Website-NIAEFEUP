@@ -12,21 +12,19 @@ app.use(stormpath.init(app, {
   },
   expand: {
     customData: true
+  },
+  web: {
+    register: {
+      enabled: false
+    }
   }
 }));
 
-/*app.get('/', stormpath.getUser, function(req, res) {
-  res.render('home', {
-    title: 'Welcome'
-  });
-}); */
+var controllers = require('./controllers');
 
-var home = require('./routes/home');
-var members = require('./routes/members');
-
-
-app.use('/', home);
-app.use('/members',members);
+app.use('/', controllers.home);
+app.use('/members', controllers.members);
+app.use('/profile',stormpath.authenticationRequired,controllers.profile);
 
 app.on('stormpath.ready',function(){
   console.log('Stormpath Ready');
