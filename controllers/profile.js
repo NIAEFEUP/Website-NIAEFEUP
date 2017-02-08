@@ -4,11 +4,15 @@ var csurf = require('csurf');
 var express = require('express');
 var extend = require('xtend');
 var forms = require('forms');
- 
+var multer = require('multer');
+var upload = multer({ dest: '.uploads/' });
+var mime = require('mime');
 var collectFormErrors = require('express-stormpath/lib/helpers').collectFormErrors;
  
+var IMAGE_TYPES = ['image/jpeg', 'image/png'];  
+var AVATAR_PATH = './public/images/avatars/';
+
 // Declare the schema of our form:
- 
 var profileForm = forms.create({
   givenName: forms.fields.string({
     required: true
@@ -17,7 +21,8 @@ var profileForm = forms.create({
   linkedin: forms.fields.string(),
   github: forms.fields.string(),
   website: forms.fields.string(),
-  about_me: forms.fields.string()
+  about_me: forms.fields.string(),
+  avatar: forms.fields.object()
 });
  
 // A render function that will render our form and
@@ -52,16 +57,48 @@ module.exports = function profile(){
  
   // Capture all requests, the form library will negotiate
   // between GET and POST requests
- 
-  router.all('/', function(req, res) {
+  router.all('/', upload.single('avatar'),function(req, res) {
     profileForm.handle(req,{
       success: function(form){
+        console.log(req.file);
+        if(req.file != undefined){
+          var file = req.file;
+          //check to see if we support the file type
+          if (IMAGE_TYPES.indexOf(file.mimetype) == -1) {
+            return res.status(415).send('Supported image formats: jpeg, jpg, jpe, png.');
+          }
+
+          // get the temporary location of the file
+          var tmp_path =file.path;
+
+          var filename = file.filename + '.' + mime.extension(file.mimetype);
+
+          // set where the file should actually exists - in this case it is in the "images" directory
+          var target_path = AVATAR_PATH + filename;
+          // move the file from the temporary location to the intended location
+          fs.rename(tmp_path, target_path, function(err) {
+              if (err) throw err;
+              // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+              fs.unlink(tmp_path, function() {
+                  if (err) throw err;
+                  console.log('File uploaded to: ' + target_path + ' - ' + file.size + ' bytes');
+              });
+          });
+          var avatar = new Object();
+          avatar.path = filename;
+          avatar.lastModified = Date.now();
+          req.user.customData.avatar = avatar;
+        }
+        
+
+
         // The form library calls this success method if the
         // form is being POSTED and does not have errors
  
         // The express-stormpath library will populate req.user,
         // all we have to do is set the properties that we care
         // about and then cal save() on the user object:
+
         req.user.givenName = form.data.givenName;
         req.user.surname = form.data.surname;
         req.user.customData.linkedin = form.data.linkedin;
@@ -106,7 +143,7 @@ module.exports = function profile(){
   });
  
   // This is an error handler for this router
- 
+  var fs = require('fs');
   router.use(function (err, req, res, next) {
     // This handler catches errors for this router
     if (err.code === 'EBADCSRFTOKEN'){
@@ -128,6 +165,8 @@ module.exports = function profile(){
       return next(err);
     }
   });
+
+  //console.log(router);
  
   return router;
 };
