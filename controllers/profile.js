@@ -5,6 +5,7 @@ var express = require('express');
 var extend = require('xtend');
 var forms = require('forms');
 var multer = require('multer');
+multer({dest: './public/images/avatars/'});
 var upload = multer({ dest: '.uploads/' });
 var mime = require('mime');
 var collectFormErrors = require('express-stormpath/lib/helpers').collectFormErrors;
