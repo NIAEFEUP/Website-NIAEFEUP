@@ -45,6 +45,10 @@ client.getGroup(dir_group_ref, function (err,group){
 });
 /*END_TESTING*/
 
+client.getAccounts('https://api.stormpath.com/v1/groups/5dd3fxA6icR2V6G1dIoRB3/accounts',function(err,collection){
+    console.log(collection);
+});
+
 /* GET Template listing. */
 router.get('/', function(req, res) {
 
