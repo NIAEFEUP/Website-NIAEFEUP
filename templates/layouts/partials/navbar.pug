@@ -23,10 +23,14 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top.affix-top
           <a class="page-scroll" href="recruitment.html">Recrutamento</a>
           </li>
         li
-          a.page-scroll(href='/#contactus') Contactos
+          a.page-scroll(href='/#contactos') Contactos
+        li
+          a.page-scroll(href='/blog') Blog
+          
         if user
           if user.canAccessKeystone
             li: a(href='/keystone') Open BackOffice
+          li: a(href='/profile') Minha conta
           li: a(href='/keystone/signout') Sign Out
         else
           li: a(href='/keystone/signin') Sign In
