@@ -1,0 +1,97 @@
+extends ../layouts/default
+
+block content
+    div.container
+ 
+      div.page-header
+        h1 My Profile
+
+      if errors
+        each error in errors
+          div.alert.alert-danger
+            span #{error.error}
+      if saved
+        div.alert.alert-success
+          span Your profile has been saved
+      if profile_pic_uploaded
+        div.aler.alert-success
+          span Your profile picture has been saved successfully
+      //div.col-sm-24
+        form(method='post', action='/profile/avatar-upload', enctype="multipart/form-data")
+          input(name='_csrf', type='hidden', value=csrfToken)
+          label.col-sm-4 Profile Picture
+            div.col-sm-8
+              input.form-control(
+                placeholder='C:\\Users\\NIAEFEUP\\is\\da\\bezt',
+                required=true,
+                name='avatar',
+                type='file'
+                )
+          div.form-group
+            div.col-sm-offset-4.col-sm-8
+              button.login.btn.btn-primary(type='submit') Save profile picture
+      form.login-form.form-horizontal(method='post', enctype="multipart/form-data", role='form', action='?_csrf=#{csrfToken}')
+        input(name='_csrf', type='hidden', value=csrfToken)
+        div.form-group
+          label.col-sm-4 Profile Picture
+          div.col-sm-8
+            input.form-control(
+              placeholder='C:\\Users\\NIAEFEUP\\is\\da\\bezt',
+              name='avatar',
+              type='file'
+              )
+        div.form-group
+          label.col-sm-4 First Name
+          div.col-sm-8
+            input.form-control(
+              placeholder='Your first name',
+              required=true,
+              name='givenName',
+              type='text',
+              value=givenName)
+        div.form-group
+          label.col-sm-4 Last Name
+          div.col-sm-8
+            input.form-control(placeholder='Your last name',
+              required=true,
+              name='surname',
+              type='text',
+              value=surname)
+        div.form-group
+          label.col-sm-4 LinkedIn
+          div.col-sm-8
+            input.form-control(placeholder='https://www.linkedin.com/in/niaefeup-iz-da-best-1234b6969',
+              required=false,
+              name='linkedin',
+              type='text',
+              value=linkedin)
+        div.form-group
+          label.col-sm-4 Github
+          div.col-sm-8
+            input.form-control(placeholder='https://github.com/niaefeupizdabezt',
+              required=false,
+              name='github',
+              type='text',
+              value=github)
+        div.form-group
+          label.col-sm-4 Website
+          div.col-sm-8
+            input.form-control(placeholder='https://niaefeupizdabezt.me/',
+              required=false,
+              name='website',
+              type='text',
+              value=website)
+        div.form-group
+          label.col-sm-4 About me
+          div.col-sm-8
+            textarea.form-control(placeholder='NIAEFEUP is really the best nucleos that could ever exist. I\'m sworn to protect NIAEFEUP\'s interests',
+              required=false,
+              name='about_me',
+              type='text',
+              rows = 10,
+              style='height: 10em; resize:none') #{about_me}
+        div.form-group
+          div.col-sm-offset-4.col-sm-8
+            button.login.btn.btn-primary(type='submit') Save
+        div.pull-right
+          a(href="/") Return to home page
