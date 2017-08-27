@@ -1,148 +1,198 @@
 extends ../layouts/default
 
 block content
-    section.members
-      .container
-        // DIREÇÃO
-        div
-          .row
-            each account, index in locals.direcao
-                .col-sm-3.col-xs-8.col-xs-offset-2.col-sm-offset-0
-                    .team-member
-                        img.img-responsive.img-circle(src='img/members/Duarte Pinto.jpg', alt='')
-                        h4 #{account.givenName}
-                        p.text-muted #{account.customData.role}  
-            .col-sm-3.col-xs-8.col-xs-offset-2.col-sm-offset-0
-              .team-member
-                img.img-responsive.img-circle(src='img/members/António Ramadas.jpg', alt='')
-                h4 António Ramadas
-                p.text-muted Presidente
-            .col-sm-3.col-xs-8.col-xs-offset-2.col-sm-offset-0
-              .team-member
-                img.img-responsive.img-circle(src='img/members/Duarte Pinto.jpg', alt='')
-                h4 Duarte Pinto
-                p.text-muted Vice-Presidente e Gestor de Projetos
-            .col-sm-3.col-xs-8.col-xs-offset-2.col-sm-offset-0
-              .team-member
-                img.img-responsive.img-circle(src='img/members/Luís Duarte.jpg', alt='')
-                h4 Luís Duarte
-                p.text-muted Vice-Presidente e Gestor de Eventos
-            .col-sm-3.col-xs-8.col-xs-offset-2.col-sm-offset-0
-              .team-member
-                img.img-responsive.img-circle(src='img/members/Flávio Couto.jpg', alt='')
-                h4 Flávio Couto
-                p.text-muted Tesoureiro
-          .row
-            .col-sm-3.col-xs-8.col-sm-offset-3.col-xs-offset-2
-              .team-member
-                img.img-responsive.img-circle(src='img/members/Bernardo Belchior.jpg', alt='')
-                h4 Bernardo Belchior
-                p.text-muted Secretário
-            .col-sm-3.col-xs-8.col-sm-offset-0.col-xs-offset-2
-              .team-member
-                img.img-responsive.img-circle(src='img/members/Nuno Ramos.jpg', alt='')
-                h4 Nuno Ramos
-                p.text-muted Responsável pela Sala
-        // MEMBROS
-        .row
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Anaís Dias.jpg', alt='')
-              h4 Anaís Dias
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Vânia Leite.jpg', alt='')
-              h4 Vânia Leite
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Edgar Passos.jpg', alt='')
-              h4 Edgar Passos
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Pedro Silva.jpg', alt='')
-              h4 Pedro Silva
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/João Soares.jpg', alt='')
-              h4 João Soares
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Gustavo Silva.jpg', alt='')
-              h4 Gustavo Silva
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/José Oliveira.jpg', alt='')
-              h4 José Oliveira
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/André Lago.jpg', alt='')
-              h4 André Lago
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Vítor Teixeira.jpg', alt='')
-              h4 Vítor Teixeira
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Jorge Teixeira.jpg', alt='')
-              h4 Jorge Teixeira
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Gabriel Souto.jpg', alt='')
-              h4 Gabriel Souto
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Ana Rita Ferreira.jpg', alt='')
-              h4 Ana Rita Ferreira
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Nuno Castro.jpg', alt='')
-              h4 Nuno Castro
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Filipe Coelho.jpg', alt='')
-              h4 Filipe Coelho
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/João Bordalo.jpg', alt='')
-              h4 João Bordalo
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/José Cardoso.jpg', alt='')
-              h4 José Cardoso
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Pedro Castro.jpg', alt='')
-              h4 Pedro Castro
-              p.text-muted Membro
-          .col-sm-2.col-xs-6
-            .team-member
-              img.img-responsive.img-circle(src='img/members/Pedro Fraga.png', alt='')
-              h4 Pedro Fraga
-              p.text-muted Membro
-        // RECRUTAS
-        .row
-          // TEMPLATE
-          // <div class='col-sm-2'><div class='team-member'><img src='img/members/Pedro Fraga.png' class='img-responsive img-circle' alt=''><h4>RECRUITS_NAME</h4><p class='text-muted'>Recruta</p></div></div>
-        //
-          Frase genérica para o final da pagina?
-          <div class="row">
-          <div class="col-lg-8 col-lg-offset-2 text-center">
-          <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-          </div>
-          </div>
+	section.members
+		.container
+			// DIREÇÃO
+			div
+				.row
+					.col-sm-3
+						.team-member
+							img.img-responsive.img-circle(src='images/members/edgarpassos_cropped.jpg', alt='')
+							h4 Edgar Passos
+							p.text-muted Presidente
+					.col-sm-3
+						.team-member
+							img.img-responsive.img-circle(src='images/members/bernardobelchior_cropped.jpg', alt='')
+							h4 Bernardo Belchior
+							p.text-muted Vice-Presidente e Gestor de Projetos
+					.col-sm-3
+						.team-member
+							img.img-responsive.img-circle(src='images/members/nunoramos_cropped.jpg', alt='')
+							h4 Nuno Ramos
+							p.text-muted Vice-Presidente e Gestor de Eventos
+					.col-sm-3
+						.team-member
+							img.img-responsive.img-circle(src='images/members/pedrocosta_cropped.jpg', alt='')
+							h4 Pedro Costa
+							p.text-muted Tesoureiro
+				.row
+					.col-sm-3
+					.col-sm-3
+						.team-member
+							img.img-responsive.img-circle(src='images/members/joaocarvalho_cropped.jpg', alt='')
+							h4 João Carvalho
+							p.text-muted Secretário e Responsável pela Sala
+					.col-sm-3
+						.team-member
+							img.img-responsive.img-circle(src='images/members/mariajoao_cropped.jpg', alt='')
+							h4 Maria João Mira Paulo
+							p.text-muted Responsável pela Imagem e Comunicação
+					.col-sm-3
+			// MEMBROS
+			.row
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Ana Rita Ferreira.jpg', alt='')
+						h4 Ana Rita Ferreira
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Anaís Dias.jpg', alt='')
+						h4 Anaís Dias
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/André Lago.jpg', alt='')
+						h4 André Lago
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/António Ramadas.jpg', alt='')
+						h4 António Ramadas
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/sofiasilva.jpg', alt='')
+						h4 Bárbara Sofia Silva
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Beatriz Mendes.png', alt='')
+						h4 Beatriz Mendes
+						p.text-muted Membro
+				.clearfix
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/David Azevedo.jpg', alt='')
+						h4 David Azevedo
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Duarte Pinto.jpg', alt='')
+						h4 Duarte Pinto
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Francisca Pauperio.jpg', alt='')
+						h4 Francisca Paupério
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Filipe Coelho.jpg', alt='')
+						h4 Filipe Coelho
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Flávio Couto.jpg', alt='')
+						h4 Flávio Couto
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Gabriel Souto.jpg', alt='')
+						h4 Gabriel Souto
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Guilherme Pinto.jpg', alt='')
+						h4 Guilherme Pinto
+						p.text-muted Membro
+				.clearfix
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Gustavo Silva.jpg', alt='')
+						h4 Gustavo Silva
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/José Cardoso.jpg', alt='')
+						h4 José Cardoso
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/José Oliveira.jpg', alt='')
+						h4 José Oliveira
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/João Bordalo.jpg', alt='')
+						h4 João Bordalo
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/João Soares.png', alt='')
+						h4 João Soares
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Jorge Teixeira.jpg', alt='')
+						h4 Jorge Teixeira
+						p.text-muted Membro
+				.clearfix
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Luís Duarte.jpg', alt='')
+						h4 Luis Duarte
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Miguel Duarte.jpg', alt='')
+						h4 Miguel Duarte
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Nuno Castro.jpg', alt='')
+						h4 Nuno Castro
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Pedro Castro.jpg', alt='')
+						h4 Pedro Castro
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Pedro Fraga.png', alt='')
+						h4 Pedro Fraga
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Pedro Silva.jpg', alt='')
+						h4 Pedro Silva
+						p.text-muted Membro
+				.clearfix
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Sérgio Domingues.jpg', alt='')
+						h4 Sérgio Domingues
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Vânia Leite.jpg', alt='')
+						h4 Vânia Leite
+						p.text-muted Membro
+				.col-lg-2.col-sm-2
+					.team-member
+						img.img-responsive.img-circle(src='images/members/Vítor Teixeira.jpg', alt='')
+						h4 Vítor Teixeira
+						p.text-muted Membro
+			// RECRUTAS
+			.row
+				// TEMPLATE
+				// <div class='col-sm-2'><div class='team-member'><img src='images/members/Pedro Fraga.png' class='img-responsive img-circle' alt=''><h4>RECRUITS_NAME</h4><p class='text-muted'>Recruta</p></div></div>
+			//
+				Frase genérica para o final da pagina?
+				<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 text-center">
+				<p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+				</div>
+				</div>
