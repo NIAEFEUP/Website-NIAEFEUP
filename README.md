@@ -15,21 +15,18 @@
   npm install
   ```
 
-3. Export the Stormpath API Key ID / Secret and Application HREF Environment Variables (Alternatively you can create an [API Key Pair](https://docs.stormpath.com/rest/product-guide/latest/quickstart.html#create-an-api-key-pair)) :
+3. Add environment variables:
+
+* Create a .env file in the root folder and add:
+```
+ MONGO_URI=mongodb://<user>:<password>:@ds157853.mlab.com:57835/yournewdb
+ COOKIE_SECRET=u|_*J5<+Ed4eM#$g)B|G)z$8fy$Pt$E36MC=lnok;o6-]:cWnPuJdR>X*Z,bWDO
+```
+The cookie secret is a random long string. This is just an working example.
+Don't forget to user your MONGO_URI.
+
+3. Start the server:
 
   ```bash
-  Linux :
-  export STORMPATH_CLIENT_APIKEY_ID=xxx
-  export STORMPATH_CLIENT_APIKEY_SECRET=xxx
-  export STORMPATH_APPLICATION_HREF=xxx
-  Windows :
-  set STORMPATH_CLIENT_APIKEY_ID=xxx
-  set STORMPATH_CLIENT_APIKEY_SECRET=xxx
-  set STORMPATH_APPLICATION_HREF=xxx
- ```
-  
-4. Start the server:
-
-  ```bash
-  node server.js
+  node keystone
   ```

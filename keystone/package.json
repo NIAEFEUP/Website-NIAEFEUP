@@ -1,21 +1,31 @@
 {
-  "name": "niaefeup-website",
-  "version": "0.0.0",
-  "private": true,
-  "dependencies": {
-    "keystone": "4.0.0-beta.5",
-    "lodash": "^4.13.1",
-    "pug": "2.0.0-beta11", 
-    "dotenv": "4.0.0", 
-    "async": "2.1.4"
-  },
-  "devDependencies": {
-    "eslint": "3.15.0",
-    "eslint-config-keystone": "3.0.0",
-    "eslint-plugin-react": "^5.1.1"
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "start": "node keystone.js"
-  }
+    "name": "niaefeup-website",
+    "version": "0.1.0",
+    "private": true,
+    "main": "keystone.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/NIAEFEUP/Website-NIAEFEUP.git"
+    },
+    "bugs": {
+        "url": "https://github.com/NIAEFEUP/Website-NIAEFEUP/issues"
+    },
+    "homepage": "https://github.com/NIAEFEUP/Website-NIAEFEUP#readme",
+    "dependencies": {
+        "keystone": "4.0.0-beta.5",
+        "lodash": "^4.13.1",
+        "pug": "2.0.0-beta11",
+        "dotenv": "4.0.0",
+        "async": "2.1.4"
+    },
+    "devDependencies": {
+        "eslint": "3.15.0",
+        "eslint-config-keystone": "3.0.0",
+        "eslint-plugin-react": "^5.1.1"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint .",
+        "start": "node keystone.js"
+    }
 }
