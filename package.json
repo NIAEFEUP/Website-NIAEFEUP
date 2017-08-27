@@ -26,6 +26,6 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "eslint .",
-        "start": "node keystone.js"
+        "start": "node keystone"
     }
 }

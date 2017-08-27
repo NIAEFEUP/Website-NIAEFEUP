@@ -18,7 +18,11 @@ keystone.init({
     'favicon': 'public/favicon.ico',
     'views': 'templates/views',
     'view engine': 'pug',
-
+    'signin logo': ['../../images/play-btn.png'],
+    'signin redirect': '/',
+    'signout redirect': '/',
+    'signin url': '/',
+    'signout url': '/',
     'auto update': true,
     'session': true,
     'auth': true,

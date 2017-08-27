@@ -26,7 +26,7 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top.affix-top
           a.page-scroll(href='/#contactus') Contactos
         if user
           if user.canAccessKeystone
-            li: a(href='/keystone') Open Keystone
+            li: a(href='/keystone') Open BackOffice
           li: a(href='/keystone/signout') Sign Out
         else
           li: a(href='/keystone/signin') Sign In
