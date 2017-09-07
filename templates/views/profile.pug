@@ -6,15 +6,15 @@ block content
       div.page-header
         h1 My profile
 
-      form.login-form.form-horizontal(method='post', enctype="multipart/form-data", role='form', action='?_csrf=#{csrfToken}')
-        input(name='_csrf', type='hidden', value=csrfToken)
+      form.login-form.form-horizontal(method='post')
+        input(name='id', type='hidden', value=user.id)
         div.form-group
           label.col-sm-4 Profile Picture
           div.col-sm-8
             input.form-control(
               placeholder='C:\\Users\\NIAEFEUP\\is\\da\\bezt',
               name='avatar',
-              type='file'
+              type='file',
               )
         div.form-group
           label.col-sm-4 First Name
