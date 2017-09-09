@@ -67,15 +67,27 @@ exports.create = function(req, res) {
     var item = new FileData.model(),
         data = (req.method == 'POST') ? req.body : req.query;
 
-    item.getUpdateHandler(req).process(req.files, function(err) {
 
-        if (err) return res.apiError('error', err);
+    if (req.files.file_upload.mimetype !== 'image/jpeg' && req.files.file_upload.mimetype !== 'image/png') {
+        req.flash('warning', 'File not supported');
 
         res.apiResponse({
-            file_upload: item
+            unsuported_file: "true"
         });
 
-    });
+    } else {
+        item.getUpdateHandler(req).process(req.files, function(err) {
+
+            if (err) return res.apiError('error', err);
+
+            req.flash('success', 'Profile picture updated with success');
+
+            res.apiResponse({
+                file_upload: item
+            });
+
+        });
+    }
 }
 
 /**
