@@ -37,11 +37,20 @@ exports = module.exports = function(app) {
     // Views
     app.get('/', routes.views.home);
     app.get('/profile', middleware.requireUser, routes.views.profile);
+    app.post('/profile', middleware.requireUser, routes.views.profile.update);
     app.get('/members', routes.views.members);
     app.get('/user/:id', routes.views.user);
     app.get('/blog/:category?', routes.views.blog);
     app.get('/blog/post/:post', routes.views.post);
-    app.post('/profile', middleware.requireUser, routes.views.profile.update);
+
+    //File Upload Route
+    app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
+    app.get('/api/fileupload/:id', keystone.middleware.api, routes.api.fileupload.get);
+    app.all('/api/fileupload/:id/update', keystone.middleware.api, routes.api.fileupload.update);
+    app.all('/api/fileupload/create', keystone.middleware.api, routes.api.fileupload.create);
+    app.get('/api/fileupload/:id/remove', keystone.middleware.api, routes.api.fileupload.remove);
+    app.get('/api/fileupload/:id/removePreviousPhoto', keystone.middleware.api, routes.api.fileupload.removePreviousPhoto);
+
 
     // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
     // app.get('/protected', middleware.requireUser, routes.views.protected);
