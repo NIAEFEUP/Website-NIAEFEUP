@@ -41,13 +41,22 @@ exports.update = function(req, res) {
             req.flash('warning', 'User not found!');
         }
 
+        var publicProfile;
+
+        if (req.body.public === "on") {
+            publicProfile = true;
+        } else {
+            publicProfile = false;
+        }
+
         var formData = {
             avatar: req.body.avatar,
             name: { first: req.body.first, last: req.body.last },
             linkedin: req.body.linkedin,
             github: req.body.github,
             website: req.body.website,
-            about: req.body.about
+            about: req.body.about,
+            public: publicProfile
         }
 
         var data = (req.method == 'POST') ? formData : req.query;

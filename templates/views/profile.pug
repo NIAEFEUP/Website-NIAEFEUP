@@ -69,6 +69,20 @@ block content
               rows = 10,
               style='height: 10em; resize:none') #{user.about}
         div.form-group
+          label.col-sm-4 Public profile
+          div.col-sm-8
+            if user.public
+              input.form-control(placeholder='Website url',
+                required=false,
+                name='public',
+                type='checkbox',
+                checked)
+            else
+              input.form-control(placeholder='Website url',
+                required=false,
+                name='public',
+                type='checkbox')
+        div.form-group
           div.col-sm-offset-4.col-sm-8
             button.login.btn.btn-primary(type='submit') Save
         div.pull-right

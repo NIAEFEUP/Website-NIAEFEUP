@@ -16,6 +16,7 @@ User.add({
     github: { type: Types.Url },
     website: { type: Types.Url },
     about: { type: Types.Textarea },
+    public: { type: Boolean, label: 'Is the profile public?', initial: true },
 }, 'Permissions', {
     isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 });
