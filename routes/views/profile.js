@@ -1,13 +1,31 @@
 var keystone = require('keystone');
 
 var User = keystone.list('User');
+var FileData = keystone.list('FileUpload');
 
 exports = module.exports = function(req, res) {
 
     var view = new keystone.View(req, res);
+    var locals = res.locals;
 
-    // Render the view
-    view.render('profile');
+    FileData.model.find({ "name": res.locals.user.id }).exec(function(err, item) {
+
+        if (err) {
+            req.flash('warning', 'Database error!');
+        }
+        if (!item) {
+            req.flash('warning', 'User not found!');
+        }
+
+        if (item[0].url == undefined) {
+            locals.filePath = "/images/members/default-profile.jpg";
+        } else {
+            locals.filePath = item[0].url;
+        }
+
+        // Render the view
+        view.render('profile');
+    });
 };
 
 /**

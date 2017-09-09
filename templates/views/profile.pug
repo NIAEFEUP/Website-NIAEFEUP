@@ -8,6 +8,7 @@ block content
 
       form#form2(action='/api/fileupload/create', method='POST', enctype='multipart/form-data')
         div
+          img.img-responsive.img-circle(src=filePath, alt='')
           input#file_upload(type='file')
           input#file_name(type='hidden', name='file_name', value=user.id)
         br
@@ -112,13 +113,6 @@ block content
               //debugger;
               console.log('File upload succeeded! ID: ' + data.file_upload._id);
 
-              //Fill out the file metadata information
-              data.file_upload.name = $('#file_name').val();
-              data.file_upload.url = '/uploads/files/'+data.file_upload.file.filename;
-              data.file_upload.fileType = data.file_upload.file.mimetype;
-              data.file_upload.createdTimeStamp = new Date();
-
-
               //Remove previous user photo
               $.get('/api/fileupload/'+$('#file_name').val()+'/removePreviousPhoto', function(data) {
                 //debugger;
@@ -137,6 +131,13 @@ block content
                 alert('Failed to connect to the server while trying to update file metadata!');
               });
 
+              //Fill out the file metadata information
+              data.file_upload.name = $('#file_name').val();
+              data.file_upload.url = '/uploads/members/'+data.file_upload.file.filename;
+              data.file_upload.fileType = data.file_upload.file.mimetype;
+              data.file_upload.createdTimeStamp = new Date();
+
+
 
               //Update the file with the information above.
               $.get('/api/fileupload/'+data.file_upload._id+'/update', data.file_upload, function(data) {
@@ -144,6 +145,7 @@ block content
 
                 console.log('File information updated.');
 
+                window.location.href = "./profile";
               })
 
               //If the metadata update fails:
@@ -156,8 +158,6 @@ block content
 
                 alert('Failed to connect to the server while trying to update file metadata!');
               });
-
-             window.location.href = "./profile";
               
             },
 
