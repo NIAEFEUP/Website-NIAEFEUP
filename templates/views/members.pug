@@ -10,28 +10,32 @@ block content
 						if member.position == "Presidente"
 							.col-sm-3
 								.team-member
-									img.img-responsive.img-circle(src=member.photo_path, alt='presidente')
+									a(href="./member/"+member._id)
+										img.img-responsive.img-circle(src=member.photo_path, alt='presidente')
 									h4 #{member.name.first} #{member.name.last}
 									p.text-muted #{member.position}
 					each member in members	
 						if member.position == "Vice-Presidente e Gestor de Projetos"
 							.col-sm-3
 								.team-member
-									img.img-responsive.img-circle(src=member.photo_path, alt='Vice-Presidente e Gestor de Projetos')
+									a(href="./member/"+member._id)
+										img.img-responsive.img-circle(src=member.photo_path, alt='Vice-Presidente e Gestor de Projetos')
 									h4 #{member.name.first} #{member.name.last}
 									p.text-muted #{member.position}
 					each member in members	
 						if member.position == "Vice-Presidente e Gestor de Eventos"
 							.col-sm-3
 								.team-member
-									img.img-responsive.img-circle(src=member.photo_path, alt='Vice-Presidente e Gestor de Eventos')
+									a(href="./member/"+member._id)
+										img.img-responsive.img-circle(src=member.photo_path, alt='Vice-Presidente e Gestor de Eventos')
 									h4 #{member.name.first} #{member.name.last}
 									p.text-muted #{member.position}
 					each member in members	
 						if member.position == "Tesoureiro"
 							.col-sm-3
 								.team-member
-									img.img-responsive.img-circle(src=member.photo_path, alt='Tesoureiro')
+									a(href="./member/"+member._id)
+										img.img-responsive.img-circle(src=member.photo_path, alt='Tesoureiro')
 									h4 #{member.name.first} #{member.name.last}
 									p.text-muted #{member.position}
 				.row
@@ -40,14 +44,16 @@ block content
 						if member.position == "Secretário e Responsável pela Sala"
 							.col-sm-3
 								.team-member
-									img.img-responsive.img-circle(src=member.photo_path, alt='Secretário e Responsável pela Sala')
+									a(href="./member/"+member._id)
+										img.img-responsive.img-circle(src=member.photo_path, alt='Secretário e Responsável pela Sala')
 									h4 #{member.name.first} #{member.name.last}
 									p.text-muted #{member.position}
 					each member in members	
 						if member.position == "Responsável pela Imagem e Comunicação"
 							.col-sm-3
 								.team-member
-									img.img-responsive.img-circle(src=member.photo_path, alt='Responsável pela Imagem e Comunicação')
+									a(href="./member/"+member._id)
+										img.img-responsive.img-circle(src=member.photo_path, alt='Responsável pela Imagem e Comunicação')
 									h4 #{member.name.first} #{member.name.last}
 									p.text-muted #{member.position}
 					.col-sm-3
@@ -57,14 +63,16 @@ block content
 						if member.position == "Membro"
 							.col-lg-2.col-sm-2
 								.team-member
-									img.img-responsive.img-circle(src=member.photo_path, alt='membro')
+									a(href="./member/"+member._id)
+										img.img-responsive.img-circle(src=member.photo_path, alt='membro')
 									h4 #{member.name.first} #{member.name.last}
 									p.text-muted #{member.position}
 					each member in members	
 						if member.position == "Recruta"
 							.col-lg-2.col-sm-2
 								.team-member
-									img.img-responsive.img-circle(src=member.photo_path, alt='recruta')
+									a(href="./member/"+member._id)
+										img.img-responsive.img-circle(src=member.photo_path, alt='recruta')
 									h4 #{member.name.first} #{member.name.last}
 									p.text-muted #{member.position}
 						

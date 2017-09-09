@@ -6,24 +6,23 @@ exports = module.exports = function(req, res) {
     var locals = res.locals;
 
     // Set locals
-    locals.section = 'profile';
+    locals.section = 'member';
     locals.filters = {
         id: req.params.id,
-    };
-    locals.data = {
-        users: [],
     };
 
     // Load the current post
     view.on('init', function(next) {
 
+        var q = keystone.list('User').model.findById(req.params.id);
+
         q.exec(function(err, result) {
-            locals.data.user = result;
+            locals.user = result;
             next(err);
         });
 
     });
 
     // Render the view
-    view.render('user');
+    view.render('member');
 };

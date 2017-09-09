@@ -39,7 +39,7 @@ exports = module.exports = function(app) {
     app.get('/profile', middleware.requireUser, routes.views.profile);
     app.post('/profile', middleware.requireUser, routes.views.profile.update);
     app.get('/members', routes.views.members);
-    app.get('/user/:id', routes.views.user);
+    app.get('/member/:id', routes.views.member);
     app.get('/blog/:category?', routes.views.blog);
     app.get('/blog/post/:post', routes.views.post);
 
