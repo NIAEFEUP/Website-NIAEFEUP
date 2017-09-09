@@ -67,6 +67,7 @@ exports.create = function(req, res) {
     var item = new FileData.model(),
         data = (req.method == 'POST') ? req.body : req.query;
 
+    console.log(req.files.file_upload.size);
     if (req.files.file_upload.mimetype !== 'image/jpeg' && req.files.file_upload.mimetype !== 'image/png') {
         req.flash('warning', 'File not supported');
 
@@ -74,7 +75,7 @@ exports.create = function(req, res) {
             unsuported_file: "true"
         });
 
-    } else if (req.files.file_upload.size < 500000) {
+    } else if (req.files.file_upload.size > 500000) {
         req.flash('warning', 'Max file size is 500kb');
 
         res.apiResponse({
