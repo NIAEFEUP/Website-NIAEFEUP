@@ -36,6 +36,14 @@ block content
               type='text',
               value=user.name.last)
         div.form-group
+          label.col-sm-4 Position
+          div.col-sm-8
+            input.form-control(placeholder='Your position inside NIAEFEUP',
+              required=true,
+              name='position',
+              type='text',
+              value=user.name.position)
+        div.form-group
           label.col-sm-4 LinkedIn
           div.col-sm-8
             input.form-control(placeholder='LinkedIn Url',

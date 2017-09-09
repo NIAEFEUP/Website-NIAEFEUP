@@ -11,7 +11,7 @@ User.add({
     name: { type: Types.Name, required: true, index: true },
     email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
     password: { type: Types.Password, initial: true, required: true },
-    photo_name: { type: String, label: 'Photo name on server (ex: user.jpg)' },
+    photo_path: { type: String, label: 'Photo path on server' },
     linkedin: { type: Types.Url },
     github: { type: Types.Url },
     website: { type: Types.Url },
@@ -19,6 +19,12 @@ User.add({
     public: { type: Boolean, label: 'Is the profile public?', initial: true },
 }, 'Permissions', {
     isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
+    position: {
+        type: Types.Select,
+        options: 'Membro, Recruta, Presidente, Vice-Presidente e Gestor de Projetos, Vice-Presidente e Gestor de Eventos, Tesoureiro, Secretário e Responsável pela Sala, Responsável pela Imagem e Comunicação',
+        initial: true,
+        required: true
+    },
 });
 
 // Provide access to Keystone
