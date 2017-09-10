@@ -23,75 +23,31 @@ block content
           div.form-group
             label.col-sm-4 First Name
             div.col-sm-8
-              input.form-control(
-                placeholder='Your first name',
-                required=true,
-                name='first',
-                type='text',
-                value=user.name.first)
+              p #{user.name.first}
           div.form-group
             label.col-sm-4 Last Name
             div.col-sm-8
-              input.form-control(placeholder='Your last name',
-                required=true,
-                name='last',
-                type='text',
-                value=user.name.last)
+              p #{user.name.last}
           div.form-group
             label.col-sm-4 Position
             div.col-sm-8
-              input.form-control(placeholder='Your position inside NIAEFEUP',
-                required=true,
-                name='position',
-                type='text',
-                value=user.name.position)
+              p #{user.position}
           div.form-group
             label.col-sm-4 LinkedIn
             div.col-sm-8
-              input.form-control(placeholder='LinkedIn Url',
-                required=false,
-                name='linkedin',
-                type='text',
-                value=user.linkedin)
+              p #{user.linkedin}
           div.form-group
             label.col-sm-4 Github
             div.col-sm-8
-              input.form-control(placeholder='Github url',
-                required=false,
-                name='github',
-                type='text',
-                value=user.github)
+              p #{user.github}
           div.form-group
             label.col-sm-4 Website
             div.col-sm-8
-              input.form-control(placeholder='Website url',
-                required=false,
-                name='website',
-                type='text',
-                value=user.website)
+              p #{user.website}
           div.form-group
             label.col-sm-4 About me
             div.col-sm-8
-              textarea.form-control(placeholder='Let others know a bit more about you.',
-                required=false,
-                name='about',
-                type='text',
-                rows = 10,
-                style='height: 10em; resize:none') #{user.about}
-          div.form-group
-            label.col-sm-4 Public profile
-            div.col-sm-8
-              if user.public
-                input.form-control(placeholder='Website url',
-                  required=false,
-                  name='public',
-                  type='checkbox',
-                  checked)
-              else
-                input.form-control(placeholder='Website url',
-                  required=false,
-                  name='public',
-                  type='checkbox')
+              textarea #{user.about}
           div.pull-right
             a(href="/") Return to home page
 
