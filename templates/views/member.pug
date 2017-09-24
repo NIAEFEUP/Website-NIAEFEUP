@@ -10,15 +10,7 @@ block content
       else   
         div.page-header
           h1 My profile
-
-        form#form2(action='', method='POST', enctype='multipart/form-data')
-          div
-            img.img-responsive.img-circle(src=user.filePath, alt='')
-            input#file_upload(type='file')
-            input#file_name(type='hidden', name='file_name', value=user.id)
-          br
           
-
         form.login-form.form-horizontal(method='post')
           div.form-group
             label.col-sm-4 First Name

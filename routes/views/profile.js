@@ -17,6 +17,7 @@ exports = module.exports = function(req, res) {
             req.flash('warning', 'User not found!');
         }
 
+        //FIXME Existe aqui um erro com o url
         if (item[0].url == undefined) {
             locals.filePath = "/images/members/default-profile.jpg";
         } else {
@@ -31,7 +32,7 @@ exports = module.exports = function(req, res) {
 /**
  * Update user profile
  */
-exports.update = function(req, res) {
+exports.update = function(req, res, next) {
     User.model.findById(res.locals.user.id).exec(function(err, item) {
 
         if (err) {
@@ -67,7 +68,7 @@ exports.update = function(req, res) {
         }, function(err) {
             if (err) {
                 req.flash('warning', 'Error updating profile!');
-                locals.validationErrors = err.errors;
+                res.locals.validationErrors = err.errors;
             } else {
                 req.flash('success', 'Your profile has been updated!');
                 return res.redirect('/profile');

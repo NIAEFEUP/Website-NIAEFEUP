@@ -111,7 +111,7 @@ exports.remove = function(req, res) {
 
             if (err) return res.apiError('database error', err);
 
-            //Delete the file
+            //TODO (if exists) Delete the file
             exec('rm public/uploads/files/' + fileId + '.*', function(err, stdout, stderr) {
                 if (err) {
                     console.log('child process exited with error code ' + err.code);
