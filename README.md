@@ -30,3 +30,17 @@ Don't forget to user your MONGO_URI.
   ```bash
   node keystone
   ```
+
+## TODO List
+
+* Aperfeiçoar o modelo atual (formulário de edição de perfil | api para upload de ficheiros) -> Deixei uns TODO's em alguns ficheiros
+
+### Ideias
+
+* Criar um Back-End para gerir o processo de recrutamento.
+* Página publica com o formulário de candidatura.
+* Permitir ao admin marcar as entrevistas como realizadas.
+* Aceitar/Rejeitar novos membros (Enviar convite para as contas de :Slack, GoogleGroup, Site).
+* Enviar emails de feedback aos candidatos.
+* Fazer integração com Google Calendar para marcação de reuniões.
+* Back-end ser um headless CMS de forma a cada direção escolher o seu front-end.
