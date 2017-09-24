@@ -33,6 +33,7 @@ Don't forget to user your MONGO_URI.
 
 ## TODO List
 
+* Quando o user dá upload de uma imagem, fazer set no seu image_path com o novo caminho
 * Aperfeiçoar o modelo atual (formulário de edição de perfil | api para upload de ficheiros) -> Deixei uns TODO's em alguns ficheiros
 
 ### Ideias
