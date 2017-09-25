@@ -1,22 +1,16 @@
 {
-  "name": "niaefeup-website",
-  "version": "0.1.0",
+  "name": "niaefeup",
+  "version": "0.0.0",
   "private": true,
-  "main": "keystone.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NIAEFEUP/Website-NIAEFEUP.git"
-  },
-  "bugs": {
-    "url": "https://github.com/NIAEFEUP/Website-NIAEFEUP/issues"
-  },
-  "homepage": "https://github.com/NIAEFEUP/Website-NIAEFEUP#readme",
   "dependencies": {
     "async": "2.1.4",
     "connect-mongo": "^1.3.2",
     "dotenv": "4.0.0",
     "keystone": "4.0.0-beta.5",
+    "keystone-email": "1.0.5",
     "lodash": "^4.13.1",
+    "node-sass": "4.5.0",
+    "node-sass-middleware": "0.11.0",
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {
@@ -25,8 +19,7 @@
     "eslint-plugin-react": "^5.1.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "start": "node keystone"
+    "start": "node keystone.js"
   }
 }
