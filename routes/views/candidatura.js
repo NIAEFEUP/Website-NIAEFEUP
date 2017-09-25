@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+var Candidatura = keystone.list('Candidatura');
 
 exports = module.exports = function(req, res) {
 
@@ -26,3 +27,15 @@ exports = module.exports = function(req, res) {
     // Render the view
     view.render('candidatura');
 };
+
+
+exports.create = function(req, res, next) {
+
+  var novaCand = new Candidatura.model(req.body);
+
+  novaCand.save();
+
+  //TODO enviar email
+  req.flash('success', 'Candidatura Submitted');
+  res.redirect('/');
+}

@@ -54,3 +54,9 @@ exports.requireUser = function(req, res, next) {
         next();
     }
 };
+
+//TODO fazer a validação do lado do servidor dos dados da candidatura
+exports.validarCandidatura = function(req, res, next) {
+  req.flash('info', 'Candidatura validada.');
+  next();
+};

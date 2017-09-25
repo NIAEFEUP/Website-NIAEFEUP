@@ -8,10 +8,10 @@ block content
       form(method='POST' action='/candidatura')
         div.form-group
           label(for='first name') First Name:
-          input#first_name.form-control(type='text', placeholder='first name' name='first_name')
+          input#first_name.form-control(type='text', placeholder='first name' name='name.first')
         div.form-group
           label(for='last name') Last Name:
-          input#last_name.form-control(type='text', placeholder='last name' name='last_name')
+          input#last_name.form-control(type='text', placeholder='last name' name='name.last')
         div.form-group
           label(for='numero up') Número UP:
           input#numero_up.form-control(type='number', placeholder='Número UP' name='numero_up')
@@ -22,13 +22,16 @@ block content
           label(for='Porquê o Núcleo de Informática?') Porquê o Núcleo de Informática?:
           input#porque_ni.form-control(type='text', placeholder='Porquê o Núcleo de Informática?' name='porque_ni')
         div.form-group
-          label(for='favoriteBook') Favorite Book:
-          input#favoriteBook.form-control(type='text', placeholder='title of book' name='favoriteBook')
+          label(for='Github') Github :
+          input#github.form-control(type='url', placeholder='Github URL' name='github')
         div.form-group
-          label(for='pw') Password:
-          input#pw.form-control(type='password' name='password')
+          label(for='Website') Website :
+          input#website.form-control(type='url', placeholder='Website URL' name='website')
         div.form-group
-          label(for='pw2') Confirm Password:
-          input#pw2.form-control(type='password' name='confirmPassword')
+          label(for='LinkedIn') LinkedIn :
+          input#linkedin.form-control(type='url', placeholder='LinkedIn URL' name='linkedin')
+        div.form-group
+          label(for='Tecnologias') Com que tecnologias já trabalhaste?:
+          textarea#tecnologias.form-control(type='text', placeholder='Diz-nos as tecnologias com que já trabalhaste?' name='tecnologias')
         button.btn.btn-primary(type='submit') Join Us
         a(href="/") Return to home page
