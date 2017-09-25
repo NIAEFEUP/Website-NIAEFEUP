@@ -22,7 +22,37 @@ exports = module.exports = function(req, res) {
                 return next(err);
             }
 
-            locals.members = results;
+            locals.members = [];
+            locals.recrutas = [];
+
+            for (result of results) {
+                switch(result.position){
+                    case "Presidente":
+                        locals.presidente = result;
+                    break;
+                    case "Vice-Presidente e Gestor de Projetos":
+                        locals.gestor_projetos = result;
+                    break;
+                    case "Vice-Presidente e Gestor de Eventos":
+                        locals.gestor_eventos = result;
+                    break;
+                    case "Tesoureiro":
+                        locals.tesoureiro = result;
+                    break;
+                    case "Secretário e Responsável pela Sala":
+                        locals.responsavel_sala = result;
+                    break;
+                    case "Responsável pela Imagem e Comunicação":
+                        locals.imagem_comunicacao = result;
+                    break;
+                    case "Membro":
+                        locals.members.push(result);
+                    break;
+                    case "Recruta":
+                        locals.recrutas.push(result);
+                    break;
+                }
+            }
 
             next(err);
         });

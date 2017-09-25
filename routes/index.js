@@ -43,6 +43,7 @@ exports = module.exports = function(app) {
     app.get('/member/:id', routes.views.member);
     app.get('/blog/:category?', routes.views.blog);
     app.get('/blog/post/:post', routes.views.post);
+    app.get('/candidatura',routes.views.candidatura);
 
     //File Upload Route
     app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);

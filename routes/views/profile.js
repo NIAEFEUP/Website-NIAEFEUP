@@ -17,11 +17,14 @@ exports = module.exports = function(req, res) {
             req.flash('warning', 'User not found!');
         }
 
-        //FIXME Existe aqui um erro com o url
-        if (item[0].url == undefined) {
+        if (item[0] == undefined) {
             locals.filePath = "/images/members/default-profile.jpg";
         } else {
-            locals.filePath = item[0].url;
+            if (item[0].url == undefined) {
+                locals.filePath = "/images/members/default-profile.jpg";
+            } else {
+                locals.filePath = item[0].url;
+            }
         }
 
         // Render the view

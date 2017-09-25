@@ -1,0 +1,34 @@
+extends ../layouts/default
+
+block content
+  div.container  
+    div.page-header
+      h1 Join Us
+      
+      form(method='POST' action='/candidatura')
+        div.form-group
+          label(for='first name') First Name:
+          input#first_name.form-control(type='text', placeholder='first name' name='first_name')
+        div.form-group
+          label(for='last name') Last Name:
+          input#last_name.form-control(type='text', placeholder='last name' name='last_name')
+        div.form-group
+          label(for='numero up') Número UP:
+          input#numero_up.form-control(type='number', placeholder='Número UP' name='numero_up')
+        div.form-group
+          label(for='email') Email:
+          input#email.form-control(type='email', placeholder='name@email.com' name='email')
+        div.form-group
+          label(for='Porquê o Núcleo de Informática?') Porquê o Núcleo de Informática?:
+          input#porque_ni.form-control(type='text', placeholder='Porquê o Núcleo de Informática?' name='porque_ni')
+        div.form-group
+          label(for='favoriteBook') Favorite Book:
+          input#favoriteBook.form-control(type='text', placeholder='title of book' name='favoriteBook')
+        div.form-group
+          label(for='pw') Password:
+          input#pw.form-control(type='password' name='password')
+        div.form-group
+          label(for='pw2') Confirm Password:
+          input#pw2.form-control(type='password' name='confirmPassword')
+        button.btn.btn-primary(type='submit') Join Us
+        a(href="/") Return to home page
