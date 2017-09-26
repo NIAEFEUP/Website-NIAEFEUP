@@ -5837,3 +5837,57 @@ button.close {
   #footer .copyright p {
     color: white;
     padding-top: 45px; }
+
+#body {
+  font-family: "Montserrat", sans-serif; }
+
+.item {
+  background: url(../images/template_website/enei.jpg) no-repeat center center;
+  height: 550px;
+  width: 100%; }
+
+.white-separator {
+  border-width: 4px;
+  border-top: 4px solid white !important;
+  width: 10%; }
+
+.black-separator {
+  border-width: 1px;
+  border-top: 0.9px solid #787878 !important;
+  width: 99%;
+  margin-top: 40px; }
+
+.btn-default {
+  padding: 15px 44px 15px 44px !important;
+  border-radius: 2em; }
+
+#hero {
+  margin-top: 30px;
+  overflow: hidden; }
+  #hero .white-big-title {
+    color: white;
+    font-size: 30px; }
+  #hero .white-title {
+    color: white;
+    font-weight: 600; }
+  #hero .slide-info {
+    padding-top: 200px;
+    text-align: center; }
+  #hero .see-more-button {
+    margin-top: 70px; }
+  #hero .sub-description {
+    padding-top: 15px; }
+
+#description {
+  margin-top: 30px; }
+  #description .subtitle {
+    font-size: 10px;
+    font-style: italic; }
+  #description .title {
+    font-weight: 900;
+    margin-top: 25px; }
+  #description .definition {
+    margin-top: 35px;
+    font-size: 13px;
+    line-height: 160%;
+    color: #787878; }
