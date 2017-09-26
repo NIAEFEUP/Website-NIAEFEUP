@@ -1,8 +1,36 @@
-.footer
-  // Include all compiled plugins (below), or include individual files as needed
-  script(src='js/bootstrap.min.js')
+#footer
+  div.col-xs-4
+    h3 SOBRE
+    p Aliquam voluptatem quia eaque illum. Est illo nam quis necessitatibus. Tempora vero amet tenetur. Aliquid cumque vitae ut pariatur aut. Ipsam ut recusandae quod facilis reiciendis quasi minima. Optio delectus culpa laudantium a est magni ipsum.
+
+  div.col-xs-4
+    h3 LINKS ÚTEIS
+    ul
+      li Inicio
+      li Sobre
+      li Projetos
+      li Equipa
+      li Contacto
+
+  div.col-xs-4
+    img.img-responsive(src='/images/logo-feup.jpg', alt='Logo FEUP')
+    img.img-responsive(src='/images/logo-aefeup.png', alt='Logo AEFEUP')
+
+  div.col-xs-12.copyright
+    p COPYRIGHT 2017 NIAEFEUP, ALL RIGHTS RESERVED
+  
+  //- jQuery 1.11.3 is included by default, and required by both Bootstrap
+  //- and the KeystoneJS Content Editor. If you are not targeting IE8,
+  //- you can upgrade to 2.1.4 (also bundled) for better performance.
+  script(src='/js/jquery/jquery-1.11.3.min.js')
+
+  //- Customise which Bootstrap javascript files are served by including
+  //- them specifically here, instead of bootstrap-3.3.5.min.js
+  script(src='/js/bootstrap/bootstrap-3.3.5.min.js')
 
   //- The KeystoneJS Content Editor provides support for ks-editable data attributes,
   //- which generate links to edit content for users who can access Keystone
   if user && user.canAccessKeystone
     script(src='/keystone/js/content/editor.js')
+
+  //- Add scripts that are globally required by your site here.
