@@ -1,0 +1,81 @@
+#body {
+    font-family: $font-type;
+}
+
+.item{
+    background: url(../images/template_website/enei.jpg) no - repeat center center;
+    height: 550px;
+    width: 100%;
+}
+
+.white-separator{
+    border-width: 4px;
+    border-top: 4px solid white !important;
+    width: 10%;
+}
+
+.black-separator{
+    border-width: 1px;
+    border-top: 0.9px solid $grey-color !important;
+    width: 99%;
+    margin-top: 40px; 
+}
+
+
+
+.btn-default{
+    padding: 15px 44px 15px 44px !important;
+    border-radius: 2em;
+}
+
+#hero{
+    margin-top: 30px;
+    overflow: hidden;
+    
+    .white-big-title{
+    color: white;
+    font-size: 30px;
+}
+
+    .white-title{
+    color: white;
+    font-weight: 600;
+    }
+
+
+    .slide-info{
+       padding-top: 200px;
+        text-align: center;
+    }
+
+    .see-more-button{
+        margin-top: 70px;
+    }
+
+    .sub-description{
+        padding-top: 15px;
+    }
+}
+
+#description{
+
+    margin-top: 30px;
+    
+    .subtitle{
+        font-size: 10px;
+        font-style: italic;
+    }
+    
+    .title{
+        font-weight: 900;
+        margin-top: 25px;
+    }
+    
+    .definition{
+        margin-top: 35px;
+        font-size: 13px;
+         line-height: 160%;
+        color: $grey-color;
+    }
+}
+
