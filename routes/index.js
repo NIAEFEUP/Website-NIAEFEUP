@@ -45,6 +45,8 @@ exports = module.exports = function(app) {
     app.get('/blog/post/:post', routes.views.post);
     app.get('/candidatura',routes.views.candidatura);
     app.post('/candidatura',middleware.validarCandidatura,routes.views.candidatura.create);
+    //TODO
+    app.get('/entrevista',middleware.requireUser,routes.views.entrevista);
 
     //File Upload Route
     app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
