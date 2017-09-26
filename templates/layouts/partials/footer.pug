@@ -1,8 +1,16 @@
 .footer
-  // Include all compiled plugins (below), or include individual files as needed
-  script(src='js/bootstrap.min.js')
+  //- jQuery 1.11.3 is included by default, and required by both Bootstrap
+  //- and the KeystoneJS Content Editor. If you are not targeting IE8,
+  //- you can upgrade to 2.1.4 (also bundled) for better performance.
+  script(src='/js/jquery/jquery-1.11.3.min.js')
+
+  //- Customise which Bootstrap javascript files are served by including
+  //- them specifically here, instead of bootstrap-3.3.5.min.js
+  script(src='/js/bootstrap/bootstrap-3.3.5.min.js')
 
   //- The KeystoneJS Content Editor provides support for ks-editable data attributes,
   //- which generate links to edit content for users who can access Keystone
   if user && user.canAccessKeystone
     script(src='/keystone/js/content/editor.js')
+
+  //- Add scripts that are globally required by your site here.
