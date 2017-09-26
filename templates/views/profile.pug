@@ -1,0 +1,204 @@
+extends ../layouts/default
+
+block content
+    div.container
+ 
+      div.page-header
+        h1 My profile
+
+      form#form2(action='/api/fileupload/create', method='POST', enctype='multipart/form-data')
+        div
+          img.img-responsive.img-circle(src=filePath, alt='')
+          input#file_upload(type='file')
+          input#file_name(type='hidden', name='file_name', value=user.id)
+        br
+        div
+          center
+            input(type='button', value='Upload', onclick='uploadFile()')
+      br
+
+      form.login-form.form-horizontal(method='post')
+        div.form-group
+          label.col-sm-4 First Name
+          div.col-sm-8
+            input.form-control(
+              placeholder='Your first name',
+              required=true,
+              name='first',
+              type='text',
+              value=user.name.first)
+        div.form-group
+          label.col-sm-4 Last Name
+          div.col-sm-8
+            input.form-control(placeholder='Your last name',
+              required=true,
+              name='last',
+              type='text',
+              value=user.name.last)
+        div.form-group
+          label.col-sm-4 Position
+          div.col-sm-8
+            input.form-control(placeholder='Your position inside NIAEFEUP',
+              required=false,
+              disabled=true,
+              name='position',
+              type='text',
+              value=user.position)
+        div.form-group
+          label.col-sm-4 LinkedIn
+          div.col-sm-8
+            input.form-control(placeholder='LinkedIn Url',
+              required=false,
+              name='linkedin',
+              type='text',
+              value=user.linkedin)
+        div.form-group
+          label.col-sm-4 Github
+          div.col-sm-8
+            input.form-control(placeholder='Github url',
+              required=false,
+              name='github',
+              type='text',
+              value=user.github)
+        div.form-group
+          label.col-sm-4 Website
+          div.col-sm-8
+            input.form-control(placeholder='Website url',
+              required=false,
+              name='website',
+              type='text',
+              value=user.website)
+        div.form-group
+          label.col-sm-4 About me
+          div.col-sm-8
+            textarea.form-control(placeholder='Let others know a bit more about you.',
+              required=false,
+              name='about',
+              type='text',
+              rows = 10,
+              style='height: 10em; resize:none') #{user.about}
+        div.form-group
+          label.col-sm-4 Public profile
+          div.col-sm-8
+            if user.public
+              input.form-control(placeholder='Website url',
+                required=false,
+                name='public',
+                type='checkbox',
+                checked)
+            else
+              input.form-control(placeholder='Website url',
+                required=false,
+                name='public',
+                type='checkbox')
+        div.form-group
+          div.col-sm-offset-4.col-sm-8
+            button.login.btn.btn-primary(type='submit') Save
+        div.pull-right
+          a(href="/") Return to home page
+
+    script(type='text/javascript').
+        function uploadFile() {
+        //debugger;
+
+          var selectedFile = $('#file_upload').get(0).files[0];
+
+          //Error handling
+          if(selectedFile == undefined)
+            alert('You did not select a file!');
+          
+
+          //Create the FormData data object and append the file to it.
+          var newFile = new FormData();
+          newFile.append('file_upload', selectedFile); //This is the raw file that was selected
+
+          console.log(selectedFile);
+
+          //Set the form options.
+          var opts = {
+            url: '/api/fileupload/create',
+            data: newFile,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+
+            //This function is executed when the file uploads successfully.
+            success: function(data){
+              //Dev Note: KeystoneAPI only allows file and image uploads with the file itself. Any extra metadata will have to
+              //be uploaded/updated with a second call.
+             
+             if(data.unsuported_file !== undefined){
+               window.location.href = "./profile";
+               return;
+             }
+
+              //debugger;
+              console.log('File upload succeeded! ID: ' + data.file_upload._id);
+
+              //Remove previous user photo
+              $.get('/api/fileupload/'+$('#file_name').val()+'/removePreviousPhoto', function(data) {
+                //debugger;
+
+                console.log('Previous photo deleted.');
+
+              })
+              //If the metadata update fails:
+              .fail(function(data) {
+                debugger;
+
+                console.error('Previous photo was not deleted. Here is the error message from the server:');
+                console.error('Server status: '+err.status);
+                console.error('Server message: '+err.statusText);
+
+                alert('Failed to connect to the server while trying to update file metadata!');
+              });
+
+              //Fill out the file metadata information
+              data.file_upload.name = $('#file_name').val();
+              data.file_upload.url = '/uploads/members/'+data.file_upload.file.filename;
+              data.file_upload.fileType = data.file_upload.file.mimetype;
+              data.file_upload.createdTimeStamp = new Date();
+
+
+
+              //Update the file with the information above.
+              $.get('/api/fileupload/'+data.file_upload._id+'/update', data.file_upload, function(data) {
+                //debugger;
+
+                console.log('File information updated.');
+
+                window.location.href = "./profile";
+              })
+
+              //If the metadata update fails:
+              .fail(function(data) {
+                debugger;
+
+                console.error('The file metadata was not updated. Here is the error message from the server:');
+                console.error('Server status: '+err.status);
+                console.error('Server message: '+err.statusText);
+
+                alert('Failed to connect to the server while trying to update file metadata!');
+              });
+              
+            },
+
+            //This error function is called if the POST fails for submitting the file itself.
+            error: function(err) {
+              //debugger;
+
+              console.error('The file was not uploaded to the server. Here is the error message from the server:');
+              console.error('Server status: '+err.status);
+              console.error('Server message: '+err.statusText);
+
+              alert('Failed to connect to the server!');
+            }
+
+          };
+
+          //Execute the AJAX call.
+          jQuery.ajax(opts);
+
+         
+        }

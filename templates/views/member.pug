@@ -1,0 +1,46 @@
+extends ../layouts/default
+
+block content
+    div.container
+      if !user.public
+        div.container
+    
+          div.page-header
+            h1 User profile not public
+      else   
+        div.page-header
+          h1 My profile
+          
+        form.login-form.form-horizontal(method='post')
+          div.form-group
+            label.col-sm-4 First Name
+            div.col-sm-8
+              p #{user.name.first}
+          div.form-group
+            label.col-sm-4 Last Name
+            div.col-sm-8
+              p #{user.name.last}
+          div.form-group
+            label.col-sm-4 Position
+            div.col-sm-8
+              p #{user.position}
+          div.form-group
+            label.col-sm-4 LinkedIn
+            div.col-sm-8
+              p #{user.linkedin}
+          div.form-group
+            label.col-sm-4 Github
+            div.col-sm-8
+              p #{user.github}
+          div.form-group
+            label.col-sm-4 Website
+            div.col-sm-8
+              p #{user.website}
+          div.form-group
+            label.col-sm-4 About me
+            div.col-sm-8
+              textarea #{user.about}
+          div.pull-right
+            a(href="/") Return to home page
+
+      

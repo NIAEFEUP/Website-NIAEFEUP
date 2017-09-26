@@ -1,0 +1,8 @@
+.footer
+  // Include all compiled plugins (below), or include individual files as needed
+  script(src='js/bootstrap.min.js')
+
+  //- The KeystoneJS Content Editor provides support for ks-editable data attributes,
+  //- which generate links to edit content for users who can access Keystone
+  if user && user.canAccessKeystone
+    script(src='/keystone/js/content/editor.js')
