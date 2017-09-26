@@ -5830,6 +5830,15 @@ button.close {
 .navbar {
   background-color: white; }
 
+#footer div {
+  height: 100%;
+  vertical-align: middle; }
+
+#footer .info {
+  max-width: 1140px;
+  height: 200px;
+  margin: auto; }
+
 #footer .copyright {
   text-align: center;
   background-color: #8F2522;
@@ -5837,3 +5846,10 @@ button.close {
   #footer .copyright p {
     color: white;
     padding-top: 45px; }
+
+#footer .sponsors {
+  vertical-align: middle; }
+  #footer .sponsors img {
+    margin: auto;
+    vertical-align: middle;
+    max-width: 200px; }

@@ -11,6 +11,15 @@
 }
 
 #footer {
+    div{
+        height: 100%;
+        vertical-align: middle;
+    }
+    .info{
+        max-width: 1140px;
+        height: 200px;
+        margin: auto;
+    }
     .copyright{
         text-align: center;
         background-color: $primary-color;
@@ -18,6 +27,14 @@
         p {
             color: white;
             padding-top: 45px;
+        }
+    }
+    .sponsors{
+        vertical-align: middle;
+        img{
+            margin: auto;
+            vertical-align: middle;
+            max-width: 200px;
         }
     }
 }
