@@ -5821,16 +5821,19 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+#body {
+  font-family: "Montserrat", sans-serif; }
+
 #header {
   margin-top: 30px; }
 
-#footer {
-  margin-top: 30px;
-  border-top: 1px solid #eeeeee;
-  padding-top: 30px;
-  color: #777777; }
+.navbar {
+  background-color: white; }
 
-.gallery-image img {
-  display: block;
-  max-width: 100%;
-  height: auto; }
+#footer .copyright {
+  text-align: center;
+  background-color: #8F2522;
+  height: 100px; }
+  #footer .copyright p {
+    color: white;
+    padding-top: 45px; }
