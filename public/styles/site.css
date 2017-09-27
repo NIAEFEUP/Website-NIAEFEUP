@@ -5857,3 +5857,5 @@ body {
       margin: auto;
       vertical-align: middle;
       max-width: 200px; }
+  #footer .middle-col {
+    border: 0 1px 0 1px solid black; }
