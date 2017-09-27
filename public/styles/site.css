@@ -5826,14 +5826,24 @@ body {
   overflow-x: hidden; }
 
 #body {
-  margin-top: 50px; }
+  margin-top: 75px; }
 
 #header {
   margin-top: 30px; }
 
 .navbar {
   background-color: white;
-  height: 50px; }
+  height: 75px;
+  font-size: 18px; }
+  .navbar .container-fluid {
+    max-width: 1140px;
+    margin: auto; }
+  .navbar .navbar-brand {
+    padding: 5px 0 5px 0; }
+    .navbar .navbar-brand img {
+      height: 65px; }
+  .navbar .navbar-right {
+    padding-top: 15px; }
 
 #footer {
   vertical-align: middle; }
