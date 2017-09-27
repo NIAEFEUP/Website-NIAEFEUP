@@ -11,9 +11,23 @@ body {
     margin-top: 30px;
 }
 
-.navbar{
+.navbar{ 
     background-color: white;   
     height: $nav-bar-heigth; 
+    font-size: $font-size-header;
+    .container-fluid{
+        max-width: 1140px;
+        margin: auto;
+    }
+    .navbar-brand{
+        padding: 5px 0 5px 0;
+        img{
+            height: 65px;
+        }
+    }
+    .navbar-right{
+        padding-top: 15px; 
+    }
 }
 
 #footer {

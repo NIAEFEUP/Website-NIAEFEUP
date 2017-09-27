@@ -7,23 +7,19 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top.affix-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand.page-scroll(href='/#page-top') Núcleo de Informática da AEFEUP
+      a.navbar-brand.page-scroll(href='/#page-top')
+        img.img-responsive(src='/images/logo-niaefeup.png', alt='Logo NIAEFEUP')
     // Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li
-          a.page-scroll(href='/#about') Sobre
+          a.page-scroll(href='/#about') SOBRE
         li
-          a.page-scroll(href='/#projects') O que fizemos
+          a.page-scroll(href='/#projects') PROJETOS
         li
-          a.page-scroll(href='/members') Membros
-        // Link para a página de recrutamento
-        //
-          <li>
-          <a class="page-scroll" href="recruitment.html">Recrutamento</a>
-          </li>
+          a.page-scroll(href='/members') EQUIPA
         li
-          a.page-scroll(href='/#contactos') Contactos          
+          a.page-scroll(href='/#contactos') CONTACTOS 
         if user
           if user.canAccessKeystone
             li: a(href='/keystone') Abrir AdminUI
