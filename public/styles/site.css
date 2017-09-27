@@ -5924,12 +5924,12 @@ body {
     line-height: 160%;
     color: #787878; }
 
-.members-header {
+#members-header {
   height: 400px;
   background: url(../images/members/fullteam.jpg) center center no-repeat;
   position: relative; }
 
-.members-title {
+#members-title {
   text-align: center;
   width: 100%;
   background-color: #FFFFFF;
@@ -5938,7 +5938,7 @@ body {
   padding-top: 1em;
   padding-bottom: 1em; }
 
-.direction-members h3 {
+#direction-members h3 {
   text-align: center;
   width: 100%;
   padding-top: 2em;
