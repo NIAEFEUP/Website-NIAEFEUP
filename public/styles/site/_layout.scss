@@ -1,5 +1,10 @@
-#body {
+body {
     font-family: $font-type;
+    overflow-x:hidden;
+}
+
+#body{
+    margin-top: $nav-bar-heigth;
 }
 
 #header {
@@ -7,10 +12,12 @@
 }
 
 .navbar{
-    background-color: white;
+    background-color: white;   
+    height: $nav-bar-heigth; 
 }
 
 #footer {
+    vertical-align: middle;
     div{
         height: 100%;
         vertical-align: middle;
