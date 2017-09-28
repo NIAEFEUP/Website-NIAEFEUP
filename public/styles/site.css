@@ -5875,6 +5875,7 @@ body {
 
 .item {
   background: url(../images/template_website/enei.jpg) no-repeat center center;
+  background-size: cover;
   height: 550px;
   width: 100%; }
 
@@ -5896,10 +5897,10 @@ body {
 #hero {
   margin-top: 30px;
   overflow: hidden; }
-  #hero .white-big-title {
+  #hero .title {
     color: white;
     font-size: 30px; }
-  #hero .white-title {
+  #hero .subtitle {
     color: white;
     font-weight: 600; }
   #hero .slide-info {
@@ -5910,15 +5911,15 @@ body {
   #hero .sub-description {
     padding-top: 15px; }
 
-#description {
+#info {
   margin-top: 30px; }
-  #description .subtitle {
+  #info .subtitle {
     font-size: 10px;
     font-style: italic; }
-  #description .title {
+  #info .title {
     font-weight: 900;
     margin-top: 25px; }
-  #description .definition {
+  #info .definition {
     margin-top: 35px;
     font-size: 13px;
     line-height: 160%;

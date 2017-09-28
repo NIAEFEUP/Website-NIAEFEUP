@@ -3,7 +3,8 @@
 }
 
 .item{
-    background: url(../images/template_website/enei.jpg) no - repeat center center;
+    background: url(../images/template_website/enei.jpg) no-repeat center center;
+    background-size: cover;
     height: 550px;
     width: 100%;
 }
@@ -32,12 +33,12 @@
     margin-top: 30px;
     overflow: hidden;
     
-    .white-big-title{
+    .title{
     color: white;
     font-size: 30px;
 }
 
-    .white-title{
+    .subtitle{
     color: white;
     font-weight: 600;
     }
@@ -57,7 +58,7 @@
     }
 }
 
-#description{
+#info{
 
     margin-top: 30px;
     
@@ -78,4 +79,25 @@
         color: $grey-color;
     }
 }
+
+#about-icons{
+    .first-icons-row{
+        margin-top: 65px;
+        margin-bottom: 65px;
+    }
+    
+    .second-icons-row{
+         margin-bottom: 105px;
+    }
+}
+
+
+#container-photo{
+    background: url(../images/template_website/example_1.jpg) no-repeat center center;
+    background-size: cover;
+  // background-attachment: fixed;
+    height: 450px;
+    width: 100%;
+}
+
 
