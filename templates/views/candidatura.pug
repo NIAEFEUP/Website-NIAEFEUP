@@ -19,7 +19,7 @@ block content
           label(for='email') Email:
           input#email.form-control(type='email', placeholder='name@email.com' name='email')
         div.form-group
-          label(for='Porquê o Núcleo de Informática?') Porquê o Núcleo de Informática?:
+          label(for='Porquê o Núcleo de Informática?') Porquê o Núcleo de Informática?
           input#porque_ni.form-control(type='text', placeholder='Porquê o Núcleo de Informática?' name='porque_ni')
         div.form-group
           label(for='Github') Github :
@@ -31,7 +31,9 @@ block content
           label(for='LinkedIn') LinkedIn :
           input#linkedin.form-control(type='url', placeholder='LinkedIn URL' name='linkedin')
         div.form-group
-          label(for='Tecnologias') Com que tecnologias já trabalhaste?:
+          label(for='Tecnologias') Com que tecnologias já trabalhaste?
           textarea#tecnologias.form-control(type='text', placeholder='Diz-nos as tecnologias com que já trabalhaste?' name='tecnologias')
+        div.form-group
+          input#entrevista.form-control(type='hidden', value='false' name='entrevista')
         button.btn.btn-primary(type='submit') Join Us
         a(href="/") Return to home page
