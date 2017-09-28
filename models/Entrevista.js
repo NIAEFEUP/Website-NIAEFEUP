@@ -5,14 +5,18 @@ var Types = keystone.Field.Types;
  * Entrevista Model
  * ==========
  */
-var Entrevista = new keystone.List('Entrevista');
+var Entrevista = new keystone.List('Entrevista', {
+  noedit : true,
+  nocreate : true
+});
 
 Entrevista.add({
-    candidato_id: { type: Types.String, required: true, unique: true, index: true },
-    entrevistador: {type: Types.String, required: true}
-    estado_curto: { type: String, label: 'Estado do Curso?', required: true},
-    grupo_estudantil: { type: Types.String, label: 'Integra ou pretende ingressar noutro grupo estudantil?', required: true},
-    porque_ni: { type: String, label: 'Porque o ni?', required: true},
+    candidato_id: { type: Types.Relationship, ref: 'Candidatura', required: true, unique: true, index: true },
+    entrevistadores: {type: Types.Relationship, ref: 'User', many: true, required: true},
+    data: {type: Types.Date},
+    estado_curso: { type: String, label: 'Estado do Curso?', required: true},
+    grupo_estudantil: { type: String, label: 'Integra ou pretende ingressar noutro grupo estudantil?', required: true},
+    porque_ni: { type: String, label: 'Porque o ni?', required: true}
     });
 
 /**
@@ -24,5 +28,5 @@ Entrevista.add({
 /**
  * Registration
  */
-Entrevista.defaultColumns = 'name, email, porque_ni';
+//Entrevista.defaultColumns = ', , porque_ni';
 Entrevista.register();
