@@ -1,4 +1,4 @@
-#footer.row
+footer#footer.row
   div.info.row
     div.col-xs-4
       h3 SOBRE
@@ -7,11 +7,16 @@
     div.col-xs-4.middle-col
       h3 LINKS ÚTEIS
       ul
-        li Inicio
-        li Sobre
-        li Projetos
-        li Equipa
-        li Contacto
+        li 
+          a.page-scroll(href='/#body') > Inicio
+        li 
+          a.page-scroll(href='/#info') > Sobre
+        li 
+          a(href='/projects') > Projetos
+        li 
+          a.page-scroll(href='/members') > Equipa
+        li 
+          a.page-scroll(href='/contacts') > Contacto
 
     div.col-xs-4.sponsors
       img.img-responsive(src='/images/logo-feup.jpg', alt='Logo FEUP')
