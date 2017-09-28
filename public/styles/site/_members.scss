@@ -1,39 +1,29 @@
-.members-header {
+#members-header {
     height: 400px;
     background: url(../images/members/fullteam.jpg) center center no-repeat;
-    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-.members-title {
-    text-align: center;
-    width: 100%;
-    background-color: #FFFFFF;
-    position: absolute;
-    bottom: 0;
+#members-title {
+    color: #FFFFFF;
+    font-size: $font-size-title;
+    margin: 0 auto;
     padding-top: 1em;
     padding-bottom: 1em;
 }
 
-.direction-members h3 {
-    text-align: center;
-    width: 100%;
+#members h3 {
     padding-top: 2em;
     margin-top: 1.5em;
     padding-bottom: 2em;
 }
 
-.col-sm-4 .team-member {
+.team-member {
     margin-left: 12.5%;
     margin-right: 12.5%;
     margin-bottom: 12.5%;
     position: relative;
-}
-
-.col-sm-2 .team-member {
-    position: relative;
-}
-
-.team-member a {
     display: block;
 }
 
@@ -43,11 +33,12 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.75);
     overflow: hidden;
     width: 100%;
     height: 2.5em;
     transition: .5s ease;
+    color: #000000;
 }
 
 .team-member:hover .info-member {
