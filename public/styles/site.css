@@ -5852,8 +5852,10 @@ body {
     vertical-align: middle; }
   #footer .info {
     max-width: 1140px;
-    height: 200px;
-    margin: auto; }
+    height: 230px;
+    margin: 50px auto; }
+    #footer .info p {
+      margin-top: 20px; }
   #footer .copyright {
     text-align: center;
     background-color: #8C2D19;
@@ -5868,7 +5870,16 @@ body {
       vertical-align: middle;
       max-width: 200px; }
   #footer .middle-col {
-    border: 0 1px 0 1px solid black; }
+    border-color: #AFAFAF;
+    border-style: solid;
+    border-width: 0 1px 0 1px; }
+    #footer .middle-col h3 {
+      margin: 25px; }
+    #footer .middle-col ul {
+      list-style: none;
+      padding-left: 25px; }
+    #footer .middle-col li {
+      margin: 10px auto; }
 
 #body {
   font-family: "Montserrat", sans-serif; }
