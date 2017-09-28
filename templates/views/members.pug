@@ -1,75 +1,85 @@
 extends ../layouts/default
 
 block content
-	section.members
-		.container
-			// DIREÇÃO
-			div
-				.row
+	header#members-header
+		h2.text-center#members-title Equipa
+	.container#members
+		// DIREÇÃO
+		section#direction-members
+			h3.text-center Direção
+			.row
+				.col-sm-4
+					.team-member
+						a(href="./member/"+presidente._id)
+							img.img-responsive(src=presidente.photo_path, alt='presidente')
+							aside.info-member
+								h4 #{presidente.name.first} #{presidente.name.last}
+								p.text-muted #{presidente.position}
+				.col-sm-4
+					.team-member
+						a(href="./member/"+gestor_projetos._id)
+							img.img-responsive(src=gestor_projetos.photo_path, alt='Vice-Presidente e Gestor de Projetos')
+							aside.info-member
+								h4 #{gestor_projetos.name.first} #{gestor_projetos.name.last}
+								p.text-muted #{gestor_projetos.position}
+				.col-sm-4
+					.team-member
+						a(href="./member/"+gestor_eventos._id)
+							img.img-responsive(src=gestor_eventos.photo_path, alt='Vice-Presidente e Gestor de Eventos')
+							aside.info-member
+								h4 #{gestor_eventos.name.first} #{gestor_eventos.name.last}
+								p.text-muted #{gestor_eventos.position}
+			.row
+				.col-sm-4
+					.team-member
+						a(href="./member/"+tesoureiro._id)
+							img.img-responsive(src=tesoureiro.photo_path, alt='Tesoureiro')
+							aside.info-member
+								h4 #{tesoureiro.name.first} #{tesoureiro.name.last}
+								p.text-muted #{tesoureiro.position}
+				.col-sm-4
+					.team-member
+						a(href="./member/"+responsavel_sala._id)
+							img.img-responsive(src=responsavel_sala.photo_path, alt='Secretário e Responsável pela Sala')
+							aside.info-member
+								h4 #{responsavel_sala.name.first} #{responsavel_sala.name.last}
+								p.text-muted #{responsavel_sala.position}
+				.col-sm-4
+					.team-member
+						a(href="./member/"+imagem_comunicacao._id)
+							img.img-responsive(src=imagem_comunicacao.photo_path, alt='Responsável pela Imagem e Comunicação')
+							aside.info-member
+								h4 #{imagem_comunicacao.name.first} #{imagem_comunicacao.name.last}
+								p.text-muted #{imagem_comunicacao.position}
+			// MEMBROS
+		section#active-members
+			h3.text-center Membros
+			.row
+				each member in members	
 					.col-sm-3
 						.team-member
-							a(href="./member/"+presidente._id)
-								img.img-responsive.img-circle(src=presidente.photo_path, alt='presidente')
-							h4 #{presidente.name.first} #{presidente.name.last}
-							p.text-muted #{presidente.position}
+							a(href="./member/"+member._id)
+								img.img-responsive(src=member.photo_path, alt='membro')
+								aside.info-member
+									h4 #{member.name.first} #{member.name.last}
+									p.text-muted #{member.position}
+				each recruta in recrutas	
 					.col-sm-3
 						.team-member
-							a(href="./member/"+gestor_projetos._id)
-								img.img-responsive.img-circle(src=gestor_projetos.photo_path, alt='Vice-Presidente e Gestor de Projetos')
-							h4 #{gestor_projetos.name.first} #{gestor_projetos.name.last}
-							p.text-muted #{gestor_projetos.position}
-					.col-sm-3
-						.team-member
-							a(href="./member/"+gestor_eventos._id)
-								img.img-responsive.img-circle(src=gestor_eventos.photo_path, alt='Vice-Presidente e Gestor de Eventos')
-							h4 #{gestor_eventos.name.first} #{gestor_eventos.name.last}
-							p.text-muted #{gestor_eventos.position}
-					.col-sm-3
-						.team-member
-							a(href="./member/"+tesoureiro._id)
-								img.img-responsive.img-circle(src=tesoureiro.photo_path, alt='Tesoureiro')
-							h4 #{tesoureiro.name.first} #{tesoureiro.name.last}
-							p.text-muted #{tesoureiro.position}
-				.row
-					.col-sm-3
-					.col-sm-3
-						.team-member
-							a(href="./member/"+responsavel_sala._id)
-								img.img-responsive.img-circle(src=responsavel_sala.photo_path, alt='Secretário e Responsável pela Sala')
-							h4 #{responsavel_sala.name.first} #{responsavel_sala.name.last}
-							p.text-muted #{responsavel_sala.position}
-					.col-sm-3
-						.team-member
-							a(href="./member/"+imagem_comunicacao._id)
-								img.img-responsive.img-circle(src=imagem_comunicacao.photo_path, alt='Responsável pela Imagem e Comunicação')
-							h4 #{imagem_comunicacao.name.first} #{imagem_comunicacao.name.last}
-							p.text-muted #{imagem_comunicacao.position}
-					.col-sm-3
-				// MEMBROS
-				.row
-					each member in members	
-						.col-lg-2.col-sm-2
-							.team-member
-								a(href="./member/"+member._id)
-									img.img-responsive.img-circle(src=member.photo_path, alt='membro')
-								h4 #{member.name.first} #{member.name.last}
-								p.text-muted #{member.position}
-					each recruta in recrutas	
-						.col-lg-2.col-sm-2
-							.team-member
-								a(href="./member/"+recruta._id)
-									img.img-responsive.img-circle(src=recruta.photo_path, alt='recruta')
-								h4 #{recruta.name.first} #{recruta.name.last}
-								p.text-muted #{recruta.position}
-						
-				// RECRUTAS
-				.row
-					// TEMPLATE
-					// <div class='col-sm-2'><div class='team-member'><img src='images/members/Pedro Fraga-min.png' class='img-responsive img-circle' alt=''><h4>RECRUITS_NAME</h4><p class='text-muted'>Recruta</p></div></div>
-				//
-					Frase genérica para o final da pagina?
-					<div class="row">
-					<div class="col-lg-8 col-lg-offset-2 text-center">
-					<p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-					</div>
-					</div>
+							a(href="./member/"+recruta._id)
+								img.img-responsive(src=recruta.photo_path, alt='recruta')
+								aside.info-member
+									h4 #{recruta.name.first} #{recruta.name.last}
+									p.text-muted #{recruta.position}
+					
+			// RECRUTAS
+			.row
+				// TEMPLATE
+				// <div class='col-sm-2'><div class='team-member'><img src='images/members/Pedro Fraga-min.png' class='img-responsive img-circle' alt=''><h4>RECRUITS_NAME</h4><p class='text-muted'>Recruta</p></div></div>
+			//
+				Frase genérica para o final da pagina?
+				<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 text-center">
+				<p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+				</div>
+				</div>
