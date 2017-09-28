@@ -74,6 +74,13 @@ body {
         }
         li {
             margin: 10px auto;
+            a {
+                color: $light-grey-color;
+                text-decoration: none;
+            }
+            a:hover {
+                color: $grey-color;
+            }
         }
     }
 }

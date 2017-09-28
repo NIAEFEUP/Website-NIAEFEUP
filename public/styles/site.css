@@ -5880,6 +5880,11 @@ body {
       padding-left: 25px; }
     #footer .middle-col li {
       margin: 10px auto; }
+      #footer .middle-col li a {
+        color: #AFAFAF;
+        text-decoration: none; }
+      #footer .middle-col li a:hover {
+        color: #787878; }
 
 #body {
   font-family: "Montserrat", sans-serif; }
