@@ -2,6 +2,26 @@
     font-family: $font-type;
 }
 
+
+ .white-title{
+    color: white;
+    font-size: 30px;
+     font-weight: bolder;
+}
+
+ .white-subtitle{
+    color: white;
+    font-weight: lighter;
+}
+
+.white-italic-title{
+     color: white;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+
 .item{
     background: url(../images/template_website/enei.jpg) no-repeat center center;
     background-size: cover;
@@ -11,7 +31,7 @@
 
 .white-separator{
     border-width: 4px;
-    border-top: 4px solid white !important;
+    border-top: 2px solid white !important;
     width: 10%;
 }
 
@@ -30,23 +50,11 @@
 }
 
 #hero{
-    margin-top: 30px;
     overflow: hidden;
     
-    .title{
-    color: white;
-    font-size: 30px;
-}
-
-    .subtitle{
-    color: white;
-    font-weight: 600;
-    }
-
-
     .slide-info{
-       padding-top: 200px;
         text-align: center;
+        padding-top: 200px;
     }
 
     .see-more-button{
@@ -80,7 +88,7 @@
     }
 }
 
-#about-icons{
+#container-icons{
     .first-icons-row{
         margin-top: 65px;
         margin-bottom: 65px;
@@ -89,15 +97,81 @@
     .second-icons-row{
          margin-bottom: 105px;
     }
+    
+    .icon{
+        padding: 20px;
+    }
 }
 
 
 #container-photo{
     background: url(../images/template_website/example_1.jpg) no-repeat center center;
     background-size: cover;
-  // background-attachment: fixed;
     height: 450px;
     width: 100%;
+    
+    
+    #transparent-div{
+    height: 100%;
+    background-color: $primary-color;
+    width: 40%;
+    opacity: 0.75;
+    padding: 20px;
+       
+        #transparent-div-info{
+            margin-top: 20%;
+            width: 85%;
+            margin-left: 15%;
+        }
+        
+        .left{
+            margin-left: 0;
+            width: 20% !important;
+        }
+        
+        .info{
+            padding-top: 15px;
+        }
+    }
 }
+
+
+#container-projects{
+    
+   .title{
+        margin: 115px 0px 35px 95px;
+        color: black;
+        font-size: 30px;
+        font-weight: bolder;
+    }
+    
+    .project{
+        height: 300px;
+        
+    }
+    
+    #project_1{
+         background: url(../images/template_website/1.jpg) no-repeat center center;
+         background-size: cover;
+    }
+    
+     #project_2{
+        background: url(../images/template_website/3.jpg) no-repeat center center;
+         background-size: cover;
+    }
+    
+    #project_3{
+         background: url(../images/template_website/2.jpg) no-repeat center center;
+         background-size: cover;
+    }
+    
+     #project_4{
+        background: url(../images/template_website/4.jpg) no-repeat center center;
+         background-size: cover;
+    }
+}
+
+
+
 
 
