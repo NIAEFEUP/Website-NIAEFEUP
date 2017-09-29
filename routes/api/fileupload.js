@@ -3,6 +3,7 @@ var keystone = require('keystone');
 var exec = require('child_process').exec;
 
 var FileData = keystone.list('FileUpload');
+var User = keystone.list('User');
 
 /**
  * List Files
@@ -67,7 +68,6 @@ exports.create = function(req, res) {
     var item = new FileData.model(),
         data = (req.method == 'POST') ? req.body : req.query;
 
-    console.log(req.files.file_upload.size);
     if (req.files.file_upload.mimetype !== 'image/jpeg' && req.files.file_upload.mimetype !== 'image/png') {
         req.flash('warning', 'File not supported');
 
@@ -85,6 +85,8 @@ exports.create = function(req, res) {
         item.getUpdateHandler(req).process(req.files, function(err) {
 
             if (err) return res.apiError('error', err);
+
+            //TODO Fazer update do novo file path para o utilizador
 
             req.flash('success', 'Profile picture updated with success');
 
@@ -111,7 +113,6 @@ exports.remove = function(req, res) {
 
             if (err) return res.apiError('database error', err);
 
-            //TODO (if exists) Delete the file
             exec('rm public/uploads/files/' + fileId + '.*', function(err, stdout, stderr) {
                 if (err) {
                     console.log('child process exited with error code ' + err.code);
