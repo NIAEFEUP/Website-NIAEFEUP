@@ -122,6 +122,7 @@ exports.remove = function(req, res) {
 
             if (err) return res.apiError('database error', err);
 
+            //FIXME Mudar isto para 'fs'
             exec('rm public/uploads/files/' + fileId + '.*', function(err, stdout, stderr) {
                 if (err) {
                     console.log('child process exited with error code ' + err.code);
