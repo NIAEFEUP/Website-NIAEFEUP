@@ -86,8 +86,14 @@
     .second-icons-row {
         margin-bottom: 105px;
     }
-    .icon {
-        padding: 20px;
+    i {
+        color: $primary-color;
+        font-size: 30px;
+    }
+
+    .col-md-10 h4 {
+        margin: 0.3em 0 10px 0;
+        font-weight: bold;
     }
 }
 
@@ -167,27 +173,27 @@
             width: 50%;
         }
     }
-
     h3 {
         font-weight:bold;
         padding-bottom: 30px;
     }
-
     .fa-icon{
         padding-right: 15px;
     }
-
     i {
         color: $primary-color;
         width: 1em;
         font-size: 20px;
     }
-
     .flex{
         display: flex;
     }
-
-
+    #email{
+        margin-bottom: 20px;
+    }
+    #github{
+        margin-top: 20px;
+    }
     nav {
         a {
             height: 2em;
