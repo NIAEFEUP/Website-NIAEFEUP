@@ -165,7 +165,7 @@
 
 #contacts-section {
     margin: 50px auto;
-    @media (max-width: 991px){
+    @media screen and (max-width: 991px) and (min-width:768px){
         .col-sm-7{
             width: 41.66667%;
         }

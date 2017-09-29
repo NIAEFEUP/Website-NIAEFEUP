@@ -6027,7 +6027,7 @@ body {
 
 #contacts-section {
   margin: 50px auto; }
-  @media (max-width: 991px) {
+  @media screen and (max-width: 991px) and (min-width: 768px) {
     #contacts-section .col-sm-7 {
       width: 41.66667%; }
     #contacts-section .col-sm-4 {
