@@ -6005,6 +6005,14 @@ body {
   background: url(../images/template_website/4.jpg) no-repeat center center;
   background-size: cover; }
 
+#contacts-section {
+  margin: 50px auto; }
+
+#map {
+  width: 100%;
+  height: 400px;
+  background: url(../images/template_website/google_maps_template.png) no-repeat center center; }
+
 #members-header {
   height: 400px;
   background: url(../images/members/fullteam.jpg) center center no-repeat;
