@@ -62,24 +62,41 @@ block content
             .col-md-3#project_4.project 
                              
 
-    section#contacts-section.features
-        .row
-            #contacts.col-md-8
-                h1 Contactos
-                p.margin-bottom Rua Dr. Roberto Frias, B315
-            #socialmedia.col-md-4
-                .container-social
-                    ul.social
-                        li.facebook
-                            a.fa.fa-facebook(href='https://www.facebook.com/NIAEFEUP', title='Facebook')
-                        li.twitter
-                            a.fa.fa-twitter(href='https://twitter.com/niaefeup', title='Twitter')
-                        li.mail
-                            a.fa.fa-envelope(href='mailto:ni@aefeup.pt', title='E-mail')
-                        li.github
-                            a.fa.fa-github(href='https://github.com/NIAEFEUP', title='Github')
-                        li.linked-in
-                            a.fa.fa-linkedin(href='https://www.linkedin.com/company/nifeup', title='LinkedIn')
-
+    section#contacts-section.row
+        .col-sm-1
+        #contacts.col-sm-7
+            h3 CONTACTOS
+            .row
+                #morada.col-md-6.flex
+                    .fa-icon
+                        i.fa.fa-map-marker
+                    #rua
+                        b.strong Morada:
+                        p Rua Dr. Roberto Frias 4200-465, Porto B315
+                .col-md-6
+                    #email.flex
+                        a(href='mailto:ni@aefeup.pt', title='E-mail')
+                            .fa-icon
+                                i.fa.fa-envelope
+                        b.strong Email: 
+                        a(href='mailto:ni@aefeup.pt', title='E-mail')
+                            p ni@aefeup.pt
+                    #github.flex
+                        a(href='https://github.com/NIAEFEUP', title='Github')
+                            .fa-icon
+                                i.fa.fa-github
+                        b.strong Gitbub: 
+                        a(href='https://github.com/NIAEFEUP', title='Github')
+                            p @nieafeup
+            
+        #socialmedia.col-sm-4
+            h3 REDES SOCIAIS
+            .container-social
+                nav.social
+                    a.fa.fa-facebook(aria-hidden="true")(href='https://www.facebook.com/NIAEFEUP', title='Facebook')
+                    a.fa.fa-linkedin(href='https://www.linkedin.com/company/nifeup', title='LinkedIn')
+                    a.fa.fa-twitter(href='https://twitter.com/niaefeup', title='Twitter')
+                    a.fa.fa-instagram(href='https://www.instagram.com/niaefeup/', title='Instagram')
+                    
         
     section#map  
