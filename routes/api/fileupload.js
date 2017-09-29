@@ -68,6 +68,8 @@ exports.create = function(req, res) {
     var item = new FileData.model(),
         data = (req.method == 'POST') ? req.body : req.query;
 
+    var user_id = req.user._id;
+
     if (req.files.file_upload.mimetype !== 'image/jpeg' && req.files.file_upload.mimetype !== 'image/png') {
         req.flash('warning', 'File not supported');
 
@@ -86,14 +88,21 @@ exports.create = function(req, res) {
 
             if (err) return res.apiError('error', err);
 
-            //TODO Fazer update do novo file path para o utilizador
+            var new_path = "/uploads/members/" + item.file.filename;
 
-            req.flash('success', 'Profile picture updated with success');
+            User.model.update({_id: user_id}, {$set : {photo_path : new_path}},
+              function(err, affected, resp) {
+                if(!err){
 
-            res.apiResponse({
-                file_upload: item
-            });
+                    req.flash('success', 'Foto de perfil atualizada com sucesso!');
+                    res.apiResponse({
+                        file_upload: item
+                    });
 
+                } else {
+                  req.flash('error', 'Ocorreu um erro, tenta mais tarde!');
+                }
+              });
         });
     }
 }
@@ -113,6 +122,7 @@ exports.remove = function(req, res) {
 
             if (err) return res.apiError('database error', err);
 
+            //FIXME Mudar isto para 'fs'
             exec('rm public/uploads/files/' + fileId + '.*', function(err, stdout, stderr) {
                 if (err) {
                     console.log('child process exited with error code ' + err.code);
@@ -140,7 +150,15 @@ exports.removePreviousPhoto = function(req, res) {
 
         if (err) return res.apiError('database error', err);
 
-        if (!item) return res.apiError('not found');
+        if (!item){
+
+          return res.apiError('not found');
+
+        } else if (!item[0]) {
+
+          return res.apiError('not found');
+
+        }
 
         item[0].remove(function(err) {
 
