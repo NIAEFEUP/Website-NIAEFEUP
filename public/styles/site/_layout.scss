@@ -73,13 +73,24 @@ body {
         }
         li {
             margin: 10px auto;
+            :before{
+                content: ">";
+                padding-right: 10px;
+                -webkit-transition-timing-function: ease;
+                transition-timing-function: ease;
+                -webkit-transition: 0.5s;
+                transition: 0.5s;
+            }
             a {
-                color: $light-grey-color;
+                color: $grey-color;
                 text-decoration: none;
             }
-            a:hover {
-                color: $grey-color;
-            }
+        }
+        li:hover > a{
+            color: $dark-grey-color;
+        }
+        li:hover > a:before{
+                padding-right: 20px;
         }
     }
 }

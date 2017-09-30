@@ -1,0 +1,27 @@
+#form-of-candidacy{
+    width: 70%;
+    margin: 0 auto;
+
+    #summit-btn{
+        background-color: $primary-color;
+        border: none;
+        border-radius: 0px;
+        float: right;
+    }
+    #summit-btn:hover{
+        background-color: $primary-color-darker;
+    }
+    #return-btn{
+        background-color: $light-grey-color;
+        border: none;
+        border-radius: 0px;
+        a{
+            color: white;
+            text-decoration: none;
+        }
+    }
+    #return-btn:hover{
+        background-color: $grey-color;
+    }
+
+}
