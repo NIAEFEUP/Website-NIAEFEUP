@@ -5,11 +5,9 @@
 }
 
 .projects-title {
-  text-align: center;
-  width: 100%;
-  background-color: #FFFFFF;
-  position: absolute;
-  bottom: 0;
+  color: #FFFFFF;
+  font-size: $font-size-header-title;
+  margin: 0 auto;
   padding-top: 1em;
   padding-bottom: 1em;
 }
