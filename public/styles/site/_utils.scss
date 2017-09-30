@@ -1,0 +1,10 @@
+.flex{
+    display: flex;
+}
+.align-center{
+    align-items: center;
+}
+#flash-messages{
+    position: absolute;
+    top:$nav-bar-heigth;
+}

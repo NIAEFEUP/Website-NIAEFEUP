@@ -2,12 +2,20 @@
 $font-size-base: 14px;
 $font-size-header: 18px;
 $font-size-header-title: 40px;
-$font-type: 'Montserrat',
+$font-type: 'Montserrat', 'Merriweather'
 sans-serif;
 $nav-bar-heigth: 75px;
+$header-height: 300px;
 $footer-height: 230px;
 $primary-color: #8C2D19;
 $primary-color-darker: #6B2212;
-$light-grey-color: #AFAFAF;
-$grey-color: #787878;
-$dark-grey-color: #5E5E5E;
+$light-grey-color: #F1F0F0;
+$grey-color: #5C5C5C;
+$dark-grey-color: #313030;
+$primary-color-transp: rgba(140, 45, 25, 0.70);
+$primary-color-darker-transp: rgba(107, 34, 18, 0.70);
+$light-grey-color-transp: rgba(241, 240, 240, 0.70);
+$grey-color-transp: rgba(92, 92, 92, 0.70);
+$dark-grey-color-transp: rgba(49, 48, 48, 0.70);
+$banner-color-transp: rgba(0, 0, 0, 0.70);
+$projects-color-transp: rgba(0, 0, 0, 0.60);

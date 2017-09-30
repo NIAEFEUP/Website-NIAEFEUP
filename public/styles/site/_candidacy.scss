@@ -1,27 +1,54 @@
-#form-of-candidacy{
-    width: 70%;
-    margin: 0 auto;
+#candidacy-header{
+    height: $header-height;
+    #candidacy-title{
+        color: white;
+        line-height: $header-height;
+        vertical-align: middle;
+        background-color: $banner-color-transp;
+    }
+}
 
+#form-title{
+    display: inline-block;
+    padding-bottom: 1em;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: $light-grey-color;
+    margin-bottom: 1.1em;
+}
+
+#form-of-candidacy{
+    padding-top: 20px;
+    .form-control{
+        padding: 12px;
+        height: auto;
+    }
+    #first-name{
+        padding-left: 0;
+        @media (max-width:767px){
+            padding-right: 0;
+        }
+    }
+    #last-name{
+        padding-right: 0;
+        @media (max-width:767px){
+            padding-left: 0;
+        }
+    }
+    input, textarea{
+        border: none;
+        border-radius: 0;
+        background-color: $light-grey-color;
+    }
+    input::placeholder, textarea::placeholder{
+        color: $dark-grey-color;
+    }
     #summit-btn{
         background-color: $primary-color;
         border: none;
         border-radius: 0px;
-        float: right;
     }
     #summit-btn:hover{
         background-color: $primary-color-darker;
     }
-    #return-btn{
-        background-color: $light-grey-color;
-        border: none;
-        border-radius: 0px;
-        a{
-            color: white;
-            text-decoration: none;
-        }
-    }
-    #return-btn:hover{
-        background-color: $grey-color;
-    }
-
 }
