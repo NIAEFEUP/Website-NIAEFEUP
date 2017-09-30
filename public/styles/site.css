@@ -5821,290 +5821,6 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  overflow-x: hidden; }
-
-#body {
-  margin-top: 75px; }
-
-#header {
-  margin-top: 30px; }
-
-.navbar {
-  background-color: white;
-  height: 75px;
-  font-size: 18px; }
-  .navbar .container-fluid {
-    max-width: 1140px;
-    margin: auto; }
-  .navbar .navbar-brand {
-    padding: 5px 15px 5px 15px; }
-    .navbar .navbar-brand img {
-      height: 65px; }
-
-#footer .info {
-  padding: 0 15px;
-  max-width: 1140px;
-  margin: 50px auto; }
-  #footer .info p {
-    margin-top: 20px; }
-
-#footer .copyright {
-  text-align: center;
-  background-color: #8C2D19;
-  height: 100px; }
-  #footer .copyright p {
-    color: white;
-    padding-top: 45px; }
-
-#footer .sponsors {
-  height: 230px;
-  display: flex; }
-  #footer .sponsors #sponsors-images {
-    margin: auto; }
-  #footer .sponsors img {
-    margin: auto;
-    max-width: 200px; }
-
-#footer .middle-col {
-  border-color: #AFAFAF;
-  border-style: solid;
-  border-width: 1px 0 1px 0;
-  height: 230px; }
-  @media (min-width: 768px) {
-    #footer .middle-col {
-      border-width: 0 1px 0 1px; } }
-  #footer .middle-col h3 {
-    margin: 25px; }
-  #footer .middle-col ul {
-    list-style: none;
-    padding-left: 25px; }
-  #footer .middle-col li {
-    margin: 10px auto; }
-    #footer .middle-col li a {
-      color: #AFAFAF;
-      text-decoration: none; }
-    #footer .middle-col li a:hover {
-      color: #787878; }
-
-#body {
-  font-family: "Montserrat", sans-serif; }
-
-.white-title {
-  color: white;
-  font-size: 30px;
-  font-weight: bolder; }
-
-.white-subtitle {
-  color: white;
-  font-weight: lighter; }
-
-.white-italic-title {
-  color: white;
-  font-size: 13px;
-  font-style: italic;
-  font-weight: lighter; }
-
-.item {
-  background: url(../images/template_website/enei.jpg) no-repeat center center;
-  background-size: cover;
-  height: 550px;
-  width: 100%;
-  display: flex;
-  align-items: center; }
-
-.white-separator {
-  border-width: 4px;
-  border-top: 2px solid white !important;
-  width: 10%; }
-
-.black-separator {
-  border-width: 1px;
-  border-top: 0.9px solid #787878 !important;
-  width: 99%;
-  margin-top: 40px; }
-
-.btn-default {
-  padding: 15px 44px 15px 44px !important;
-  border-radius: 2em; }
-
-#hero {
-  overflow: hidden; }
-  #hero .slide-info {
-    text-align: center; }
-  #hero .see-more-button {
-    margin-top: 70px; }
-  #hero .sub-description {
-    padding-top: 15px; }
-
-#info {
-  margin-top: 30px; }
-  #info .subtitle {
-    font-size: 10px;
-    font-style: italic; }
-  #info .title {
-    font-weight: 900;
-    margin-top: 25px; }
-  #info .definition {
-    margin-top: 35px;
-    font-size: 13px;
-    line-height: 160%;
-    color: #787878; }
-
-#container-icons .first-icons-row {
-  margin-top: 65px;
-  margin-bottom: 65px; }
-
-#container-icons .second-icons-row {
-  margin-bottom: 105px; }
-
-#container-icons i {
-  color: #8C2D19;
-  font-size: 30px; }
-
-#container-icons .col-md-10 h4 {
-  margin: 0.3em 0 10px 0;
-  font-weight: bold; }
-
-#container-photo {
-  background: url(../images/template_website/example_1.jpg) no-repeat center center;
-  background-size: cover;
-  height: 450px;
-  width: 100%; }
-  #container-photo #transparent-div {
-    height: 100%;
-    background-color: #8C2D19;
-    opacity: 0.75;
-    padding: 20px; }
-    @media (min-width: 768px) {
-      #container-photo #transparent-div {
-        width: 40%; } }
-    @media (max-width: 767px) {
-      #container-photo #transparent-div {
-        width: 100%; } }
-    #container-photo #transparent-div #transparent-div-info {
-      margin-top: 20%; }
-      @media (min-width: 768px) {
-        #container-photo #transparent-div #transparent-div-info {
-          width: 85%;
-          margin-left: 15%;
-          margin-right: 0; } }
-      @media (max-width: 767px) {
-        #container-photo #transparent-div #transparent-div-info {
-          margin-left: 10%;
-          margin-right: 10%; } }
-    #container-photo #transparent-div .left {
-      margin-left: 0;
-      width: 20% !important; }
-    #container-photo #transparent-div .info {
-      padding-top: 15px; }
-
-#container-projects .title {
-  margin: 115px 0px 35px 95px;
-  color: black;
-  font-size: 30px;
-  font-weight: bolder; }
-
-#container-projects .project {
-  height: 300px; }
-
-#container-projects #project_1 {
-  background: url(../images/template_website/1.jpg) no-repeat center center;
-  background-size: cover; }
-
-#container-projects #project_2 {
-  background: url(../images/template_website/3.jpg) no-repeat center center;
-  background-size: cover; }
-
-#container-projects #project_3 {
-  background: url(../images/template_website/2.jpg) no-repeat center center;
-  background-size: cover; }
-
-#container-projects #project_4 {
-  background: url(../images/template_website/4.jpg) no-repeat center center;
-  background-size: cover; }
-
-#contacts-section {
-  margin: 50px auto; }
-  @media screen and (max-width: 991px) and (min-width: 768px) {
-    #contacts-section .col-sm-7 {
-      width: 41.66667%; }
-    #contacts-section .col-sm-4 {
-      width: 50%; } }
-  #contacts-section h3 {
-    font-weight: bold;
-    padding-bottom: 30px; }
-  #contacts-section .fa-icon {
-    padding-right: 15px; }
-  #contacts-section i {
-    color: #8C2D19;
-    width: 1em;
-    font-size: 20px; }
-  #contacts-section .flex {
-    display: flex; }
-  #contacts-section #email {
-    margin-bottom: 20px; }
-  #contacts-section #github {
-    margin-top: 20px; }
-  #contacts-section nav a {
-    height: 2em;
-    width: 2em;
-    line-height: 2em;
-    color: white;
-    background-color: #8C2D19;
-    margin: 10px 18px 10px 0;
-    font-size: 20px;
-    text-align: center;
-    vertical-align: middle; }
-
-#map {
-  width: 100%;
-  height: 400px;
-  background: url(../images/template_website/google_maps_template.png) no-repeat center center; }
-
-#members-header {
-  height: 400px;
-  background: url(../images/members/fullteam.jpg) center center no-repeat;
-  display: flex;
-  align-items: center; }
-
-#members-title {
-  color: #FFFFFF;
-  font-size: 40px;
-  margin: 0 auto;
-  padding-top: 1em;
-  padding-bottom: 1em; }
-
-#members h3 {
-  padding-top: 2em;
-  margin-top: 1.5em;
-  padding-bottom: 2em; }
-
-.team-member {
-  margin-left: 12.5%;
-  margin-right: 12.5%;
-  margin-bottom: 12.5%;
-  position: relative; }
-  .team-member a {
-    display: block; }
-
-.info-member {
-  position: absolute;
-  padding: 0px 10px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.75);
-  color: #000000;
-  overflow: hidden;
-  width: 100%;
-  height: 2.5em;
-  transition: .5s ease; }
-
-.team-member:hover .info-member {
-  height: 100%; }
-
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -8433,3 +8149,316 @@ body {
   margin: 0;
   overflow: visible;
   clip: auto; }
+
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden; }
+
+#body {
+  margin-top: 75px; }
+
+#header {
+  margin-top: 30px; }
+
+.navbar {
+  background-color: white;
+  height: 75px;
+  font-size: 18px; }
+  .navbar .container-fluid {
+    max-width: 1140px;
+    margin: auto; }
+  .navbar .navbar-brand {
+    padding: 5px 15px 5px 15px; }
+    .navbar .navbar-brand img {
+      height: 65px; }
+
+#footer .info {
+  padding: 0 15px;
+  max-width: 1140px;
+  margin: 50px auto; }
+  #footer .info p {
+    margin-top: 20px; }
+
+#footer .copyright {
+  text-align: center;
+  background-color: #8C2D19;
+  height: 100px; }
+  #footer .copyright p {
+    color: white;
+    padding-top: 45px; }
+
+#footer .sponsors {
+  height: 230px;
+  display: flex; }
+  #footer .sponsors #sponsors-images {
+    margin: auto; }
+  #footer .sponsors img {
+    margin: auto;
+    max-width: 200px; }
+
+#footer .middle-col {
+  border-color: #AFAFAF;
+  border-style: solid;
+  border-width: 1px 0 1px 0;
+  height: 230px; }
+  @media (min-width: 768px) {
+    #footer .middle-col {
+      border-width: 0 1px 0 1px; } }
+  #footer .middle-col h3 {
+    margin: 25px; }
+  #footer .middle-col ul {
+    list-style: none;
+    padding-left: 25px; }
+  #footer .middle-col li {
+    margin: 10px auto; }
+    #footer .middle-col li :before {
+      content: ">";
+      padding-right: 10px;
+      -webkit-transition-timing-function: ease;
+      transition-timing-function: ease;
+      -webkit-transition: 0.5s;
+      transition: 0.5s; }
+    #footer .middle-col li a {
+      color: #787878;
+      text-decoration: none; }
+  #footer .middle-col li:hover > a {
+    color: #5E5E5E; }
+  #footer .middle-col li:hover > a:before {
+    padding-right: 20px; }
+
+#body {
+  font-family: "Montserrat", sans-serif; }
+
+.white-title {
+  color: white;
+  font-size: 30px;
+  font-weight: bolder; }
+
+.white-subtitle {
+  color: white;
+  font-weight: lighter; }
+
+.white-italic-title {
+  color: white;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: lighter; }
+
+.item {
+  background: url(../images/template_website/enei.jpg) no-repeat center center;
+  background-size: cover;
+  height: 550px;
+  width: 100%;
+  display: flex;
+  align-items: center; }
+
+.white-separator {
+  border-width: 4px;
+  border-top: 2px solid white !important;
+  width: 10%; }
+
+.black-separator {
+  border-width: 1px;
+  border-top: 0.9px solid #787878 !important;
+  width: 99%;
+  margin-top: 40px; }
+
+.btn-default {
+  padding: 15px 44px 15px 44px !important;
+  border-radius: 2em; }
+
+#hero {
+  overflow: hidden; }
+  #hero .slide-info {
+    text-align: center; }
+  #hero .see-more-button {
+    margin-top: 70px; }
+  #hero .sub-description {
+    padding-top: 15px; }
+
+#info {
+  margin-top: 30px; }
+  #info .subtitle {
+    font-size: 10px;
+    font-style: italic; }
+  #info .title {
+    font-weight: 900;
+    margin-top: 25px; }
+  #info .definition {
+    margin-top: 35px;
+    font-size: 13px;
+    line-height: 160%;
+    color: #787878; }
+
+#container-icons .first-icons-row {
+  margin-top: 65px;
+  margin-bottom: 65px; }
+
+#container-icons .second-icons-row {
+  margin-bottom: 105px; }
+
+#container-icons i {
+  color: #8C2D19;
+  font-size: 30px; }
+
+#container-icons .col-md-10 h4 {
+  margin: 0.3em 0 10px 0;
+  font-weight: bold; }
+
+#container-photo {
+  background: url(../images/template_website/example_1.jpg) no-repeat center center;
+  background-size: cover;
+  height: 450px;
+  width: 100%; }
+  #container-photo #transparent-div {
+    height: 100%;
+    background-color: #8C2D19;
+    opacity: 0.75;
+    padding: 20px; }
+    @media (min-width: 768px) {
+      #container-photo #transparent-div {
+        width: 40%; } }
+    @media (max-width: 767px) {
+      #container-photo #transparent-div {
+        width: 100%; } }
+    #container-photo #transparent-div #transparent-div-info {
+      margin-top: 20%; }
+      @media (min-width: 768px) {
+        #container-photo #transparent-div #transparent-div-info {
+          width: 85%;
+          margin-left: 15%;
+          margin-right: 0; } }
+      @media (max-width: 767px) {
+        #container-photo #transparent-div #transparent-div-info {
+          margin-left: 10%;
+          margin-right: 10%; } }
+    #container-photo #transparent-div .left {
+      margin-left: 0;
+      width: 20% !important; }
+    #container-photo #transparent-div .info {
+      padding-top: 15px; }
+
+#container-projects .title {
+  margin: 115px 0px 35px 95px;
+  color: black;
+  font-size: 30px;
+  font-weight: bolder; }
+
+#container-projects .project {
+  height: 300px; }
+
+#container-projects #project_1 {
+  background: url(../images/template_website/1.jpg) no-repeat center center;
+  background-size: cover; }
+
+#container-projects #project_2 {
+  background: url(../images/template_website/3.jpg) no-repeat center center;
+  background-size: cover; }
+
+#container-projects #project_3 {
+  background: url(../images/template_website/2.jpg) no-repeat center center;
+  background-size: cover; }
+
+#container-projects #project_4 {
+  background: url(../images/template_website/4.jpg) no-repeat center center;
+  background-size: cover; }
+
+#contacts-section {
+  margin: 50px auto; }
+  @media screen and (max-width: 991px) and (min-width: 768px) {
+    #contacts-section .col-sm-7 {
+      width: 41.66667%; }
+    #contacts-section .col-sm-4 {
+      width: 50%; } }
+  #contacts-section h3 {
+    font-weight: bold;
+    padding-bottom: 30px; }
+  #contacts-section .fa-icon {
+    padding-right: 15px; }
+  #contacts-section i {
+    color: #8C2D19;
+    width: 1em;
+    font-size: 20px; }
+  #contacts-section .flex {
+    display: flex; }
+  #contacts-section #email {
+    margin-bottom: 20px; }
+  #contacts-section #github {
+    margin-top: 20px; }
+  #contacts-section nav a {
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    color: white;
+    background-color: #8C2D19;
+    margin: 10px 18px 10px 0;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle; }
+
+#map {
+  width: 100%;
+  height: 400px;
+  background: url(../images/template_website/google_maps_template.png) no-repeat center center; }
+
+#members-header {
+  height: 400px;
+  background: url(../images/members/fullteam.jpg) center center no-repeat;
+  display: flex;
+  align-items: center; }
+
+#members-title {
+  color: #FFFFFF;
+  font-size: 40px;
+  margin: 0 auto;
+  padding-top: 1em;
+  padding-bottom: 1em; }
+
+#members h3 {
+  padding-top: 2em;
+  margin-top: 1.5em;
+  padding-bottom: 2em; }
+
+.team-member {
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  margin-bottom: 12.5%;
+  position: relative; }
+  .team-member a {
+    display: block; }
+
+.info-member {
+  position: absolute;
+  padding: 0px 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #000000;
+  overflow: hidden;
+  width: 100%;
+  height: 2.5em;
+  transition: .5s ease; }
+
+.team-member:hover .info-member {
+  height: 100%; }
+
+#form-of-candidacy {
+  width: 70%;
+  margin: 0 auto; }
+  #form-of-candidacy #summit-btn {
+    background-color: #8C2D19;
+    border: none;
+    border-radius: 0px;
+    float: right; }
+  #form-of-candidacy #summit-btn:hover {
+    background-color: #6B2212; }
+  #form-of-candidacy #return-btn {
+    background-color: #AFAFAF;
+    border: none;
+    border-radius: 0px; }
+    #form-of-candidacy #return-btn a {
+      color: white;
+      text-decoration: none; }
+  #form-of-candidacy #return-btn:hover {
+    background-color: #787878; }
