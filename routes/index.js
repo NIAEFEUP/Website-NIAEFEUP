@@ -43,10 +43,9 @@ exports = module.exports = function(app) {
     app.get('/member/:id', routes.views.member);
     app.get('/blog/:category?', routes.views.blog);
     app.get('/blog/post/:post', routes.views.post);
-    app.get('/candidatura',routes.views.candidatura);
+    app.get('/candidatura',middleware.nonUser,routes.views.candidatura);
     app.post('/candidatura',middleware.validarCandidatura,routes.views.candidatura.create);
-    //TODO
-    //app.get('/entrevista',middleware.requireUser,routes.views.entrevista);
+    app.get('/entrevista',middleware.nonRecruta,routes.views.entrevista);
 
     //File Upload Route
     app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);

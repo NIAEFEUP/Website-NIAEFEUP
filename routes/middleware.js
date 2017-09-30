@@ -48,15 +48,35 @@ exports.flashMessages = function(req, res, next) {
  */
 exports.requireUser = function(req, res, next) {
     if (!req.user) {
-        req.flash('error', 'Please sign in to access this page.');
+        req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
         res.redirect('/keystone/signin');
     } else {
         next();
     }
 };
 
+exports.nonUser = function(req, res, next){
+  if (req.user) {
+      req.flash('error', 'Já és membro do NIAEFEUP!');
+      res.redirect('/');
+  } else {
+      next();
+  }
+};
+
+exports.nonRecruta = function(req, res, next) {
+
+  if(!req.user){
+    res.redirect('/');
+  } else if(req.user.position == "Recruta") {
+    req.flash('warning','Esta página é só para membros.');
+    res.redirect('/');
+  } else {
+    next();
+  }
+};
+
 //TODO fazer a validação do lado do servidor dos dados da candidatura
 exports.validarCandidatura = function(req, res, next) {
-  req.flash('info', 'Candidatura validada.');
   next();
 };

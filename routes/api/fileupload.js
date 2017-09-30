@@ -3,6 +3,7 @@ var keystone = require('keystone');
 var exec = require('child_process').exec;
 
 var FileData = keystone.list('FileUpload');
+var User = keystone.list('User');
 
 /**
  * List Files
@@ -67,7 +68,8 @@ exports.create = function(req, res) {
     var item = new FileData.model(),
         data = (req.method == 'POST') ? req.body : req.query;
 
-    console.log(req.files.file_upload.size);
+    var user_id = req.user._id;
+
     if (req.files.file_upload.mimetype !== 'image/jpeg' && req.files.file_upload.mimetype !== 'image/png') {
         req.flash('warning', 'File not supported');
 
@@ -86,12 +88,21 @@ exports.create = function(req, res) {
 
             if (err) return res.apiError('error', err);
 
-            req.flash('success', 'Profile picture updated with success');
+            var new_path = "/uploads/members/" + item.file.filename;
 
-            res.apiResponse({
-                file_upload: item
-            });
+            User.model.update({_id: user_id}, {$set : {photo_path : new_path}},
+              function(err, affected, resp) {
+                if(!err){
 
+                    req.flash('success', 'Foto de perfil atualizada com sucesso!');
+                    res.apiResponse({
+                        file_upload: item
+                    });
+
+                } else {
+                  req.flash('error', 'Ocorreu um erro, tenta mais tarde!');
+                }
+              });
         });
     }
 }
@@ -111,7 +122,7 @@ exports.remove = function(req, res) {
 
             if (err) return res.apiError('database error', err);
 
-            //TODO (if exists) Delete the file
+            //FIXME Mudar isto para 'fs'
             exec('rm public/uploads/files/' + fileId + '.*', function(err, stdout, stderr) {
                 if (err) {
                     console.log('child process exited with error code ' + err.code);
@@ -139,7 +150,15 @@ exports.removePreviousPhoto = function(req, res) {
 
         if (err) return res.apiError('database error', err);
 
-        if (!item) return res.apiError('not found');
+        if (!item){
+
+          return res.apiError('not found');
+
+        } else if (!item[0]) {
+
+          return res.apiError('not found');
+
+        }
 
         item[0].remove(function(err) {
 
