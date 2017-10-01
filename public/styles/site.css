@@ -8504,8 +8504,8 @@ body {
   margin: 50px 0; }
   #detail-info h3 {
     margin-bottom: 50px; }
-  #detail-info .col-sm-6#competencias .col-sm-3,
-  #detail-info .col-sm-6#competencias .col-sm-9 {
+  #detail-info .col-sm-6#competencias .col-sm-4,
+  #detail-info .col-sm-6#competencias .col-sm-8 {
     padding: 0; }
   #detail-info .progress {
     background-color: #F1F0F0;
