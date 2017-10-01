@@ -8408,25 +8408,34 @@ body {
   margin-top: 1.5em;
   padding-bottom: 2em; }
 
+#direction-members {
+  margin: 40px 0; }
+
 .team-member {
   margin: 15px 15px;
   position: relative; }
+  @media (max-width: 1199px) {
+    .team-member {
+      margin: 15px 0; } }
 
 .info-member {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
   color: white;
   overflow: hidden;
   width: 100%;
-  height: 0;
+  height: 6.5em;
   transition: .5s ease;
   font-size: 0.9em; }
   .info-member div {
     padding: 15px;
     height: 100%; }
+    @media (max-width: 991px) and (min-width: 768px) {
+      .info-member div {
+        padding: 10px; } }
   .info-member > a {
     color: white;
     text-decoration: none; }
@@ -8436,12 +8445,12 @@ body {
     width: 25%;
     border-top: 2px solid #5C5C5C;
     margin-left: 0; }
-    @media (max-width: 991px) and (min-width: 767px) {
+    @media (max-width: 991px) and (min-width: 768px) {
       .info-member hr {
         display: none; } }
   .info-member p {
     color: white; }
-    @media (max-width: 1199px) and (min-width: 767px), (max-width: 419px) {
+    @media (max-width: 1199px) and (min-width: 768px), (max-width: 419px) {
       .info-member p {
         display: none; } }
   .info-member > nav.social {
@@ -8450,20 +8459,16 @@ body {
     bottom: 15px;
     left: 100%;
     overflow: hidden;
-    transition: 1s ease; }
-    @media (max-width: 991px) and (min-width: 767px) {
+    transition: 0.75s ease; }
+    @media (max-width: 991px) and (min-width: 768px) {
       .info-member > nav.social {
         display: none; } }
     .info-member > nav.social a {
-      font-size: 10px;
-      text-decoration: none;
-      color: white; }
-    .info-member > nav.social a:hover,
-    .info-member > nav.social .a:active {
-      background-color: #6B2212; }
+      font-size: 10px; }
 
 .team-member:hover .info-member,
 .team-member:hover .info-member {
+  background-color: rgba(0, 0, 0, 0.6);
   height: 100%; }
 
 .team-member:hover nav,
@@ -8520,6 +8525,7 @@ body {
   font-size: 20px;
   margin: auto 15px auto 0; }
 
+a.fa-icon-border,
 .fa-icon-border {
   height: 2em;
   width: 2em;
@@ -8529,4 +8535,8 @@ body {
   margin: 0.5em 0.9em 0.5em 0;
   font-size: 20px;
   text-align: center;
-  vertical-align: middle; }
+  vertical-align: middle;
+  text-decoration: none; }
+
+a.fa-icon-border:hover {
+  background-color: #6B2212; }
