@@ -1,12 +1,25 @@
 #member-header{
+    background-image: url(https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg);
+    background-size: cover;
+    background-position-y: center;
+}
+
+#member-header-content{
     height: $header-height;
     display: flex;
     align-items: center;
     background-color: $banner-color-transp;
     color: white;
-
-    .col-sm-6{
+    
+    #member-img{
+        width: 175px;
         height: 175px;
+        object-fit: cover;
+        margin-right: 50px;
+    }
+
+    #cargo{
+        margin: 20px 0;
     }
 
     form h2,{
@@ -14,12 +27,32 @@
         font-weight: bold;
         margin: 0px;
     }
+
+    nav a {
+        font-size: 12.5px;
+    }
 }
 
-#member-img{
-    width: 175px;
-    height: 175px;
-    object-fit: cover;
-    margin-right: 50px;
+#detail-info{
+    margin: 50px 0;
+
+    h3{
+        margin-bottom: 50px;
+    }
+
+    .col-sm-6#competencias .col-sm-3,
+    .col-sm-6#competencias .col-sm-9,
+    {
+        padding: 0;
+    }
+
+    .progress{
+        background-color:$light-grey-color;
+        border-radius: 0;
+    }
+    .progress-bar{
+        background-color:$primary-color;
+        border-radius: 0; 
+    }
 }
 
