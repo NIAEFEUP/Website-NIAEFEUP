@@ -8455,12 +8455,7 @@ body {
       .info-member > nav.social {
         display: none; } }
     .info-member > nav.social a {
-      font-size: 10px;
-      text-decoration: none;
-      color: white; }
-    .info-member > nav.social a:hover,
-    .info-member > nav.social .a:active {
-      background-color: #6B2212; }
+      font-size: 10px; }
 
 .team-member:hover .info-member,
 .team-member:hover .info-member {
@@ -8520,6 +8515,7 @@ body {
   font-size: 20px;
   margin: auto 15px auto 0; }
 
+a.fa-icon-border,
 .fa-icon-border {
   height: 2em;
   width: 2em;
@@ -8529,4 +8525,8 @@ body {
   margin: 0.5em 0.9em 0.5em 0;
   font-size: 20px;
   text-align: center;
-  vertical-align: middle; }
+  vertical-align: middle;
+  text-decoration: none; }
+
+a.fa-icon-border:hover {
+  background-color: #6B2212; }

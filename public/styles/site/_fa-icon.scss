@@ -5,7 +5,8 @@
     margin: auto 15px auto 0;
 }
 
-.fa-icon-border{
+a.fa-icon-border,
+.fa-icon-border {
     height: 2em;
     width: 2em;
     line-height: 2em; 
@@ -15,4 +16,9 @@
     font-size: 20px;
     text-align: center;
     vertical-align: middle;
+    text-decoration: none;
+}
+
+a.fa-icon-border:hover{
+    background-color: $primary-color-darker;
 }
