@@ -48,14 +48,14 @@
         width: 25%;
         border-top: 2px solid $grey-color;
         margin-left: 0;
-        @media (min-width:767) and (max-width: 991px) {
+        @media (max-width: 991px) and (min-width: 767px) {
             display: none;            
         }
     }
     p{
         color: white;
-        @media (min-width:767) and (max-width: 1199px), 
-        (max-width: 399px) {
+        @media (max-width: 1199px) and (min-width: 767px),
+        (max-width: 419px) {
             display: none;            
         }
     }
@@ -66,7 +66,7 @@
         left: 100%;
         overflow: hidden;
         transition: 1s ease;
-        @media (min-width:767) and (max-width: 991px) {
+        @media (max-width: 991px) and (min-width: 767px) {
             display: none;            
         }
         a{

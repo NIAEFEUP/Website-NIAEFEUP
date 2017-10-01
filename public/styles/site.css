@@ -8436,12 +8436,12 @@ body {
     width: 25%;
     border-top: 2px solid #5C5C5C;
     margin-left: 0; }
-    @media (min-width: 767) and (max-width: 991px) {
+    @media (max-width: 991px) and (min-width: 767px) {
       .info-member hr {
         display: none; } }
   .info-member p {
     color: white; }
-    @media (min-width: 767) and (max-width: 1199px), (max-width: 359px) {
+    @media (max-width: 1199px) and (min-width: 767px), (max-width: 419px) {
       .info-member p {
         display: none; } }
   .info-member > nav.social {
@@ -8451,7 +8451,7 @@ body {
     left: 100%;
     overflow: hidden;
     transition: 1s ease; }
-    @media (min-width: 767) and (max-width: 991px) {
+    @media (max-width: 991px) and (min-width: 767px) {
       .info-member > nav.social {
         display: none; } }
     .info-member > nav.social a {
