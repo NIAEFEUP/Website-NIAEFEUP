@@ -3,35 +3,24 @@ extends ../layouts/default
 block content
   div.container  
     div.page-header
-      h1 Join Us
-      
-      form(method='POST' action='/candidatura')
-        div.form-group
-          label(for='first name') First Name:
-          input#first_name.form-control(type='text', placeholder='first name' name='name.first')
-        div.form-group
-          label(for='last name') Last Name:
-          input#last_name.form-control(type='text', placeholder='last name' name='name.last')
-        div.form-group
-          label(for='numero up') Número UP:
-          input#numero_up.form-control(type='number', placeholder='Número UP' name='numero_up')
-        div.form-group
-          label(for='email') Email:
-          input#email.form-control(type='email', placeholder='name@email.com' name='email')
-        div.form-group
-          label(for='Porquê o Núcleo de Informática?') Porquê o Núcleo de Informática?:
-          input#porque_ni.form-control(type='text', placeholder='Porquê o Núcleo de Informática?' name='porque_ni')
-        div.form-group
-          label(for='Github') Github :
-          input#github.form-control(type='url', placeholder='Github URL' name='github')
-        div.form-group
-          label(for='Website') Website :
-          input#website.form-control(type='url', placeholder='Website URL' name='website')
-        div.form-group
-          label(for='LinkedIn') LinkedIn :
-          input#linkedin.form-control(type='url', placeholder='LinkedIn URL' name='linkedin')
-        div.form-group
-          label(for='Tecnologias') Com que tecnologias já trabalhaste?:
-          textarea#tecnologias.form-control(type='text', placeholder='Diz-nos as tecnologias com que já trabalhaste?' name='tecnologias')
-        button.btn.btn-primary(type='submit') Join Us
-        a(href="/") Return to home page
+      h1 Entrevista
+      //Listar a informacao do candidato
+      if !entrevista
+        form#form-of-candidacy(method='POST' action='/entrevista')
+          input(type='hidden', name="candidato_id", value="" + candidato_id)
+          input(type='hidden', name='entrevistador_1', value="" + user._id)
+          input.form-control(type='text', name='entrevistador_2', placeholder='Entrevistador 2')
+          textarea.form-control(name='estado_curso', placeholder="Estado do Curso")
+          textarea.form-control(name='grupo_estudantil', placeholder='Integra ou pretende ingressar noutro grupo estudantil?')
+          textarea.form-control(name='porque_ni', placeholder='Porquê o NI?')
+          textarea.form-control(name='valor_acrescentado', placeholder='O que o candidato já fez que lhe acrescenta valor') 
+          textarea.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI')
+          input.form-control(type='checkbox', name='erasmus', value='true')
+          textarea.form-control(name='se_erasmus_futuro', placeholder='Se for de erasmus o que acha do futuro no NI')
+          textarea.form-control(name='se_5ano_futuro', placeholder='Se o candidato for do 5ano qual o seu futuro no curso')
+          textarea.form-control(name='observacoes', placeholder='Fazer perguntas relacionadas com o curriculo do candidato')
+          .row
+            .col-sm-6
+              button#summit-btn.btn.btn-primary(type='submit') ENVIAR
+
+      //Aqui é fora do if, falta fazer o display das informações do candidato
