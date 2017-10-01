@@ -18,6 +18,8 @@ exports = module.exports = function(req, res) {
               console.log(results);
               locals.candidatos = results;
             }
+
+            next();
       });
 
     });
