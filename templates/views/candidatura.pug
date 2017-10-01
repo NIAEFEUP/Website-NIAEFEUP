@@ -1,39 +1,59 @@
 extends ../layouts/default
 
 block content
-  div.container  
-    div.page-header
-      h1 Join Us
-      
-      form(method='POST' action='/candidatura')
-        div.form-group
-          label(for='first name') First Name:
-          input#first_name.form-control(type='text', placeholder='first name' name='name.first')
-        div.form-group
-          label(for='last name') Last Name:
-          input#last_name.form-control(type='text', placeholder='last name' name='name.last')
-        div.form-group
-          label(for='numero up') Número UP:
-          input#numero_up.form-control(type='number', placeholder='Número UP' name='numero_up')
-        div.form-group
-          label(for='email') Email:
-          input#email.form-control(type='email', placeholder='name@email.com' name='email')
-        div.form-group
-          label(for='Porquê o Núcleo de Informática?') Porquê o Núcleo de Informática?
-          input#porque_ni.form-control(type='text', placeholder='Porquê o Núcleo de Informática?' name='porque_ni')
-        div.form-group
-          label(for='Github') Github :
-          input#github.form-control(type='url', placeholder='Github URL' name='github')
-        div.form-group
-          label(for='Website') Website :
-          input#website.form-control(type='url', placeholder='Website URL' name='website')
-        div.form-group
-          label(for='LinkedIn') LinkedIn :
-          input#linkedin.form-control(type='url', placeholder='LinkedIn URL' name='linkedin')
-        div.form-group
-          label(for='Tecnologias') Com que tecnologias já trabalhaste?
-          textarea#tecnologias.form-control(type='text', placeholder='Diz-nos as tecnologias com que já trabalhaste?' name='tecnologias')
-        div.form-group
-          input#entrevista.form-control(type='hidden', value='false' name='entrevista')
-        button.btn.btn-primary(type='submit') Join Us
-        a(href="/") Return to home page
+  header#candidacy-header.page-header
+    h1#candidacy-title.text-center CANDIDATURA
+  div.container
+    .row
+      .col-sm-12
+        h2#form-title JUNTA-TE A NÓS
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dolor enim, feugiat at massa ac, pulvinar varius justo. Praesent et nulla dapibus, tristique erat ut, lobortis quam. Maecenas vitae aliquam magna. Nulla a gravida orci. Quisque nec pharetra est, ac maximus magna. Vivamus vestibulum ex in quam aliquam, non blandit tellus ullamcorper. Mauris sit amet consectetur tellus.  
+    form#form-of-candidacy(method='POST' action='/candidatura')
+      .row
+        .col-sm-5
+          .row
+            .col-sm-6#first-name
+              div.form-group
+                //label(for='first name') First Name:
+                input#first_name.form-control(type='text', placeholder='Primeiro Nome*' name='name.first')
+            .col-sm-6#last-name
+              div.form-group
+                //label(for='last name') Last Name:
+                input#last_name.form-control(type='text', placeholder='Último Nome*' name='name.last')
+          div.form-group
+            //.flex
+              i.fa.fa-id-card.fa-icon
+              label(for='numero up') Número UP:
+            input#numero_up.form-control(type='number', placeholder='Número UP*' name='numero_up')
+          div.form-group
+            //.flex
+              i.fa.fa-envelope.fa-icon
+              label(for='email') Email:
+            input#email.form-control(type='email', placeholder='Email*' name='email')
+          div.form-group
+            //label(for='Tecnologias') Com que tecnologias já trabalhaste?
+            textarea#tecnologias.form-control(type='text', placeholder='Tecnologias com as quais já trabalhaste' name='tecnologias')
+          div.form-group
+            //label(for='Porquê o Núcleo de Informática?') Porquê o Núcleo de Informática?
+            input#porque_ni.form-control(type='text', placeholder='Porquê o Núcleo de Informática?' name='porque_ni')
+          div.form-group
+            input#entrevista.form-control(type='hidden', value='false' name='entrevista')
+        .col-sm-4
+          div.form-group
+            //.flex
+              i.fa.fa-linkedin.fa-icon
+              label(for='LinkedIn') LinkedIn :
+            input#linkedin.form-control(type='url', placeholder='LinkedIn' name='linkedin')
+          div.form-group
+            //.flex
+              i.fa.fa-github.fa-icon
+              label(for='Github') Github :
+            input#github.form-control(type='url', placeholder='Github' name='github')
+          div.form-group
+            //.flex
+              i.fa.fa-globe.fa-icon
+              label(for='Website') Website :
+            input#website.form-control(type='url', placeholder='Website' name='website')
+      .row
+        .col-sm-6
+          button#summit-btn.btn.btn-primary(type='submit') JOIN US

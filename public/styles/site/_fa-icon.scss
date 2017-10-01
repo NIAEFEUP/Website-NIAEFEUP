@@ -1,0 +1,24 @@
+.fa-icon {
+    color: $primary-color;
+    width: 1em;
+    font-size: 20px;
+    margin: auto 15px auto 0;
+}
+
+a.fa-icon-border,
+.fa-icon-border {
+    height: 2em;
+    width: 2em;
+    line-height: 2em; 
+    color: white;
+    background-color: $primary-color;
+    margin: 0.5em 0.9em 0.5em 0;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+a.fa-icon-border:hover{
+    background-color: $primary-color-darker;
+}
