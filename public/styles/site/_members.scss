@@ -16,8 +16,15 @@
     padding-bottom: 2em;
 }
 
+#direction-members{
+    margin: 40px 0;
+}
+
 .team-member {
     margin: 15px 15px;
+    @media (max-width:1199px){
+        margin: 15px 0;
+    }
     position: relative;
 }
 
@@ -26,15 +33,18 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: $projects-color-transp;
+    background: linear-gradient(to top, $projects-color-transp, $transparent-color);;
     color: white;
     overflow: hidden;
     width: 100%;
-    height: 0;
+    height: 6.5em;
     transition: .5s ease;
     font-size: 0.9em;
     div{
         padding: 15px;
+        @media (max-width:991px) and (min-width:768px){
+            padding: 10px;
+        }
         height: 100%;
     }
     > a{
@@ -48,13 +58,13 @@
         width: 25%;
         border-top: 2px solid $grey-color;
         margin-left: 0;
-        @media (max-width: 991px) and (min-width: 767px) {
+        @media (max-width: 991px) and (min-width: 768px) {
             display: none;            
         }
     }
     p{
         color: white;
-        @media (max-width: 1199px) and (min-width: 767px),
+        @media (max-width: 1199px) and (min-width: 768px),
         (max-width: 419px) {
             display: none;            
         }
@@ -65,8 +75,8 @@
         bottom: 15px;
         left: 100%;
         overflow: hidden;
-        transition: 1s ease;
-        @media (max-width: 991px) and (min-width: 767px) {
+        transition: 0.75s ease;
+        @media (max-width: 991px) and (min-width: 768px) {
             display: none;            
         }
         a{
@@ -77,6 +87,7 @@
 
 .team-member:hover .info-member,
 .team-member:hover .info-member {
+    background-color: $projects-color-transp;
     height: 100%;
 }
 .team-member:hover nav,
