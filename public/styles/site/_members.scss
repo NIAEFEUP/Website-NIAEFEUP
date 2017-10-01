@@ -1,55 +1,96 @@
-.members-header {
-    height: 400px;
+#members-header {
+    height: $header-height;
     background: url(../images/members/fullteam.jpg) center center no-repeat;
-    position: relative;
 }
 
-.members-title {
-    text-align: center;
-    width: 100%;
-    background-color: #FFFFFF;
-    position: absolute;
-    bottom: 0;
-    padding-top: 1em;
-    padding-bottom: 1em;
+#members-title {
+    color: #FFFFFF;
+    font-size: $font-size-header-title;
+    line-height: $header-height;
+    background-color: $banner-color-transp;
 }
 
-.direction-members h3 {
-    text-align: center;
-    width: 100%;
+#members h3 {
     padding-top: 2em;
     margin-top: 1.5em;
     padding-bottom: 2em;
 }
 
-.col-sm-4 .team-member {
-    margin-left: 12.5%;
-    margin-right: 12.5%;
-    margin-bottom: 12.5%;
-    position: relative;
+#direction-members{
+    margin: 40px 0;
 }
 
-.col-sm-2 .team-member {
+.team-member {
+    margin: 15px 15px;
+    @media (max-width:1199px){
+        margin: 15px 0;
+    }
     position: relative;
-}
-
-.team-member a {
-    display: block;
 }
 
 .info-member {
     position: absolute;
-    padding: 0px 10px;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.5);
+    background: linear-gradient(to top, $projects-color-transp, $transparent-color);;
+    color: white;
     overflow: hidden;
     width: 100%;
-    height: 2.5em;
+    height: 6.5em;
     transition: .5s ease;
+    font-size: 0.9em;
+    div{
+        padding: 15px;
+        @media (max-width:991px) and (min-width:768px){
+            padding: 10px;
+        }
+        height: 100%;
+    }
+    > a{
+        color: white;
+        text-decoration: none;
+    }
+    h4{
+        margin-bottom: 2px; 
+    }
+    hr{
+        width: 25%;
+        border-top: 2px solid $grey-color;
+        margin-left: 0;
+        @media (max-width: 991px) and (min-width: 768px) {
+            display: none;            
+        }
+    }
+    p{
+        color: white;
+        @media (max-width: 1199px) and (min-width: 768px),
+        (max-width: 419px) {
+            display: none;            
+        }
+    }
+    > nav.social{
+        position: absolute;
+        height: 2em;
+        bottom: 15px;
+        left: 100%;
+        overflow: hidden;
+        transition: 0.75s ease;
+        @media (max-width: 991px) and (min-width: 768px) {
+            display: none;            
+        }
+        a{
+            font-size: 10px;
+        }
+    }
 }
 
+.team-member:hover .info-member,
 .team-member:hover .info-member {
-    height: 50%;
+    background-color: $projects-color-transp;
+    height: 100%;
+}
+.team-member:hover nav,
+.info-slide:active nav {
+    left: 15px;
 }
