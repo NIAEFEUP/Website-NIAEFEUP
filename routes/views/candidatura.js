@@ -32,7 +32,7 @@ exports.create = function(req, res, next) {
     } else {
 
       new keystone.Email({
-        templateName: 'enquiry-notification.pug',
+        templateName: 'notificacao_candidatura.pug',
         transport: 'mailgun',
       }).send({
         name: req.body['name.first'],
