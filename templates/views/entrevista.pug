@@ -1,0 +1,26 @@
+extends ../layouts/default
+
+block content
+  div.container  
+    div.page-header
+      h1 Entrevista
+      //Listar a informacao do candidato
+      if !entrevista
+        form#form-of-candidacy(method='POST' action='/entrevista')
+          input(type='hidden', name="candidato_id", value="" + candidato_id)
+          input(type='hidden', name='entrevistador_1', value="" + user._id)
+          input.form-control(type='text', name='entrevistador_2', placeholder='Entrevistador 2')
+          textarea.form-control(name='estado_curso', placeholder="Estado do Curso")
+          textarea.form-control(name='grupo_estudantil', placeholder='Integra ou pretende ingressar noutro grupo estudantil?')
+          textarea.form-control(name='porque_ni', placeholder='Porquê o NI?')
+          textarea.form-control(name='valor_acrescentado', placeholder='O que o candidato já fez que lhe acrescenta valor') 
+          textarea.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI')
+          input.form-control(type='checkbox', name='erasmus', value='true')
+          textarea.form-control(name='se_erasmus_futuro', placeholder='Se for de erasmus o que acha do futuro no NI')
+          textarea.form-control(name='se_5ano_futuro', placeholder='Se o candidato for do 5ano qual o seu futuro no curso')
+          textarea.form-control(name='observacoes', placeholder='Fazer perguntas relacionadas com o curriculo do candidato')
+          .row
+            .col-sm-6
+              button#summit-btn.btn.btn-primary(type='submit') ENVIAR
+
+      //Aqui é fora do if, falta fazer o display das informações do candidato
