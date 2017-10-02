@@ -37,9 +37,16 @@
 
 .black-separator {
     border-width: 1px;
-    border-top: 0.9px solid $grey-color !important;
+    border-top: 2px solid $grey-color !important;
     width: 99%;
     margin-top: 40px;
+}
+
+.separator{
+     border-width: 4px;
+    border-top: 2.5px solid $primary-color !important;
+     width: 13%;
+    
 }
 
 .btn-default {
@@ -168,6 +175,9 @@
     .project {
         height: 300px;
     }
+    .project:hover{
+       
+    }
     #project_1 {
        // background: url(../images/template_website/1.jpg) no-repeat center center;
         
@@ -216,13 +226,26 @@
 
 #container-feup{
     
-    margin-top: 150px;
-    
-    #feup-image{
+    margin-top: 100px;
     width: 100%;
-    height: 400px;
-    background: url(../images/template_website/google_maps_template.png) no-repeat center center;
-}
+    height: 300px;
+    background: url(../images/template_website/feup.jpg) no-repeat center center;
+    background-size: cover;
+    
+    
+    .info{
+    padding-top: 100px;
+    color: white;
+        
+        .number{
+           font-size: 30px; 
+        }
+        
+        .description{
+            font-size: 10px;
+        }
+    }
+    
 }
 
 #contacts-section {

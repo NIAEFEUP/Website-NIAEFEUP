@@ -8269,9 +8269,14 @@ body {
 
 .black-separator {
   border-width: 1px;
-  border-top: 0.9px solid #5C5C5C !important;
+  border-top: 2px solid #5C5C5C !important;
   width: 99%;
   margin-top: 40px; }
+
+.separator {
+  border-width: 4px;
+  border-top: 2.5px solid #8C2D19 !important;
+  width: 13%; }
 
 .btn-default {
   padding: 15px 44px 15px 44px !important;
@@ -8403,11 +8408,18 @@ body {
     margin-top: 20px; }
 
 #container-feup {
-  margin-top: 150px; }
-  #container-feup #feup-image {
-    width: 100%;
-    height: 400px;
-    background: url(../images/template_website/google_maps_template.png) no-repeat center center; }
+  margin-top: 100px;
+  width: 100%;
+  height: 300px;
+  background: url(../images/template_website/feup.jpg) no-repeat center center;
+  background-size: cover; }
+  #container-feup .info {
+    padding-top: 100px;
+    color: white; }
+    #container-feup .info .number {
+      font-size: 30px; }
+    #container-feup .info .description {
+      font-size: 10px; }
 
 #contacts-section {
   margin: 50px auto; }
