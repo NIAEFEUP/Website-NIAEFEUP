@@ -8,91 +8,23 @@ block content
 		section#direction-members
 			//h3.text-center Direção
 			.row
-				.col-sm-4
-					.team-member
-						a(href="./member/"+presidente._id)
-							img.img-responsive(src=presidente.photo_path, alt='presidente')
-							aside.info-member
-								div
-									h4 #{presidente.name.first} #{presidente.name.last}
-									em #{presidente.position}
-									hr
-									p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie suscipit ligula nec fermentum. Curabitur tempus posuere libero, quis.
-								nav.social
-									a.fa.fa-linkedin.fa-icon-border(href=presidente.linkedin, title='LinkedIn')
-									a.fa.fa-github.fa-icon-border(href=presidente.github, title='Github')
-									a.fa.fa-globe.fa-icon-border(href=presidente.website, title='Website')
-				.col-sm-4
-					.team-member
-						a(href="./member/"+gestor_projetos._id)
-							img.img-responsive(src=gestor_projetos.photo_path, alt='Vice-Presidente e Gestor de Projetos')
-							aside.info-member
-								div
-									h4 #{gestor_projetos.name.first} #{gestor_projetos.name.last}
-									em #{gestor_projetos.position}
-									hr
-									p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie suscipit ligula nec fermentum. Curabitur tempus posuere libero, quis.
-								nav.social
-									a.fa.fa-linkedin.fa-icon-border(href=gestor_projetos.linkedin, title='LinkedIn')
-									a.fa.fa-github.fa-icon-border(href=gestor_projetos.github, title='Github')
-									a.fa.fa-globe.fa-icon-border(href=gestor_projetos.website, title='Website')
-				.col-sm-4
-					.team-member
-						a(href="./member/"+gestor_eventos._id)
-							img.img-responsive(src=gestor_eventos.photo_path, alt='Vice-Presidente e Gestor de Eventos')
-							aside.info-member
-								div
-									h4 #{gestor_eventos.name.first} #{gestor_eventos.name.last}
-									em #{gestor_eventos.position}
-									hr
-									p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie suscipit ligula nec fermentum. Curabitur tempus posuere libero, quis.
-								nav.social
-									a.fa.fa-linkedin.fa-icon-border(href=gestor_eventos.linkedin, title='LinkedIn')
-									a.fa.fa-github.fa-icon-border(href=gestor_eventos.github, title='Github')
-									a.fa.fa-globe.fa-icon-border(href=gestor_eventos.website, title='Website')
-			.row
-				.col-sm-4
-					.team-member
-						a(href="./member/"+tesoureiro._id)
-							img.img-responsive(src=tesoureiro.photo_path, alt='Tesoureiro')
-							aside.info-member
-								div
-									h4 #{tesoureiro.name.first} #{tesoureiro.name.last}
-									em #{tesoureiro.position}
-									hr
-									p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie suscipit ligula nec fermentum. Curabitur tempus posuere libero, quis.
-								nav.social
-									a.fa.fa-linkedin.fa-icon-border(href=tesoureiro.linkedin, title='LinkedIn')
-									a.fa.fa-github.fa-icon-border(href=tesoureiro.github, title='Github')
-									a.fa.fa-globe.fa-icon-border(href=tesoureiro.website, title='Website')
-				.col-sm-4
-					.team-member
-						a(href="./member/"+responsavel_sala._id)
-							img.img-responsive(src=responsavel_sala.photo_path, alt='Secretário e Responsável da Sala')
-							aside.info-member
-								div
-									h4 #{responsavel_sala.name.first} #{responsavel_sala.name.last}
-									em #{responsavel_sala.position}
-									hr
-									p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie suscipit ligula nec fermentum. Curabitur tempus posuere libero, quis.
-								nav.social
-									a.fa.fa-linkedin.fa-icon-border(href=responsavel_sala.linkedin, title='LinkedIn')
-									a.fa.fa-github.fa-icon-border(href=responsavel_sala.github, title='Github')
-									a.fa.fa-globe.fa-icon-border(href=responsavel_sala.website, title='Website')
-				.col-sm-4
-					.team-member
-						a(href="./member/"+imagem_comunicacao._id)
-							img.img-responsive(src=imagem_comunicacao.photo_path, alt='Responsável de Imagem e Comunicação')
-							aside.info-member
-								div
-									h4 #{imagem_comunicacao.name.first} #{imagem_comunicacao.name.last}
-									em #{imagem_comunicacao.position}
-									hr
-									p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie suscipit ligula nec fermentum. Curabitur tempus posuere libero, quis.
-								nav.social
-									a.fa.fa-linkedin.fa-icon-border(href=imagem_comunicacao.linkedin, title='LinkedIn')
-									a.fa.fa-github.fa-icon-border(href=imagem_comunicacao.github, title='Github')
-									a.fa.fa-globe.fa-icon-border(href=imagem_comunicacao.website, title='Website')
+				each pato in direcao
+					.col-sm-4
+						.team-member
+							a(href="./member/"+pato._id)
+								img.img-responsive(src=pato.photo_path, alt=pato.position)
+								aside.info-member
+									div
+										h4 #{pato.name.first} #{pato.name.last}
+										em #{pato.position}
+										hr
+									nav.social
+										if pato.linkedin
+											a.fa.fa-linkedin.fa-icon-border(href=pato.linkedin, title='LinkedIn')
+										if pato.github
+											a.fa.fa-github.fa-icon-border(href=pato.github, title='Github')
+										if pato.website
+											a.fa.fa-globe.fa-icon-border(href=pato.website, title='Website')
 			// MEMBROS
 		section#active-members
 			//h3.text-center Membros
@@ -108,9 +40,12 @@ block content
 										em #{member.position}
 										hr
 									nav.social
-										a.fa.fa-linkedin.fa-icon-border(href=member.linkedin, title='LinkedIn')
-										a.fa.fa-github.fa-icon-border(href=member.github, title='Github')
-										a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
+										if member.linkedin
+											a.fa.fa-linkedin.fa-icon-border(href=member.linkedin, title='LinkedIn')
+										if member.github
+											a.fa.fa-github.fa-icon-border(href=member.github, title='Github')
+										if member.website
+											a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
 				each recruta in recrutas	
 					.col-sm-3
 						.team-member
@@ -122,6 +57,9 @@ block content
 										em #{recruta.position}
 										hr
 									nav.social
-										a.fa.fa-linkedin.fa-icon-border(href=recruta.linkedin, title='LinkedIn')
-										a.fa.fa-github.fa-icon-border(href=recruta.github, title='Github')
-										a.fa.fa-globe.fa-icon-border(href=recruta.website, title='Website')
+										if recruta.linkedin
+											a.fa.fa-linkedin.fa-icon-border(href=recruta.linkedin, title='LinkedIn')
+										if recruta.github
+											a.fa.fa-github.fa-icon-border(href=recruta.github, title='Github')
+										if recruta.website
+											a.fa.fa-globe.fa-icon-border(href=recruta.website, title='Website')

@@ -19,7 +19,8 @@ Candidatura.add({
     github: { type: Types.Url},
     website: { type: Types.Url},
     tecnologias: { type: String},
-    entrevista: {type: Types.Boolean}
+    entrevista: {type: Types.Boolean},
+    aceite: {type: Types.Boolean}
 });
 
 /**

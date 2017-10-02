@@ -15,13 +15,11 @@ exports = module.exports = function(req, res) {
             if (err || !results.length) {
                 return next(err);
             } else {
-              console.log(results);
               locals.candidatos = results;
             }
 
             next();
       });
-
     });
 
     // Render the view
