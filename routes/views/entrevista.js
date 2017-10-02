@@ -1,4 +1,6 @@
 var keystone = require('keystone');
+var Entrevista = keystone.list('Entrevista');
+var Candidatura = keystone.list('Candidatura');
 
 exports = module.exports = function(req, res) {
 
@@ -54,6 +56,7 @@ exports.create = function(req, res, next) {
 
   var info = req.body;
   info.data = new Date();
+  var cand_id = info.candidato_id;
 
   //TODO ver o que falta aqui;
   console.log(info);
@@ -76,9 +79,18 @@ exports.create = function(req, res, next) {
 
     } else {
 
-      //TODO atualizar a candidatura com entrevista:feita
-      req.flash('success', 'Entrevista submetida, Obrigado!');
-      res.redirect('/');
+      Candidatura.model.update({_id: cand_id}, {$set : {entrevista : true}},
+        function(err, affected, resp) {
+          if(!err){
+
+              req.flash('success', 'Entrevista realizada, Obrigado!');
+
+          } else {
+            req.flash('error', 'Ocorreu um erro, tenta mais tarde!');
+          }
+        });
+
+      res.redirect('/entrevistas');
 
     }
 

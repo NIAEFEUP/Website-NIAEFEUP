@@ -22,28 +22,29 @@ exports = module.exports = function(req, res) {
                 return next(err);
             }
 
+            locals.direcao = [6];
             locals.members = [];
             locals.recrutas = [];
 
             for (result of results) {
                 switch(result.position){
                     case "Presidente":
-                        locals.presidente = result;
+                        locals.direcao[0] = result;
                     break;
                     case "Vice-Presidente e Gestor de Projetos":
-                        locals.gestor_projetos = result;
+                        locals.direcao[1] = result;
                     break;
                     case "Vice-Presidente e Gestor de Eventos":
-                        locals.gestor_eventos = result;
+                        locals.direcao[2] = result;
                     break;
                     case "Tesoureiro":
-                        locals.tesoureiro = result;
+                        locals.direcao[3] = result;
                     break;
                     case "Secretário e Responsável pela Sala":
-                        locals.responsavel_sala = result;
+                        locals.direcao[4] = result;
                     break;
                     case "Responsável pela Imagem e Comunicação":
-                        locals.imagem_comunicacao = result;
+                        locals.direcao[5] = result;
                     break;
                     case "Membro":
                         locals.members.push(result);
