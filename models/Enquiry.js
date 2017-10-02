@@ -15,11 +15,7 @@ Enquiry.add({
 	name: { type: Types.Name, required: true },
 	email: { type: Types.Email, required: true },
 	phone: { type: String },
-	enquiryType: { type: Types.Select, options: [
-		{ value: 'message', label: 'Just leaving a message' },
-		{ value: 'question', label: 'I\'ve got a question' },
-		{ value: 'other', label: 'Something else...' },
-	] },
+	subject: { type: Types.Markdown, required: true },
 	message: { type: Types.Markdown, required: true },
 	createdAt: { type: Date, default: Date.now },
 });
@@ -31,6 +27,7 @@ Enquiry.schema.pre('save', function (next) {
 
 Enquiry.schema.post('save', function () {
 	if (this.wasNew) {
+		console.log("email sent");
 		this.sendNotificationEmail();
 	}
 });
@@ -54,18 +51,21 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 
 	keystone.list('User').model.find().where('isAdmin', true).exec(function (err, admins) {
 		if (err) return callback(err);
+
 		new keystone.Email({
 			templateName: 'enquiry-notification',
 			transport: 'mailgun',
 		}).send({
-			to: admins,
+			name: enquiry.name,
+			to: enquiry.email,
 			from: {
 				name: 'NIAEFEUP',
-				email: 'contact@niaefeup.com',
+				email: 'excited@samples.mailgun.org',
 			},
-			subject: 'New Enquiry for NIAEFEUP',
-			enquiry: enquiry,
+			subject: enquiry.subject,
+			message: enquiry.message,
 			brand: brand,
+
 		}, callback);
 	});
 };
