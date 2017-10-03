@@ -36,7 +36,7 @@ exports.create = function(req, res, next) {
         transport: 'mailgun',
       }).send({
         name: req.body['name.first'],
-        message:'ola, entao tudo bem?',
+        surname: req.body['name.second'],
       },{
         to: req.body['email'],
         from: {
