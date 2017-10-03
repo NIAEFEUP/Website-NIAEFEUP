@@ -8,23 +8,23 @@ block content
 		section#direction-members
 			//h3.text-center Direção
 			.row
-				each pato in direcao
+				each direction_member in direcao
 					.col-sm-4
 						.team-member
-							a(href="./member/"+pato._id)
-								img.img-responsive(src=pato.photo_path, alt=pato.position)
+							a(href="./member/"+direction_member._id)
+								img.img-responsive(src=direction_member.photo_path, alt=direction_member.position)
 								aside.info-member
 									div
-										h4 #{pato.name.first} #{pato.name.last}
-										em #{pato.position}
+										h4 #{direction_member.name.first} #{direction_member.name.last}
+										em #{direction_member.position}
 										hr
 									nav.social
-										if pato.linkedin
-											a.fa.fa-linkedin.fa-icon-border(href=pato.linkedin, title='LinkedIn')
-										if pato.github
-											a.fa.fa-github.fa-icon-border(href=pato.github, title='Github')
-										if pato.website
-											a.fa.fa-globe.fa-icon-border(href=pato.website, title='Website')
+										if direction_member.linkedin
+											a.fa.fa-linkedin.fa-icon-border(href=direction_member.linkedin, title='LinkedIn')
+										if direction_member.github
+											a.fa.fa-github.fa-icon-border(href=direction_member.github, title='Github')
+										if direction_member.website
+											a.fa.fa-globe.fa-icon-border(href=direction_member.website, title='Website')
 			// MEMBROS
 		section#active-members
 			//h3.text-center Membros
