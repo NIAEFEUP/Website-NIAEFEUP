@@ -1,0 +1,20 @@
+extends ../layouts/default
+
+block content
+  header#candidacy-header.page-header
+    h1#candidacy-title.text-center ENTREVISTAS
+  div.container
+    div.container
+      h1.text-center CANDIDATOS
+      section
+        each candidato in candidatos
+          div.col-sm-2
+          div.container.col-sm-10
+            if user.isAdmin
+              //Fazer aqui o formulario com as checkboxs para o admin aceitar os candidatos
+              //Falta fazer o backend para receber essa lista
+              input(type="checkbox" name="accept" value="" + candidato._id) 
+            if candidato.entrevista
+              a(href="/entrevista/" + candidato._id) #{candidato.name.full} | #{candidato.numero_up} | Verde
+            else
+              a(href="/entrevista/" + candidato._id) #{candidato.name.full} | #{candidato.numero_up} | Vermelho

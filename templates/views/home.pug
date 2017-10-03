@@ -69,18 +69,37 @@ block content
                 p.white-title Engenharia Informática
                 hr.white-separator.left
                 p.white-subtitle.info  O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500
-    
     section#container-projects
-        p.title PROJETOS
+        .row.project-info
+            .col-md-3
+                p.title PROJETOS
+            .col-md-3
+                button.btn.btn-default.btn-projects VER TODOS
         .row#project-photos
-            .col-md-3#project_1.project 
-            .col-md-3#project_2.project 
+            .col-md-3#project_1.project
+            .col-md-3#project_2.project
             .col-md-3#project_3.project 
             .col-md-3#project_4.project 
-                             
-
+    section#container-feup
+        .row.info
+            .col-md-3.offset-md-2.text-center
+                .number 10 
+                hr.separator
+                .descriprion PROJETOS
+            .col-md-3.text-center 
+                .number 5 
+                hr.separator
+                .descriprion EVENTOS
+            .col-md-3.text-center  
+                .number 20
+                hr.separator
+                .descriprion WORKSHOPS
+            .col-md-3.text-center 
+                .number 30 
+                hr.separator
+                .descriprion MEMBROS
+                
     section#contacts-section.row
-
         #contacts.col-sm-7.col-sm-offset-1
             h3 CONTACTOS
             .row
@@ -101,7 +120,7 @@ block content
                             i.fa.fa-github.fa-icon
                         b.strong Gitbub: &nbsp
                         a(href='https://github.com/NIAEFEUP', title='Github')
-                            p @nieafeup
+                            p @niaefeup
             
         #socialmedia.col-sm-4
             h3 REDES SOCIAIS
@@ -111,6 +130,8 @@ block content
                     a.fa.fa-linkedin.fa-icon-border(href='https://www.linkedin.com/company/nifeup', title='LinkedIn')
                     a.fa.fa-twitter.fa-icon-border(href='https://twitter.com/niaefeup', title='Twitter')
                     a.fa.fa-instagram.fa-icon-border(href='https://www.instagram.com/niaefeup/', title='Instagram')
-                    
         
-    section#map  
+    section
+        iframe(src="https://snazzymaps.com/embed/19268" width="100%" height="400px" style="border:none;")
+
+   
