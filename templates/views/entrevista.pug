@@ -6,7 +6,7 @@ block content
       h1 Entrevista
       //Listar a informacao do candidato
       if !entrevista
-        form#form-of-candidacy(method='POST' action='/entrevista')
+        form(method='POST' action='/entrevista')
           input(type='hidden', name="candidato_id", value="" + candidato_id)
           input(type='hidden', name='entrevistador_1', value="" + user._id)
           //input.form-control(type='text', name='entrevistador_2', placeholder='Entrevistador 2')
@@ -21,6 +21,6 @@ block content
           textarea.form-control(name='observacoes', placeholder='Fazer perguntas relacionadas com o curriculo do candidato')
           .row
             .col-sm-6
-              button#summit-btn.btn.btn-primary(type='submit') ENVIAR
+              button.btn.btn-primary(type='submit') ENVIAR
 
       //Aqui é fora do if, falta fazer o display das informações do candidato
