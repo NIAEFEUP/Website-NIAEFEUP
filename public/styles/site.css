@@ -3957,9 +3957,9 @@ tbody.collapse.in {
   .navbar-default .navbar-text {
     color: #777; }
   .navbar-default .navbar-nav > li > a {
-    color: #777; }
+    color: black; }
     .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-      color: #333;
+      color: #8C2D19;
       background-color: transparent; }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #555;
@@ -8174,11 +8174,13 @@ body {
   background-color: white;
   height: 75px;
   font-size: 18px; }
+  .navbar a {
+    color: black; }
   .navbar .container-fluid {
     max-width: 1140px;
     margin: auto; }
   .navbar .navbar-brand {
-    padding: 5px 15px 5px 15px; }
+    padding: 5px 15px; }
     .navbar .navbar-brand img {
       height: 65px; }
 
