@@ -8,13 +8,44 @@ block content
       h1.text-center CANDIDATOS
       section
         form(method='POST' action='/entrevistas')
-          each candidato in candidatos
-            div.col-sm-2
-            div.container.col-sm-10 
-              if candidato.entrevista
-                if user.isAdmin
-                  input(type="checkbox" name="accept" value="" + candidato._id)
-                a(href="/entrevista/" + candidato._id) #{candidato.name.full} | #{candidato.numero_up} | Verde
-              else
-                a(href="/entrevista/" + candidato._id) #{candidato.name.full} | #{candidato.numero_up} | Vermelho
-          button.btn.btn-primary(type='submit') ENVIAR
+          .table-responsive
+            table.table.table-hover.display#table_id
+              thead
+                th Aceitar
+                th Nome
+                th Número UP
+                th 
+              tbody
+                each candidato in candidatos
+                  if candidato.entrevista
+                    tr.success
+                      if user.isAdmin
+                        //Fazer aqui o formulario com as checkboxs para o admin aceitar os candidatos
+                        //Falta fazer o backend para receber essa lista
+                        td 
+                          input(type="checkbox" name="accept" value="" + candidato._id) 
+                      td
+                        p #{candidato.name.full}
+                      td
+                        p #{candidato.numero_up}
+                      td
+                        p Entrevistado
+                  else
+                    tr.danger
+                      if user.isAdmin
+                          //Fazer aqui o formulario com as checkboxs para o admin aceitar os candidatos
+                          //Falta fazer o backend para receber essa lista
+                          td 
+                            input(type="checkbox" name="accept" value="" + candidato._id) 
+                      td
+                        p #{candidato.name.full}
+                      td
+                        p #{candidato.numero_up}
+                      td
+                        a(href="/entrevista/" + candidato._id) 
+                          p Entrevistar
+            if user.isAdmin
+              button.btn.btn-default(type="Submit") Guardar
+
+          if user.isAdmin
+            button.btn.btn-default(type="Submit") Guardar

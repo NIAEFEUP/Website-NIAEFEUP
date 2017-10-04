@@ -1,6 +1,8 @@
 var keystone = require('keystone');
 var Entrevista = keystone.list('Entrevista');
 var Candidatura = keystone.list('Candidatura');
+var $  = require('jquery');
+var dt = require( 'datatables.net' )();
 
 exports = module.exports = function(req, res) {
 
@@ -21,6 +23,8 @@ exports = module.exports = function(req, res) {
             next();
       });
     });
+
+    $('#table_id').DataTable();
 
     // Render the view
     view.render('entrevistas');
