@@ -55,6 +55,18 @@ exports.requireUser = function(req, res, next) {
     }
 };
 
+exports.requireAdmin = function(req, res, next) {
+    if (!req.user) {
+        req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
+        res.redirect('/');
+    } else if(req.user.isAdmin){
+        next();
+    } else {
+      req.flash('warning', 'Precisas de ter permissões de administrador.');
+      res.redirect('/');
+    }
+};
+
 exports.nonUser = function(req, res, next){
   if (req.user) {
       req.flash('error', 'Já és membro do NIAEFEUP!');

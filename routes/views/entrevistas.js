@@ -12,11 +12,13 @@ exports = module.exports = function(req, res) {
     // Load all members
     view.on('init', function(next) {
 
-        Candidatura.model.find().sort('numero_up').exec(function(err, results) {
+        Candidatura.model.find({}, '_id name numero_up entrevista').sort('numero_up').exec(function(err, results) {
 
             if (err || !results.length) {
                 return next(err);
             } else {
+              //TODO ver se isto esta certo
+              console.log(results);
               locals.candidatos = results;
             }
 
@@ -29,3 +31,12 @@ exports = module.exports = function(req, res) {
     // Render the view
     view.render('entrevistas');
 };
+
+
+exports.approve = function(req, res, next) {
+
+    //TODO Passar os membros para User Recruta e enviar os dados para slack e etc por email
+    console.log(req.body);
+    res.redirect('/entrevistas');
+    next();
+}
