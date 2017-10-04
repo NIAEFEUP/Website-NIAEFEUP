@@ -15,8 +15,6 @@ exports = module.exports = function(req, res) {
             if (err || !results.length) {
                 return next(err);
             } else {
-              //TODO ver se isto esta certo
-              console.log(results);
               locals.candidatos = results;
             }
 

@@ -31,12 +31,8 @@ exports = module.exports = function(req, res) {
                 var entre = keystone.list('Entrevista').model.findById(req.params.id);
 
                 entre.exec(function(err, result) {
-                    if(!result){
-                      req.flash('error','Ocorreu um erro, tenta mais tarde!');
-                      next(err);
-                    } else {
+                    if(result){
                       locals.entrevista = result;
-                      next();
                     }
                 });
             }
