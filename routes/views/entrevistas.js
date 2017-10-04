@@ -1,8 +1,8 @@
 var keystone = require('keystone');
 var Entrevista = keystone.list('Entrevista');
 var Candidatura = keystone.list('Candidatura');
-var $  = require('jquery');
-var dt = require( 'datatables.net' )();
+//var $  = require('jquery');
+//var dt = require('datatables.net')( window, $ );
 
 exports = module.exports = function(req, res) {
 
@@ -24,17 +24,17 @@ exports = module.exports = function(req, res) {
       });
     });
 
-    $('#table_id').DataTable();
+    //$('#table_id').DataTable();
 
     // Render the view
     view.render('entrevistas');
 };
 
 
-exports.approve = function(req, res, next) {
+exports.approve = function(req, res) {
 
     //TODO Passar os membros para User Recruta e enviar os dados para slack e etc por email
+    //TODO se for apenas 1 entao accept não é uma array mas sim um valor (id do candidato)
     console.log(req.body);
     res.redirect('/entrevistas');
-    next();
 }
