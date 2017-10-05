@@ -21,7 +21,7 @@ User.add({
     isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
     position: {
         type: Types.Select,
-        options: 'Membro, Recruta, Presidente, Vice-Presidente e Gestor de Projetos, Vice-Presidente e Gestor de Eventos, Tesoureiro, Secretário e Responsável pela Sala, Responsável pela Imagem e Comunicação',
+        options: 'Admin, Membro, Recruta, Presidente, Vice-Presidente e Gestor de Projetos, Vice-Presidente e Gestor de Eventos, Tesoureiro, Secretário e Responsável pela Sala, Responsável pela Imagem e Comunicação',
         initial: true,
         required: true
     },
