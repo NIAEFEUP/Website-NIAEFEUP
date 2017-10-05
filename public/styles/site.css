@@ -3957,9 +3957,9 @@ tbody.collapse.in {
   .navbar-default .navbar-text {
     color: #777; }
   .navbar-default .navbar-nav > li > a {
-    color: black; }
+    color: #777; }
     .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-      color: #8C2D19;
+      color: #333;
       background-color: transparent; }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #555;
@@ -8174,8 +8174,6 @@ body {
   background-color: white;
   height: 75px;
   font-size: 18px; }
-  .navbar a {
-    color: black; }
   .navbar .container-fluid {
     max-width: 1140px;
     margin: auto; }
@@ -8390,23 +8388,81 @@ body {
     outline: 0; }
 
 #container-projects .project {
-  height: 300px; }
+  height: 350px;
+  padding: 0 !important; }
+  #container-projects .project .project-description-padding {
+    padding-top: 100px; }
+  #container-projects .project .project-title {
+    color: white;
+    text-align: center;
+    font-size: 18px; }
+  #container-projects .project .separator {
+    border-top: 3px solid white !important;
+    width: 13%;
+    margin-bottom: 0px !important; }
+  #container-projects .project .project-description {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 10px; }
+  #container-projects .project .icons i {
+    color: white;
+    font-size: 40px;
+    padding-bottom: 15px; }
+  #container-projects .project .icons .fa-file-text {
+    padding-right: 15px; }
 
-#container-projects #project_1 {
+#container-projects #project-1 {
   background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
   background-size: cover; }
+  #container-projects #project-1 #project-1-description {
+    background-color: gray;
+    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    display: none; }
 
-#container-projects #project_2 {
+#container-projects #project-1:hover #project-1-description {
+  display: block; }
+
+#container-projects #project-2 {
   background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
   background-size: cover; }
+  #container-projects #project-2 #project-2-description {
+    background-color: gray;
+    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    display: none; }
 
-#container-projects #project_3 {
+#container-projects #project-2:hover #project-2-description {
+  display: block; }
+
+#container-projects #project-3 {
   background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
   background-size: cover; }
+  #container-projects #project-3 #project-3-description {
+    background-color: gray;
+    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    display: none; }
 
-#container-projects #project_4 {
+#container-projects #project-3:hover #project-3-description {
+  display: block; }
+
+#container-projects #project-4 {
   background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
   background-size: cover; }
+  #container-projects #project-4 #project-4-description {
+    background-color: gray;
+    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    display: none; }
+
+#container-projects #project-4:hover #project-4-description {
+  display: block; }
 
 #container-feup {
   margin-top: 100px;
