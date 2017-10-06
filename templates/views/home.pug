@@ -7,7 +7,9 @@ block content
                 p.white-title Encontro Nacional de Estudantes de Informática
                 hr.white-separator
                 p.white-subtitle Se és estudante de Engenharia Informática, não podes perder este evento!
-                button.btn.btn-default.see-more-button Ver Mais
+                a(href='http://enei.pt')
+                    button.btn.btn-default.see-more-button Ver Mais
+                    
     section#info
         .row
           .col-md-10.col-md-offset-1.text-center
@@ -69,17 +71,45 @@ block content
                 p.white-title Engenharia Informática
                 hr.white-separator.left
                 p.white-subtitle.info  O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500
+    section#portfolio
     section#container-projects
         .row.project-info
             .col-md-2.col-md-offset-1
                 p.title PORTFÓLIO
-            .col-md-2
-                button.btn.btn-default.btn-projects VER MAIS
+            //.col-md-2  button.btn.btn-default.btn-projects VER MAIS
         .row#project-photos
-            .col-md-3#project_1.project
-            .col-md-3#project_2.project
-            .col-md-3#project_3.project
-            .col-md-3#project_4.project
+            .col-md-3#project-1.project
+                #project-1-description.text-center.project-description-padding
+                    .icons.text-center
+                        i.fa.fa-file-text
+                        i.fa.fa-share-alt
+                    .project-title TÍTULO DO PROJETO
+                    hr.separator 
+                    .project-description description 
+            .col-md-3#project-2.project
+                #project-2-description.project-description-padding
+                    .icons.text-center
+                        i.fa.fa-file-text
+                        i.fa.fa-share-alt
+                    .project-title TÍTULO DO PROJETO
+                    hr.separator 
+                    .project-description description 
+            .col-md-3#project-3.project
+                #project-3-description.project-description-padding
+                    .icons.text-center
+                        i.fa.fa-file-text
+                        i.fa.fa-share-alt
+                    .project-title TÍTULO DO PROJETO
+                    hr.separator 
+                    .project-description description 
+            .col-md-3#project-4.project
+                #project-4-description.project-description-padding
+                    .icons.text-center
+                        i.fa.fa-file-text
+                        i.fa.fa-share-alt
+                    .project-title TÍTULO DO PROJETO
+                    hr.separator 
+                    .project-description description 
 
     section#container-feup
         .row.info
@@ -100,6 +130,7 @@ block content
                 hr.separator
                 .description MEMBROS
 
+    section#contacts
     section#container-contacts
         .row.contact-info
           .col-sm-7.col-sm-offset-1

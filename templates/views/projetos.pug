@@ -1,0 +1,39 @@
+extends ../layouts/default
+
+block content
+    header.projects-header
+        h2.text-center.projects-title Portfólio
+    section.projects
+        .container
+            .row
+                .col-sm-4
+                    .project
+                        a(type="button" data-toggle="modal" data-target="#tts")
+                            img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
+                .col-sm-4
+                    .project
+                        a(type="button" data-toggle="modal" data-target="#tts")
+                            img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
+                .col-sm-4
+                    .project
+                        a(type="button" data-toggle="modal" data-target="#tts")
+                            img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
+
+
+    #tts.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button(type="button" class="close" data-dismiss="modal")
+                        span(aria-hidden="true") &times
+                        span.sr-only Close
+                    h4.modal-title Timetable Selector
+                .modal-body
+                    img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
+                    br
+                    p é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe é muito fixe
+
+
+
+
+

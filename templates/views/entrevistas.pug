@@ -32,7 +32,8 @@ block content
                         td
                           p #{candidato.numero_up}
                         td
-                          p Entrevistado
+                          a(href="/entrevista/" + candidato._id)
+                            p Entrevistado
                     else
                       tr.danger
                         if user.isAdmin
