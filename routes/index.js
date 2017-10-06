@@ -55,7 +55,7 @@ exports = module.exports = function(app) {
     app.get('/api/fileupload/:id', keystone.middleware.api, routes.api.fileupload.get);
     app.all('/api/fileupload/:id/update', keystone.middleware.api, routes.api.fileupload.update);
     app.all('/api/fileupload/create', keystone.middleware.api, routes.api.fileupload.create);
-    app.get('/api/fileupload/:id/remove', keystone.middleware.api, routes.api.fileupload.remove);
+    //app.get('/api/fileupload/:id/remove', keystone.middleware.api, routes.api.fileupload.remove);
     app.get('/api/fileupload/:id/removePreviousPhoto', keystone.middleware.api, routes.api.fileupload.removePreviousPhoto);
 
 

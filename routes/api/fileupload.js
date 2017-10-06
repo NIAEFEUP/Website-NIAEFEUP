@@ -1,6 +1,7 @@
 var async = require('async');
 var keystone = require('keystone');
-var exec = require('child_process').exec;
+//var exec = require('child_process').exec;
+var fs = require('fs');
 
 var FileData = keystone.list('FileUpload');
 var User = keystone.list('User');
@@ -109,7 +110,6 @@ exports.create = function(req, res) {
 
 /**
  * Delete File by ID
- */
 exports.remove = function(req, res) {
     var fileId = req.params.id;
     FileData.model.findById(req.params.id).exec(function(err, item) {
@@ -117,12 +117,13 @@ exports.remove = function(req, res) {
         if (err) return res.apiError('database error', err);
 
         if (!item) return res.apiError('not found');
+        
 
         item.remove(function(err) {
 
             if (err) return res.apiError('database error', err);
 
-            //FIXME Mudar isto para 'fs'
+            //TODO Mudar isto para 'fs'
             exec('rm public/uploads/files/' + fileId + '.*', function(err, stdout, stderr) {
                 if (err) {
                     console.log('child process exited with error code ' + err.code);
@@ -138,7 +139,7 @@ exports.remove = function(req, res) {
 
     });
 }
-
+*/
 
 
 /**
@@ -166,12 +167,16 @@ exports.removePreviousPhoto = function(req, res) {
 
             var filePath = item[0].url;
             //Delete the file
-            exec('rm ./public' + filePath, function(err, stdout, stderr) {
-                if (err) {
-                    console.log('child process exited with error code ' + err.code);
-                    return;
+            var full_path = process.cwd() + "/public" + filePath;
+
+            fs.unlink(full_path, (err) => {
+                if (err){
+                    if(err == "ENOENT")
+                        console.log("File does not exist");
+                
+                    } else {
+                    console.log('Successfully deleted ' + full_path);
                 }
-                console.log(stdout);
             });
 
             return res.apiResponse({
