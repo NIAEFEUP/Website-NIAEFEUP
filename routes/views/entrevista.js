@@ -7,41 +7,41 @@ exports = module.exports = function(req, res) {
     var view = new keystone.View(req, res);
     var locals = res.locals;
 
-    // Set locals
-    locals.section = 'entrevista';
-    locals.filters = {
-        id: req.params.id,
-    };
+    locals.candidato_id = req.params.id;
 
     // Load the current post
     view.on('init', function(next) {
 
-        var cand = keystone.list('Candidatura').model.findById(req.params.id);
-        locals.candidato_id = req.params.id;
+        Candidatura.model.findById(req.params.id).exec(function(err, results) {
 
-        cand.exec(function(err, result) {
+          if(err){
+            req.flash('error','Ocorreu um erro, tenta mais tarde!');
+            next(err);
+          } else if (results){
 
-            if(!result){
-              req.flash('error','Ocorreu um erro, tenta mais tarde!');
-              next(err);
+            locals.candidato = results;
+            
+            if(results.entrevista){//Já foi entrevistado
+
+              console.log("Foi entrevistado");
+
+              Entrevista.model.find({'candidato_id': results._id}).exec(function(err, results) {
+                if(err){
+                  console.log(err);
+                  req.flash("error","Erro a pedir entrevista do candidato, tenta mais tarde!");
+                  req.redirect('/entrevistas');
+                } else if(results){
+                  locals.entrevista = results[0];
+                  next();
+                }
+              });
             }
-
-            if(result.entrevista){//Já foi entrevistado
-
-                var entre = keystone.list('Entrevista').model.findById(req.params.id);
-
-                entre.exec(function(err, result) {
-                    if(result){
-                      locals.entrevista = result;
-                    }
-                });
-            }
-
-            locals.candidato = result;
+          } else {
+            console.log("Erro");
             next();
+          }
         });
-
-    });
+      });
 
     // Render the view
     view.render('entrevista');

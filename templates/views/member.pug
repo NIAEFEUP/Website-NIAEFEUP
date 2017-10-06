@@ -4,21 +4,21 @@ block content
     header#member-header
       .row#member-header-content
         .col-sm-5.col-xs-offset-1
-          img#member-img.img-responsive.img-circle.pull-right(src=user.photo_path)
+          img#member-img.img-responsive.img-circle.pull-right(src=member.photo_path)
         .col-sm-6
           .colxs-offset-1
             form.login-form.form-horizontal(method='post')
               #member-name.row.flex
-                h2 #{user.name.first} &nbsp
-                h2 #{user.name.last}
+                h2 #{member.name.first} &nbsp
+                h2 #{member.name.last}
               .row#cargo
-                em #{user.position}
+                em #{member.position}
               nav.social
-                a.fa.fa-linkedin.fa-icon-border(href=user.linkedin, title='LinkedIn')
-                a.fa.fa-github.fa-icon-border(href=user.github, title='Github')
-                a.fa.fa-globe.fa-icon-border(href=user.website, title='Website')
+                a.fa.fa-linkedin.fa-icon-border(href=member.linkedin, title='LinkedIn')
+                a.fa.fa-github.fa-icon-border(href=member.github, title='Github')
+                a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
     section.container
-      if !user.public
+      if !member.public
         div.container
           div.page-header
             h1 User profile not public

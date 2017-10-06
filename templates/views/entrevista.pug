@@ -5,35 +5,48 @@ block content
     div.page-header
       h1 Entrevista
       //Listar a informacao do candidato
-      if !entrevista
-        form(method='POST' action='/entrevista')
-          input(type='hidden', name="candidato_id", value="" + candidato_id)
-          input(type='hidden', name='entrevistador_1', value="" + user._id)
-          //input.form-control(type='text', name='entrevistador_2', placeholder='Entrevistador 2')
-          textarea.form-control(name='estado_curso', placeholder="Estado do Curso")
-          textarea.form-control(name='grupo_estudantil', placeholder='Integra ou pretende ingressar noutro grupo estudantil?')
-          textarea.form-control(name='porque_ni', placeholder='Porquê o NI?')
-          textarea.form-control(name='valor_acrescentado', placeholder="O que o candidato já fez que lhe acrescenta valor") 
-          textarea.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI')
+      .col-md-6
+        p #{candidato.name.full}
+        p #{candidato.numero_up}
+        p #{candidato.email}
+        p #{candidato.porque_ni}
+        p #{candidato.linkedin}
+        p #{candidato.github}
+        p #{candidato.website}
+        p #{candidato.tecnologias}
+      .col-md-6
+        if !entrevista
+          form(method='POST' action='/entrevista')
+            input(type='hidden', name="candidato_id", value="" + candidato_id)
+            input(type='hidden', name='entrevistador_1', value="" + user._id)
+            //input.form-control(type='text', name='entrevistador_2', placeholder='Entrevistador 2')
+            textarea.form-control(name='estado_curso', placeholder="Estado do Curso")
+            textarea.form-control(name='grupo_estudantil', placeholder='Integra ou pretende ingressar noutro grupo estudantil?')
+            textarea.form-control(name='porque_ni', placeholder='Porquê o NI?')
+            textarea.form-control(name='valor_acrescentado', placeholder='O que o candidato já fez que lhe acrescenta valor')
+            textarea.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI')
+            .form-control
+              label Erasmus :
+              input(type='checkbox', name='erasmus', value='true')
+            textarea.form-control(name='se_erasmus_futuro', placeholder='Se for de erasmus o que acha do futuro no NI')
+            textarea.form-control(name='se_5ano_futuro', placeholder='Se o candidato for do 5ano qual o seu futuro no curso')
+            textarea.form-control(name='observacoes', placeholder='Fazer perguntas relacionadas com o curriculo do candidato')
+            .row
+              .col-sm-6
+                button.btn.btn-primary(type='submit') ENVIAR
+        else
+          textarea.form-control(name='estado_curso', disabled="true") #{entrevista.estado_curso}
+          textarea.form-control(name='grupo_estudantil', disabled="true") #{entrevista.grupo_estudantil}
+          textarea.form-control(name='porque_ni', disabled="true") #{entrevista.porque_ni}
+          textarea.form-control(name='valor_acrescentado', disabled="true") #{entrevista.valor_acrescentado} 
+          textarea.form-control(name='fazer_dentro_do_ni', disabled="true") #{entrevista.fazer_dentro_do_ni}
           .form-control
             label Erasmus :
-            input(type='checkbox', name='erasmus', value='true')
-          textarea.form-control(name='se_erasmus_futuro', placeholder='Se for de erasmus o que acha do futuro no NI')
-          textarea.form-control(name='se_5ano_futuro', placeholder='Se o candidato for do 5ano qual o seu futuro no curso')
-          textarea.form-control(name='observacoes', placeholder='Fazer perguntas relacionadas com o curriculo do candidato')
-          .row
-            .col-sm-6
-              button.btn.btn-primary(type='submit') ENVIAR
-      else        
-          //input.form-control(type='text', name='entrevistador_2', placeholder='Entrevistador 2')
-          textarea.form-control(name='estado_curso', placeholder="Estado do Curso", disabled="true", value = candidato.estado_curso)
-          textarea.form-control(name='grupo_estudantil', placeholder='Integra ou pretende ingressar noutro grupo estudantil?', disabled="true", value = candidato.grupo_estudantil)
-          textarea.form-control(name='porque_ni', placeholder='Porquê o NI?', disabled="true", value = candidato.porque_ni)
-          textarea.form-control(name='valor_acrescentado', placeholder="O que o candidato já fez que lhe acrescenta valor", disabled="true", value = candidato.valor_acrescentado) 
-          textarea.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI', disabled="true", value = candidato.fazer_dentro_do_ni)
-          input.form-control(type='checkbox', name='erasmus', disabled="true", value = candidato.erasmus)
-          textarea.form-control(name='se_erasmus_futuro', placeholder='Se for de erasmus o que acha do futuro no NI', disabled="true", value = candidato.se_erasmus_futuro)
-          textarea.form-control(name='se_5ano_futuro', placeholder='Se o candidato for do 5ano qual o seu futuro no curso', disabled="true", value = candidato.se_5ano_futuro)
-          textarea.form-control(name='observacoes', placeholder='Fazer perguntas relacionadas com o curriculo do candidato', disabled="true", value = candidato.estado_curso)
+            if entrevista.erasmus
+              input(type='checkbox', disabled, checked)
+            else
+              input(type='checkbox', disabled)
+          textarea.form-control(name='se_erasmus_futuro', disabled="true") #{entrevista.se_erasmus_futuro}
+          textarea.form-control(name='se_5ano_futuro', disabled="true") #{entrevista.se_5ano_futuro}
+          textarea.form-control(name='observacoes', disabled="true") #{entrevista.observacoes}
 
-      //Aqui é fora do if, falta fazer o display das informações do candidato

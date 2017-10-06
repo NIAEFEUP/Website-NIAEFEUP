@@ -17,7 +17,7 @@ exports = module.exports = function(req, res) {
         var q = keystone.list('User').model.findById(req.params.id);
 
         q.exec(function(err, result) {
-            locals.user = result;
+            locals.member = result;
             next(err);
         });
 
