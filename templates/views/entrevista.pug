@@ -15,7 +15,9 @@ block content
           textarea.form-control(name='porque_ni', placeholder='Porquê o NI?')
           textarea.form-control(name='valor_acrescentado', placeholder="O que o candidato já fez que lhe acrescenta valor") 
           textarea.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI')
-          input.form-control(type='checkbox', name='erasmus', value='true') //falta por label
+          .form-control
+            label Erasmus :
+            input(type='checkbox', name='erasmus', value='true')
           textarea.form-control(name='se_erasmus_futuro', placeholder='Se for de erasmus o que acha do futuro no NI')
           textarea.form-control(name='se_5ano_futuro', placeholder='Se o candidato for do 5ano qual o seu futuro no curso')
           textarea.form-control(name='observacoes', placeholder='Fazer perguntas relacionadas com o curriculo do candidato')

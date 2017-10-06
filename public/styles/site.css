@@ -3957,9 +3957,9 @@ tbody.collapse.in {
   .navbar-default .navbar-text {
     color: #777; }
   .navbar-default .navbar-nav > li > a {
-    color: black; }
+    color: #777; }
     .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-      color: #8C2D19;
+      color: #333;
       background-color: transparent; }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #555;
@@ -8437,6 +8437,9 @@ body {
     #container-feup .info .description {
       font-size: 15px;
       font-weight: 400; }
+  @media screen and (max-width: 991px) {
+    #container-feup {
+      height: 600px; } }
 
 #container-contacts {
   margin: 50px auto; }
@@ -8663,3 +8666,15 @@ a.fa-icon-border,
 
 a.fa-icon-border:hover {
   background-color: #6B2212; }
+
+.projects-header {
+  height: 400px;
+  background: url(../images/members/fullteam.jpg) center center no-repeat;
+  position: relative; }
+
+.projects-title {
+  color: #FFFFFF;
+  font-size: 40px;
+  margin: 0 auto;
+  padding-top: 1em;
+  padding-bottom: 1em; }
