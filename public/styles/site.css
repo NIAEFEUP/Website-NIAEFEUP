@@ -6062,6 +6062,21 @@ button.close {
 .fa-home:before {
   content: ""; }
 
+.team-member:hover .info-member {
+  height: 100%; }
+
+.projects-header {
+  height: 400px;
+  background: url(../images/members/fullteam.jpg) center center no-repeat;
+  position: relative; }
+
+.projects-title {
+  color: #FFFFFF;
+  font-size: 40px;
+  margin: 0 auto;
+  padding-top: 1em;
+  padding-bottom: 1em; }
+
 .fa-file-o:before {
   content: ""; }
 

@@ -49,6 +49,7 @@ exports = module.exports = function(app) {
     app.post('/entrevistas_accept',middleware.requireAdmin,routes.views.entrevistas.approve);
     app.get('/entrevista/:id',middleware.nonRecruta,routes.views.entrevista);
     app.post('/entrevista',middleware.nonRecruta,routes.views.entrevista.create);
+    app.get('/portfolio', routes.views.projetos);
 
     //File Upload Route
     app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
