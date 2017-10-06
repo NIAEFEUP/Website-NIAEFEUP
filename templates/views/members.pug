@@ -2,58 +2,32 @@ extends ../layouts/default
 
 block content
 	header#members-header
-		h2.text-center#members-title Equipa
+		h2.text-center#members-title EQUIPA
 	.container#members
 		// DIREÇÃO
 		section#direction-members
-			h3.text-center Direção
+			//h3.text-center Direção
 			.row
-				.col-sm-4
-					.team-member
-						a(href="./member/"+presidente._id)
-							img.img-responsive(src=presidente.photo_path, alt='presidente')
-							aside.info-member
-								h4 #{presidente.name.first} #{presidente.name.last}
-								p.text-muted #{presidente.position}
-				.col-sm-4
-					.team-member
-						a(href="./member/"+gestor_projetos._id)
-							img.img-responsive(src=gestor_projetos.photo_path, alt='Vice-Presidente e Gestor de Projetos')
-							aside.info-member
-								h4 #{gestor_projetos.name.first} #{gestor_projetos.name.last}
-								p.text-muted #{gestor_projetos.position}
-				.col-sm-4
-					.team-member
-						a(href="./member/"+gestor_eventos._id)
-							img.img-responsive(src=gestor_eventos.photo_path, alt='Vice-Presidente e Gestor de Eventos')
-							aside.info-member
-								h4 #{gestor_eventos.name.first} #{gestor_eventos.name.last}
-								p.text-muted #{gestor_eventos.position}
-			.row
-				.col-sm-4
-					.team-member
-						a(href="./member/"+tesoureiro._id)
-							img.img-responsive(src=tesoureiro.photo_path, alt='Tesoureiro')
-							aside.info-member
-								h4 #{tesoureiro.name.first} #{tesoureiro.name.last}
-								p.text-muted #{tesoureiro.position}
-				.col-sm-4
-					.team-member
-						a(href="./member/"+responsavel_sala._id)
-							img.img-responsive(src=responsavel_sala.photo_path, alt='Secretário e Responsável pela Sala')
-							aside.info-member
-								h4 #{responsavel_sala.name.first} #{responsavel_sala.name.last}
-								p.text-muted #{responsavel_sala.position}
-				.col-sm-4
-					.team-member
-						a(href="./member/"+imagem_comunicacao._id)
-							img.img-responsive(src=imagem_comunicacao.photo_path, alt='Responsável pela Imagem e Comunicação')
-							aside.info-member
-								h4 #{imagem_comunicacao.name.first} #{imagem_comunicacao.name.last}
-								p.text-muted #{imagem_comunicacao.position}
+				each direction_member in direcao
+					.col-sm-4
+						.team-member
+							a(href="./member/"+direction_member._id)
+								img.img-responsive(src=direction_member.photo_path, alt=direction_member.position)
+								aside.info-member
+									div
+										h4 #{direction_member.name.first} #{direction_member.name.last}
+										em #{direction_member.position}
+										hr
+									nav.social
+										if direction_member.linkedin
+											a.fa.fa-linkedin.fa-icon-border(href=direction_member.linkedin, title='LinkedIn')
+										if direction_member.github
+											a.fa.fa-github.fa-icon-border(href=direction_member.github, title='Github')
+										if direction_member.website
+											a.fa.fa-globe.fa-icon-border(href=direction_member.website, title='Website')
 			// MEMBROS
 		section#active-members
-			h3.text-center Membros
+			//h3.text-center Membros
 			.row
 				each member in members	
 					.col-sm-3
@@ -61,25 +35,31 @@ block content
 							a(href="./member/"+member._id)
 								img.img-responsive(src=member.photo_path, alt='membro')
 								aside.info-member
-									h4 #{member.name.first} #{member.name.last}
-									p.text-muted #{member.position}
+									div
+										h4 #{member.name.first} #{member.name.last}
+										em #{member.position}
+										hr
+									nav.social
+										if member.linkedin
+											a.fa.fa-linkedin.fa-icon-border(href=member.linkedin, title='LinkedIn')
+										if member.github
+											a.fa.fa-github.fa-icon-border(href=member.github, title='Github')
+										if member.website
+											a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
 				each recruta in recrutas	
 					.col-sm-3
 						.team-member
 							a(href="./member/"+recruta._id)
 								img.img-responsive(src=recruta.photo_path, alt='recruta')
 								aside.info-member
-									h4 #{recruta.name.first} #{recruta.name.last}
-									p.text-muted #{recruta.position}
-					
-			// RECRUTAS
-			.row
-				// TEMPLATE
-				// <div class='col-sm-2'><div class='team-member'><img src='images/members/Pedro Fraga-min.png' class='img-responsive img-circle' alt=''><h4>RECRUITS_NAME</h4><p class='text-muted'>Recruta</p></div></div>
-			//
-				Frase genérica para o final da pagina?
-				<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 text-center">
-				<p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-				</div>
-				</div>
+									div
+										h4 #{recruta.name.first} #{recruta.name.last}
+										em #{recruta.position}
+										hr
+									nav.social
+										if recruta.linkedin
+											a.fa.fa-linkedin.fa-icon-border(href=recruta.linkedin, title='LinkedIn')
+										if recruta.github
+											a.fa.fa-github.fa-icon-border(href=recruta.github, title='Github')
+										if recruta.website
+											a.fa.fa-globe.fa-icon-border(href=recruta.website, title='Website')

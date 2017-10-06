@@ -13,8 +13,8 @@
 
 // Creates a wrapper for a series of columns
 @mixin make-row($gutter: $grid-gutter-width) {
-  margin-left:  ceil(($gutter / -2));
-  margin-right: floor(($gutter / -2));
+  margin-left:  0; // EDIT: margin-left:  ceil(($gutter / -2));
+  margin-right: 0; //      margin-right: floor(($gutter / -2));, because in the mobile version create deformation
   @include clearfix;
 }
 

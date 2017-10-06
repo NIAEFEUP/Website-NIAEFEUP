@@ -44,16 +44,19 @@ exports = module.exports = function(app) {
     app.get('/blog/:category?', routes.views.blog);
     app.get('/blog/post/:post', routes.views.post);
     app.get('/candidatura',middleware.nonUser,routes.views.candidatura);
-    app.post('/candidatura',middleware.validarCandidatura,routes.views.candidatura.create);
-    app.get('/entrevista',middleware.nonRecruta,routes.views.entrevista);
-    app.get('/projetos', routes.views.projetos);
+    app.post('/candidatura',middleware.nonUser,routes.views.candidatura.create);
+    app.get('/entrevistas',middleware.nonRecruta,routes.views.entrevistas);
+    app.post('/entrevistas_accept',middleware.requireAdmin,routes.views.entrevistas.approve);
+    app.get('/entrevista/:id',middleware.nonRecruta,routes.views.entrevista);
+    app.post('/entrevista',middleware.nonRecruta,routes.views.entrevista.create);
+    app.get('/portfolio', routes.views.projetos);
 
     //File Upload Route
     app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
     app.get('/api/fileupload/:id', keystone.middleware.api, routes.api.fileupload.get);
     app.all('/api/fileupload/:id/update', keystone.middleware.api, routes.api.fileupload.update);
     app.all('/api/fileupload/create', keystone.middleware.api, routes.api.fileupload.create);
-    app.get('/api/fileupload/:id/remove', keystone.middleware.api, routes.api.fileupload.remove);
+    //app.get('/api/fileupload/:id/remove', keystone.middleware.api, routes.api.fileupload.remove);
     app.get('/api/fileupload/:id/removePreviousPhoto', keystone.middleware.api, routes.api.fileupload.removePreviousPhoto);
 
 

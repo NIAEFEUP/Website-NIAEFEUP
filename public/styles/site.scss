@@ -5,6 +5,10 @@
 
 @import "bootstrap/bootstrap";
 
+// Font Awesome
+// =========
+@import "font-awesome/font-awesome";
+
 // The easiest way to customise Bootstrap variables while
 // being able to easily override the source files with new
 // versions is to override the ones you want in another file.
@@ -19,7 +23,12 @@
 // ===========
 
 // Add your own site style includes here
+@import "site/utils";
 @import "site/layout";
 @import "site/home";
 @import "site/members";
+@import "site/member";
+@import "site/candidacy";
+@import "site/fa-icon";
 @import "site/projects";
+
