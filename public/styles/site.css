@@ -8266,7 +8266,7 @@ body {
 .item {
   background: url("../images/template_website/enei.jpg") no-repeat center center;
   background-size: cover;
-  height: 550px;
+  height: 60vh;
   width: 100%;
   display: flex;
   align-items: center; }
@@ -8306,7 +8306,7 @@ body {
   #hero .slide-info {
     text-align: center; }
   #hero .see-more-button {
-    margin-top: 70px; }
+    margin-top: 2vh; }
   #hero .sub-description {
     padding-top: 15px; }
 
@@ -8755,9 +8755,6 @@ a.fa-icon-border:hover {
     @media (min-width: 1200px) {
       .portfolio .mix {
         width: 25%; } }
-  .portfolio .caption {
-    position: relative;
-    bottom: 0; }
 
 .portfolio-options {
   padding: 25px 0 25px 0;
