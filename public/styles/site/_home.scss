@@ -408,6 +408,16 @@
 		#github {
 			margin-top: 20px;
 		}
+		.col{
+			padding-top: 25px;
+		}	
+		
+		@media (min-width: $screen-md-min) {
+			.col{
+				padding-top: 0;
+			}		
+		}
+		
 	}
 }
 

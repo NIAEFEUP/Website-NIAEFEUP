@@ -9,7 +9,7 @@ block content
 			//h3.text-center Direção
 			.row
 				each direction_member in direcao
-					.col-sm-4
+					.col-md-4.col-sm-6.col-xs-12
 						.team-member
 							a(href="./member/"+direction_member._id)
 								img.img-responsive(src=direction_member.photo_path, alt=direction_member.position)
@@ -30,7 +30,7 @@ block content
 			//h3.text-center Membros
 			.row
 				each member in members	
-					.col-sm-3
+					.col-sm-3.col-xs-6
 						.team-member
 							a(href="./member/"+member._id)
 								img.img-responsive(src=member.photo_path, alt='membro')
@@ -46,8 +46,10 @@ block content
 											a.fa.fa-github.fa-icon-border(href=member.github, title='Github')
 										if member.website
 											a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
+		section#recruits
+			.row
 				each recruta in recrutas	
-					.col-sm-3
+					.col-sm-3.col-xs-6
 						.team-member
 							a(href="./member/"+recruta._id)
 								img.img-responsive(src=recruta.photo_path, alt='recruta')

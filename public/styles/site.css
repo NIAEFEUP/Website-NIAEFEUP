@@ -8521,6 +8521,11 @@ body {
       margin-bottom: 20px; }
     #container-contacts .contact-info #github {
       margin-top: 20px; }
+    #container-contacts .contact-info .col {
+      padding-top: 25px; }
+    @media (min-width: 992px) {
+      #container-contacts .contact-info .col {
+        padding-top: 0; } }
 
 #contact-align {
   padding: 0; }
