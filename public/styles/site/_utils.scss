@@ -8,3 +8,12 @@
     position: absolute;
     top:$nav-bar-heigth;
 }
+
+.btn:focus, .btn:active, .btn.active, .btn:focus:active {
+    background-image: none;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: $primary-color;
+    color: white;
+}
