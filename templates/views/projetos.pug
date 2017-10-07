@@ -2,37 +2,74 @@ extends ../layouts/default
 
 block content
     header.portfolio-header
-        h2.text-center.portfolio-title Projectos
+        h2.text-center.portfolio-title PORTFÓLIO
+    section.portfolio-options.container-fluid
+        .btn-group(role='group')
+            button.btn.btn-link(type='button', data-filter='all') COMPLETO
+            button.btn.btn-link(type='button', data-filter='.project') PROJETOS
+            button.btn.btn-link(type='button', data-filter='.workshop') WORKSHOPS
+            button.btn.btn-link(type='button', data-filter='.visit') VISITAS A EMPRESAS
     section.portfolio
         .container
-            .row
-                .col-sm-6.col-md-4
-                    .thumbnail
-                        img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
-                        .caption
-                        h3 Timetable Selector
-                        p O nosso serviço de ajuda à escolha de horários.
-                        p
-                            a.btn.btn-primary(href='https://ni.fe.up.pt/TTS/', role='button') Website
-                .col-sm-6.col-md-4
-                    .thumbnail
-                        img.img-responsive(src="./images/projects/feupload.png", alt='timetable-selector')
-                        .caption
-                        h3 FEUPLoad
-                        p Partilha temporária de ficheiros
-                        p
-                            a.btn.btn-primary(href='https://feupload.fe.up.pt/', role='button') Website
+            .project.mix
+                .thumbnail
+                    img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
+                    .caption
+                    h3 Exame calendar
+                    p 
+            .project.mix
+                .thumbnail
+                    img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
+                    .caption
+                    h3 Timetable Selector
+                    p O nosso serviço de ajuda à escolha de horários.
+                    p
+                        a.btn.btn-primary(href='https://ni.fe.up.pt/TTS/', role='button') Website
+            .workshop.mix
+                .thumbnail
+                    img.img-responsive(src="./images/projects/feupload.png", alt='timetable-selector')
+                    .caption
+                    h3 FEUPLoad
+                    p Partilha temporária de ficheiros
+                    p
+                        a.btn.btn-primary(href='https://feupload.fe.up.pt/', role='button') Website
+            .project.mix
+                .thumbnail
+                    img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
+                    .caption
+                    h3 Exame calendar
+                    p 
+            .project.mix
+                .thumbnail
+                    img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
+                    .caption
+                    h3 Timetable Selector
+                    p O nosso serviço de ajuda à escolha de horários.
+                    p
+                        a.btn.btn-primary(href='https://ni.fe.up.pt/TTS/', role='button') Website
+            .workshop.mix
+                .thumbnail
+                    img.img-responsive(src="./images/projects/feupload.png", alt='timetable-selector')
+                    .caption
+                    h3 FEUPLoad
+                    p Partilha temporária de ficheiros
+                    p
+                        a.btn.btn-primary(href='https://feupload.fe.up.pt/', role='button') Website
+            
+
+    script(src='./js/mixitup.min.js')
+    script.
+        var containerEl = document.querySelector('.container');
+        
+        var config = {
+            animation: {
+                enable: false
+            }
+        };
+
+        var mixer = mixitup(containerEl, config);
+        
 
 
-    header.portfolio-header
-        h2.text-center.portfolio-title Workshops
-    section.portfolio
-        .container
-            .row
-                
-    header.portfolio-header
-        h2.text-center.portfolio-title Visitas a empresas
-    section.portfolio
-        .container
-            .row
-                
+
+
