@@ -4,57 +4,50 @@ block content
     header.portfolio-header
         h2.text-center.portfolio-title PORTFÓLIO
     section.portfolio-options.container-fluid
-        .btn-group(role='group')
-            button.btn.btn-link(type='button', data-filter='all') COMPLETO
-            button.btn.btn-link(type='button', data-filter='.project') PROJETOS
-            button.btn.btn-link(type='button', data-filter='.workshop') WORKSHOPS
-            button.btn.btn-link(type='button', data-filter='.visit') VISITAS A EMPRESAS
+        button.btn.btn-default.see-more-button(type='button', data-filter='all', autofocus="autofocus") COMPLETO
+        button.btn.btn-default.see-more-button(type='button', data-filter='.project') PROJETOS
+        button.btn.btn-default.see-more-button(type='button', data-filter='.workshop') WORKSHOPS
+        button.btn.btn-default.see-more-button(type='button', data-filter='.visit') VISITAS A EMPRESAS
     section.portfolio
         .container
             .project.mix
                 .thumbnail
-                    img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
+                    img.img-responsive(src="./images/projects/tts.png", alt='')
                     .caption
-                    h3 Exame calendar
-                    p 
+                        h3 Exame calendar
+                        p 
             .project.mix
                 .thumbnail
                     img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
                     .caption
-                    h3 Timetable Selector
-                    p O nosso serviço de ajuda à escolha de horários.
-                    p
-                        a.btn.btn-primary(href='https://ni.fe.up.pt/TTS/', role='button') Website
+                        h3 Timetable Selector
+                        p O nosso serviço de ajuda à escolha de horários.
+                        p
+                            a.btn.btn-primary(href='https://ni.fe.up.pt/TTS/', role='button') Website
+            .project.mix
+                .thumbnail
+                    img.img-responsive(src="./images/projects/feupload.png", alt='')
+                    .caption
+                        h3 FEUPLoad
+                        p Partilha temporária de ficheiros
+                        p
+                            a.btn.btn-primary(href='https://feupload.fe.up.pt/', role='button') Website
             .workshop.mix
                 .thumbnail
-                    img.img-responsive(src="./images/projects/feupload.png", alt='timetable-selector')
-                    .caption
-                    h3 FEUPLoad
-                    p Partilha temporária de ficheiros
-                    p
-                        a.btn.btn-primary(href='https://feupload.fe.up.pt/', role='button') Website
-            .project.mix
-                .thumbnail
                     img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
                     .caption
-                    h3 Exame calendar
-                    p 
-            .project.mix
-                .thumbnail
-                    img.img-responsive(src="./images/projects/tts.png", alt='timetable-selector')
-                    .caption
-                    h3 Timetable Selector
-                    p O nosso serviço de ajuda à escolha de horários.
-                    p
-                        a.btn.btn-primary(href='https://ni.fe.up.pt/TTS/', role='button') Website
+                        h3 Workshop GIT
+                        p 
+                        p
             .workshop.mix
                 .thumbnail
-                    img.img-responsive(src="./images/projects/feupload.png", alt='timetable-selector')
+                    img.img-responsive(src="", alt='')
                     .caption
-                    h3 FEUPLoad
-                    p Partilha temporária de ficheiros
-                    p
-                        a.btn.btn-primary(href='https://feupload.fe.up.pt/', role='button') Website
+                        h3 Workshop C++
+                        p 
+                        p
+                        
+
             
 
     script(src='./js/mixitup.min.js')

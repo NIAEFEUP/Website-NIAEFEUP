@@ -8160,6 +8160,14 @@ button.close {
   position: absolute;
   top: 75px; }
 
+.btn:focus, .btn:active, .btn.active, .btn:focus:active {
+  background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: #8C2D19;
+  color: white; }
+
 body {
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden; }
@@ -8725,42 +8733,39 @@ a.fa-icon-border:hover {
 .portfolio {
   min-height: 100px; }
   .portfolio .container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch; }
+  .portfolio .mix {
+    /* Small devices (tablets, 768px and up) */
     /* Small devices (tablets, 768px and up) */
     /* Medium devices (desktops, 992px and up) */
-    /* Large devices (large desktops, 1200px and up) */ }
+    /* Large devices (large desktops, 1200px and up) */
+    display: inline-flex;
+    padding: 0 10px 0 10px; }
+    @media (min-width: 480px) {
+      .portfolio .mix {
+        width: 100%; } }
     @media (min-width: 768px) {
-      .portfolio .container {
-        -moz-column-count: 1;
-        -moz-column-gap: 5px;
-        -webkit-column-count: 1;
-        -webkit-column-gap: 5px;
-        column-count: 1;
-        column-gap: 5px; } }
+      .portfolio .mix {
+        width: 50%; } }
     @media (min-width: 992px) {
-      .portfolio .container {
-        -moz-column-count: 2;
-        -moz-column-gap: 5px;
-        -webkit-column-count: 2;
-        -webkit-column-gap: 5px;
-        column-count: 2;
-        column-gap: 5px; } }
+      .portfolio .mix {
+        width: 33%; } }
     @media (min-width: 1200px) {
-      .portfolio .container {
-        -moz-column-count: 3;
-        -moz-column-gap: 5px;
-        -webkit-column-count: 3;
-        -webkit-column-gap: 5px;
-        column-count: 3;
-        column-gap: 5px; } }
-  .portfolio .mix {
-    width: 100%;
-    display: inline-block;
-    margin-bottom: 0px;
-    margin-top: 0px; }
+      .portfolio .mix {
+        width: 25%; } }
+  .portfolio .caption {
+    position: relative;
+    bottom: 0; }
 
 .portfolio-options {
   padding: 25px 0 25px 0;
   text-align: center; }
+  .portfolio-options .btn {
+    text-align: center;
+    width: 250px;
+    margin: 5px; }
 
 .thumbnail {
-  padding: 15px; }
+  padding: 10px; }
