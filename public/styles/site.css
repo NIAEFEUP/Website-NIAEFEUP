@@ -8708,14 +8708,19 @@ a.fa-icon-border,
 a.fa-icon-border:hover {
   background-color: #6B2212; }
 
-.projects-header {
-  height: 400px;
-  background: url(../images/members/fullteam.jpg) center center no-repeat;
-  position: relative; }
+.portfolio-header {
+  height: 300px;
+  background: url(../images/members/fullteam.jpg) center center no-repeat; }
 
-.projects-title {
+.portfolio-title {
   color: #FFFFFF;
   font-size: 40px;
-  margin: 0 auto;
-  padding-top: 1em;
-  padding-bottom: 1em; }
+  line-height: 300px;
+  background-color: rgba(0, 0, 0, 0.7); }
+  .portfolio-title h3 {
+    padding-top: 2em;
+    margin-top: 1.5em;
+    padding-bottom: 2em; }
+
+.portfolio {
+  padding: 100px 0 100px 0; }
