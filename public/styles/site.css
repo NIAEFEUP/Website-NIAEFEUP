@@ -1,4 +1,4 @@
-overflow-x: hidden; }@charset "UTF-8";
+@charset "UTF-8";
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -8375,7 +8375,7 @@ body {
 @media (max-width: 767px) {
   #container-icons .row {
     padding-bottom: 15px;
-    margin-bottom: 0px !important; } }
+    margin-bottom: 0 !important; } }
 
 @media (max-width: 767px) {
   #container-icons .skill-title {
@@ -8457,6 +8457,10 @@ body {
     color: white;
     font-size: 25px;
     padding-bottom: 20px; }
+  #container-projects #project-photos .project a {
+    color: white; }
+  #container-projects #project-photos .project a:hover {
+    color: #8C2D19; }
   @media (min-width: 768px) {
     #container-projects #project-photos .project {
       width: 25%;
@@ -8464,11 +8468,10 @@ body {
   @media (max-width: 767px) {
     #container-projects #project-photos .project {
       width: 50%;
-      float: left;
-      height: 180px; } }
+      float: left; } }
 
 #container-projects #project-1 {
-  background: url("../images/projects/project-tts.png") no-repeat center center;
+  background: url("../images/projects/project-website.png") no-repeat center center;
   background-size: cover; }
   #container-projects #project-1 #project-1-description {
     background-color: rgba(0, 0, 0, 0.6);
@@ -8480,7 +8483,7 @@ body {
   display: block; }
 
 #container-projects #project-2 {
-  background: url("../images/projects/feup_load.png") no-repeat center center;
+  background: url("../images/projects/project-tts.png") no-repeat center center;
   background-size: cover; }
   #container-projects #project-2 #project-2-description {
     background-color: rgba(0, 0, 0, 0.6);
@@ -8492,7 +8495,7 @@ body {
   display: block; }
 
 #container-projects #project-3 {
-  background: url("../images/projects/workshop.JPG") no-repeat center center;
+  background: url("../images/projects/project-workshop.png") no-repeat center center;
   background-size: cover; }
   #container-projects #project-3 #project-3-description {
     background-color: rgba(0, 0, 0, 0.6);
@@ -8504,7 +8507,7 @@ body {
   display: block; }
 
 #container-projects #project-4 {
-  background: url("../images/projects/enei.png") no-repeat center center;
+  background: url("../images/projects/project-enei.png") no-repeat center center;
   background-size: cover; }
   #container-projects #project-4 #project-4-description {
     background-color: rgba(0, 0, 0, 0.6);
@@ -8582,14 +8585,20 @@ body {
   width: 100%; }
 
 #members-header {
-  height: 300px;
-  background: url(../images/members/fullteam.jpg) center center no-repeat; }
+  background: url("../images/home/banner-equipa.png") no-repeat center center;
+  background-size: cover;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  align-items: center; }
 
 #members-title {
   color: #FFFFFF;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
   font-size: 40px;
-  line-height: 300px;
-  background-color: rgba(0, 0, 0, 0.7); }
+  line-height: 60vh;
+  padding-top: 50px; }
 
 #members h3 {
   padding-top: 2em;
@@ -8669,7 +8678,7 @@ body {
   background-position-y: center; }
 
 #member-header-content {
-  height: 300px;
+  height: 60vh;
   display: flex;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
@@ -8703,14 +8712,23 @@ body {
     border-radius: 0; }
 
 #candidacy-header {
-  height: 300px; }
+  background: url("../images/home/banner-recrutamento.png") no-repeat top center;
+  background-size: cover;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  align-items: center; }
   #candidacy-header #candidacy-title {
-    color: white;
-    line-height: 300px;
-    vertical-align: middle;
-    background-color: rgba(0, 0, 0, 0.7); }
+    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60vh;
+    padding-top: 50px; }
 
 #form-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
   display: inline-block;
   padding-bottom: 1em;
   border-bottom: 1px;
@@ -8718,31 +8736,46 @@ body {
   border-bottom-color: #F1F0F0;
   margin-bottom: 1.1em; }
 
+#description {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #5C5C5C; }
+
 #form-of-candidacy {
-  padding-top: 20px; }
+  padding-top: 30px; }
   #form-of-candidacy .form-control {
     padding: 12px;
     height: auto; }
   #form-of-candidacy #first-name {
-    padding-left: 0; }
+    padding-left: 0;
+    font-weight: 300; }
     @media (max-width: 767px) {
       #form-of-candidacy #first-name {
         padding-right: 0; } }
   #form-of-candidacy #last-name {
-    padding-right: 0; }
+    padding-right: 0;
+    font-weight: 300; }
     @media (max-width: 767px) {
       #form-of-candidacy #last-name {
         padding-left: 0; } }
-  #form-of-candidacy input, #form-of-candidacy textarea {
+  #form-of-candidacy #field {
+    padding-right: 0;
+    font-weight: 300; }
+    @media (max-width: 767px) {
+      #form-of-candidacy #field {
+        padding-left: 0; } }
+  #form-of-candidacy input,
+  #form-of-candidacy textarea {
     border: none;
     border-radius: 0;
     background-color: #F1F0F0; }
-  #form-of-candidacy input::placeholder, #form-of-candidacy textarea::placeholder {
+  #form-of-candidacy input::placeholder,
+  #form-of-candidacy textarea::placeholder {
     color: #313030; }
   #form-of-candidacy #summit-btn {
     background-color: #8C2D19;
     border: none;
-    border-radius: 0px; }
+    border-radius: 0; }
   #form-of-candidacy #summit-btn:hover {
     background-color: #6B2212; }
 
@@ -8769,18 +8802,20 @@ a.fa-icon-border:hover {
   background-color: #6B2212; }
 
 .portfolio-header {
-  height: 300px;
-  background: url(../images/members/fullteam.jpg) center center no-repeat; }
+  background: url("../images/home/banner-portfolio.png") center center no-repeat;
+  background-size: cover;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  align-items: center; }
 
 .portfolio-title {
   color: #FFFFFF;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
   font-size: 40px;
-  line-height: 300px;
-  background-color: rgba(0, 0, 0, 0.7); }
-  .portfolio-title h3 {
-    padding-top: 2em;
-    margin-top: 1.5em;
-    padding-bottom: 2em; }
+  line-height: 60vh;
+  padding-top: 50px; }
 
 .portfolio {
   min-height: 100px; }
@@ -8794,7 +8829,7 @@ a.fa-icon-border:hover {
     /* Medium devices (desktops, 992px and up) */
     /* Large devices (large desktops, 1200px and up) */
     display: inline-flex;
-    padding: 0 10px 0 10px; }
+    padding: 0 10px; }
     @media (min-width: 480px) {
       .portfolio .mix {
         width: 100%; } }
@@ -8809,11 +8844,12 @@ a.fa-icon-border:hover {
         width: 25%; } }
 
 .portfolio-options {
-  padding: 25px 0 25px 0;
+  padding: 25px 0;
   text-align: center; }
   .portfolio-options .btn {
     text-align: center;
-    width: 250px;
+    font-size: 12px;
+    width: 180px;
     margin: 5px; }
 
 .thumbnail {

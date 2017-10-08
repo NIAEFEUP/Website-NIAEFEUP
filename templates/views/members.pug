@@ -2,7 +2,7 @@ extends ../layouts/default
 
 block content
 	header#members-header
-		h2.text-center#members-title EQUIPA
+		h2.text-center#members-title.center-block EQUIPA
 	.container#members
 		// DIREÇÃO
 		section#direction-members
@@ -29,7 +29,7 @@ block content
 		section#active-members
 			//h3.text-center Membros
 			.row
-				each member in members	
+				each member in members
 					.col-sm-3.col-xs-6
 						.team-member
 							a(href="./member/"+member._id)
@@ -48,7 +48,7 @@ block content
 											a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
 		section#recruits
 			.row
-				each recruta in recrutas	
+				each recruta in recrutas
 					.col-sm-3.col-xs-6
 						.team-member
 							a(href="./member/"+recruta._id)

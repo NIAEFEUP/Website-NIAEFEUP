@@ -142,36 +142,34 @@
 		font-weight: bold;
 	}
 
-
-    .col-md-2{
+	.col-md-2 {
 		@media (max-width: 767px) {
 			width: 18%;
-            float: left;
-            text-align: left;
-            font-size: 9px;
+			float: left;
+			text-align: left;
+			font-size: 9px;
 		}
-    }
+	}
 
-    .col-md-4{
+	.col-md-4 {
 		@media (max-width: 767px) {
 			padding-bottom: 15px;
 		}
-    }
+	}
 
-    .row{
-        @media (max-width: 767px) {
+	.row {
+		@media (max-width: 767px) {
 			padding-bottom: 15px;
-            margin-bottom: 0px !important;
+			margin-bottom: 0 !important;
 		}
-    }
+	}
 
-    .skill-title{
+	.skill-title {
 		@media (max-width: 767px) {
 			width: 82%;
-            font-size: 13px;
+			font-size: 13px;
 		}
-    }
-
+	}
 }
 
 #container-photo {
@@ -274,6 +272,14 @@
 				padding-bottom: 20px;
 			}
 
+			a {
+				color: white;
+			}
+
+			a:hover {
+				color: $primary-color;
+			}
+
 			@media (min-width: 768px) {
 				width: 25%;
 				float: left;
@@ -286,7 +292,7 @@
 	}
 
 	#project-1 {
-		background: url("../images/projects/project-tts.png") no-repeat center center;
+		background: url("../images/projects/project-website.png") no-repeat center center;
 		background-size: cover;
 
 		#project-1-description {
@@ -304,7 +310,7 @@
 	}
 
 	#project-2 {
-		background: url("../images/projects/feup_load.png") no-repeat center center;
+		background: url("../images/projects/project-tts.png") no-repeat center center;
 		background-size: cover;
 
 		#project-2-description {
@@ -322,7 +328,7 @@
 	}
 
 	#project-3 {
-		background: url("../images/projects/workshop.JPG") no-repeat center center;
+		background: url("../images/projects/project-workshop.png") no-repeat center center;
 		background-size: cover;
 
 		#project-3-description {
@@ -340,7 +346,7 @@
 	}
 
 	#project-4 {
-		background: url("../images/projects/enei.png") no-repeat center center;
+		background: url("../images/projects/project-enei.png") no-repeat center center;
 		background-size: cover;
 
 		#project-4-description {
@@ -361,7 +367,7 @@
 #container-feup {
 	margin-top: 100px;
 	width: 100%;
-	height: $header-height;
+	height: 300px;
 	background: url("../images/home/feup.png") no-repeat center center;
 	background-size: cover;
 

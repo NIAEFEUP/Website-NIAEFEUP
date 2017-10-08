@@ -1,61 +1,64 @@
 .portfolio-header {
-  height: $header-height;
-  background: url(../images/members/fullteam.jpg) center center no-repeat;
+	background: url("../images/home/banner-portfolio.png") center center no-repeat;
+	background-size: cover;
+	height: $header-height;
+	width: 100%;
+	display: flex;
+	align-items: center;
 }
 
 .portfolio-title {
-  color: #FFFFFF;
-  font-size: $font-size-header-title;
-  line-height: $header-height;
-  background-color: $banner-color-transp;
-  h3{
-    padding-top: 2em;
-    margin-top: 1.5em;
-    padding-bottom: 2em;
-  }
+	color: #FFFFFF;
+	font-family: $font-type;
+	font-weight: 700;
+	font-size: $font-size-header-title;
+	line-height: $header-height;
+	padding-top: 50px;
 }
 
 .portfolio {
-  min-height: 100px;
-  .container{
-    display: flex;
-    flex-flow: row wrap;
-    align-items: stretch;    
-  }
-  .mix{
-    /* Small devices (tablets, 768px and up) */
-    @media (min-width: $screen-xs-min) { 
-      width: 100%;
-    }
-    /* Small devices (tablets, 768px and up) */
-    @media (min-width: $screen-sm-min) { 
-      width: 50%;
-    }
+	min-height: 100px;
 
-    /* Medium devices (desktops, 992px and up) */
-    @media (min-width: $screen-md-min) {
-      width: 33%;
-    }
+	.container {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: stretch;
+	}
 
-    /* Large devices (large desktops, 1200px and up) */
-    @media (min-width: $screen-lg-min) {
-      width: 25%;
-    }
-    display: inline-flex;
-    padding: 0 10px 0 10px;
-  }
+	.mix {
+		/* Small devices (tablets, 768px and up) */
+		@media (min-width: $screen-xs-min) {
+			width: 100%;
+		}
+		/* Small devices (tablets, 768px and up) */
+		@media (min-width: $screen-sm-min) {
+			width: 50%;
+		}
+		/* Medium devices (desktops, 992px and up) */
+		@media (min-width: $screen-md-min) {
+			width: 33%;
+		}
+		/* Large devices (large desktops, 1200px and up) */
+		@media (min-width: $screen-lg-min) {
+			width: 25%;
+		}
+		display: inline-flex;
+		padding: 0 10px;
+	}
 }
 
-.portfolio-options{
-  padding: 25px 0 25px 0;
-  text-align: center;
-  .btn{
-    text-align: center;
-    width: 250px;
-    margin: 5px;
-  }
+.portfolio-options {
+	padding: 25px 0;
+	text-align: center;
+
+	.btn {
+		text-align: center;
+    font-size: 12px;
+		width: 180px;
+		margin: 5px;
+	}
 }
 
-.thumbnail{
-  padding: 10px;
+.thumbnail {
+	padding: 10px;
 }

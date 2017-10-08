@@ -1,54 +1,90 @@
-#candidacy-header{
-    height: $header-height;
-    #candidacy-title{
-        color: white;
-        line-height: $header-height;
-        vertical-align: middle;
-        background-color: $banner-color-transp;
-    }
+#candidacy-header {
+	background: url("../images/home/banner-recrutamento.png") no-repeat top center;
+	background-size: cover;
+	height: $header-height;
+	width: 100%;
+	display: flex;
+	align-items: center;
+
+	#candidacy-title {
+		color: #FFFFFF;
+		font-family: $font-type;
+		font-weight: 700;
+		font-size: $font-size-header-title;
+		line-height: $header-height;
+		padding-top: 50px;
+	}
 }
 
-#form-title{
-    display: inline-block;
-    padding-bottom: 1em;
-    border-bottom: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: $light-grey-color;
-    margin-bottom: 1.1em;
+#form-title {
+	font-family: $font-type;
+	font-weight: 700;
+	display: inline-block;
+	padding-bottom: 1em;
+	border-bottom: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: $light-grey-color;
+	margin-bottom: 1.1em;
 }
 
-#form-of-candidacy{
-    padding-top: 20px;
-    .form-control{
-        padding: 12px;
-        height: auto;
-    }
-    #first-name{
-        padding-left: 0;
-        @media (max-width:767px){
-            padding-right: 0;
-        }
-    }
-    #last-name{
-        padding-right: 0;
-        @media (max-width:767px){
-            padding-left: 0;
-        }
-    }
-    input, textarea{
-        border: none;
-        border-radius: 0;
-        background-color: $light-grey-color;
-    }
-    input::placeholder, textarea::placeholder{
-        color: $dark-grey-color;
-    }
-    #summit-btn{
-        background-color: $primary-color;
-        border: none;
-        border-radius: 0px;
-    }
-    #summit-btn:hover{
-        background-color: $primary-color-darker;
-    }
+#description {
+	font-family: $font-type;
+	font-weight: 400;
+	color: $grey-color;
+}
+
+#form-of-candidacy {
+	padding-top: 30px;
+
+	.form-control {
+		padding: 12px;
+		height: auto;
+	}
+
+	#first-name {
+		padding-left: 0;
+    font-weight: 300;
+		@media (max-width:767px) {
+			padding-right: 0;
+		}
+	}
+
+	#last-name {
+		padding-right: 0;
+    font-weight: 300;
+		@media (max-width:767px) {
+			padding-left: 0;
+		}
+	}
+
+  #field {
+		padding-right: 0;
+    font-weight: 300;
+		@media (max-width:767px) {
+			padding-left: 0;
+		}
+	}
+
+
+	input,
+	textarea {
+		border: none;
+		border-radius: 0;
+		background-color: $light-grey-color;
+	}
+
+	input::placeholder,
+	textarea::placeholder {
+		color: $dark-grey-color;
+	}
+
+	#summit-btn {
+		background-color: $primary-color;
+		border: none;
+		border-radius: 0;
+	}
+
+	#summit-btn:hover {
+		background-color: $primary-color-darker;
+	}
 }
