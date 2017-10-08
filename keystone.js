@@ -53,5 +53,13 @@ keystone.set('nav', {
     users: 'users',
 });
 
+if (!process.env.RECRUTAMENTO)
+    console.log("WARNING: RECRUTAMENTO variable not set in env file!");
+
+if (!process.env.GMAIL_PASS || !process.env.GMAIL_ADDRESS)
+    console.log("WARNING: You must define GMAIL_PASS and GMAIL_ADDRESS in the env file for the email notifier to work!");
+
+if (!process.env.SLACK_INVITE || !process.env.GOOGLE_DRIVE_INVITE || !process.env.GOOGLE_GROUPS_INVITE)
+    console.log("WARNING: You must define GOOGLE_GROUPS_INVITE, GOOGLE_DRIVE_INVITE and SLACK_INVITE in the env file for the accept candidate to work!");
 
 keystone.start();

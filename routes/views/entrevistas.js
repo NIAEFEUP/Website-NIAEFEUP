@@ -1,6 +1,7 @@
 var keystone = require('keystone');
 var Entrevista = keystone.list('Entrevista');
 var Candidatura = keystone.list('Candidatura');
+var User = keystone.list('User');
 const nodemailer = require('nodemailer');
 const https = require('https');
 //var $  = require('jquery');
@@ -37,58 +38,86 @@ exports.approve = function(req, res) {
 
   Candidatura.model.find({'_id': {$in:req.body['accept']}}).exec(function(err, results){
 
-    for (var i = 0; i < results.length; i++) {
-      var url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE  + '&email=' + results[i]['email']; // mudar para o email da pessoa
+    var password = Math.random().toString(36).substring(7);
+    console.log(password);
 
-      // send request for send slack invitation using slack Web API
-      https.get(url,(resp) => {
-          let data = '';
-          resp.on('data', (chunk) => {
-            data += chunk;
+    if (process.env.SLACK_INVITE && process.env.GOOGLE_DRIVE_INVITE && 
+      process.env.GOOGLE_GROUPS_INVITE && process.env.GMAIL_ADDRESS && process.env.GMAIL_PASS){
+      for (var i = 0; i < results.length; i++) {
+        var url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE  + '&email=' + results[i]['email']; // mudar para o email da pessoa
+
+        // send request for send slack invitation using slack Web API
+        https.get(url,(resp) => {
+            let data = '';
+            resp.on('data', (chunk) => {
+              data += chunk;
+            });
+
+            resp.on('end', () => {
+              console.log(data);
+              }
+            );
+
+          }).on("error", (err) => {
+            console.log("Error: " + err.message);
           });
 
-          resp.on('end', () => {
-            console.log(data);
+          var transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+              user: process.env.GMAIL_ADDRESS,
+              pass: process.env.GMAIL_PASS
             }
-          );
+          });
 
-        }).on("error", (err) => {
-          console.log("Error: " + err.message);
-        });
+          var message = "<p> Olá " + results[i]['name']['first'] + " " + results[i]['name']['last'] + " antes de mais Parabéns! Foste aceite no Núcleo de Informática, Bem Vind@!</p>";
+          message += " <p> Para aderires ao google groups, clica no link a baixo: </p>";
+          message += " <a href=" + process.env.GOOGLE_GROUPS_INVITE + "> Google Groups</a>";
+          message += " <p> Para aderires ao google drive, clica no link a baixo: </p>";
+          message += " <a href=" + process.env.GOOGLE_DRIVE_INVITE + "> Google Drive</a>";
+          message += " <p> Para acederes à tua conta de membro vai a https://ni.fe.up.pt/signin . O teu username é " + results[i]['email'] + " e a palavra passe é " + password + ". Recomendámos que modifiques a tua palavra passe o quanto antes!</p>";
 
-        var transporter = nodemailer.createTransport({
-          service: 'Gmail',
-          auth: {
-            user: process.env.GMAIL_ADDRESS,
-            pass: process.env.GMAIL_PASS
+          var mailOptions = {
+            from: process.env.GMAIL_ADDRESS, //TODO mudar para o email do NI
+            to:results[i]['email'],
+            subject: 'Convite para Google Groups e Google Drive',
+            html: message
+          };
+
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
           }
         });
+      }
+    }
 
-        var message = "<p> Olá " + results[i]['name']['first'] + " " + results[i]['name']['last'] + " </p>";
-        message += " <p> Para aderires ao google groups, clica no link a baixo: </p>";
-        message += " <a href=" + process.env.GOOGLE_GROUPS_INVITE + "> Google Groups</a>";
-        message += " <p> Para aderires ao google drive, clica no link a baixo: </p>";
-        message += " <a href=" + process.env.GOOGLE_DRIVE_INVITE + "> Google Drive</a>";
+    for (result of results) {
 
-        var mailOptions = {
-          from: process.env.GMAIL_ADDRESS, //TODO mudar para o email do NI
-          to:results[i]['email'],
-          subject: 'Convite para Google Groups e Google Drive',
-          html: message
-        };
-
-        transporter.sendMail(mailOptions, function(error, info){
-          if (error) {
-            console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
+      var novoMembro = new User.model({
+        name : result.name,
+        email : result.email,
+        password : password,
+        linkedin: result.linkedin,
+        github: result.github,
+        website: result.website,
+        position: "Recruta"
       });
 
+      novoMembro.save(function(err){
+        if(err){
+    
+          req.flash('error', 'Introdução de novo membro falhou!');
+          res.redirect('/entrevistas');
+    
+        }
+      });
     }
-  });
-    //TODO Passar os membros para User Recruta e enviar os dados para slack e etc por email
-    //TODO se for apenas 1 entao accept não é uma array mas sim um valor (id do candidato)
 
+  });
+
+    //TODO Passar os membros para User Recruta
     res.redirect('/entrevistas');
 }
