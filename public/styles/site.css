@@ -8249,12 +8249,18 @@ body {
 
 .white-title {
   color: white;
-  font-size: 30px;
-  font-weight: 500; }
+  font-size: 50px;
+  font-weight: 500;
+  margin-top: 100px; }
 
 .white-subtitle {
   color: white;
   font-weight: 300; }
+
+.white-middle-title {
+  color: white;
+  font-size: 30px;
+  font-weight: 500; }
 
 .white-italic-title {
   color: white;
@@ -8264,7 +8270,7 @@ body {
   font-weight: 100; }
 
 .item {
-  background: url("../images/template_website/enei.jpg") no-repeat center center;
+  background: url("../images/home/banner-recrutamento.png") no-repeat top center;
   background-size: cover;
   height: 100vh;
   width: 100%;
@@ -8273,7 +8279,8 @@ body {
 
 .white-separator {
   border-top: 1px solid white !important;
-  width: 15%; }
+  width: 15%;
+  margin-bottom: 30px; }
 
 .black-separator {
   border-width: 1px;
@@ -8283,8 +8290,8 @@ body {
 
 .separator {
   border-width: 4px;
-  border-top: 2.5px solid #8C2D19 !important;
-  width: 13%; }
+  border-top: 1.5px solid #8C2D19 !important;
+  width: 10%; }
 
 .btn-default {
   padding: 15px 44px !important;
@@ -8307,7 +8314,9 @@ body {
     text-align: center; }
   #hero .see-more-button {
     margin-top: 2vh; }
-  #hero .see-more-button:hover, #hero .see-more-button:active, #hero .see-more-button:focus {
+  #hero .see-more-button:active,
+  #hero .see-more-button:focus,
+  #hero .see-more-button:hover {
     color: #333;
     background-color: #e6e6e6;
     border-color: #adadad; }
@@ -8315,8 +8324,7 @@ body {
     padding-top: 15px; }
 
 #info {
-  margin-top: 30px;
-  margin-top: 30px; }
+  margin-top: 70px; }
   #info .subtitle {
     font-family: "Merriweather", serif;
     font-size: 10px;
@@ -8348,9 +8356,9 @@ body {
   font-weight: bold; }
 
 #container-photo {
-  background: url("../images/template_website/example_1.jpg") no-repeat center center;
+  background: url("../images/home/banner-middle.png") no-repeat center center;
   background-size: cover;
-  height: 500px;
+  height: 100vh;
   width: 100%; }
   #container-photo #transparent-div {
     height: 100%;
@@ -8363,7 +8371,7 @@ body {
       #container-photo #transparent-div {
         width: 100%; } }
     #container-photo #transparent-div #transparent-div-info {
-      margin-top: 20%; }
+      margin-top: 40%; }
       @media (min-width: 768px) {
         #container-photo #transparent-div #transparent-div-info {
           width: 85%;
@@ -8393,18 +8401,20 @@ body {
   height: 350px;
   padding: 0 !important; }
   #container-projects #project-photos .project .project-description-padding {
-    padding-top: 100px; }
+    padding-top: 100px !important; }
   #container-projects #project-photos .project .project-title {
     color: white;
     text-align: center;
     font-size: 18px;
     max-width: 70%;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500; }
   #container-projects #project-photos .project .separator {
-    border-top: 3px solid white !important;
-    width: 13%;
-    margin-bottom: 0px !important; }
+    border-top: 1px solid white !important;
+    width: 15%;
+    margin-bottom: 0 !important; }
   #container-projects #project-photos .project .project-description {
     color: white;
     text-align: center;
@@ -8414,12 +8424,12 @@ body {
     margin-right: auto;
     max-width: 70%;
     font-family: "Merriweather", serif !important;
-    font-weight: lighter;
+    font-weight: 100;
     font-style: italic; }
   #container-projects #project-photos .project .icons {
     color: white;
-    font-size: 40px;
-    padding-bottom: 5px; }
+    font-size: 25px;
+    padding-bottom: 20px; }
   @media (min-width: 768px) {
     #container-projects #project-photos .project {
       width: 25%;
@@ -8430,11 +8440,10 @@ body {
       float: left; } }
 
 #container-projects #project-1 {
-  background: url(../images/projects/tts.png) no-repeat center center;
+  background: url("../images/projects/project-tts.png") no-repeat center center;
   background-size: cover; }
   #container-projects #project-1 #project-1-description {
-    background-color: black;
-    opacity: 0.65;
+    background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 100%;
     display: none; }
@@ -8443,11 +8452,10 @@ body {
   display: block; }
 
 #container-projects #project-2 {
-  background: url(../images/projects/feup_load.png) no-repeat center center;
+  background: url("../images/projects/feup_load.png") no-repeat center center;
   background-size: cover; }
   #container-projects #project-2 #project-2-description {
-    background-color: black;
-    opacity: 0.65;
+    background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 100%;
     display: none; }
@@ -8456,11 +8464,10 @@ body {
   display: block; }
 
 #container-projects #project-3 {
-  background: url(../images/projects/workshop.JPG) no-repeat center center;
+  background: url("../images/projects/workshop.JPG") no-repeat center center;
   background-size: cover; }
   #container-projects #project-3 #project-3-description {
-    background-color: black;
-    opacity: 0.65;
+    background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 100%;
     display: none; }
@@ -8469,11 +8476,10 @@ body {
   display: block; }
 
 #container-projects #project-4 {
-  background: url(../images/projects/enei.png) no-repeat center center;
+  background: url("../images/projects/enei.png") no-repeat center center;
   background-size: cover; }
   #container-projects #project-4 #project-4-description {
-    background-color: black;
-    opacity: 0.65;
+    background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 100%;
     display: none; }
@@ -8485,7 +8491,7 @@ body {
   margin-top: 100px;
   width: 100%;
   height: 300px;
-  background: url("../images/template_website/feup.jpg") no-repeat center center;
+  background: url("../images/home/feup.png") no-repeat center center;
   background-size: cover; }
   #container-feup .info {
     padding-top: 100px;
