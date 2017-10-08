@@ -29,6 +29,7 @@ keystone.init({
     'session store': 'mongo',
     'auth': true,
     'user model': 'User',
+    'mongo options': { server: { keepAlive: 1 }},
 });
 
 // Load your project's Models
