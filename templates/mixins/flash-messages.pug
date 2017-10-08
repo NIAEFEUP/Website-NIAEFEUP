@@ -1,6 +1,6 @@
 mixin flash-messages(messages)
 	if messages
-		#flash-messages.container
+		#flash-messages.container.text-center
 			each message in messages.info
 				+flash-message(message, 'info')
 			each message in messages.success

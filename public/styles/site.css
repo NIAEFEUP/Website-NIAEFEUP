@@ -1,4 +1,4 @@
-overflow-x: hidden; }@charset "UTF-8";
+@charset "UTF-8";
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -8157,7 +8157,7 @@ button.close {
   align-items: center; }
 
 #flash-messages {
-  position: absolute;
+  position: relative;
   top: 75px; }
 
 .btn:focus, .btn:active, .btn.active, .btn:focus:active {
@@ -8464,8 +8464,7 @@ body {
   @media (max-width: 767px) {
     #container-projects #project-photos .project {
       width: 50%;
-      float: left;
-      height: 180px; } }
+      float: left; } }
 
 #container-projects #project-1 {
   background: url("../images/projects/project-tts.png") no-repeat center center;

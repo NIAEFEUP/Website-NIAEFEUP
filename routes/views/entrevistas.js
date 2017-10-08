@@ -17,8 +17,11 @@ exports = module.exports = function(req, res) {
 
             if (err || !results.length) {
                 return next(err);
-            } else {
+            } else if(results.length != 0) {
               locals.candidatos = results;
+            } else {
+              req.flash("warning","Ainda não há candidatos.");
+              res.redirect("/");
             }
 
             next();
