@@ -1,4 +1,4 @@
-@charset "UTF-8";
+overflow-x: hidden; }@charset "UTF-8";
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -8168,9 +8168,13 @@ button.close {
   background-color: #8C2D19;
   color: white; }
 
+html {
+  overflow-x: hidden; }
+
 body {
   font-family: "Montserrat", sans-serif;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  width: 100vw; }
 
 #header {
   margin-top: 30px; }
@@ -8178,7 +8182,8 @@ body {
 .navbar {
   background-color: white;
   height: 75px;
-  font-size: 18px; }
+  font-size: 18px;
+  width: 100vw; }
   .navbar .container-fluid {
     max-width: 1140px;
     margin: auto;
@@ -8187,8 +8192,9 @@ body {
     padding: 5px 15px; }
     .navbar .navbar-brand img {
       height: 65px; }
-  .navbar .collapse.navbar-collapse {
-    background: none !important; }
+  @media (min-width: 768px) {
+    .navbar .collapse.navbar-collapse {
+      background: none !important; } }
 
 #footer .info {
   padding: 0 15px;
@@ -8355,6 +8361,27 @@ body {
   margin: 0.3em 0 10px;
   font-weight: bold; }
 
+@media (max-width: 767px) {
+  #container-icons .col-md-2 {
+    width: 18%;
+    float: left;
+    text-align: left;
+    font-size: 9px; } }
+
+@media (max-width: 767px) {
+  #container-icons .col-md-4 {
+    padding-bottom: 15px; } }
+
+@media (max-width: 767px) {
+  #container-icons .row {
+    padding-bottom: 15px;
+    margin-bottom: 0px !important; } }
+
+@media (max-width: 767px) {
+  #container-icons .skill-title {
+    width: 82%;
+    font-size: 13px; } }
+
 #container-photo {
   background: url("../images/home/banner-middle.png") no-repeat center center;
   background-size: cover;
@@ -8437,7 +8464,8 @@ body {
   @media (max-width: 767px) {
     #container-projects #project-photos .project {
       width: 50%;
-      float: left; } }
+      float: left;
+      height: 180px; } }
 
 #container-projects #project-1 {
   background: url("../images/projects/project-tts.png") no-repeat center center;
