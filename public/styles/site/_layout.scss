@@ -15,10 +15,11 @@ body {
 	background-color: white;
 	height: $nav-bar-heigth;
 	font-size: $font-size-header;
-
+	
 	.container-fluid {
 		max-width: 1140px;
 		margin: auto;
+		border-color: #e7e7e7;
 	}
 
 	.navbar-brand {
@@ -27,6 +28,9 @@ body {
 		img {
 			height: 65px;
 		}
+	}
+	.collapse.navbar-collapse{
+		background: none !important;
 	}
 }
 
