@@ -24,7 +24,7 @@
 .item {
 	background: url("../images/template_website/enei.jpg") no-repeat center center;
 	background-size: cover;
-	height: 60vh;
+	height: 100vh;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -76,13 +76,22 @@
 	.see-more-button {
 		margin-top: 2vh;
 	}
-
+    
+    .see-more-button:hover, .see-more-button:active, .see-more-button:focus {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+    
+  
+    
 	.sub-description {
 		padding-top: 15px;
 	}
 }
 
 #info {
+	margin-top: 30px;
 	margin-top: 30px;
 
 	.subtitle {
@@ -180,39 +189,28 @@
 			font-size: 30px;
 			font-weight: 500;
 		}
-
-		.btn-projects {
-			cursor: pointer;
-			padding: 12px !important;
-			font-size: small !important;
-			color: white;
-			background-color: $primary-color;
-			border: none;
-		}
-
-		.btn-projects:hover {
-			background-color: $primary-color-transp;
-		}
-
-		.btn-projects:focus {
-			outline: 0;
-		}
 	}
 
 
-	.project {
+    
+    #project-photos{
+        
+    .project {
 		height: 350px;
         padding: 0 !important;
+        
         
         .project-description-padding{
              padding-top: 100px;
         }
        
-        
         .project-title{
             color: white;
             text-align: center;
             font-size: 18px;
+              max-width: 70%;
+             margin-left: auto;
+            margin-right: auto;
         }
         
         .separator{
@@ -224,37 +222,48 @@
         .project-description{
             color: white;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             padding-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 70%;
+            font-family: $font-type-body !important;
+            font-weight:lighter;
+            font-style: italic;
         }
+    
         
          .icons{
-        
-            i{
                 color: white;
                 font-size: 40px;
-                padding-bottom: 15px;
-                
-            }
-            
-            .fa-file-text{
-                padding-right: 15px;
-            }
-            
+                padding-bottom: 5px;
         }
         
+        @media (min-width: 768px) {
+				width: 25%;
+                float: left;
+			}
+			@media (max-width: 767px) {
+				width: 50%;
+                float: left;
+			}
+        
 	}
+        
+        
+
+    }
+    
 
     
 
 	#project-1 {
-		// background: url(../images/template_website/1.jpg) no-repeat center center;
-		background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
+        background: url(../images/projects/tts.png) no-repeat center center;
 		background-size: cover;
         
         #project-1-description{
-            background-color: gray;
-            opacity: 0.3;
+            background-color: black;
+            opacity: 0.65;
             width: 100%;
             height: 100%;
             display: none;
@@ -270,13 +279,12 @@
     }
 
 	#project-2 {
-		// background: url(../images/template_website/3.jpg) no-repeat center center;
-		background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
+		 background: url(../images/projects/feup_load.png) no-repeat center center;
 		background-size: cover;
         
         #project-2-description{
-            background-color: gray;
-            opacity: 0.3;
+           background-color: black;
+              opacity: 0.65;
             width: 100%;
             height: 100%;
             display: none;
@@ -291,14 +299,13 @@
     }
 
 	#project-3 {
-		//  background: url(../images/template_website/2.jpg) no-repeat center center;
-		background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
+		 background: url(../images/projects/workshop.JPG) no-repeat center center;
 		background-size: cover;
         
            
         #project-3-description{
-            background-color: gray;
-            opacity: 0.3;
+                background-color: black;
+             opacity: 0.65;
             width: 100%;
             height: 100%;
             display: none;
@@ -313,13 +320,13 @@
     }
 
 	#project-4 {
-		// background: url(../images/template_website/4.jpg) no-repeat center center;
-		background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
+		
+		 background: url(../images/projects/enei.png) no-repeat center center;
 		background-size: cover;
         
          #project-4-description{
-            background-color: gray;
-            opacity: 0.3;
+                 background-color: black;
+              opacity: 0.65;
             width: 100%;
             height: 100%;
             display: none;
