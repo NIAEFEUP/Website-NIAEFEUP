@@ -36,7 +36,9 @@ body {
 		}
 	}
 	.collapse.navbar-collapse{
-		background: none !important;
+		@media (min-width: $screen-sm-min) { 
+			background: none !important;
+		}
 	}
 }
 
