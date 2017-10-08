@@ -7,7 +7,7 @@ block content
     .row
       .col-sm-12
         h2#form-title JUNTA-TE A NÓS
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dolor enim, feugiat at massa ac, pulvinar varius justo. Praesent et nulla dapibus, tristique erat ut, lobortis quam. Maecenas vitae aliquam magna. Nulla a gravida orci. Quisque nec pharetra est, ac maximus magna. Vivamus vestibulum ex in quam aliquam, non blandit tellus ullamcorper. Mauris sit amet consectetur tellus.  
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dolor enim, feugiat at massa ac, pulvinar varius justo. Praesent et nulla dapibus, tristique erat ut, lobortis quam. Maecenas vitae aliquam magna. Nulla a gravida orci. Quisque nec pharetra est, ac maximus magna. Vivamus vestibulum ex in quam aliquam, non blandit tellus ullamcorper. Mauris sit amet consectetur tellus.
     form#form-of-candidacy(method='POST' action='/candidatura')
       .row
         .col-sm-5
@@ -15,27 +15,27 @@ block content
             .col-sm-6#first-name
               div.form-group
                 //label(for='first name') First Name:
-                input#first_name.form-control(type='text', placeholder='Primeiro Nome*' name='name.first')
+                input#first_name.form-control(type='text', placeholder='Primeiro Nome*' name='name.first' required)
             .col-sm-6#last-name
               div.form-group
                 //label(for='last name') Last Name:
-                input#last_name.form-control(type='text', placeholder='Último Nome*' name='name.last')
+                input#last_name.form-control(type='text', placeholder='Último Nome*' name='name.last' required)
           div.form-group
             //.flex
               i.fa.fa-id-card.fa-icon
               label(for='numero up') Número UP:
-            input#numero_up.form-control(type='number', placeholder='Número UP*' name='numero_up')
+            input#numero_up.form-control(type='number', placeholder='Número UP*' name='numero_up' required)
           div.form-group
             //.flex
               i.fa.fa-envelope.fa-icon
               label(for='email') Email:
-            input#email.form-control(type='email', placeholder='Email*' name='email')
+            input#email.form-control(type='email', placeholder='Email*' name='email' required)
           div.form-group
             //label(for='Tecnologias') Com que tecnologias já trabalhaste?
             textarea#tecnologias.form-control(type='text', placeholder='Tecnologias com as quais já trabalhaste' name='tecnologias')
           div.form-group
             //label(for='Porquê o Núcleo de Informática?') Porquê o Núcleo de Informática?
-            input#porque_ni.form-control(type='text', placeholder='Porquê o Núcleo de Informática?' name='porque_ni')
+            input#porque_ni.form-control(type='text', placeholder='Porquê o Núcleo de Informática?*' name='porque_ni' required)
           div.form-group
             input#entrevista.form-control(type='hidden', value='false' name='entrevista')
         .col-sm-4

@@ -26,8 +26,10 @@ block content
         .row#detail-info 
           .row
             .col-sm-6
-              h3 BIOGRAFIA
-              p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus nunc sit amet bibendum vestibulum. Fusce ornare vestibulum ultrices. Vivamus sed porta ex. Fusce congue dapibus ante, sit amet volutpat ipsum mattis ac. Phasellus eget sodales elit, eu luctus ipsum. Fusce congue tempor risus. Nullam ac neque quis mi molestie.
+              if member.about
+                h3 BIOGRAFIA
+                p #{member.about}
+          //          
             .col-sm-6#competencias
               h3 COMPETÊNCIAS
               .row 
@@ -66,5 +68,3 @@ block content
                 .col-sm-8
                   .progress
                     .progress-bar#progress-bar-photoshop(role="progressbar" style="width: 60%")
-
-      

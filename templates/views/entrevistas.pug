@@ -22,11 +22,12 @@ block content
                   each candidato in candidatos
                     if candidato.entrevista
                       tr.success
-                        if user.isAdmin
-                          //Fazer aqui o formulario com as checkboxs para o admin aceitar os candidatos
-                          //Falta fazer o backend para receber essa lista
+                        if user.isAdmin && !candidato.aceite
                           td 
-                            input(type="checkbox" name="accept" value="" + candidato._id) 
+                            input(type="checkbox" name="accept" value="" + candidato._id)
+                        else
+                          td
+                            input(type='checkbox', disabled, checked)
                         td
                           p #{candidato.name.full}
                         td

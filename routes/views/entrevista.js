@@ -58,9 +58,6 @@ exports.create = function(req, res, next) {
   info.data = new Date();
   var cand_id = info.candidato_id;
 
-  //TODO ver o que falta aqui;
-  console.log(info);
-
   var novaEntr = new Entrevista.model(info);
 
   novaEntr.save(function(err){
@@ -83,7 +80,7 @@ exports.create = function(req, res, next) {
         function(err, affected, resp) {
           if(!err){
 
-              req.flash('success', 'Entrevista realizada, Obrigado!');
+            req.flash('success', 'Entrevista realizada, Obrigado!');
 
           } else {
             req.flash('error', 'Ocorreu um erro, tenta mais tarde!');
