@@ -8192,11 +8192,9 @@ body {
     padding: 5px 15px; }
     .navbar .navbar-brand img {
       height: 65px; }
-  .navbar .collapse.navbar-collapse {
-    background-color: #8C2D19 !important; }
-    @media (min-width: 768px) {
-      .navbar .collapse.navbar-collapse {
-        background: none !important; } }
+  @media (min-width: 768px) {
+    .navbar .collapse.navbar-collapse {
+      background: none !important; } }
 
 #footer .info {
   padding: 0 15px;
