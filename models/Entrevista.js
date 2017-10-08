@@ -7,7 +7,7 @@ var Types = keystone.Field.Types;
  */
 var Entrevista = new keystone.List('Entrevista', {
   noedit : true,
-  //nocreate : true
+  nocreate : true
 });
 
 Entrevista.add({
