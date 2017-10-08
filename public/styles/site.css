@@ -8537,6 +8537,10 @@ body {
   #contact-align i {
     padding: 0; }
 
+#map {
+  height: 400px;
+  width: 100%; }
+
 #members-header {
   height: 300px;
   background: url(../images/members/fullteam.jpg) center center no-repeat; }
