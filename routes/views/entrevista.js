@@ -35,6 +35,10 @@ exports = module.exports = function(req, res) {
                   next();
                 }
               });
+            } else {
+
+              console.log("Não foi entrevistado");
+              next();
             }
           } else {
             console.log("Erro");
