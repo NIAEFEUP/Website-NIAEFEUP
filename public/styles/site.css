@@ -8170,7 +8170,8 @@ button.close {
 
 body {
   font-family: "Montserrat", sans-serif;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  width: 100vw; }
 
 #header {
   margin-top: 30px; }
@@ -8178,7 +8179,8 @@ body {
 .navbar {
   background-color: white;
   height: 75px;
-  font-size: 18px; }
+  font-size: 18px;
+  width: 100vw; }
   .navbar .container-fluid {
     max-width: 1140px;
     margin: auto;

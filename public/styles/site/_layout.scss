@@ -1,6 +1,11 @@
+html{
+	overflow-x: hidden;
+}
+
 body {
 	font-family: $font-type;
 	overflow-x: hidden;
+	width: 100vw;
 }
 
 #body {
@@ -15,6 +20,7 @@ body {
 	background-color: white;
 	height: $nav-bar-heigth;
 	font-size: $font-size-header;
+	width: 100vw;
 	
 	.container-fluid {
 		max-width: 1140px;
