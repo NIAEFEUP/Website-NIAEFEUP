@@ -134,6 +134,37 @@
 		margin: 0.3em 0 10px;
 		font-weight: bold;
 	}
+    
+    
+    .col-md-2{
+		@media (max-width: 767px) {
+			width: 18%;
+            float: left;
+            text-align: left;
+            font-size: 9px;
+		}
+    }
+    
+    .col-md-4{
+		@media (max-width: 767px) {
+			padding-bottom: 15px;
+		}
+    }
+    
+    .row{
+        @media (max-width: 767px) {
+			padding-bottom: 15px;
+            margin-bottom: 0px !important;
+		}
+    }
+    
+    .skill-title{
+		@media (max-width: 767px) {
+			width: 82%;
+            font-size: 13px;
+		}
+    }
+
 }
 
 #container-photo {
@@ -246,6 +277,7 @@
 			@media (max-width: 767px) {
 				width: 50%;
                 float: left;
+                height: 180px;
 			}
         
 	}

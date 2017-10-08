@@ -8347,6 +8347,27 @@ body {
   margin: 0.3em 0 10px;
   font-weight: bold; }
 
+@media (max-width: 767px) {
+  #container-icons .col-md-2 {
+    width: 18%;
+    float: left;
+    text-align: left;
+    font-size: 9px; } }
+
+@media (max-width: 767px) {
+  #container-icons .col-md-4 {
+    padding-bottom: 15px; } }
+
+@media (max-width: 767px) {
+  #container-icons .row {
+    padding-bottom: 15px;
+    margin-bottom: 0px !important; } }
+
+@media (max-width: 767px) {
+  #container-icons .skill-title {
+    width: 82%;
+    font-size: 13px; } }
+
 #container-photo {
   background: url("../images/template_website/example_1.jpg") no-repeat center center;
   background-size: cover;
@@ -8427,7 +8448,8 @@ body {
   @media (max-width: 767px) {
     #container-projects #project-photos .project {
       width: 50%;
-      float: left; } }
+      float: left;
+      height: 180px; } }
 
 #container-projects #project-1 {
   background: url(../images/projects/tts.png) no-repeat center center;
