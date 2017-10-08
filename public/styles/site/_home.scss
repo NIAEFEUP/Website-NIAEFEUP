@@ -343,7 +343,7 @@
 
 #container-feup {
 	margin-top: 100px;
-	width: 99%;
+	width: 100%;
 	height: $header-height;
 	background: url("../images/template_website/feup.jpg") no-repeat center center;
 	background-size: cover;
@@ -438,4 +438,9 @@
 	i {
 		padding: 0;
 	}
+}
+
+#map {
+	height: 400px;
+	width: 100%;
 }

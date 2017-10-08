@@ -135,20 +135,20 @@ block content
                         .col-md-1.text-center
                             i.fa.fa-map-marker.fa-icon
                         .col-md-10.text-left
-                            .subtitle Morada:
+                            .subtitle Morada
                             .info Rua Dr. Roberto Frias 4200-465, Porto 
                             .info Sala B315
                     .col-sm-3.flex#contact-align
                         .col-md-1.text-center
                             i.fa.fa-envelope.fa-icon
                         .col-md-5.text-left
-                            .subtitle Email: &nbsp
+                            .subtitle Email
                             a.info(href='mailto:ni@aefeup.pt', title='E-mail') ni@aefeup.pt
                     .col-sm-3.flex#contact-align
                         .col-md-1.text-center
                             i.fa.fa-github.fa-icon
                         .col-md-5.text-left
-                            .subtitle Gitbub: &nbsp
+                            .subtitle Gitbub
                             a.info(href='https://github.com/NIAEFEUP', title='Github') @niaefeup
 
             .col.col-md-3.col-sm-12.col-sm-offset-1.col-xs-12.col-xs-offset-1
@@ -161,4 +161,22 @@ block content
                         a.fa.fa-instagram.fa-icon-border(href='https://www.instagram.com/niaefeup/', title='Instagram')
 
     section
-        iframe(src="https://snazzymaps.com/embed/19268" width="100%" height="400px" style="border:none;")
+        #map
+        script.
+            function initMap() {
+                var uluru = {lat: 41.177540, lng: -8.595967};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 17,
+                    center: uluru,
+                    disableDefaultUI: true
+                });
+                
+                var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+                marker.setMap(map);
+
+            }
+        script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7BCaSIjFTOMKkzBMI6uzlJSsF19QJ4fs&callback=initMap')
+
