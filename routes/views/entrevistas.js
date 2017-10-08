@@ -4,8 +4,6 @@ var Candidatura = keystone.list('Candidatura');
 var User = keystone.list('User');
 const nodemailer = require('nodemailer');
 const https = require('https');
-//var $  = require('jquery');
-//var dt = require('datatables.net')( window, $ );
 
 exports = module.exports = function(req, res) {
 
@@ -15,12 +13,15 @@ exports = module.exports = function(req, res) {
     // Load all members
     view.on('init', function(next) {
 
-        Candidatura.model.find({}, '_id name numero_up entrevista').sort('numero_up').exec(function(err, results) {
+        Candidatura.model.find({}, '_id name numero_up entrevista aceite').sort('numero_up').exec(function(err, results) {
 
             if (err || !results.length) {
                 return next(err);
-            } else {
+            } else if(results.length != 0) {
               locals.candidatos = results;
+            } else {
+              req.flash("warning","Ainda não há candidatos.");
+              res.redirect("/");
             }
 
             next();
@@ -113,6 +114,12 @@ exports.approve = function(req, res) {
           res.redirect('/entrevistas');
     
         }
+      });
+
+      Candidatura.model.update({_id: result._id}, {$set : {aceite : true}},
+        function(err, affected, resp) {
+          if(err)
+            console.log("Update da candidatura falhou.");
       });
     }
 
