@@ -8172,9 +8172,6 @@ body {
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden; }
 
-#body {
-  margin-top: 75px; }
-
 #header {
   margin-top: 30px; }
 
@@ -8266,7 +8263,7 @@ body {
 .item {
   background: url("../images/template_website/enei.jpg") no-repeat center center;
   background-size: cover;
-  height: 60vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center; }
@@ -8307,10 +8304,15 @@ body {
     text-align: center; }
   #hero .see-more-button {
     margin-top: 2vh; }
+  #hero .see-more-button:hover, #hero .see-more-button:active, #hero .see-more-button:focus {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad; }
   #hero .sub-description {
     padding-top: 15px; }
 
 #info {
+  margin-top: 30px;
   margin-top: 30px; }
   #info .subtitle {
     font-family: "Merriweather", serif;
@@ -8383,49 +8385,53 @@ body {
     color: black;
     font-size: 30px;
     font-weight: 500; }
-  #container-projects .project-info .btn-projects {
-    cursor: pointer;
-    padding: 12px !important;
-    font-size: small !important;
-    color: white;
-    background-color: #8C2D19;
-    border: none; }
-  #container-projects .project-info .btn-projects:hover {
-    background-color: rgba(140, 45, 25, 0.7); }
-  #container-projects .project-info .btn-projects:focus {
-    outline: 0; }
 
-#container-projects .project {
+#container-projects #project-photos .project {
   height: 350px;
   padding: 0 !important; }
-  #container-projects .project .project-description-padding {
+  #container-projects #project-photos .project .project-description-padding {
     padding-top: 100px; }
-  #container-projects .project .project-title {
+  #container-projects #project-photos .project .project-title {
     color: white;
     text-align: center;
-    font-size: 18px; }
-  #container-projects .project .separator {
+    font-size: 18px;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto; }
+  #container-projects #project-photos .project .separator {
     border-top: 3px solid white !important;
     width: 13%;
     margin-bottom: 0px !important; }
-  #container-projects .project .project-description {
+  #container-projects #project-photos .project .project-description {
     color: white;
     text-align: center;
-    font-size: 14px;
-    padding-top: 10px; }
-  #container-projects .project .icons i {
+    font-size: 13px;
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 70%;
+    font-family: "Merriweather", serif !important;
+    font-weight: lighter;
+    font-style: italic; }
+  #container-projects #project-photos .project .icons {
     color: white;
     font-size: 40px;
-    padding-bottom: 15px; }
-  #container-projects .project .icons .fa-file-text {
-    padding-right: 15px; }
+    padding-bottom: 5px; }
+  @media (min-width: 768px) {
+    #container-projects #project-photos .project {
+      width: 25%;
+      float: left; } }
+  @media (max-width: 767px) {
+    #container-projects #project-photos .project {
+      width: 50%;
+      float: left; } }
 
 #container-projects #project-1 {
-  background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
+  background: url(../images/projects/tts.png) no-repeat center center;
   background-size: cover; }
   #container-projects #project-1 #project-1-description {
-    background-color: gray;
-    opacity: 0.3;
+    background-color: black;
+    opacity: 0.65;
     width: 100%;
     height: 100%;
     display: none; }
@@ -8434,11 +8440,11 @@ body {
   display: block; }
 
 #container-projects #project-2 {
-  background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
+  background: url(../images/projects/feup_load.png) no-repeat center center;
   background-size: cover; }
   #container-projects #project-2 #project-2-description {
-    background-color: gray;
-    opacity: 0.3;
+    background-color: black;
+    opacity: 0.65;
     width: 100%;
     height: 100%;
     display: none; }
@@ -8447,11 +8453,11 @@ body {
   display: block; }
 
 #container-projects #project-3 {
-  background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
+  background: url(../images/projects/workshop.JPG) no-repeat center center;
   background-size: cover; }
   #container-projects #project-3 #project-3-description {
-    background-color: gray;
-    opacity: 0.3;
+    background-color: black;
+    opacity: 0.65;
     width: 100%;
     height: 100%;
     display: none; }
@@ -8460,11 +8466,11 @@ body {
   display: block; }
 
 #container-projects #project-4 {
-  background: url("http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png") no-repeat center center;
+  background: url(../images/projects/enei.png) no-repeat center center;
   background-size: cover; }
   #container-projects #project-4 #project-4-description {
-    background-color: gray;
-    opacity: 0.3;
+    background-color: black;
+    opacity: 0.65;
     width: 100%;
     height: 100%;
     display: none; }
