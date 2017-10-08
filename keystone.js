@@ -29,6 +29,7 @@ keystone.init({
     'session store': 'mongo',
     'auth': true,
     'user model': 'User',
+    'mongo options': { server: { keepAlive: 1 }},
 });
 
 // Load your project's Models
@@ -50,22 +51,16 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-    enquiries: 'enquiries',
     users: 'users',
 });
 
-// Start Keystone to connect to your database and initialise the web server
+if (!process.env.RECRUTAMENTO)
+    console.log("WARNING: RECRUTAMENTO variable not set in env file!");
 
+if (!process.env.GMAIL_PASS || !process.env.GMAIL_ADDRESS)
+    console.log("WARNING: You must define GMAIL_PASS and GMAIL_ADDRESS in the env file for the email notifier to work!");
 
-if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
-    console.log('----------------------------------------' +
-        '\nWARNING: MISSING MAILGUN CREDENTIALS' +
-        '\n----------------------------------------' +
-        '\nYou have opted into email sending but have not provided' +
-        '\nmailgun credentials. Attempts to send will fail.' +
-        '\n\nCreate a mailgun account and add the credentials to the .env file to' +
-        '\nset up your mailgun integration');
-}
-
+if (!process.env.SLACK_INVITE || !process.env.GOOGLE_DRIVE_INVITE || !process.env.GOOGLE_GROUPS_INVITE)
+    console.log("WARNING: You must define GOOGLE_GROUPS_INVITE, GOOGLE_DRIVE_INVITE and SLACK_INVITE in the env file for the accept candidate to work!");
 
 keystone.start();
