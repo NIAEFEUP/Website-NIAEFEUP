@@ -8157,6 +8157,7 @@ button.close {
   align-items: center; }
 
 #flash-messages {
+  width: 45%;
   position: absolute;
   top: 75px; }
 
@@ -8833,6 +8834,34 @@ a.fa-icon-border:hover {
     display: flex;
     flex-flow: row wrap;
     align-items: stretch; }
+  .portfolio h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-left: -8px; }
+  .portfolio h4 {
+    font-family: "Merriweather", serif;
+    color: #5C5C5C;
+    font-weight: 100;
+    font-size: 14px;
+    font-style: italic;
+    margin-left: -8px; }
+  .portfolio hr {
+    width: 20%;
+    border-top: 1px solid black;
+    margin-left: -8px; }
+    @media (max-width: 991px) and (min-width: 768px) {
+      .portfolio hr {
+        display: none; } }
+  .portfolio p {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    color: #5C5C5C;
+    margin-left: -8px; }
+  .portfolio a {
+    font-size: 15px;
+    margin-left: -8px; }
   .portfolio .mix {
     /* Small devices (tablets, 768px and up) */
     /* Small devices (tablets, 768px and up) */
