@@ -1,0 +1,95 @@
+extends ../layouts/default
+
+block content
+  .container(style="height:3em")
+  div.container  
+    div.page-header
+      //Listar a informacao do candidato
+      .col-md-6
+        h3.header Candidato
+        .row
+          label Nome
+          .panel.panel-default
+            .panel-body #{candidato.name.full}
+        .row
+          label Numero UP
+          .panel.panel-default
+            .panel-body #{candidato.numero_up}
+        .row
+          label Email
+          .panel.panel-default
+            .panel-body #{candidato.email}
+        .row
+          label Porque o NI
+          .panel.panel-default
+            .panel-body #{candidato.porque_ni}
+        if candidato.linkedin  
+          .row
+            label LinkedIn
+            .panel.panel-default
+              .panel-body
+                a(href='' + candidato.linkedin) #{candidato.linkedin}
+        if candidato.github
+          .row
+            label Github
+            .panel.panel-default
+              .panel-body 
+                a(href='' + candidato.github) #{candidato.github}
+        if candidato.website
+          .row
+            label Website
+            .panel.panel-default
+              .panel-body
+                a(href='' + candidato.website) #{candidato.website}
+        if candidato.tecnologias
+          .row
+            label Tecnologias
+            .panel.panel-default
+              .panel-body #{candidato.tecnologias}
+      .col-md-6
+        h3.header Entrevista
+        if !entrevista
+          form(method='POST' action='/entrevista')
+            input(type='hidden', name="candidato_id", value="" + candidato_id)
+            input(type='hidden', name='entrevistador_1', value="" + user._id)
+            textarea.form-group.form-control(name='estado_curso', placeholder="Estado do Curso")
+            textarea.form-group.form-control(name='grupo_estudantil', placeholder='Integra ou pretende ingressar noutro grupo estudantil?')
+            textarea.form-group.form-control(name='porque_ni', placeholder='Porquê o NI?')
+            textarea.form-group.form-control(name='valor_acrescentado', placeholder='O que o candidato já fez que lhe acrescenta valor')
+            textarea.form-group.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI')
+            .form-control.form-group
+              label Erasmus :
+              input(type='checkbox', name='erasmus', value='true')
+            textarea.form-group.form-control(name='se_erasmus_futuro', placeholder='Se for de erasmus o que acha do futuro no NI')
+            textarea.form-group.form-control(name='se_5ano_futuro', placeholder='Se o candidato for do 5ano qual o seu futuro no curso')
+            textarea.form-group.form-control(name='observacoes', placeholder='Outras observações')
+            .row
+              .col-sm-6
+                button.btn.btn-primary(type='submit') ENVIAR
+        else
+          label Estado do Curso
+            textarea.form-group.form-control(name='estado_curso', disabled="true") #{entrevista.estado_curso}  
+          label Grupos Estudantis
+            textarea.form-group.form-control(name='grupo_estudantil', disabled="true") #{entrevista.grupo_estudantil}
+          label Porque o NI
+            textarea.form-group.form-control(name='porque_ni', disabled="true") #{entrevista.porque_ni}
+          label Valor Acrescentado
+            textarea.form-group.form-control(name='valor_acrescentado', disabled="true") #{entrevista.valor_acrescentado}
+          label Dentro do NI
+          textarea.form-group.form-control(name='fazer_dentro_do_ni', disabled="true") #{entrevista.fazer_dentro_do_ni}
+          .form-control
+            label Erasmus :
+            if entrevista.erasmus
+              input(type='checkbox', disabled, checked)
+            else
+              input(type='checkbox', disabled)
+          if entrevista.se_erasmus_futuro
+            label Futuro em relação a Erasmus    
+              textarea.form-group.form-control(name='se_erasmus_futuro', disabled="true") #{entrevista.se_erasmus_futuro}
+          if entrevista.se_5ano_futuro
+            label Futuro em relação ao curso
+              textarea.form-group.form-control(name='se_5ano_futuro', disabled="true") #{entrevista.se_5ano_futuro}
+          if entrevista.observacoes
+            label Observações
+              textarea.form-group.form-control(name='observacoes', disabled="true") #{entrevista.observacoes}
+

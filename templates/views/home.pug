@@ -1,0 +1,182 @@
+extends ../layouts/default
+
+block content
+    section#hero.hero
+        .item.center-block
+            .slide-info.center-block
+                p.white-title Época de Recrutamento
+                hr.white-separator
+                p.white-subtitle Estamos à procura de novos membros, não percas esta oportunidade e candidata-te já!
+                a(href='/candidatura')
+                    button.btn.btn-default.see-more-button CANDIDATA-TE
+
+    section#about
+    section#info
+        .row
+          .col-md-10.col-md-offset-1.text-center
+            h1.subtitle Associação de Estudantes da Faculdade de Engenharia da Universidade do Porto
+            h1.title NÚCLEO DE INFORMÁTICA
+            h6.definition O Núcleo de Informática da Associação de Estudantes da Faculdade de Engenharia da Universidade do Porto (NIAEFEUP) é constituído inteiramente por alunos do curso de Engenharia Informática e Computação (MIEIC). A nossa principal motivação é ganhar experiência e competências essenciais para o mundo do trabalho assim como cultivar nos nossos colegas a vontade de aprender linguagens e novas tecnologias.
+            hr.black-separator
+    section#container-icons
+        .row
+            .col-md-10.col-md-offset-1.text-center
+                .row.first-icons-row
+                    .col-md-4.text-center
+                        .row
+                            .col-md-2.text-center
+                                i.fa.fa-lightbulb-o
+                            .col-md-10.text-left
+                                p.skill-title IDEIAS INOVADORAS
+                                p.skill-body Com uma equipa constituída por jovens estudantes, a inovação e a melhoria contínua são valores de extrema importância para o Núcleo de Informática.
+                    .col-md-4.text-center
+                        .row
+                            .col-md-2.text-center
+                                i.fa.fa-desktop
+                            .col-md-10.text-left
+                                p.skill-title PROFISSIONALISMO
+                                p.skill-body Pretendemos que as entidades que trabalham connosco tenham a garantia e a confiança de que o nosso trabalho será sempre desempenhado com o máximo rigor.
+                    .col-md-4.text-center
+                        .row
+                            .col-md-2.text-center
+                                i.fa.fa-bug
+                            .col-md-10.text-left
+                                p.skill-title QUALIDADE
+                                p.skill-body Todos os nossos projetos são ideializados e confecionados com qualidade e empenho de toda a equipa. A dedicação dos membros do núcleo traduz-se em bons resultados.
+                .row.second-icons-row
+                    .col-md-4.text-center
+                        .row
+                            .col-md-2.text-center
+                                i.fa.fa-calendar-o
+                            .col-md-10.text-left
+                                p.skill-title EVENTOS E WORKSHOPS
+                                p.skill-body Disponibilizamos uma grande variedade de workshops e eventos. Estes serão úteis no teu percurso académico e vão-te permitir estar em contacto com o mercado de trabalho.
+                    .col-md-4.text-center
+                        .row
+                            .col-md-2.text-center
+                                i.fa.fa-handshake-o
+                            .col-md-10.text-left
+                                p.skill-title APOIO ACADÉMICO
+                                p.skill-body Oferecemos apoio a qualquer estudante da Universidade do Porto e procuramos ajudar sempre que possível, sendo este um núcleo de estudantes para estudantes.
+                    .col-md-4.text-center
+                        .row
+                            .col-md-2.text-center
+                                i.fa.fa-heart-o
+                            .col-md-10.text-left
+                                p.skill-title DEDICAÇÃO
+                                p.skill-body Temos total dedicação no sentido de atingir o sucesso em todas as atividades e projetos que realizamos. Queremos não só satisfazer os requisitos, mas também superá-los.
+    section#container-photo
+        #transparent-div
+            #transparent-div-info
+                p.white-italic-title You know nothing.
+                p.white-middle-title Engenharia Informática
+                hr.white-separator.left
+                p.white-subtitle.info É o ramo da engenharia que lida com a realização de projeto e construção de computadores e de sistemas que integram hardware e software, viabilizando a produção de novas máquinas e de equipamentos computacionais para serem utilizados em diversos setores.
+    section#portfolio
+    section#container-projects
+        .row.project-info
+            .col-md-2.col-md-offset-1
+                p.title PORTFÓLIO
+        .row#project-photos
+            .col-md-3#project-1.project
+                #project-1-description.text-center.project-description-padding
+                    .icons.text-center
+                        a.fa.fa-globe(href='/', title='Website')
+                    .project-title WEBSITE NI
+                    hr.separator
+                    .project-description Website responsivo e com backend
+            .col-md-3#project-2.project
+                #project-2-description.project-description-padding
+                    .icons.text-center
+                        a.fa.fa-globe(href='https://ni.fe.up.pt/TTS', title='Timetable Selector')
+                    .project-title TIMETABLE SELECTOR
+                    hr.separator
+                    .project-description Plataforma que permite construir horários
+            .col-md-3#project-3.project
+                #project-3-description.project-description-padding
+                    .icons.text-center
+                        i.fa.fa-book
+                    .project-title WORKSHOP C++
+                    hr.separator
+                    .project-description Workshop para introduzir C++ aos novos alunos
+            .col-md-3#project-4.project
+                #project-4-description.project-description-padding
+                    .icons.text-center
+                        a.fa.fa-globe(href='http://enei.pt/', title='ENEI')
+                    .project-title ENEI 2018
+                    hr.separator
+                    .project-description Encontro Nacional de Estudantes de Informática
+
+    section#container-feup
+        .row.info
+            .col-md-3.offset-md-2.text-center
+                .number 10
+                hr.separator
+                .description PROJETOS
+            .col-md-3.text-center
+                .number 5
+                hr.separator
+                .description EVENTOS
+            .col-md-3.text-center
+                .number 20
+                hr.separator
+                .description WORKSHOPS
+            .col-md-3.text-center
+                .number 30
+                hr.separator
+                .description MEMBROS
+
+    section#contacts
+    section#container-contacts
+        .row.contact-info
+            .col.col-md-7.col-md-offset-1.col-sm-12.col-sm-offset-1.col-xs-12.col-xs-offset-1
+                p.title CONTACTOS
+                .row
+                    .col-sm-5.flex#contact-align
+                        .col-md-1.text-center
+                            i.fa.fa-map-marker.fa-icon
+                        .col-md-10.text-left
+                            .subtitle Morada
+                            .info Rua Dr. Roberto Frias 4200-465, Porto
+                            .info Sala B315
+                    .col-sm-3.flex#contact-align
+                        .col-md-1.text-center
+                            i.fa.fa-envelope.fa-icon
+                        .col-md-5.text-left
+                            .subtitle Email
+                            a.info(href='mailto:ni@aefeup.pt', title='E-mail') ni@aefeup.pt
+                    .col-sm-3.flex#contact-align
+                        .col-md-1.text-center
+                            i.fa.fa-github.fa-icon
+                        .col-md-5.text-left
+                            .subtitle GitHub
+                            a.info(href='https://github.com/NIAEFEUP', title='Github') @niaefeup
+
+            .col.col-md-3.col-sm-12
+                p.title REDES SOCIAIS
+                  .container-social
+                    nav.social
+                      a.fa.fa-facebook.fa-icon-border(href='https://www.facebook.com/NIAEFEUP', title='Facebook')
+                      a.fa.fa-linkedin.fa-icon-border(href='https://www.linkedin.com/company/nifeup', title='LinkedIn')
+                      a.fa.fa-twitter.fa-icon-border(href='https://twitter.com/niaefeup', title='Twitter')
+                      a.fa.fa-instagram.fa-icon-border(href='https://www.instagram.com/niaefeup/', title='Instagram')
+
+    section
+        #map
+        script.
+            function initMap() {
+                var uluru = {lat: 41.177540, lng: -8.595967};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 17,
+                    center: uluru,
+                    disableDefaultUI: true
+                });
+
+                var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+                marker.setMap(map);
+
+            }
+        script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7BCaSIjFTOMKkzBMI6uzlJSsF19QJ4fs&callback=initMap')

@@ -1,0 +1,43 @@
+footer#footer.row
+  div.info.row
+    div.col-sm-4
+      h3 SOBRE
+      p  Somos um núcleo de estudantes cuja principal motivação é ganhar experiência e competências essenciais para o mundo do trabalho assim como cultivar nos nossos colegas a vontade de aprender linguagens e novas tecnologias.
+
+    div.col-sm-4.middle-col
+      h3 LINKS ÚTEIS
+      ul
+        li
+          a.page-scroll(href='/#body') Início
+        li
+          a.page-scroll(href='/#about') Sobre
+        li
+          a(href='/portfolio') Portfólio
+        li
+          a.page-scroll(href='/members') Equipa
+        li
+          a.page-scroll(href='/#contacts') Contactos
+
+    div.col-sm-4.sponsors
+      #sponsors-images
+        img.img-responsive(src='/images/logo-feup.jpg', alt='Logo FEUP')
+        img.img-responsive(src='/images/logo-aefeup.png', alt='Logo AEFEUP')
+
+  div.col-xs-12.copyright
+    p COPYRIGHT 2017 NIAEFEUP, ALL RIGHTS RESERVED
+
+  //- jQuery 1.11.3 is included by default, and required by both Bootstrap
+  //- and the KeystoneJS Content Editor. If you are not targeting IE8,
+  //- you can upgrade to 2.1.4 (also bundled) for better performance.
+  script(src='/js/jquery/jquery-1.11.3.min.js')
+
+  //- Customise which Bootstrap javascript files are served by including
+  //- them specifically here, instead of bootstrap-3.3.5.min.js
+  script(src='/js/bootstrap/bootstrap-3.3.5.min.js')
+
+  //- The KeystoneJS Content Editor provides support for ks-editable data attributes,
+  //- which generate links to edit content for users who can access Keystone
+  if user && user.canAccessKeystone
+    script(src='/keystone/js/content/editor.js')
+
+  //- Add scripts that are globally required by your site here.

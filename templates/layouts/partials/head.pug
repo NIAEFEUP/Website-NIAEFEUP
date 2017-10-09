@@ -1,0 +1,41 @@
+//- HTML HEADER
+head
+  meta(charset="utf-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  meta(http-equiv="X-UA-Compatible" content="IE=edge")
+
+  title= title || 'NIAEFEUP'
+
+  //- Import Montserrat and Merriweather font
+  link(href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet")
+  link(href="https://fonts.googleapis.com/css?family=Merriweather:100,200,300,400" rel="stylesheet")
+  //- Customise the stylesheet for your site by editing /public/styles/site.sass
+  link(href="/styles/site.css", rel="stylesheet")
+
+  //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+  //- Safely remove this block if you are not targeting IE8
+  //-[if lt IE 9]
+    script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
+    script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
+  //-[endif]
+
+  link(rel='icon', type='image/png', sizes='32x32', href='images/favicon-32x32.png')
+  link(rel='icon', type='image/png', sizes='96x96', href='images/favicon-96x96.png')
+  link(rel='icon', type='image/png', sizes='16x16', href='images/favicon-16x16.png')
+
+  //- This file provides the default styling for the KeystoneJS Content Editor
+  if user && user.canAccessKeystone
+    link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
+
+  //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+  //- Safely remove this block if you are not targeting IE8
+  //-[if lt IE 9]
+    script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
+    script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
+  //-[endif]
+
+  //- Include template-specific stylesheets by extending the css block
+  block css
+
+  //- Add any other template-specific HEAD tags by extending the head block
+  block head

@@ -1,0 +1,107 @@
+.portfolio-header {
+	background: url("../images/home/banner-portfolio.jpg") center center no-repeat;
+	background-size: cover;
+	height: $header-height;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.portfolio-dividor {
+	background-color: black;
+	background-size: cover;
+	height: $dividor-height;
+	width: 100%;
+	display: flex;
+	margin-top: 60px;
+}
+
+.portfolio-title {
+	color: #FFFFFF;
+	font-family: $font-type;
+	font-weight: 700;
+	font-size: $font-size-header-title;
+	line-height: $header-height;
+	padding-top: 50px;
+}
+
+.portfolio {
+	min-height: 100px;
+	.container {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: stretch;
+	}
+	h3 {
+		font-family: $font-type;
+		font-weight: 400;
+		font-size: 18px;
+		text-transform: uppercase;
+		margin-left: -8px;
+	}
+	h4 {
+		font-family: $font-type-body;
+		color: $grey-color;
+		font-weight: 100;
+		font-size: 14px;
+		font-style: italic;
+		margin-left: -8px;
+	}
+	hr {
+		width: 20%;
+		border-top: 1px solid black;
+		margin-left: -8px;
+		@media (max-width: 991px) and (min-width: 768px) {
+			display: none;
+		}
+	}
+	p {
+		font-family: $font-type;
+		font-weight: 300;
+		color: $grey-color;
+		margin-left: -8px;
+	}
+	a {
+		font-size: 15px;
+		margin-left: -8px;
+	}
+	.mix {
+		/* Small devices (tablets, 768px and up) */
+		@media (min-width: $screen-xs-min) {
+			width: 100%;
+		}
+		/* Small devices (tablets, 768px and up) */
+		@media (min-width: $screen-sm-min) {
+			width: 50%;
+		}
+		/* Medium devices (desktops, 992px and up) */
+		@media (min-width: $screen-md-min) {
+			width: 33%;
+		}
+		/* Large devices (large desktops, 1200px and up) */
+		@media (min-width: $screen-lg-min) {
+			width: 25%;
+		}
+		display: inline-flex;
+		padding: 0 10px;
+	}
+}
+
+.portfolio-options {
+	padding: 25px 0;
+	text-align: center;
+	.btn {
+		text-align: center;
+		font-size: 12px;
+		width: 180px;
+		margin: 5px;
+	}
+}
+
+.thumbnail {
+	border: 10px;
+}
+
+.no-border {
+	border: none;
+}

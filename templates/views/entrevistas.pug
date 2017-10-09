@@ -1,0 +1,51 @@
+extends ../layouts/default
+
+block content
+  header#candidacy-header.page-header
+    h1#candidacy-title.text-center.container ENTREVISTAS
+  div.container
+    div.container
+      h1.text-center CANDIDATOS
+      section
+        form(method='POST' action='/entrevistas_accept')
+          div.container.col-sm-1
+          div.container.col-sm-10
+            .table-responsive
+              table.table.table-hover.display#table_id
+                thead
+                  if user.isAdmin
+                    th Aceitar
+                  th Nome
+                  th Número UP
+                  th 
+                tbody
+                  if candidatos
+                    each candidato in candidatos
+                      if candidato.entrevista
+                        tr.success
+                          if user.isAdmin
+                            td
+                              if candidato.aceite
+                                input(type='checkbox', disabled, checked)
+                              else
+                                input(type="checkbox" name="accept" value="" + candidato._id)
+                          td
+                            p #{candidato.name.full}
+                          td
+                            p #{candidato.numero_up}
+                          td
+                            a(href="/entrevista/" + candidato._id)
+                              p Entrevistado
+                      else
+                        tr.danger
+                          if user.isAdmin
+                              td  
+                          td
+                            p #{candidato.name.full}
+                          td
+                            p #{candidato.numero_up}
+                          td
+                            a(href="/entrevista/" + candidato._id) 
+                              p Entrevistar
+            if user.isAdmin && candidatos
+              button.btn.btn-default(type="Submit") Guardar
