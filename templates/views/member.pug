@@ -1,6 +1,6 @@
 extends ../layouts/default
 
-block content   
+block content
     header#member-header
       .row#member-header-content
         .col-sm-5.col-xs-offset-1
@@ -23,48 +23,49 @@ block content
           div.page-header
             h1 User profile not public
       else
-        .row#detail-info 
+        .row#detail-info
           .row
             .col-sm-6
               if member.about
                 h3 BIOGRAFIA
                 p #{member.about}
-          //          
+          //
             .col-sm-6#competencias
               h3 COMPETÊNCIAS
-              .row 
+              .row
                 .col-sm-4
                   label(for="progress-bar-html") HTML
                 .col-sm-8
                   .progress
                     .progress-bar#progress-bar-html(role="progressbar" style="width: 60%")
-              .row 
+              .row
                 .col-sm-4
                   label(for="progress-bar-css") CSS
                 .col-sm-8
                   .progress
                     .progress-bar#progress-bar-css(role="progressbar" style="width: 60%")
-              .row 
+              .row
                 .col-sm-4
                   label(for="progress-bar-js") JAVASCRIPT
                 .col-sm-8
                   .progress
                     .progress-bar#progress-bar-js(role="progressbar" style="width: 60%")
-              .row 
+              .row
                 .col-sm-4
                   label(for="progress-bar-cpp") C++
                 .col-sm-8
                   .progress
                     .progress-bar#progress-bar-cpp(role="progressbar" style="width: 60%")
-              .row 
+              .row
                 .col-sm-4
                   label(for="progress-bar-java") JAVA
                 .col-sm-8
                   .progress
                     .progress-bar#progress-bar-java(role="progressbar" style="width: 60%")
-              .row 
+              .row
                 .col-sm-4
                   label(for="progress-bar-photoshop") PHOTOSHOP
                 .col-sm-8
                   .progress
                     .progress-bar#progress-bar-photoshop(role="progressbar" style="width: 60%")
+    header#member-dividor

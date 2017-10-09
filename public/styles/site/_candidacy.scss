@@ -33,6 +33,15 @@
 	color: $grey-color;
 }
 
+#candidacy-dividor {
+	background-color: black;
+	background-size: cover;
+	height: $dividor-height;
+	width: 100%;
+	display: flex;
+	margin-top: 60px;
+}
+
 #form-of-candidacy {
 	padding-top: 30px;
 

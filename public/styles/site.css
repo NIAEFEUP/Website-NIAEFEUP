@@ -8593,6 +8593,14 @@ body {
   display: flex;
   align-items: center; }
 
+#members-dividor {
+  background-color: black;
+  background-size: cover;
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  margin-top: 60px; }
+
 #members-title {
   color: #FFFFFF;
   font-family: "Montserrat", sans-serif;
@@ -8684,6 +8692,14 @@ body {
   background-size: cover;
   background-position-y: center; }
 
+#member-dividor {
+  background-color: black;
+  background-size: cover;
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  margin-top: 60px; }
+
 #member-header-content {
   height: 60vh;
   display: flex;
@@ -8758,6 +8774,14 @@ body {
   font-weight: 400;
   color: #5C5C5C; }
 
+#candidacy-dividor {
+  background-color: black;
+  background-size: cover;
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  margin-top: 60px; }
+
 #form-of-candidacy {
   padding-top: 30px; }
   #form-of-candidacy .form-control {
@@ -8825,6 +8849,14 @@ a.fa-icon-border:hover {
   width: 100%;
   display: flex;
   align-items: center; }
+
+.portfolio-dividor {
+  background-color: black;
+  background-size: cover;
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  margin-top: 60px; }
 
 .portfolio-title {
   color: #FFFFFF;

@@ -4,6 +4,15 @@
     background-position-y: center;
 }
 
+#member-dividor {
+	background-color: black;
+	background-size: cover;
+	height: $dividor-height;
+	width: 100%;
+	display: flex;
+	margin-top: 60px;
+}
+
 #member-header-content{
     height: $header-height;
     display: flex;

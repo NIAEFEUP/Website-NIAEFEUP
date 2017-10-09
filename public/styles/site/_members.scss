@@ -7,6 +7,15 @@
 	align-items: center;
 }
 
+#members-dividor {
+	background-color: black;
+	background-size: cover;
+	height: $dividor-height;
+	width: 100%;
+	display: flex;
+	margin-top: 60px;
+}
+
 #members-title {
 	color: #FFFFFF;
 	font-family: $font-type;
