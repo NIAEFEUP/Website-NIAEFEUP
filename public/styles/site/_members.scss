@@ -1,5 +1,5 @@
 #members-header {
-	background: url("../images/home/banner-equipa.png") no-repeat center center;
+	background: url("../images/home/banner-equipa.jpg") no-repeat center center;
 	background-size: cover;
 	height: $header-height;
 	width: 100%;
@@ -37,7 +37,7 @@
 
 .team-member {
 	margin: 15px;
-	@media (max-width:1199px) {
+	@media (max-width: 1199px) {
 		margin: 15px 0;
 	}
 	position: relative;
@@ -55,32 +55,27 @@
 	height: 6.5em;
 	transition: 0.5s ease;
 	font-size: 0.9em;
-
 	div {
 		padding: 15px;
-		@media (max-width:991px) and (min-width:768px) {
+		@media (max-width: 991px) and (min-width:768px) {
 			padding: 10px;
 		}
 		height: 100%;
 	}
-
-	> a {
+	>a {
 		color: white;
 		text-decoration: none;
 	}
-
 	h4 {
 		margin-bottom: 2px;
 		font-family: $font-type;
 		font-weight: 400;
 	}
-
 	em {
 		font-family: $font-type-body;
 		font-weight: 100;
 		font-style: italic;
 	}
-
 	hr {
 		width: 25%;
 		border-top: 1px solid white;
@@ -89,15 +84,13 @@
 			display: none;
 		}
 	}
-
 	p {
 		color: white;
 		@media (max-width: 1199px) and (min-width: 768px), (max-width: 419px) {
 			display: none;
 		}
 	}
-
-	> nav.social {
+	>nav.social {
 		position: absolute;
 		height: 2em;
 		bottom: 15px;
@@ -107,7 +100,6 @@
 		@media (max-width: 991px) and (min-width: 768px) {
 			display: none;
 		}
-
 		a {
 			font-size: 10px;
 		}

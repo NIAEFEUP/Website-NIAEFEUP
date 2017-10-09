@@ -32,3 +32,5 @@ node_modules
 
 #Idea Folder
 .idea/
+
+*.min.*
