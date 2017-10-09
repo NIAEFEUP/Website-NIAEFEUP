@@ -3,14 +3,15 @@ extends ../layouts/default
 block content
     div.container
  
-      div.page-header
-        h1 My profile
+      div.page-header(style="margin-top: 7em;")
+        h1 Meu Perfil
 
       form#form2(action='/api/fileupload/create', method='POST', enctype='multipart/form-data')
-        div
-          img.img-responsive.img-circle(src=filePath, alt='')
-          input#file_upload(type='file')
-          input#file_name(type='hidden', name='file_name', value=user.id)
+        div.container
+          center
+            img.img-responsive.img(src=filePath, alt='' width="250px" height="250px")
+            input#file_upload(type='file')
+            input#file_name(type='hidden', name='file_name', value=user.id)
         br
         div
           center
