@@ -8157,10 +8157,8 @@ button.close {
   align-items: center; }
 
 #flash-messages {
-  width : 45%;
   position: absolute;
-  top: 75px; 
-}
+  top: 75px; }
 
 .btn:focus, .btn:active, .btn.active, .btn:focus:active {
   background-image: none;
