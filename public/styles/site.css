@@ -8853,4 +8853,7 @@ a.fa-icon-border:hover {
     margin: 5px; }
 
 .thumbnail {
-  padding: 10px; }
+  border: 10px; }
+
+.no-border {
+  border: none; }

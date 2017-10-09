@@ -13,7 +13,7 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top.affix-top
     #bs-example-navbar-collapse-1.collapse.navbar-collapse(style="background : white")
       ul.nav.navbar-nav.navbar-right
         li
-          a.page-scroll(href='/#info') SOBRE
+          a.page-scroll(href='/#about') SOBRE
         li
           a.page-scroll(href='/portfolio') PORTFÓLIO
         li
@@ -23,7 +23,8 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top.affix-top
         if user
           if user.canAccessKeystone
             li: a(href='/keystone') Abrir AdminUI
-          li: a(href='/profile') Minha conta
-          li: a(href='/keystone/signout') Sign Out
+          li: a(href='/entrevistas') Entrevistas
+          li: a(href='/profile') Perfil
+          li: a(href='/keystone/signout') Sair
     // /.navbar-collapse
   // /.container-fluid
