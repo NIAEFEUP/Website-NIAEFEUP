@@ -1,11 +1,10 @@
 #candidacy-header {
-	background: url("../images/home/banner-recrutamento.png") no-repeat top center;
+	background: url("../images/home/banner-recrutamento.jpg") no-repeat top center;
 	background-size: cover;
 	height: $header-height;
 	width: 100%;
 	display: flex;
 	align-items: center;
-
 	#candidacy-title {
 		color: #FFFFFF;
 		font-family: $font-type;
@@ -44,55 +43,46 @@
 
 #form-of-candidacy {
 	padding-top: 30px;
-
 	.form-control {
 		padding: 12px;
 		height: auto;
 	}
-
 	#first-name {
 		padding-left: 0;
-    font-weight: 300;
-		@media (max-width:767px) {
+		font-weight: 300;
+		@media (max-width: 767px) {
 			padding-right: 0;
 		}
 	}
-
 	#last-name {
 		padding-right: 0;
-    font-weight: 300;
-		@media (max-width:767px) {
+		font-weight: 300;
+		@media (max-width: 767px) {
 			padding-left: 0;
 		}
 	}
-
-  #field {
+	#field {
 		padding-right: 0;
-    font-weight: 300;
-		@media (max-width:767px) {
+		font-weight: 300;
+		@media (max-width: 767px) {
 			padding-left: 0;
 		}
 	}
-
-
 	input,
 	textarea {
 		border: none;
 		border-radius: 0;
 		background-color: $light-grey-color;
 	}
-
 	input::placeholder,
 	textarea::placeholder {
 		color: $dark-grey-color;
 	}
-
 	#summit-btn {
 		background-color: $primary-color;
 		border: none;
 		border-radius: 0;
 	}
-
 	#summit-btn:hover {
 		background-color: $primary-color-darker;
 	}

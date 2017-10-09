@@ -1,5 +1,5 @@
 .portfolio-header {
-	background: url("../images/home/banner-portfolio.png") center center no-repeat;
+	background: url("../images/home/banner-portfolio.jpg") center center no-repeat;
 	background-size: cover;
 	height: $header-height;
 	width: 100%;
@@ -27,13 +27,11 @@
 
 .portfolio {
 	min-height: 100px;
-
 	.container {
 		display: flex;
 		flex-flow: row wrap;
 		align-items: stretch;
 	}
-
 	h3 {
 		font-family: $font-type;
 		font-weight: 400;
@@ -41,7 +39,6 @@
 		text-transform: uppercase;
 		margin-left: -8px;
 	}
-
 	h4 {
 		font-family: $font-type-body;
 		color: $grey-color;
@@ -50,7 +47,6 @@
 		font-style: italic;
 		margin-left: -8px;
 	}
-
 	hr {
 		width: 20%;
 		border-top: 1px solid black;
@@ -59,19 +55,16 @@
 			display: none;
 		}
 	}
-
 	p {
 		font-family: $font-type;
 		font-weight: 300;
 		color: $grey-color;
 		margin-left: -8px;
 	}
-
 	a {
 		font-size: 15px;
 		margin-left: -8px;
 	}
-
 	.mix {
 		/* Small devices (tablets, 768px and up) */
 		@media (min-width: $screen-xs-min) {
@@ -97,10 +90,9 @@
 .portfolio-options {
 	padding: 25px 0;
 	text-align: center;
-
 	.btn {
 		text-align: center;
-    font-size: 12px;
+		font-size: 12px;
 		width: 180px;
 		margin: 5px;
 	}
