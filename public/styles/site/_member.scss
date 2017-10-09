@@ -1,5 +1,5 @@
 #member-header{
-    background-image: url(https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg);
+    background: url("../images/home/banner-member.png") no-repeat center center;
     background-size: cover;
     background-position-y: center;
 }
@@ -8,9 +8,9 @@
     height: $header-height;
     display: flex;
     align-items: center;
-    background-color: $banner-color-transp;
     color: white;
-    
+    margin-top: 50px;
+
     #member-img{
         width: 175px;
         height: 175px;
@@ -24,8 +24,14 @@
 
     form h2,{
         font-size: 35px;
-        font-weight: bold;
-        margin: 0px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    em {
+      font-family: $font-type-body;
+      font-weight: 100;
+      font-style: italic;
     }
 
     nav a {
@@ -52,7 +58,6 @@
     }
     .progress-bar{
         background-color:$primary-color;
-        border-radius: 0; 
+        border-radius: 0;
     }
 }
-
