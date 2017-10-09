@@ -44,6 +44,14 @@
 
     h3{
         margin-bottom: 50px;
+        font-family: $font-type;
+        font-weight: 500;
+    }
+
+    p {
+      font-family: $font-type;
+      font-weight: 300;
+      color: $grey-color;
     }
 
     .col-sm-6#competencias .col-sm-4,
