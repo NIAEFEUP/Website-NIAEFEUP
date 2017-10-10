@@ -8157,7 +8157,7 @@ button.close {
   align-items: center; }
 
 #flash-messages {
-  width: 45%;
+  width: 100%;
   position: absolute;
   top: 75px; }
 
@@ -8277,7 +8277,7 @@ body {
   font-weight: 100; }
 
 .item {
-  background: url("../images/home/banner-recrutamento.png") no-repeat top center;
+  background: url("../images/home/banner-recrutamento.jpg") no-repeat top center;
   background-size: cover;
   height: 100vh;
   width: 100%;
@@ -8384,7 +8384,7 @@ body {
     font-size: 13px; } }
 
 #container-photo {
-  background: url("../images/home/banner-middle.png") no-repeat center center;
+  background: url("../images/home/banner-middle.jpg") no-repeat center center;
   background-size: cover;
   height: 100vh;
   width: 100%; }
@@ -8472,7 +8472,7 @@ body {
       float: left; } }
 
 #container-projects #project-1 {
-  background: url("../images/projects/project-website.png") no-repeat center center;
+  background: url("../images/projects/project-website.jpg") no-repeat center center;
   background-size: cover; }
   #container-projects #project-1 #project-1-description {
     background-color: rgba(0, 0, 0, 0.6);
@@ -8484,7 +8484,7 @@ body {
   display: block; }
 
 #container-projects #project-2 {
-  background: url("../images/projects/project-tts.png") no-repeat center center;
+  background: url("../images/projects/project-tts.jpg") no-repeat center center;
   background-size: cover; }
   #container-projects #project-2 #project-2-description {
     background-color: rgba(0, 0, 0, 0.6);
@@ -8496,7 +8496,7 @@ body {
   display: block; }
 
 #container-projects #project-3 {
-  background: url("../images/projects/project-workshop.png") no-repeat center center;
+  background: url("../images/projects/project-workshop.jpg") no-repeat center center;
   background-size: cover; }
   #container-projects #project-3 #project-3-description {
     background-color: rgba(0, 0, 0, 0.6);
@@ -8508,7 +8508,7 @@ body {
   display: block; }
 
 #container-projects #project-4 {
-  background: url("../images/projects/project-enei.png") no-repeat center center;
+  background: url("../images/projects/project-enei.jpg") no-repeat center center;
   background-size: cover; }
   #container-projects #project-4 #project-4-description {
     background-color: rgba(0, 0, 0, 0.6);
@@ -8523,7 +8523,7 @@ body {
   margin-top: 100px;
   width: 100%;
   height: 300px;
-  background: url("../images/home/feup.png") no-repeat center center;
+  background: url("../images/home/feup.jpg") no-repeat center center;
   background-size: cover; }
   #container-feup .info {
     padding-top: 100px;
@@ -8586,7 +8586,7 @@ body {
   width: 100%; }
 
 #members-header {
-  background: url("../images/home/banner-equipa.png") no-repeat center center;
+  background: url("../images/home/banner-equipa.jpg") no-repeat center center;
   background-size: cover;
   height: 60vh;
   width: 100%;
@@ -8688,7 +8688,7 @@ body {
   left: 15px; }
 
 #member-header {
-  background: url("../images/home/banner-member.png") no-repeat center center;
+  background: url("../images/home/banner-member.jpg") no-repeat center center;
   background-size: cover;
   background-position-y: center; }
 
@@ -8745,7 +8745,7 @@ body {
     border-radius: 0; }
 
 #candidacy-header {
-  background: url("../images/home/banner-recrutamento.png") no-repeat top center;
+  background: url("../images/home/banner-recrutamento.jpg") no-repeat top center;
   background-size: cover;
   height: 60vh;
   width: 100%;
@@ -8843,7 +8843,7 @@ a.fa-icon-border:hover {
   background-color: #6B2212; }
 
 .portfolio-header {
-  background: url("../images/home/banner-portfolio.png") center center no-repeat;
+  background: url("../images/home/banner-portfolio.jpg") center center no-repeat;
   background-size: cover;
   height: 60vh;
   width: 100%;
