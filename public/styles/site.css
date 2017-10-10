@@ -8257,8 +8257,7 @@ body {
 .white-title {
   color: white;
   font-size: 50px;
-  font-weight: 500;
-  margin-top: 100px; }
+  font-weight: 500; }
 
 .white-subtitle {
   color: white;
@@ -8316,7 +8315,10 @@ body {
   color: #5C5C5C; }
 
 #hero {
-  overflow: hidden; }
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: 75px; }
   #hero .slide-info {
     text-align: center; }
   #hero .see-more-button {
