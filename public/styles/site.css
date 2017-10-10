@@ -8364,7 +8364,6 @@ body {
 
 @media (max-width: 767px) {
   #container-icons .col-md-2 {
-    width: 18%;
     float: left;
     text-align: left;
     font-size: 9px; } }
