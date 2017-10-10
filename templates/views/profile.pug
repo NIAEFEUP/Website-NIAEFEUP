@@ -81,9 +81,9 @@ block content
         div.form-group
           label.col-sm-4 Password
           div.col-sm-4
-            input.form-control(placeholder='New password',required=true, name='new_password', type='password')
+            input.form-control(placeholder='New password',pattern=".{5,}", name='new_password', type='password',title="5 characters minimum")
           div.col-sm-4
-            input.form-control(placeholder='Confirm new password',required=true, name='confirm_new_password', type='password')
+            input.form-control(placeholder='Confirm new password',pattern=".{5,}", name='confirm_new_password', type='password', title="5 characters minimum")
 
         div.form-group
           label.col-sm-4 Public profile

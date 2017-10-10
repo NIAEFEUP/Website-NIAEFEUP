@@ -47,11 +47,12 @@ exports = module.exports = function(app) {
     if(process.env.RECRUTAMENTO == "true"){
         app.get('/candidatura',middleware.nonUser,routes.views.candidatura);
         app.post('/candidatura',middleware.nonUser,routes.views.candidatura.create);
-        app.get('/entrevistas',middleware.nonRecruta,routes.views.entrevistas);
-        app.post('/entrevistas_accept',middleware.requireAdmin,routes.views.entrevistas.approve);
-        app.get('/entrevista/:id',middleware.nonRecruta,routes.views.entrevista);
-        app.post('/entrevista',middleware.nonRecruta,routes.views.entrevista.create);
     }
+    
+    app.get('/entrevistas',middleware.nonRecruta,routes.views.entrevistas);
+    app.post('/entrevistas_accept',middleware.requireAdmin,routes.views.entrevistas.approve);
+    app.get('/entrevista/:id',middleware.nonRecruta,routes.views.entrevista);
+    app.post('/entrevista',middleware.nonRecruta,routes.views.entrevista.create);
     
     app.get('/portfolio', routes.views.projetos);
 

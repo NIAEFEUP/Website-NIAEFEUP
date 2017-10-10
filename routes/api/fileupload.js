@@ -108,8 +108,7 @@ exports.create = function(req, res) {
     }
 }
 
-/**
- * Delete File by ID
+
 exports.remove = function(req, res) {
     var fileId = req.params.id;
     FileData.model.findById(req.params.id).exec(function(err, item) {
@@ -139,7 +138,6 @@ exports.remove = function(req, res) {
 
     });
 }
-*/
 
 
 /**

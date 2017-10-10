@@ -53,23 +53,25 @@ exports.update = function(req, res, next) {
             publicProfile = false;
         }
 
-
         var formData = {
             name: { first: req.body.first, last: req.body.last },
             linkedin: req.body.linkedin,
             github: req.body.github,
             website: req.body.website,
             about: req.body.about,
-            public: publicProfile,
-            password: req.body.new_password
+            public: publicProfile
         }
 
         var data = (req.method == 'POST') ? formData : req.query;
 
         var can_submit = true;
-
-        if(req.body.new_password != req.body.confirm_new_password){
-            can_submit = false;
+        
+        if(req.body.new_password){
+            if(req.body.new_password != req.body.confirm_new_password){
+                can_submit = false;
+            } else {
+                formData.password = req.body.new_password;
+            }
         }
 
         if(can_submit == true){
