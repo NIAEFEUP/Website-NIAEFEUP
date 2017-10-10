@@ -38,7 +38,7 @@ exports = module.exports = function(app) {
     app.get('/', routes.views.home);
     app.get('/signin', middleware.requireUser, routes.views.home);
     app.get('/profile', middleware.requireUser, routes.views.profile);
-    app.post('/profile', middleware.requireUser, routes.views.profile.update);
+    app.post('/profile', middleware.User_Password, routes.views.profile.update);
     app.get('/members', routes.views.members);
     app.get('/member/:id', routes.views.member);
     app.get('/blog/:category?', routes.views.blog);
