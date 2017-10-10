@@ -42,7 +42,7 @@
 }
 
 #active-members {
-    .col-sm-3 {
+    .col-md-3 {
         padding: 15px 30px;
         @media (max-width: 1199px) {
             padding: 15px;
@@ -52,6 +52,10 @@
 
 .team-member {
     position: relative;
+    margin-bottom: 11em;
+    @media (min-width: 768px) {
+        margin-bottom: 0;
+    }
     img {
         position: absolute;
         top: 0;
@@ -66,19 +70,26 @@
 }
 
 #active-members .team-member {
-    padding-top: 100%;
+    @media (min-width: 768px) {
+        padding-top: 100%;
+    }
+    padding-top: 71.43%;
 }
 
 .info-member {
     position: absolute;
-    bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, $projects-color-transp, $transparent-color);
-    color: white;
+    @media (min-width: 768px) {
+        background: linear-gradient(to top, $projects-color-transp, $transparent-color);
+        color: white;
+        height: 6.5em;
+        bottom: 0;
+    }
+    padding-bottom: 20px;
+    color: $grey-color;
     overflow: hidden;
     width: 100%;
-    height: 6.5em;
     transition: 0.5s ease;
     font-size: 0.9em;
     div {
@@ -89,7 +100,10 @@
         height: 100%;
     }
     >a {
-        color: white;
+        color: $grey-color;
+        @media (min-width: 768px) {
+            color: white;
+        }
         text-decoration: none;
     }
     h4 {
@@ -104,7 +118,10 @@
     }
     hr {
         width: 25%;
-        border-top: 1px solid white;
+        border-top: 1px solid $grey-color;
+        @media (min-width: 768px) {
+            border-top: 1px solid white;
+        }
         margin-left: 0;
         @media (max-width: 991px) and (min-width: 768px) {
             display: none;
@@ -120,7 +137,10 @@
         position: absolute;
         height: 2em;
         bottom: 15px;
-        left: 100%;
+        @media (min-width: 768px) {
+            left: 100%;
+        }
+        left: 15px;
         overflow: hidden;
         transition: 0.75s ease;
         @media (max-width: 991px) and (min-width: 768px) {
@@ -134,11 +154,15 @@
 
 .team-member:hover .info-member,
 .team-member:hover .info-member {
-    background-color: $projects-color-transp;
-    height: 100%;
+    @media (min-width: 768px) {
+        background-color: $projects-color-transp;
+        height: 100%;
+    }
 }
 
 .info-slide:active nav,
 .team-member:hover nav {
-    left: 15px;
+    @media (min-width: 768px) {
+        left: 15px;
+    }
 }

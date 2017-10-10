@@ -8,7 +8,7 @@ block content
 		section#direction-members
 			.row
 				each direction_member in direcao
-					.col-md-4.col-xs-12
+					.col-md-4.col-sm-6.col-xs-12
 						.team-member
 							a(href="./member/"+direction_member._id)
 								img.img-responsive(src=direction_member.photo_path, alt=direction_member.position)
@@ -28,7 +28,7 @@ block content
 		section#active-members
 			.row
 				each member in members
-					.col-sm-3.col-xs-6
+					.col-md-3.col-sm-4.col-xs-12
 						.team-member
 							a(href="./member/"+member._id)
 								img.img-responsive(src=member.photo_path, alt='membro')
@@ -47,7 +47,7 @@ block content
 		section#recruits
 			.row
 				each recruta in recrutas
-					.col-sm-3.col-xs-6
+					.col-md-3.col-sm-4.col-xs-12
 						.team-member
 							a(href="./member/"+recruta._id)
 								img.img-responsive(src=recruta.photo_path, alt='recruta')
