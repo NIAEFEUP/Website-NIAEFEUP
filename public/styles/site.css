@@ -8157,7 +8157,7 @@ button.close {
   align-items: center; }
 
 #flash-messages {
-  width: 45%;
+  width: 100%;
   position: absolute;
   top: 75px; }
 
@@ -8622,14 +8622,18 @@ body {
       #direction-members .col-md-4 {
         padding: 15px; } }
 
-#active-members .col-sm-3 {
+#active-members .col-md-3 {
   padding: 15px 30px; }
   @media (max-width: 1199px) {
-    #active-members .col-sm-3 {
+    #active-members .col-md-3 {
       padding: 15px; } }
 
 .team-member {
-  position: relative; }
+  position: relative;
+  margin-bottom: 11em; }
+  @media (min-width: 768px) {
+    .team-member {
+      margin-bottom: 0; } }
   .team-member img {
     position: absolute;
     top: 0;
@@ -8641,20 +8645,27 @@ body {
   padding-top: 71.43%; }
 
 #active-members .team-member {
-  padding-top: 100%; }
+  padding-top: 71.43%; }
+  @media (min-width: 768px) {
+    #active-members .team-member {
+      padding-top: 100%; } }
 
 .info-member {
   position: absolute;
-  bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-  color: white;
+  padding-bottom: 20px;
+  color: #5C5C5C;
   overflow: hidden;
   width: 100%;
-  height: 6.5em;
   transition: 0.5s ease;
   font-size: 0.9em; }
+  @media (min-width: 768px) {
+    .info-member {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+      color: white;
+      height: 6.5em;
+      bottom: 0; } }
   .info-member div {
     padding: 15px;
     height: 100%; }
@@ -8662,8 +8673,11 @@ body {
       .info-member div {
         padding: 10px; } }
   .info-member > a {
-    color: white;
+    color: #5C5C5C;
     text-decoration: none; }
+    @media (min-width: 768px) {
+      .info-member > a {
+        color: white; } }
   .info-member h4 {
     margin-bottom: 2px;
     font-family: "Montserrat", sans-serif;
@@ -8674,8 +8688,11 @@ body {
     font-style: italic; }
   .info-member hr {
     width: 25%;
-    border-top: 1px solid white;
+    border-top: 1px solid #5C5C5C;
     margin-left: 0; }
+    @media (min-width: 768px) {
+      .info-member hr {
+        border-top: 1px solid white; } }
     @media (max-width: 991px) and (min-width: 768px) {
       .info-member hr {
         display: none; } }
@@ -8688,23 +8705,28 @@ body {
     position: absolute;
     height: 2em;
     bottom: 15px;
-    left: 100%;
+    left: 15px;
     overflow: hidden;
     transition: 0.75s ease; }
+    @media (min-width: 768px) {
+      .info-member > nav.social {
+        left: 100%; } }
     @media (max-width: 991px) and (min-width: 768px) {
       .info-member > nav.social {
         display: none; } }
     .info-member > nav.social a {
       font-size: 10px; }
 
-.team-member:hover .info-member,
-.team-member:hover .info-member {
-  background-color: rgba(0, 0, 0, 0.6);
-  height: 100%; }
+@media (min-width: 768px) {
+  .team-member:hover .info-member,
+  .team-member:hover .info-member {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%; } }
 
-.info-slide:active nav,
-.team-member:hover nav {
-  left: 15px; }
+@media (min-width: 768px) {
+  .info-slide:active nav,
+  .team-member:hover nav {
+    left: 15px; } }
 
 #member-header {
   background: url("../images/home/banner-member.jpg") no-repeat center center;
