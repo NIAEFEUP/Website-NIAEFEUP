@@ -55,9 +55,7 @@ exports.update = function(req, res, next) {
 
 
         var formData = {
-            avatar: req.body.avatar,
             name: { first: req.body.first, last: req.body.last },
-            position: req.body.position,
             linkedin: req.body.linkedin,
             github: req.body.github,
             website: req.body.website,
