@@ -1,6 +1,6 @@
 mixin flash-messages(messages)
 	if messages
-		#flash-messages.container.text-center
+		#flash-messages.container.text-center.dismiss-class
 			each message in messages.info
 				+flash-message(message, 'info')
 			each message in messages.success

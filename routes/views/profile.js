@@ -61,7 +61,7 @@ exports.update = function(req, res, next) {
             about: req.body.about,
             public: publicProfile
         }
-
+        
         var data = (req.method == 'POST') ? formData : req.query;
 
         var can_submit = true;
