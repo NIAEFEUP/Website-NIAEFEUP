@@ -54,9 +54,7 @@ exports.update = function(req, res, next) {
         }
 
         var formData = {
-            avatar: req.body.avatar,
             name: { first: req.body.first, last: req.body.last },
-            position: req.body.position,
             linkedin: req.body.linkedin,
             github: req.body.github,
             website: req.body.website,
@@ -66,18 +64,36 @@ exports.update = function(req, res, next) {
 
         var data = (req.method == 'POST') ? formData : req.query;
 
-        item.getUpdateHandler(req).process(data, {
-            flashErrors: true,
-        }, function(err) {
-            if (err) {
-                req.flash('warning', 'Error updating profile!');
-                res.locals.validationErrors = err.errors;
+        var can_submit = true;
+        
+        if(req.body.new_password){
+            if(req.body.new_password != req.body.confirm_new_password){
+                can_submit = false;
             } else {
-                req.flash('success', 'Your profile has been updated!');
-                return res.redirect('/profile');
+                formData.password = req.body.new_password;
             }
+        }
+
+        if(can_submit == true){
+          item.getUpdateHandler(req).process(data, {
+              flashErrors: true,
+          }, function(err) {
+
+              if (err) {
+                  req.flash('warning', 'Error updating profile!');
+                  res.locals.validationErrors = err.errors;
+              } else {
+                  req.flash('success', 'Your profile has been updated!');
+                  return res.redirect('/profile');
+              }
+              next();
+          });
+        }else{
+            req.flash('warning', 'A password deve ser igual');
+            return res.redirect('/profile');
             next();
-        });
+        }
+
 
     });
 }

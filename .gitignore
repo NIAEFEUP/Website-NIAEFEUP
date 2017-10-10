@@ -1,4 +1,7 @@
 .env
+public/uploads/members/*
+public/styles/site.css
+package-lock.json
 
 # Logs
 logs

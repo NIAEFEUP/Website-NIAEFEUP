@@ -2,7 +2,7 @@ extends ../layouts/default
 
 block content
     div.container
- 
+
       div.page-header(style="margin-top: 7em;")
         h1 Meu Perfil
 
@@ -79,6 +79,13 @@ block content
               rows = 10,
               style='height: 10em; resize:none') #{user.about}
         div.form-group
+          label.col-sm-4 Password
+          div.col-sm-4
+            input.form-control(placeholder='New password',pattern=".{5,}", name='new_password', type='password',title="5 characters minimum")
+          div.col-sm-4
+            input.form-control(placeholder='Confirm new password',pattern=".{5,}", name='confirm_new_password', type='password', title="5 characters minimum")
+
+        div.form-group
           label.col-sm-4 Public profile
           div.col-sm-8
             if user.public
@@ -107,7 +114,7 @@ block content
           //Error handling
           if(selectedFile == undefined)
             alert('You did not select a file!');
-          
+
 
           //Create the FormData data object and append the file to it.
           var newFile = new FormData();
@@ -128,7 +135,7 @@ block content
             success: function(data){
               //Dev Note: KeystoneAPI only allows file and image uploads with the file itself. Any extra metadata will have to
               //be uploaded/updated with a second call.
-             
+
              if(data.unsuported_file !== undefined){
                window.location.href = "./profile";
                return;
@@ -182,7 +189,7 @@ block content
 
                 alert('Failed to connect to the server while trying to update file metadata!');
               });
-              
+
             },
 
             //This error function is called if the POST fails for submitting the file itself.
@@ -201,5 +208,5 @@ block content
           //Execute the AJAX call.
           jQuery.ajax(opts);
 
-         
+
         }
