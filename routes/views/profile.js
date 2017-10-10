@@ -53,6 +53,11 @@ exports.update = function(req, res, next) {
             publicProfile = false;
         }
 
+        if(req.body.new_password != req.body.confirm_new_password){
+            req.flash('warning', 'password and confirmation password are not equal');
+        }
+
+
         var formData = {
             avatar: req.body.avatar,
             name: { first: req.body.first, last: req.body.last },
@@ -61,23 +66,49 @@ exports.update = function(req, res, next) {
             github: req.body.github,
             website: req.body.website,
             about: req.body.about,
-            public: publicProfile
+            public: publicProfile,
+            password: req.body.new_password
         }
 
         var data = (req.method == 'POST') ? formData : req.query;
 
-        item.getUpdateHandler(req).process(data, {
-            flashErrors: true,
-        }, function(err) {
-            if (err) {
-                req.flash('warning', 'Error updating profile!');
-                res.locals.validationErrors = err.errors;
-            } else {
-                req.flash('success', 'Your profile has been updated!');
-                return res.redirect('/profile');
-            }
-            next();
-        });
+        var can_submit = true;
+
+        if(req.body.new_password != req.body.confirm_new_password){
+            can_submit = false;
+        }
+
+        var equal = true;
+
+        item._.password.compare(req.body.old_password,function(err, isMatch){
+              if(!isMatch){
+                equal = false;
+                req.flash('warning','password is not equal');
+              }else if(err){
+                equal = false;
+                req.flash('warning','some error');
+              }
+          });
+
+        console.log(equal);
+
+        if(can_submit == true && equal==true){
+          item.getUpdateHandler(req).process(data, {
+              flashErrors: true,
+          }, function(err) {
+
+              if (err) {
+                  req.flash('warning', 'Error updating profile!');
+                  res.locals.validationErrors = err.errors;
+              } else {
+                  req.flash('success', 'Your profile has been updated!');
+                  return res.redirect('/profile');
+              }
+              next();
+          });
+        }else{
+          next();
+        }
 
     });
 }
