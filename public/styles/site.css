@@ -8621,12 +8621,24 @@ body {
     @media (max-width: 1199px) {
       #direction-members .col-md-4 {
         padding: 15px; } }
+  #direction-members .team-member {
+    padding-top: 71.43%; }
 
-#active-members .col-md-3 {
+#active-members .col-md-3,
+#recruits .col-md-3 {
   padding: 15px 30px; }
   @media (max-width: 1199px) {
-    #active-members .col-md-3 {
+    #active-members .col-md-3,
+    #recruits .col-md-3 {
       padding: 15px; } }
+
+#active-members .team-member,
+#recruits .team-member {
+  padding-top: 71.43%; }
+  @media (min-width: 768px) {
+    #active-members .team-member,
+    #recruits .team-member {
+      padding-top: 100%; } }
 
 .team-member {
   position: relative;
@@ -8640,15 +8652,6 @@ body {
     height: 100%;
     width: 100%;
     object-fit: cover; }
-
-#direction-members .team-member {
-  padding-top: 71.43%; }
-
-#active-members .team-member {
-  padding-top: 71.43%; }
-  @media (min-width: 768px) {
-    #active-members .team-member {
-      padding-top: 100%; } }
 
 .info-member {
   position: absolute;

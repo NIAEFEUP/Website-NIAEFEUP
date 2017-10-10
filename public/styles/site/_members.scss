@@ -39,14 +39,24 @@
             padding: 15px;
         }
     }
+    .team-member {
+        padding-top: 71.43%;
+    }
 }
 
-#active-members {
+#active-members,
+#recruits {
     .col-md-3 {
         padding: 15px 30px;
         @media (max-width: 1199px) {
             padding: 15px;
         }
+    }
+    .team-member {
+        @media (min-width: 768px) {
+            padding-top: 100%;
+        }
+        padding-top: 71.43%;
     }
 }
 
@@ -63,17 +73,6 @@
         width: 100%;
         object-fit: cover;
     }
-}
-
-#direction-members .team-member {
-    padding-top: 71.43%;
-}
-
-#active-members .team-member {
-    @media (min-width: 768px) {
-        padding-top: 100%;
-    }
-    padding-top: 71.43%;
 }
 
 .info-member {
