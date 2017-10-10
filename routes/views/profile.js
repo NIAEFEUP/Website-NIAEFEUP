@@ -53,10 +53,6 @@ exports.update = function(req, res, next) {
             publicProfile = false;
         }
 
-        if(req.body.new_password != req.body.confirm_new_password){
-            req.flash('warning', 'password and confirmation password are not equal');
-        }
-
 
         var formData = {
             avatar: req.body.avatar,
@@ -78,21 +74,7 @@ exports.update = function(req, res, next) {
             can_submit = false;
         }
 
-        var equal = true;
-
-        item._.password.compare(req.body.old_password,function(err, isMatch){
-              if(!isMatch){
-                equal = false;
-                req.flash('warning','password is not equal');
-              }else if(err){
-                equal = false;
-                req.flash('warning','some error');
-              }
-          });
-
-        console.log(equal);
-
-        if(can_submit == true && equal==true){
+        if(can_submit == true){
           item.getUpdateHandler(req).process(data, {
               flashErrors: true,
           }, function(err) {
@@ -107,8 +89,11 @@ exports.update = function(req, res, next) {
               next();
           });
         }else{
-          next();
+            req.flash('warning', 'A password deve ser igual');
+            return res.redirect('/profile');
+            next();
         }
+
 
     });
 }

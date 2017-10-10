@@ -79,17 +79,12 @@ block content
               rows = 10,
               style='height: 10em; resize:none') #{user.about}
         div.form-group
-          label.col-sm-4 Old password
-          div.col-sm-8
-            input.form-control(placeholder='Old password', required=false, name='old_password', type='password')
-        div.form-group
-          label.col-sm-4 New password
-          div.col-sm-8
+          label.col-sm-4 Password
+          div.col-sm-4
             input.form-control(placeholder='New password',required=false, name='new_password', type='password')
-        div.form-group
-          label.col-sm-4 Confirm new password
-          div.col-sm-8
-            input.form-control(placeholder='Confirm new password', required=false, name='confirm_new_password', type='password')      
+          div.col-sm-4
+            input.form-control(placeholder='Confirm new password',required=false, name='confirm_new_password', type='password')
+
         div.form-group
           label.col-sm-4 Public profile
           div.col-sm-8
