@@ -19,7 +19,7 @@ keystone.init({
     'view engine': 'pug',
     'view cache': true,
     'emails': 'templates/emails',
-    'signin logo': ['../../images/play-btn.png'],
+    'signin logo': ['../../images/favicon-96x96.png'],
     'signin redirect': '/',
     'signout redirect': '/',
     'signin url': '/signin',
