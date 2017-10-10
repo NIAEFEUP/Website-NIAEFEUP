@@ -8157,7 +8157,7 @@ button.close {
   align-items: center; }
 
 #flash-messages {
-  width: 45%;
+  width: 100%;
   position: absolute;
   top: 75px; }
 
