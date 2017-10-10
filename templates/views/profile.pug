@@ -80,6 +80,10 @@ block content
               style='height: 10em; resize:none') #{user.about}
         div.form-group
           label.col-sm-4 Password
+          div.col-sm-8
+            input.form-control(placeholder='Password',pattern=".{5,}", name='password', type='password',title="5 characters minimum", required)
+        div.form-group
+          label.col-sm-4 New Password
           div.col-sm-4
             input.form-control(placeholder='New password',pattern=".{5,}", name='new_password', type='password',title="5 characters minimum")
           div.col-sm-4
