@@ -92,3 +92,26 @@ exports.nonRecruta = function(req, res, next) {
 exports.validarCandidatura = function(req, res, next) {
   next();
 };
+
+exports.User_Password = function(req, res, next) {
+    if (!req.user) {
+        req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
+        res.redirect('/keystone/signin');
+    } else {
+        if(req.body.password){
+
+            req.user._.password.compare(req.body.password,function(err,result){
+                if (result){
+                    next();
+                } else {
+                    req.flash("error","A password que inseriste está errada!");
+                    res.redirect('/profile');
+                }
+            })
+
+        } else {
+            req.flash('error', 'Preenche a tua password atual.');
+            res.redirect('/profile');
+        }
+    }
+};
