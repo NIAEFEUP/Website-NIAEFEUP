@@ -8278,10 +8278,14 @@ body {
 .item {
   background: url("../images/home/banner-recrutamento.jpg") no-repeat top center;
   background-size: cover;
-  height: 80vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center; }
+  @media (min-width: 768px) {
+    .item {
+      margin-top: 75px;
+      height: 80vh; } }
 
 .white-separator {
   border-top: 1px solid white !important;
@@ -8317,8 +8321,7 @@ body {
 #hero {
   overflow: hidden;
   display: flex;
-  align-items: center;
-  padding-top: 75px; }
+  align-items: center; }
   #hero .slide-info {
     text-align: center; }
   #hero .see-more-button {
@@ -8388,8 +8391,11 @@ body {
 #container-photo {
   background: url("../images/home/banner-middle.jpg") no-repeat center center;
   background-size: cover;
-  height: 80vh;
+  height: 100vh;
   width: 100%; }
+  @media (min-width: 768px) {
+    #container-photo {
+      height: 80vh; } }
   #container-photo #transparent-div {
     height: 100%;
     background-color: rgba(140, 45, 25, 0.7);

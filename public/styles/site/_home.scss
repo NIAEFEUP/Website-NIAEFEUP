@@ -30,7 +30,11 @@
 .item {
     background: url("../images/home/banner-recrutamento.jpg") no-repeat top center;
     background-size: cover;
-    height: $home-banner;
+    height: $home-banner-mobile-version;
+    @media (min-width: 768px) {
+        margin-top: $nav-bar-heigth;
+        height: $home-banner;
+    }
     width: 100%;
     display: flex;
     align-items: center;
@@ -77,7 +81,6 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    padding-top: $nav-bar-heigth;
     .slide-info {
         text-align: center;
     }
@@ -163,7 +166,10 @@
 #container-photo {
     background: url("../images/home/banner-middle.jpg") no-repeat center center;
     background-size: cover;
-    height: $home-banner;
+    height: $home-banner-mobile-version;
+    @media (min-width: 768px) {
+        height: $home-banner;
+    }
     width: 100%;
     #transparent-div {
         height: 100%;
