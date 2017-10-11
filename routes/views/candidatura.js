@@ -45,7 +45,7 @@ exports.create = function(req, res, next) {
         var mailOptions = {
           from: process.env.GMAIL_ADDRESS,
           to: req.body['email'],
-          subject: 'Candidatura subemetida.',
+          subject: 'Candidatura submetida.',
           text: message
         };
 
