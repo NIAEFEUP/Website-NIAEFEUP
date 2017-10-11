@@ -8282,10 +8282,6 @@ body {
   width: 100%;
   display: flex;
   align-items: center; }
-  @media (min-width: 768px) {
-    .item {
-      margin-top: 75px;
-      height: 80vh; } }
 
 .white-separator {
   border-top: 1px solid white !important;
@@ -8773,7 +8769,7 @@ body {
     width: 175px;
     height: 175px;
     object-fit: cover;
-    margin: 15px auto; }
+    margin: 0 auto; }
   #member-header-content #cargo {
     margin: 20px 0; }
   #member-header-content form h2 {
@@ -8785,7 +8781,10 @@ body {
     font-weight: 100;
     font-style: italic; }
   #member-header-content nav a {
-    font-size: 12.5px; }
+    font-size: 20px; }
+    @media (min-width: 768px) {
+      #member-header-content nav a {
+        font-size: 12.5px; } }
 
 #detail-info {
   margin: 50px 0; }

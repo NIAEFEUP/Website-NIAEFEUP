@@ -31,10 +31,6 @@
     background: url("../images/home/banner-recrutamento.jpg") no-repeat top center;
     background-size: cover;
     height: $home-banner-mobile-version;
-    @media (min-width: 768px) {
-        margin-top: $nav-bar-heigth;
-        height: $home-banner;
-    }
     width: 100%;
     display: flex;
     align-items: center;
