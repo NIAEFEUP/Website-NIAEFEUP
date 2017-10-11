@@ -42,7 +42,7 @@ exports.approve = function(req, res) {
     var password = Math.random().toString(36).substring(7);
     console.log(password);
 
-    if (process.env.SLACK_INVITE && process.env.GOOGLE_DRIVE_INVITE && 
+    if (process.env.SLACK_INVITE && process.env.GOOGLE_DRIVE_INVITE &&
       process.env.GOOGLE_GROUPS_INVITE && process.env.GMAIL_ADDRESS && process.env.GMAIL_PASS){
       for (var i = 0; i < results.length; i++) {
         var url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE  + '&email=' + results[i]['email']; // mudar para o email da pessoa
@@ -78,11 +78,23 @@ exports.approve = function(req, res) {
           message += " <a href=" + process.env.GOOGLE_DRIVE_INVITE + "> Google Drive</a>";
           message += " <p> Para acederes à tua conta de membro vai a https://ni.fe.up.pt/signin . O teu username é " + results[i]['email'] + " e a palavra passe é " + password + ". Recomendámos que modifiques a tua palavra passe o quanto antes!</p>";
 
+
+          message += "<div style='float:left;'><img src='cid:id_1234698' alt='logo niaefeup' title='logo' style='display:block' width='50' height='80'></div><div style='padding-left:70px'><h2>Núcleo de Informática da AEFEUP</h2>";
+          message += "<p><a href='ni@aefeup.pt'>ni@aefeup.pt</a></p>";
+          message += "<p><a href='https://ni.fe.up.pt'>Website</a> | <a href='https://www.facebook.com/NIAEFEUP'>Facebook</a> | <a href='https://www.instagram.com/niaefeup/'>Instagram</a></p>";
+          message += "<p> Sala B315, Rua Dr.Roberto Frias, s/n 4200-465 Porto Portugal | <a href='https://goo.gl/maps/aj2LBqFkwjx'>Google Maps</a></p>";
+          message += "</div>";
+
           var mailOptions = {
             from: process.env.GMAIL_ADDRESS, //TODO mudar para o email do NI
             to:results[i]['email'],
             subject: 'Convite para Google Groups e Google Drive',
-            html: message
+            html: message,
+            attachments: [{
+              filename: 'logo-niaefeup.png',
+              path: 'https://ni.fe.up.pt/images/logo-niaefeup.png',
+              cid: 'id_1234698'
+            }]
           };
 
           transporter.sendMail(mailOptions, function(error, info){
@@ -109,10 +121,10 @@ exports.approve = function(req, res) {
 
       novoMembro.save(function(err){
         if(err){
-    
+
           req.flash('error', 'Introdução de novo membro falhou!');
           res.redirect('/entrevistas');
-    
+
         }
       });
 
