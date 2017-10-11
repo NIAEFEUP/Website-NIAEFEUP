@@ -8750,27 +8750,30 @@ body {
 #member-header {
   background: url("../images/home/banner-member.jpg") no-repeat center center;
   background-size: cover;
-  background-position-y: center; }
+  background-position-y: center;
+  height: 100vh;
+  display: flex;
+  align-items: center; }
+  @media (min-width: 768px) {
+    #member-header {
+      margin-top: 75px;
+      height: 60vh; } }
 
 #member-dividor {
   background-color: black;
   background-size: cover;
   height: 15vh;
   width: 100%;
-  display: flex;
   margin-top: 60px; }
 
 #member-header-content {
-  height: 60vh;
-  display: flex;
-  align-items: center;
   color: white;
-  margin-top: 50px; }
+  width: 100%; }
   #member-header-content #member-img {
     width: 175px;
     height: 175px;
     object-fit: cover;
-    margin-right: 50px; }
+    margin: 15px auto; }
   #member-header-content #cargo {
     margin: 20px 0; }
   #member-header-content form h2 {

@@ -3,20 +3,19 @@ extends ../layouts/default
 block content
     header#member-header
       .row#member-header-content
-        .col-sm-5.col-xs-offset-1
-          img#member-img.img-responsive.img-circle.pull-right(src=member.photo_path)
+        .col-sm-4.col-sm-offset-2.col-lg-2.col-lg-offset-4
+          img#member-img.img-responsive.img-circle(src=member.photo_path)
         .col-sm-6
-          .colxs-offset-1
-            form.login-form.form-horizontal(method='post')
-              #member-name.row.flex
-                h2 #{member.name.first} &nbsp
-                h2 #{member.name.last}
-              .row#cargo
-                em #{member.position}
-              nav.social
-                a.fa.fa-linkedin.fa-icon-border(href=member.linkedin, title='LinkedIn')
-                a.fa.fa-github.fa-icon-border(href=member.github, title='Github')
-                a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
+          form.login-form.form-horizontal(method='post')
+            #member-name.row.flex
+              h2 #{member.name.first} &nbsp
+              h2 #{member.name.last}
+            .row#cargo
+              em #{member.position}
+            nav.social
+              a.fa.fa-linkedin.fa-icon-border(href=member.linkedin, title='LinkedIn')
+              a.fa.fa-github.fa-icon-border(href=member.github, title='Github')
+              a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
     section.container
       if !member.public
         div.container
@@ -68,4 +67,4 @@ block content
                 .col-sm-8
                   .progress
                     .progress-bar#progress-bar-photoshop(role="progressbar" style="width: 60%")
-    header#member-dividor
+    #member-dividor
