@@ -1,413 +1,418 @@
 #body {
-	font-family: $font-type;
+    font-family: $font-type;
 }
 
 .white-title {
-	color: white;
-	font-size: 50px;
-	font-weight: 500;
-	margin-top: 100px;
+    color: white;
+    font-size: 50px;
+    font-weight: 500;
 }
 
 .white-subtitle {
-	color: white;
-	font-weight: 300;
+    color: white;
+    font-weight: 300;
 }
 
 .white-middle-title {
-	color: white;
-	font-size: 30px;
-	font-weight: 500;
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
 }
 
 .white-italic-title {
-	color: white;
-	font-size: 13px;
-	font-family: $font-type-body;
-	font-style: italic;
-	font-weight: 100;
+    color: white;
+    font-size: 13px;
+    font-family: $font-type-body;
+    font-style: italic;
+    font-weight: 100;
 }
 
 .item {
-	background: url("../images/home/banner-recrutamento.jpg") no-repeat top center;
-	background-size: cover;
-	height: 100vh;
-	width: 100%;
-	display: flex;
-	align-items: center;
+    background: url("../images/home/banner-recrutamento.jpg") no-repeat top center;
+    background-size: cover;
+    height: $home-banner-mobile-version;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .white-separator {
-	border-top: 1px solid white !important;
-	width: 15%;
-	margin-bottom: 30px;
+    border-top: 1px solid white !important;
+    width: 15%;
+    margin-bottom: 30px;
 }
 
 .black-separator {
-	border-width: 1px;
-	border-top: 1px solid $grey-color !important;
-	width: 99%;
-	margin-top: 40px;
+    border-width: 1px;
+    border-top: 1px solid $grey-color !important;
+    width: 99%;
+    margin-top: 40px;
 }
 
 .separator {
-	border-width: 4px;
-	border-top: 1.5px solid $primary-color !important;
-	width: 10%;
+    border-width: 4px;
+    border-top: 1.5px solid $primary-color !important;
+    width: 10%;
 }
 
 .btn-default {
-	padding: 15px 44px !important;
-	border-radius: 2em;
+    padding: 15px 44px !important;
+    border-radius: 2em;
 }
 
 .skill-title {
-	font-size: 18px;
-	font-weight: 400;
-	padding-top: 4px;
+    font-size: 18px;
+    font-weight: 400;
+    padding-top: 4px;
 }
 
 .skill-body {
-	font-size: 12px;
-	font-weight: 400;
-	line-height: 1.6;
-	color: $grey-color;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: $grey-color;
 }
 
 #hero {
-	overflow: hidden;
-	.slide-info {
-		text-align: center;
-	}
-	.see-more-button {
-		margin-top: 2vh;
-	}
-	.see-more-button:active,
-	.see-more-button:focus,
-	.see-more-button:hover {
-		color: #333;
-		background-color: #e6e6e6;
-		border-color: #adadad;
-	}
-	.sub-description {
-		padding-top: 15px;
-	}
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    .slide-info {
+        text-align: center;
+    }
+    .see-more-button {
+        margin-top: 2vh;
+    }
+    .see-more-button:active,
+    .see-more-button:focus,
+    .see-more-button:hover {
+        color: #333;
+        background-color: #e6e6e6;
+        border-color: #adadad;
+    }
+    .sub-description {
+        padding-top: 15px;
+    }
 }
 
 #info {
-	margin-top: 70px;
-	.subtitle {
-		font-family: $font-type-body;
-		font-size: 10px;
-		font-weight: 200;
-	}
-	.title {
-		font-weight: 700;
-		margin-top: 25px;
-	}
-	.definition {
-		margin-top: 35px;
-		font-size: 13px;
-		line-height: 160%;
-		color: $grey-color;
-		font-weight: 400;
-		padding: 0 50px;
-	}
+    margin-top: 70px;
+    .subtitle {
+        font-family: $font-type-body;
+        font-size: 10px;
+        font-weight: 200;
+    }
+    .title {
+        font-weight: 700;
+        margin-top: 25px;
+    }
+    .definition {
+        margin-top: 35px;
+        font-size: 13px;
+        line-height: 160%;
+        color: $grey-color;
+        font-weight: 400;
+        padding: 0 50px;
+    }
 }
 
 #container-icons {
-	.first-icons-row {
-		margin-top: 65px;
-		margin-bottom: 65px;
-	}
-	.second-icons-row {
-		margin-bottom: 105px;
-	}
-	i {
-		color: $primary-color;
-		font-size: 30px;
-	}
-	.col-md-10 h4 {
-		margin: 0.3em 0 10px;
-		font-weight: bold;
-	}
-	.col-md-2 {
-		@media (max-width: 767px) {
-			width: 18%;
-			float: left;
-			text-align: left;
-			font-size: 9px;
-		}
-	}
-	.col-md-4 {
-		@media (max-width: 767px) {
-			padding-bottom: 15px;
-		}
-	}
-	.row {
-		@media (max-width: 767px) {
-			padding-bottom: 15px;
-			margin-bottom: 0 !important;
-		}
-	}
-	.skill-title {
-		@media (max-width: 767px) {
-			width: 82%;
-			font-size: 13px;
-		}
-	}
+    .first-icons-row {
+        margin-top: 65px;
+        margin-bottom: 65px;
+    }
+    .second-icons-row {
+        margin-bottom: 105px;
+    }
+    i {
+        color: $primary-color;
+        font-size: 30px;
+    }
+    .col-md-10 h4 {
+        margin: 0.3em 0 10px;
+        font-weight: bold;
+    }
+    .col-md-2 {
+        @media (max-width: 767px) {
+            width: 18%;
+            float: left;
+            text-align: left;
+            font-size: 9px;
+        }
+    }
+    .col-md-4 {
+        @media (max-width: 767px) {
+            padding-bottom: 15px;
+        }
+    }
+    .row {
+        @media (max-width: 767px) {
+            padding-bottom: 15px;
+            margin-bottom: 0 !important;
+        }
+    }
+    .skill-title {
+        @media (max-width: 767px) {
+            width: 82%;
+            font-size: 13px;
+        }
+    }
 }
 
 #container-photo {
-	background: url("../images/home/banner-middle.jpg") no-repeat center center;
-	background-size: cover;
-	height: 100vh;
-	width: 100%;
-	#transparent-div {
-		height: 100%;
-		background-color: rgba(140, 45, 25, 0.7);
-		@media (min-width: 768px) {
-			width: 40%;
-		}
-		@media (max-width: 767px) {
-			width: 100%;
-		}
-		padding: 20px;
-		#transparent-div-info {
-			margin-top: 40%;
-			@media (min-width: 768px) {
-				width: 85%;
-				margin-left: 15%;
-				margin-right: 0;
-			}
-			@media (max-width: 767px) {
-				margin-left: 10%;
-				margin-right: 10%;
-			}
-		}
-		.left {
-			margin-left: 0;
-			width: 20% !important;
-		}
-		.info {
-			padding-top: 15px;
-			font-weight: 300;
-			line-height: 1.6;
-		}
-	}
+    background: url("../images/home/banner-middle.jpg") no-repeat center center;
+    background-size: cover;
+    height: $home-banner-mobile-version;
+    @media (min-width: 768px) {
+        height: $home-banner;
+    }
+    width: 100%;
+    #transparent-div {
+        height: 100%;
+        background-color: rgba(140, 45, 25, 0.7);
+        @media (min-width: 768px) {
+            width: 40%;
+        }
+        @media (max-width: 767px) {
+            width: 100%;
+        }
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        #transparent-div-info {
+            @media (min-width: 768px) {
+                width: 85%;
+                margin-left: 15%;
+                margin-right: 0;
+            }
+            @media (max-width: 767px) {
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+        }
+        .left {
+            margin-left: 0;
+            width: 20% !important;
+        }
+        .info {
+            padding-top: 15px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+    }
 }
 
 #container-projects {
-	.project-info {
-		margin-top: 80px;
-		margin-bottom: 35px;
-		.title {
-			color: black;
-			font-size: 30px;
-			font-weight: 500;
-		}
-	}
-	#project-photos {
-		.project {
-			height: 350px;
-			padding: 0 !important;
-			.project-description-padding {
-				padding-top: 100px !important;
-			}
-			.project-title {
-				color: white;
-				text-align: center;
-				font-size: 18px;
-				max-width: 70%;
-				margin-left: auto;
-				margin-right: auto;
-				font-family: $font-type;
-				font-weight: 500;
-			}
-			.separator {
-				border-top: 1px solid white !important;
-				width: 15%;
-				margin-bottom: 0 !important;
-			}
-			.project-description {
-				color: white;
-				text-align: center;
-				font-size: 13px;
-				padding-top: 10px;
-				margin-left: auto;
-				margin-right: auto;
-				max-width: 70%;
-				font-family: $font-type-body !important;
-				font-weight: 100;
-				font-style: italic;
-			}
-			.icons {
-				color: white;
-				font-size: 25px;
-				padding-bottom: 20px;
-			}
-			a {
-				color: white;
-			}
-			a:hover {
-				color: $primary-color;
-			}
-			@media (min-width: 768px) {
-				width: 25%;
-				float: left;
-			}
-			@media (max-width: 767px) {
-				width: 50%;
-				float: left;
-			}
-		}
-	}
-	#project-1 {
-		background: url("../images/projects/project-website.jpg") no-repeat center center;
-		background-size: cover;
-		#project-1-description {
-			background-color: rgba(0, 0, 0, 0.6);
-			width: 100%;
-			height: 100%;
-			display: none;
-		}
-	}
-	#project-1:hover {
-		#project-1-description {
-			display: block;
-		}
-	}
-	#project-2 {
-		background: url("../images/projects/project-tts.jpg") no-repeat center center;
-		background-size: cover;
-		#project-2-description {
-			background-color: rgba(0, 0, 0, 0.6);
-			width: 100%;
-			height: 100%;
-			display: none;
-		}
-	}
-	#project-2:hover {
-		#project-2-description {
-			display: block;
-		}
-	}
-	#project-3 {
-		background: url("../images/projects/project-workshop.jpg") no-repeat center center;
-		background-size: cover;
-		#project-3-description {
-			background-color: rgba(0, 0, 0, 0.6);
-			width: 100%;
-			height: 100%;
-			display: none;
-		}
-	}
-	#project-3:hover {
-		#project-3-description {
-			display: block;
-		}
-	}
-	#project-4 {
-		background: url("../images/projects/project-enei.jpg") no-repeat center center;
-		background-size: cover;
-		#project-4-description {
-			background-color: rgba(0, 0, 0, 0.6);
-			width: 100%;
-			height: 100%;
-			display: none;
-		}
-	}
-	#project-4:hover {
-		#project-4-description {
-			display: block;
-		}
-	}
+    .project-info {
+        margin-top: 80px;
+        margin-bottom: 35px;
+        .title {
+            color: black;
+            font-size: 30px;
+            font-weight: 500;
+        }
+    }
+    #project-photos {
+        .project {
+            height: 350px;
+            padding: 0 !important;
+            .project-description-padding {
+                padding-top: 100px !important;
+            }
+            .project-title {
+                color: white;
+                text-align: center;
+                font-size: 18px;
+                max-width: 70%;
+                margin-left: auto;
+                margin-right: auto;
+                font-family: $font-type;
+                font-weight: 500;
+            }
+            .separator {
+                border-top: 1px solid white !important;
+                width: 15%;
+                margin-bottom: 0 !important;
+            }
+            .project-description {
+                color: white;
+                text-align: center;
+                font-size: 13px;
+                padding-top: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 70%;
+                font-family: $font-type-body !important;
+                font-weight: 100;
+                font-style: italic;
+            }
+            .icons {
+                color: white;
+                font-size: 25px;
+                padding-bottom: 20px;
+            }
+            a {
+                color: white;
+            }
+            a:hover {
+                color: $primary-color;
+            }
+            @media (min-width: 768px) {
+                width: 25%;
+                float: left;
+            }
+            @media (max-width: 767px) {
+                width: 50%;
+                float: left;
+            }
+        }
+    }
+    #project-1 {
+        background: url("../images/projects/project-website.jpg") no-repeat center center;
+        background-size: cover;
+        #project-1-description {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    }
+    #project-1:hover {
+        #project-1-description {
+            display: block;
+        }
+    }
+    #project-2 {
+        background: url("../images/projects/project-tts.jpg") no-repeat center center;
+        background-size: cover;
+        #project-2-description {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    }
+    #project-2:hover {
+        #project-2-description {
+            display: block;
+        }
+    }
+    #project-3 {
+        background: url("../images/projects/project-workshop.jpg") no-repeat center center;
+        background-size: cover;
+        #project-3-description {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    }
+    #project-3:hover {
+        #project-3-description {
+            display: block;
+        }
+    }
+    #project-4 {
+        background: url("../images/projects/project-enei.jpg") no-repeat center center;
+        background-size: cover;
+        #project-4-description {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    }
+    #project-4:hover {
+        #project-4-description {
+            display: block;
+        }
+    }
 }
 
 #container-feup {
-	margin-top: 100px;
-	width: 100%;
-	height: 300px;
-	background: url("../images/home/feup.jpg") no-repeat center center;
-	background-size: cover;
-	.info {
-		padding-top: 100px;
-		color: white;
-		.number {
-			font-size: 30px;
-		}
-		.description {
-			font-size: 15px;
-			font-weight: 400;
-		}
-	}
-	@media screen and (max-width: 991px) {
-		height: 600px;
-	}
+    margin-top: 100px;
+    width: 100%;
+    height: 300px;
+    background: url("../images/home/feup.jpg") no-repeat center center;
+    background-size: cover;
+    .info {
+        padding-top: 100px;
+        color: white;
+        .number {
+            font-size: 30px;
+        }
+        .description {
+            font-size: 15px;
+            font-weight: 400;
+        }
+    }
+    @media screen and (max-width: 991px) {
+        height: 600px;
+    }
 }
 
 #container-contacts {
-	margin: 50px auto;
-	@media screen and (max-width: 991px) and (min-width:768px) {
-		.col-sm-7 {
-			width: 41.66667%;
-		}
-		.col-sm-4 {
-			width: 50%;
-		}
-	}
-	.contact-info {
-		margin-top: 80px;
-		margin-bottom: 80px;
-		.title {
-			color: black;
-			font-size: 30px;
-			font-weight: 500;
-			padding-bottom: 30px;
-		}
-		.subtitle {
-			font-size: 15px;
-			font-weight: 400;
-			color: black;
-		}
-		.info {
-			font-size: 15px;
-			font-weight: 400;
-			color: $grey-color;
-		}
-		a.info {
-			font-size: 15px;
-			font-weight: 400;
-			color: $grey-color;
-		}
-		#email {
-			margin-bottom: 20px;
-		}
-		#github {
-			margin-top: 20px;
-		}
-		.col {
-			padding-top: 25px;
-		}
-		@media (min-width: $screen-md-min) {
-			.col {
-				padding-top: 0;
-			}
-		}
-	}
+    margin: 50px auto;
+    @media screen and (max-width: 991px) and (min-width: 768px) {
+        .col-sm-7 {
+            width: 41.66667%;
+        }
+        .col-sm-4 {
+            width: 50%;
+        }
+    }
+    .contact-info {
+        margin-top: 80px;
+        margin-bottom: 80px;
+        .title {
+            color: black;
+            font-size: 30px;
+            font-weight: 500;
+            padding-bottom: 30px;
+        }
+        .subtitle {
+            font-size: 15px;
+            font-weight: 400;
+            color: black;
+        }
+        .info {
+            font-size: 15px;
+            font-weight: 400;
+            color: $grey-color;
+        }
+        a.info {
+            font-size: 15px;
+            font-weight: 400;
+            color: $grey-color;
+        }
+        #email {
+            margin-bottom: 20px;
+        }
+        #github {
+            margin-top: 20px;
+        }
+        .col {
+            padding-top: 25px;
+        }
+        @media (min-width: $screen-md-min) {
+            .col {
+                padding-top: 0;
+            }
+        }
+    }
 }
 
 #contact-align {
-	padding: 0;
-	.col-md-1 {
-		padding: 0;
-	}
-	i {
-		padding: 0;
-	}
+    padding: 0;
+    .col-md-1 {
+        padding: 0;
+    }
+    i {
+        padding: 0;
+    }
 }
 
 #map {
-	height: 400px;
-	width: 100%;
+    height: 400px;
+    width: 100%;
 }
