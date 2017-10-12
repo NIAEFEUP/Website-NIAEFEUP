@@ -1,16 +1,16 @@
 extends ../layouts/default
 
 block content
-  header#candidacy-header.page-header
-    h1#candidacy-title.text-center.center-block EMAIL
-
-    form#send_email(method='POST' action='/candidatura')
+  header#email-header.page-header
+    h1#email-title EMAIL
+  div.container
+    form#send_email(method='POST')
       .row
-        .col-sm-10
+        .col-sm-12
             div.form-group
-              label(for='email_text') Conteudo do email
-              textarea#field.form-control(type='text', placeholder='Escreve aqui o email que pretendes enviar' name='email_text')
+              label(for='email_text') Escreve aqui aquilo que pretendes enviar
+              textarea#field.form-control(type='text', placeholder='Escreve algo ...' name='email_text' rows='10')
       .row
         .col-sm-6
-          button#summit-btn.btn.btn-primary(type='submit') SUBMIT
-  header#candidacy-dividor
+          button#summit-btn.btn.btn-primary(type='submit') ENVIAR
+  header#email-divisor

@@ -21,7 +21,7 @@ exports.send = function(req, res, next){
       }
     });
 
-    var message =req.body['text'] ;
+    var message ='<div> ' + req.body['email_text'] + '</div>' ;
 
     // signature
     message += "<div style='float:left;'><img src='cid:id_1234698' alt='logo niaefeup' title='logo' style='display:block' width='50' height='80'></div><div style='padding-left:70px'><h2>Núcleo de Informática da AEFEUP</h2>";
@@ -32,7 +32,7 @@ exports.send = function(req, res, next){
 
     var mailOptions = {
       from: process.env.GMAIL_ADDRESS,
-      to: req.body['email'],
+      to: 'poldeiro@gmail.com',
       subject: 'Candidatura submetida.',
       html: message,
       attachments: [{
