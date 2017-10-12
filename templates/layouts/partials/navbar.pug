@@ -24,7 +24,10 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top.affix-top
           if user.canAccessKeystone
             li: a(href='/keystone') ADMINUI
           li: a(href='/entrevistas') ENTREVISTAS
-          li: a(href='/profile') PERFIL
+          if user.canAccessKeystone
+            li: a(href='/email') EMAIL
+          else
+            li: a(href='/profile') PERFIL
           li: a(href='/keystone/signout') SAIR
     // /.navbar-collapse
   // /.container-fluid
