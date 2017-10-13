@@ -8,8 +8,13 @@ block content
       .row
         .col-sm-12
             div.form-group
-              label(for='email_text') Escreve aqui aquilo que pretendes enviar
-              textarea#field.form-control(type='text', placeholder='Escreve algo ...' name='email_text' rows='10')
+              label(for='email_subject') Escreve aqui aquilo que pretendes enviar
+              input#field.form-control(type='text', placeholder='Assunto', name='email_subject' )
+      .row
+        .col-sm-12
+            div.form-group
+              label(for='email_text') Escreve aqui o assunto
+              textarea#field.form-control(type='text', placeholder='Escreve algo ...', name='email_text' ,rows='10')
       .row
         .col-sm-6
           button#summit-btn.btn.btn-primary(type='submit') ENVIAR
