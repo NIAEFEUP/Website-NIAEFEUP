@@ -4,16 +4,17 @@ block content
   header#email-header.page-header
     h1#email-title EMAIL
   div.container
-    form#send_email(method='POST')
+    div.col-md-2
+    form#send_email.col-md-8(method='POST')
       .row
         .col-sm-12
             div.form-group
-              label(for='email_subject') Escreve aqui aquilo que pretendes enviar
+              label(for='email_subject') Escreve aqui o assunto
               input#field.form-control(type='text', placeholder='Assunto', name='email_subject' )
       .row
         .col-sm-12
             div.form-group
-              label(for='email_text') Escreve aqui o assunto
+              label(for='email_text') Escreve aqui aquilo que pretendes enviar
               textarea#field.form-control(type='text', placeholder='Escreve algo ...', name='email_text' ,rows='10')
       .row
         .col-sm-6
