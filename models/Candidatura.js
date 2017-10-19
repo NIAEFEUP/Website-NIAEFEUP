@@ -14,6 +14,8 @@ Candidatura.add({
     name: { type: Types.Name, required: true},
     numero_up: { type: Types.Number, required: true, unique : true},
     email: { type: Types.Email, required: true, unique: true},
+    curso: { type: String, required: true},
+    ano_curricular: {type: Types.Number, required: true},
     porque_ni: { type: String, label: 'Porque o ni?', required: true},
     linkedin: { type: Types.Url},
     github: { type: Types.Url},
