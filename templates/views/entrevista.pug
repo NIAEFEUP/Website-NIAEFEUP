@@ -60,11 +60,11 @@ block content
           form(method='POST' action='/entrevista')
             input(type='hidden', name="candidato_id", value="" + candidato_id)
             input(type='hidden', name='entrevistador_1', value="" + user._id)
-            textarea.form-group.form-control(name='estado_curso', placeholder="Estado do Curso")
-            textarea.form-group.form-control(name='grupo_estudantil', placeholder='Integra ou pretende ingressar noutro grupo estudantil?')
-            textarea.form-group.form-control(name='porque_ni', placeholder='Porquê o NI?')
-            textarea.form-group.form-control(name='valor_acrescentado', placeholder='O que o candidato já fez que lhe acrescenta valor')
-            textarea.form-group.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI')
+            textarea.form-group.form-control(name='estado_curso', placeholder="Estado do Curso", required)
+            textarea.form-group.form-control(name='grupo_estudantil', placeholder='Integra ou pretende ingressar noutro grupo estudantil?', required)
+            textarea.form-group.form-control(name='porque_ni', placeholder='Porquê o NI?', required)
+            textarea.form-group.form-control(name='valor_acrescentado', placeholder='O que o candidato já fez que lhe acrescenta valor', required)
+            textarea.form-group.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI', required)
             .form-control.form-group
               label Erasmus :
               input(type='checkbox', name='erasmus', value='true')
