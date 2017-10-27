@@ -6,6 +6,7 @@ block content
 	.container#members
 		// DIREÇÃO
 		section#direction-members
+			h3.text-center#members-subtitle.center-block MEMBROS
 			.row
 				each direction_member in direcao
 					.col-md-4.col-sm-6.col-xs-12
@@ -45,6 +46,7 @@ block content
 										if member.website
 											a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
 		section#recruits
+			h3.text-center#members-subtitle.center-block RECRUTAS
 			.row
 				each recruta in recrutas
 					.col-md-3.col-sm-4.col-xs-12
