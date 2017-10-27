@@ -60,17 +60,25 @@ block content
           form(method='POST' action='/entrevista')
             input(type='hidden', name="candidato_id", value="" + candidato_id)
             input(type='hidden', name='entrevistador_1', value="" + user._id)
-            textarea.form-group.form-control(name='estado_curso', placeholder="Estado do Curso", required)
-            textarea.form-group.form-control(name='grupo_estudantil', placeholder='Integra ou pretende ingressar noutro grupo estudantil?', required)
-            textarea.form-group.form-control(name='porque_ni', placeholder='Porquê o NI?', required)
-            textarea.form-group.form-control(name='valor_acrescentado', placeholder='O que o candidato já fez que lhe acrescenta valor', required)
-            textarea.form-group.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI', required)
+						label Estado do Curso
+	            textarea.form-group.form-control(name='estado_curso', placeholder="Estado do Curso", required)
+						label Integra ou pretende ingressar noutro grupo estudantil?
+	            textarea.form-group.form-control(name='grupo_estudantil', placeholder='Integra ou pretende ingressar noutro grupo estudantil?', required)
+  	        label Porquê o NI?
+							textarea.form-group.form-control(name='porque_ni', placeholder='Porquê o NI?', required)
+    	      label O que o candidato já fez que lhe acrescenta valor
+							textarea.form-group.form-control(name='valor_acrescentado', placeholder='O que o candidato já fez que lhe acrescenta valor', required)
+      	    label O que o candidato mais gostaria de fazer no NI
+							textarea.form-group.form-control(name='fazer_dentro_do_ni', placeholder='O que o candidato mais gostaria de fazer no NI', required)
             .form-control.form-group
               label Erasmus :
               input(type='checkbox', name='erasmus', value='true')
-            textarea.form-group.form-control(name='se_erasmus_futuro', placeholder='Se for de erasmus o que acha do futuro no NI')
-            textarea.form-group.form-control(name='se_5ano_futuro', placeholder='Se o candidato for do 5ano qual o seu futuro no curso')
-            textarea.form-group.form-control(name='observacoes', placeholder='Outras observações')
+						label Se for de erasmus o que acha do futuro no NI
+            	textarea.form-group.form-control(name='se_erasmus_futuro', placeholder='Se for de erasmus o que acha do futuro no NI')
+            label Se o candidato for do 5ano qual o seu futuro no curso
+							textarea.form-group.form-control(name='se_5ano_futuro', placeholder='Se o candidato for do 5ano qual o seu futuro no curso')
+            label Outras observações
+							textarea.form-group.form-control(name='observacoes', placeholder='Outras observações')
             .row
               .col-sm-6
                 button.btn.btn-primary(type='submit') ENVIAR
