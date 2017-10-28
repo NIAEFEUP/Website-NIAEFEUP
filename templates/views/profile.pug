@@ -1,216 +1,177 @@
 extends ../layouts/default
 
 block content
-    div.container
+	div.container
 
-      div.page-header(style="margin-top: 7em;")
-        h1 Meu Perfil
+		div.page-header(style="margin-top: 7em;")
+			h1 Meu Perfil
 
-      form#form2(action='/api/fileupload/create', method='POST', enctype='multipart/form-data')
-        div.container
-          center
-            img.img-responsive.img(src=filePath, alt='' width="250px" height="250px")
-            input#file_upload(type='file')
-            input#file_name(type='hidden', name='file_name', value=user.id)
-        br
-        div
-          center
-            input(type='button', value='Upload', onclick='uploadFile()')
-      br
+		div
+			div.container
+				center
+					img.img-responsive.img(src=filePath, alt='' width="250px" height="250px")
+					input#file_upload(type='file')
+					input#file_name(type='hidden', name='file_name', value=user.id)
+			br
+			div
+				center
+					input(type='button', value='Upload', onclick='uploadFile()')
+					button(onclick='removePhoto()') Remove Photo
+		br
 
-      form.login-form.form-horizontal(method='post')
-        div.form-group
-          label.col-sm-4 First Name
-          div.col-sm-8
-            input.form-control(
-              placeholder='Your first name',
-              required=true,
-              name='first',
-              type='text',
-              value=user.name.first)
-        div.form-group
-          label.col-sm-4 Last Name
-          div.col-sm-8
-            input.form-control(placeholder='Your last name',
-              required=true,
-              name='last',
-              type='text',
-              value=user.name.last)
-        div.form-group
-          label.col-sm-4 Position
-          div.col-sm-8
-            input.form-control(placeholder='Your position inside NIAEFEUP',
-              required=false,
-              disabled=true,
-              name='position',
-              type='text',
-              value=user.position)
-        div.form-group
-          label.col-sm-4 LinkedIn
-          div.col-sm-8
-            input.form-control(placeholder='LinkedIn Url',
-              required=false,
-              name='linkedin',
-              type='text',
-              value=user.linkedin)
-        div.form-group
-          label.col-sm-4 Github
-          div.col-sm-8
-            input.form-control(placeholder='Github url',
-              required=false,
-              name='github',
-              type='text',
-              value=user.github)
-        div.form-group
-          label.col-sm-4 Website
-          div.col-sm-8
-            input.form-control(placeholder='Website url',
-              required=false,
-              name='website',
-              type='text',
-              value=user.website)
-        div.form-group
-          label.col-sm-4 About me
-          div.col-sm-8
-            textarea.form-control(placeholder='Let others know a bit more about you.',
-              required=false,
-              name='about',
-              type='text',
-              rows = 10,
-              style='height: 10em; resize:none') #{user.about}
-        div.form-group
-          label.col-sm-4 Password
-          div.col-sm-8
-            input.form-control(placeholder='Password',pattern=".{5,}", name='password', type='password',title="5 characters minimum", required)
-        div.form-group
-          label.col-sm-4 New Password
-          div.col-sm-4
-            input.form-control(placeholder='New password',pattern=".{5,}", name='new_password', type='password',title="5 characters minimum")
-          div.col-sm-4
-            input.form-control(placeholder='Confirm new password',pattern=".{5,}", name='confirm_new_password', type='password', title="5 characters minimum")
+		form.login-form.form-horizontal(method='post')
+			div.form-group
+				label.col-sm-4 First Name
+				div.col-sm-8
+					input.form-control(
+					placeholder='Your first name',
+					required=true,
+					name='first',
+					type='text',
+					value=user.name.first)
+			div.form-group
+				label.col-sm-4 Last Name
+				div.col-sm-8
+					input.form-control(placeholder='Your last name',
+					required=true,
+					name='last',
+					type='text',
+					value=user.name.last)
+			div.form-group
+				label.col-sm-4 Position
+				div.col-sm-8
+					input.form-control(placeholder='Your position inside NIAEFEUP',
+					required=false,
+					disabled=true,
+					name='position',
+					type='text',
+					value=user.position)
+			div.form-group
+				label.col-sm-4 LinkedIn
+				div.col-sm-8
+					input.form-control(placeholder='LinkedIn Url',
+					required=false,
+					name='linkedin',
+					type='text',
+					value=user.linkedin)
+			div.form-group
+				label.col-sm-4 Github
+				div.col-sm-8
+					input.form-control(placeholder='Github url',
+					required=false,
+					name='github',
+					type='text',
+					value=user.github)
+			div.form-group
+				label.col-sm-4 Website
+				div.col-sm-8
+					input.form-control(placeholder='Website url',
+					required=false,
+					name='website',
+					type='text',
+					value=user.website)
+			div.form-group
+				label.col-sm-4 About me
+				div.col-sm-8
+					textarea.form-control(placeholder='Let others know a bit more about you.',
+					required=false,
+					name='about',
+					type='text',
+					rows = 10,
+					style='height: 10em; resize:none') #{user.about}
+			div.form-group
+				label.col-sm-4 Password
+				div.col-sm-8
+					input.form-control(placeholder='Password',pattern=".{5,}", name='password', type='password',title="5 characters minimum", required)
+			div.form-group
+				label.col-sm-4 New Password
+				div.col-sm-4
+					input.form-control(placeholder='New password',pattern=".{5,}", name='new_password', type='password',title="5 characters minimum")
+				div.col-sm-4
+					input.form-control(placeholder='Confirm new password',pattern=".{5,}", name='confirm_new_password', type='password', title="5 characters minimum")
 
-        div.form-group
-          label.col-sm-4 Public profile
-          div.col-sm-8
-            if user.public
-              input.form-control(placeholder='Website url',
-                required=false,
-                name='public',
-                type='checkbox',
-                checked)
-            else
-              input.form-control(placeholder='Website url',
-                required=false,
-                name='public',
-                type='checkbox')
-        div.form-group
-          div.col-sm-offset-4.col-sm-8
-            button.login.btn.btn-primary(type='submit') Save
-        div.pull-right
-          a(href="/") Return to home page
+			div.form-group
+				label.col-sm-4 Public profile
+				div.col-sm-8
+					if user.public
+						input.form-control(placeholder='Website url',
+						required=false,
+						name='public',
+						type='checkbox',
+						checked)
+					else
+						input.form-control(placeholder='Website url',
+						required=false,
+						name='public',
+						type='checkbox')
+			div.form-group
+				div.col-sm-offset-4.col-sm-8
+					button.login.btn.btn-primary(type='submit') Save
+			div.pull-right
+				a(href="/") Return to home page
 
-    script(type='text/javascript').
-        function uploadFile() {
-        //debugger;
+	script(type='text/javascript').
+		function uploadFile() {
+			//debugger;
 
-          var selectedFile = $('#file_upload').get(0).files[0];
+			var selectedFile = $('#file_upload').get(0).files[0];
 
-          //Error handling
-          if(selectedFile == undefined)
-            alert('You did not select a file!');
+			//Error handling
+			if (!selectedFile) {
+				alert('You did not select a file!');
+				return;
+			}
 
+			//Create the FormData data object and append the file to it.
+			var newFile = new FormData();
+			newFile.append('file_upload', selectedFile); //This is the raw file that was selected
 
-          //Create the FormData data object and append the file to it.
-          var newFile = new FormData();
-          newFile.append('file_upload', selectedFile); //This is the raw file that was selected
+			console.log(selectedFile);
 
-          console.log(selectedFile);
+			//Set the form options.
+			jQuery.ajax({
+				url: '/api/profile/photo/update',
+				data: newFile,
+				cache: false,
+				contentType: false,
+				processData: false,
+				type: 'POST',
 
-          //Set the form options.
-          var opts = {
-            url: '/api/fileupload/create',
-            data: newFile,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
+				//This function is executed when the file uploads successfully.
+				success: function() {
+					window.location.href = "./profile";
+				},
 
-            //This function is executed when the file uploads successfully.
-            success: function(data){
-              //Dev Note: KeystoneAPI only allows file and image uploads with the file itself. Any extra metadata will have to
-              //be uploaded/updated with a second call.
+				//This error function is called if the POST fails for submitting the file itself.
+				error: function(err) {
+					//debugger;
 
-             if(data.unsuported_file !== undefined){
-               window.location.href = "./profile";
-               return;
-             }
+					console.error('The file was not uploaded to the server. Here is the error message from the server:');
+					console.error('Server status: '+err.status);
+					console.error('Server message: '+err.statusText);
 
-              //debugger;
-              console.log('File upload succeeded! ID: ' + data.file_upload._id);
+					alert('Failed to connect to the server!');
+				}
+			});
+		}
 
-              //Remove previous user photo
-              $.get('/api/fileupload/'+$('#file_name').val()+'/removePreviousPhoto', function(data) {
-                //debugger;
+		function removePhoto() {
+			//Set the form options.
+			jQuery.ajax({
+				url: '/api/profile/photo/remove',
+				cache: false,
+				contentType: false,
+				processData: false,
+				type: 'POST',
 
-                console.log('Previous photo deleted.');
+				success: function() {
+					window.location.href = "./profile";
+				},
+				error: function(err) {
+					console.error('Server status: ' + err.status);
+					console.error('Server message: ' + err.statusText);
 
-              })
-              //If the metadata update fails:
-              .fail(function(data) {
-                debugger;
-
-                console.error('Previous photo was not deleted. Here is the error message from the server:');
-                console.error('Server status: '+err.status);
-                console.error('Server message: '+err.statusText);
-
-                alert('Failed to connect to the server while trying to update file metadata!');
-              });
-
-              //Fill out the file metadata information
-              data.file_upload.name = $('#file_name').val();
-              data.file_upload.url = '/uploads/members/'+data.file_upload.file.filename;
-              data.file_upload.fileType = data.file_upload.file.mimetype;
-              data.file_upload.createdTimeStamp = new Date();
-
-
-
-              //Update the file with the information above.
-              $.get('/api/fileupload/'+data.file_upload._id+'/update', data.file_upload, function(data) {
-                //debugger;
-
-                console.log('File information updated.');
-
-                window.location.href = "./profile";
-              })
-
-              //If the metadata update fails:
-              .fail(function(data) {
-                debugger;
-
-                console.error('The file metadata was not updated. Here is the error message from the server:');
-                console.error('Server status: '+err.status);
-                console.error('Server message: '+err.statusText);
-
-                alert('Failed to connect to the server while trying to update file metadata!');
-              });
-
-            },
-
-            //This error function is called if the POST fails for submitting the file itself.
-            error: function(err) {
-              //debugger;
-
-              console.error('The file was not uploaded to the server. Here is the error message from the server:');
-              console.error('Server status: '+err.status);
-              console.error('Server message: '+err.statusText);
-
-              alert('Failed to connect to the server!');
-            }
-
-          };
-
-          //Execute the AJAX call.
-          jQuery.ajax(opts);
-
-
-        }
+					alert('Failed to connect to the server!');
+				}
+			});
+		}

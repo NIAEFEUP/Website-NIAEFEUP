@@ -59,16 +59,7 @@ exports = module.exports = function(app) {
 
     app.get('/portfolio', routes.views.projetos);
 
-    //File Upload Route
-    app.get('/api/fileupload/list', middleware.requireUser, keystone.middleware.api, routes.api.fileupload.list);
-    app.get('/api/fileupload/:id', middleware.requireUser, keystone.middleware.api, routes.api.fileupload.get);
-    app.all('/api/fileupload/:id/update', middleware.requireUser, keystone.middleware.api, routes.api.fileupload.update);
-    app.all('/api/fileupload/create', middleware.requireUser, keystone.middleware.api, routes.api.fileupload.create);
-    // app.get('/api/fileupload/:id/remove', keystone.middleware.api, routes.api.fileupload.remove);
-    app.get('/api/fileupload/:id/removePreviousPhoto', middleware.requireUser, keystone.middleware.api, routes.api.fileupload.removePreviousPhoto);
-
-
-    // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
-    // app.get('/protected', middleware.requireUser, routes.views.protected);
-
+    // Photo Upload Routes
+    app.post('/api/profile/photo/update', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.update);
+    app.post('/api/profile/photo/remove', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.remove);
 };
