@@ -1,8 +1,10 @@
 const keystone = require('keystone');
 const fs = require('fs');
-
+const sharp = require('sharp');
 const FileData = keystone.list('FileUpload');
 const User = keystone.list('User');
+const util = require('util');
+const writeFile = util.promisify(fs.writeFile);
 
 const getUserPhotoModel = function (userId) {
 	return new Promise((resolve, reject) => {
@@ -78,24 +80,39 @@ const updateUserPhoto = function (userId, photo) {
  * Update Profile Photo
  */
 exports.update = async function (req, res) {
-	const userId = req.user._id;
-
-	if (req.files.file_upload.mimetype !== 'image/jpeg' && req.files.file_upload.mimetype !== 'image/png') {
-		req.flash('warning', 'File not supported');
-		return res.apiResponse({ unsupported_file: true });
-	} else if (req.files.file_upload.size > 500000) {
-		req.flash('warning', 'Max file size is 500kb');
-		return res.apiResponse({ unsupported_file: true });
-	}
-
 	try {
+		const userId = req.user._id;
+
+		if (req.files.file_upload.mimetype !== 'image/jpeg' && req.files.file_upload.mimetype !== 'image/png') {
+			req.flash('warning', 'File not supported');
+			return res.apiResponse({ unsupported_file: true });
+		} else if (req.files.file_upload.size > 5000000) {
+			req.flash('warning', 'Max file size is 5MB');
+			return res.apiResponse({ unsupported_file: true });
+		}
+
+		// Resize and crop image
+		let file = req.files.file_upload.path;
+		const { data, info } = await sharp(file)
+			.resize(512, 512)
+			.crop(sharp.strategy.attention)
+			.jpeg()
+			.toBuffer({ resolveWithObject: true });
+
+		req.files.file_upload.path = `${file}.jpg`;
+		req.files.file_upload.extension = 'jpg';
+		req.files.file_upload.mimetype = 'image/jpeg';
+		req.files.file_upload.size = info.size;
+
+		await writeFile(req.files.file_upload.path, data);
+
 		const oldPhoto = await getUserPhotoModel(userId);
 		const newPhoto = await createPhoto(req);
 		if (oldPhoto) {
 			await deleteFile(oldPhoto);
 		}
 		await updateUserPhoto(userId, newPhoto);
-		res.apiResponse({ success: true })
+		res.apiResponse({ success: true });
 	} catch (err) {
 		console.log(err);
 		res.apiError('error');
