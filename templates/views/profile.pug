@@ -8,15 +8,20 @@ block content
 
 		div
 			div.container
-				center
-					img.img-responsive.img(src=filePath, alt='' width="250px" height="250px")
-					input#file_upload(type='file')
-					input#file_name(type='hidden', name='file_name', value=user.id)
-			br
-			div
-				center
-					input(type='button', value='Upload', onclick='uploadFile()')
-					button(onclick='removePhoto()') Remove Photo
+				div.col-sm-6.col-lg-5
+					img.img-responsive.img(src=filePath, alt='' width="250px" height="250px", style="margin:auto;")
+					br
+				div.col-sm-6.col-lg-7
+					p Please note that the photo will be automatically cropped to a 7:5 aspect ratio.
+					p For the best results you should submit a photo with a resolution of 700x500px.
+					br
+					center
+						input#file_upload(type='file')
+						input#file_name(type='hidden', name='file_name', value=user.id)
+						br
+						input(type='button', value='Upload', onclick='uploadFile()')
+						button(onclick='removePhoto()') Remove Photo
+		br
 		br
 
 		form.login-form.form-horizontal(method='post')
