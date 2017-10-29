@@ -7,9 +7,9 @@ const imagesPath = './public/uploads/members/';
 
 const resizeImage = function (file) {
 	return sharp(`${imagesPath}${file}`)
-	.resize(512, 512)
+	.resize(700, 500)
 	.crop(sharp.gravity.center)
-	.jpeg()
+	.jpeg({ progressive: true, quality: 60 })
 	.toBuffer()
 	.then((buffer) => {
 		return writeFile(`${imagesPath}${file}`, buffer);
