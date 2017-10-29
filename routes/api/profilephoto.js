@@ -94,9 +94,9 @@ exports.update = async function (req, res) {
 		// Resize and crop image
 		let file = req.files.file_upload.path;
 		const { data, info } = await sharp(file)
-			.resize(512, 512)
+			.resize(700, 500)
 			.crop(sharp.strategy.attention)
-			.jpeg()
+			.jpeg({ progressive: true, quality: 60 })
 			.toBuffer({ resolveWithObject: true });
 
 		req.files.file_upload.path = `${file}.jpg`;
