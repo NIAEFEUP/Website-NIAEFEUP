@@ -1,6 +1,10 @@
 # Site-NIAEFEUP
 
-### Get Started!
+### Objetivo do projeto
+
+### Tecnologias usadas
+
+### Como instalar/executar
 
 1. Clone this repo to your computer, and cd into the project directory:
 
@@ -31,19 +35,4 @@ Don't forget to user your MONGO_URI.
   node keystone
   ```
 
-## TODO List
-
-* [x] Login/Logout
-* [x] Atualizar informação do membro
-* [x] Atualizar Foto de perfil
-* [ ] Atualizar front-end
-* [ ] Manipulação de file system com [fs](https://nodejs.org/api/fs.html)
-* [x] Quando o user dá upload de uma imagem, fazer set no seu image_path com o novo caminho
-* [x] Aperfeiçoar o modelo atual (formulário de edição de perfil | api para upload de ficheiros) -> Deixei uns TODO's em alguns ficheiros
-* [x] Criar um Back-End para gerir o processo de recrutamento.
-* [x] Página publica com o formulário de candidatura.
-* [ ] Permitir marcar as entrevistas como realizadas.
-* [ ] Aceitar/Rejeitar novos membros (Enviar convite para as contas de :Slack, GoogleGroup, Site).
-* [x] Enviar emails de feedback aos candidatos.
-* [ ] Fazer integração com Google Calendar para marcação de reuniões.
-* [ ] Back-end ser um headless CMS de forma a cada direção escolher o seu front-end.
+### Estrutura do projeto
