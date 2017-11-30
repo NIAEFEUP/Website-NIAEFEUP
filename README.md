@@ -35,7 +35,7 @@
 O COOKIE_SECRET é uma string grande e random, pode ser qualquer coisa.
 Não se esqueçam do URI do mongo, alternativamente podem correr uma base de dados local e fazer a ligação ao localhost.
 
-3. Iniciar o servidor:
+4. Iniciar o servidor:
 
   ```bash
   node keystone
