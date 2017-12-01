@@ -70,3 +70,6 @@ patch:
   'npm:marked:20170907':
     - keystone > marked:
         patched: '2017-10-27T08:57:37.837Z'
+  'npm:moment:20170905':
+    - keystone > moment:
+        patched: '2017-12-01T08:58:21.476Z'
