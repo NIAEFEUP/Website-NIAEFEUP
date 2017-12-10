@@ -2,6 +2,8 @@
 
 ### Objetivo do projeto
 
+O objetivo deste projeto é que o [site](https://ni.fe.up.pt) do Núcleo seja dinâmico. Desta forma, os membros têm a sua conta de acesso ao website e podem personalizar o seu perfil ao seu gosto. Adicionalmente, o recrutamento do NI passa a ser feito através do website, assim como a realização de entrevistas e a aceitação dos candidatos por parte do presidente. Com este projeto, os membros podem aprender sobre tecnologias emergentes no paradigma da web, nomeadamente, nodejs.
+
 ### Tecnologias usadas
 
 * [Node.js](https://nodejs.org/en/])
@@ -42,3 +44,38 @@ Não se esqueçam do URI do mongo, alternativamente podem correr uma base de dad
   ```
 
 ### Estrutura do projeto
+
+* models/
+	+ -> Modelos da base de dados. Cada ficheiro representa uma Entidade.
+* public/
+	+ -> Javascript, Styling, etc. do front end
+	+ | styles/
+		+ -> Estilo do website
+		+ | site.scss
+			+ -> Ponto de entrada do css.
+		+ | site/
+			+ -> Ficheiro scss por página.
+* routes/
+	+ -> Controladores do Website
+	+ | api/
+			+ -> Endpoints da API do website
+	+ | views/
+		+ -> Lógica que devolve as vistas. C do modelo MVC 
+	+ | index.js
+		+ -> Declaração das rotas do website
+	+ | middleware.js
+		+ -> Usado para efetuar controlo de acessos e afins
+* templates/
+	+ -> Pasta com as vistas em pug
+	+ | layouts/
+		+ -> Pasta com os layouts comuns a várias vistas (header, footer,...)
+	+ | mixins/
+		+ -> UI's auxiliares como as flash messages
+	+ | mockups/
+		+ -> Mockups feitos para o design do website
+	+ | views/
+		+ -> Ficheiros correspondes ao design nas páginas em si.
+* updates/
+	+ -> Pasta com os scripts usados para fazer atualizações
+* keystone.js
+	+ -> Entry point do website
