@@ -1,49 +1,81 @@
 # Site-NIAEFEUP
 
-### Get Started!
+### Objetivo do projeto
 
-1. Clone this repo to your computer, and cd into the project directory:
+O objetivo deste projeto é que o [site](https://ni.fe.up.pt) do Núcleo seja dinâmico. Desta forma, os membros têm a sua conta de acesso ao website e podem personalizar o seu perfil ao seu gosto. Adicionalmente, o recrutamento do NI passa a ser feito através do website, assim como a realização de entrevistas e a aceitação dos candidatos por parte do presidente. Com este projeto, os membros podem aprender sobre tecnologias emergentes no paradigma da web, nomeadamente, nodejs.
+
+### Tecnologias usadas
+
+* [Node.js](https://nodejs.org/en/])
+* [Keystone.js](http://keystonejs.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [SASS](http://sass-lang.com/)
+
+### Como instalar/executar
+
+1. Clonar o repositório e entrar dentro do novo directório
 
   ```bash
   git clone https://github.com/NIAEFEUP/Website-NIAEFEUP.git
   cd Website-NIAEFEUP
   ```
 
-2. Install the dependencies from package.json:
+2. Instalar as dependências do package.json:
 
   ```bash
   npm install
   ```
 
-3. Add environment variables:
+3. Adicionar as variáveis de ambiente:
 
-* Create a .env file in the root folder and add:
+* Criar um ficheiro .env no directório principal e adicionar:
 ```
  MONGO_URI=mongodb://<user>:<password>:@ds157853.mlab.com:57835/yournewdb
  COOKIE_SECRET=u|_*J5<+Ed4eM#$g)B|G)z$8fy$Pt$E36MC=lnok;o6-]:cWnPuJdR>X*Z,bWDO
 ```
-The cookie secret is a random long string. This is just an working example.
-Don't forget to user your MONGO_URI.
+O COOKIE_SECRET é uma string grande e random, pode ser qualquer coisa.
+Não se esqueçam do URI do mongo, alternativamente podem correr uma base de dados local e fazer a ligação ao localhost.
 
-3. Start the server:
+4. Iniciar o servidor:
 
   ```bash
   node keystone
   ```
 
-## TODO List
+### Estrutura do projeto
 
-* [x] Login/Logout
-* [x] Atualizar informação do membro
-* [x] Atualizar Foto de perfil
-* [ ] Atualizar front-end
-* [ ] Manipulação de file system com [fs](https://nodejs.org/api/fs.html)
-* [x] Quando o user dá upload de uma imagem, fazer set no seu image_path com o novo caminho
-* [x] Aperfeiçoar o modelo atual (formulário de edição de perfil | api para upload de ficheiros) -> Deixei uns TODO's em alguns ficheiros
-* [x] Criar um Back-End para gerir o processo de recrutamento.
-* [x] Página publica com o formulário de candidatura.
-* [ ] Permitir marcar as entrevistas como realizadas.
-* [ ] Aceitar/Rejeitar novos membros (Enviar convite para as contas de :Slack, GoogleGroup, Site).
-* [x] Enviar emails de feedback aos candidatos.
-* [ ] Fazer integração com Google Calendar para marcação de reuniões.
-* [ ] Back-end ser um headless CMS de forma a cada direção escolher o seu front-end.
+* models/
+	+ -> Modelos da base de dados. Cada ficheiro representa uma Entidade.
+* public/
+	+ -> Javascript, Styling, etc. do front end
+	+ | styles/
+		+ -> Estilo do website
+		+ | site.scss
+			+ -> Ponto de entrada do css.
+		+ | site/
+			+ -> Ficheiro scss por página.
+* routes/
+	+ -> Controladores do Website
+	+ | api/
+			+ -> Endpoints da API do website
+	+ | views/
+		+ -> Lógica que devolve as vistas. C do modelo MVC 
+	+ | index.js
+		+ -> Declaração das rotas do website
+	+ | middleware.js
+		+ -> Usado para efetuar controlo de acessos e afins
+* templates/
+	+ -> Pasta com as vistas em pug
+	+ | layouts/
+		+ -> Pasta com os layouts comuns a várias vistas (header, footer,...)
+	+ | mixins/
+		+ -> UI's auxiliares como as flash messages
+	+ | mockups/
+		+ -> Mockups feitos para o design do website
+	+ | views/
+		+ -> Ficheiros correspondes ao design nas páginas em si.
+* updates/
+	+ -> Pasta com os scripts usados para fazer atualizações
+* keystone.js
+	+ -> Entry point do website
