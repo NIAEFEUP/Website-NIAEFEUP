@@ -45,37 +45,23 @@ Não se esqueçam do URI do mongo, alternativamente podem correr uma base de dad
 
 ### Estrutura do projeto
 
-* models/
-	+ -> Modelos da base de dados. Cada ficheiro representa uma Entidade.
-* public/
-	+ -> Javascript, Styling, etc. do front end
-	+ | styles/
-		+ -> Estilo do website
-		+ | site.scss
-			+ -> Ponto de entrada do css.
-		+ | site/
-			+ -> Ficheiro scss por página.
-* routes/
-	+ -> Controladores do Website
-	+ | api/
-			+ -> Endpoints da API do website
-	+ | views/
-		+ -> Lógica que devolve as vistas. C do modelo MVC 
-	+ | index.js
-		+ -> Declaração das rotas do website
-	+ | middleware.js
-		+ -> Usado para efetuar controlo de acessos e afins
-* templates/
-	+ -> Pasta com as vistas em pug
-	+ | layouts/
-		+ -> Pasta com os layouts comuns a várias vistas (header, footer,...)
-	+ | mixins/
-		+ -> UI's auxiliares como as flash messages
-	+ | mockups/
-		+ -> Mockups feitos para o design do website
-	+ | views/
-		+ -> Ficheiros correspondes ao design nas páginas em si.
-* updates/
-	+ -> Pasta com os scripts usados para fazer atualizações
-* keystone.js
-	+ -> Entry point do website
+```
++---img: Pasta com as imagens do site.
+|   \---members: Pasta com as imagens dos membros.
++---models: Modelos da base dados. Cada ficheiro representa uma Entidade.
++---public: Javascript, Styling, etc. relacionado com o front end.
+|   +---styles: Estilo do website
+|   |   \---site: Ficheiro scss por página.
++---routes: Controladores do website.
+|   +---api: Endpoints da API do website
+|   \---views: Lógica que devolve as vistas. C do modelo MVC
+|   index.js: Declaração das rotas do website.
+|   middleware.js: Usado para efetuar controlo de acessos e afins.
++---templates: Pasta com as vistas em pug.
+|   +---layouts: Pasta com os layouts comuns a várias vistas (header, footer,..)
+|   +---mixins: UI's auxiliares como as flash messages.
+|   +---mockups: Mockups feitos para o design do website.
+|   \---views: Ficheiros correspondentes ao design nas páginas em si.
++---updates: Pasta com os scripts usados para fazer atualizações.
+Keystone.js: Entry point do website.
+```
