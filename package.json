@@ -21,13 +21,13 @@
     "snyk": "^1.52.1"
   },
   "devDependencies": {
-    "eslint": "3.15.0",
-    "eslint-config-keystone": "3.0.0",
+    "eslint": "^3.15.0",
+    "eslint-config-keystone": "^3.0.0",
     "eslint-plugin-react": "^5.1.1",
     "mixitup": "^3.2.1"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "node_modules/eslint/bin/eslint.js .",
     "start": "node keystone.js",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect"
