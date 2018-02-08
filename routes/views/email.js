@@ -13,7 +13,7 @@ exports = module.exports = function (req, res) {
 
 exports.send = function (req, res, next) {
 
-	Candidatura.model.find({}, 'email').exec(function (err, items) {
+	Candidatura.model.find({aceite : false}, 'email').exec(function (err, items) {
 
 		if (err) {
 
