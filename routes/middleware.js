@@ -89,7 +89,7 @@ exports.nonRecruta = function(req, res, next) {
 };
 
 //TODO fazer a validação do lado do servidor dos dados da candidatura
-exports.validarCandidatura = function(req, res, next) {
+exports.validateApplication = function(req, res, next) {
   let currYear = req.body.ano_curricular;
   if(currYear >= 1) {
       next();
