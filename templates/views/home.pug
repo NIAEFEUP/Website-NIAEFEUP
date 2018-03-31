@@ -79,7 +79,7 @@ block content
                 p.title PORTFÓLIO
         .row#project-photos
             each project in projects
-                .col-md-3#project-1.project(style={background: "url("+project.image_path+")"})
+                .col-md-3#project-1.project(style={background: "url(/images/projects/"+project.image.filename+")"})
                     #project-1-description.text-center.project-description-padding
                         .icons.text-center
                             a.fa.fa-globe(href='/', title='Website')

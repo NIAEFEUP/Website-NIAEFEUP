@@ -15,7 +15,7 @@ block content
                     when "project"
                         .project.mix
                             .thumbnail.no-border
-                                img.img-responsive(src=project.image_path, alt=project.title)
+                                img.img-responsive(src="/images/projects/"+project.image.filename, alt=project.title)
                                 .caption
                                     h3  #{project.title}
                                     h4 #{project.state}
@@ -24,7 +24,7 @@ block content
                     when "workshop"
                         .workshop.mix
                             .thumbnail.no-border
-                                img.img-responsive(src=project.image_path, alt=project.title)
+                                img.img-responsive(src="/images/projects/"+project.image.filename, alt=project.title)
                                 .caption
                                     h3  #{project.title}
                                     h4 #{project.state}
@@ -33,7 +33,7 @@ block content
                     default 
                         .event.mix
                             .thumbnail.no-border
-                                img.img-responsive(src=project.image_path, alt=project.title)
+                                img.img-responsive(src="/images/projects/"+project.image.filename, alt=project.title)
                                 .caption
                                     h3  #{project.title}
                                     h4 #{project.state}
