@@ -36,7 +36,7 @@ exports = module.exports = function (req, res) {
 						} else {
 							locals.members_cVount = count;
 						}
-						var q = keystone.list('Project').model.find().where('state', 'completed').sort('-publishedDate');
+						var q = keystone.list('Project').model.find().where('state', 'completed').sort('-publishedDate').limit(4);
 
 						q.exec(function (err, results) {
 							locals.projects = results;
