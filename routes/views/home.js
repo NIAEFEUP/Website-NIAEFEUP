@@ -9,7 +9,6 @@ exports = module.exports = function (req, res) {
     // item in the header navigation.
 	locals.section = 'home';
 
-    // Load projects' count
 	view.on('init', function (next) {
 
 
@@ -35,9 +34,14 @@ exports = module.exports = function (req, res) {
 						if (err) {
 							locals.members_count = 0;
 						} else {
-							locals.members_count = count;
+							locals.members_cVount = count;
 						}
-						next();
+						var q = keystone.list('Project').model.find().where('state', 'completed').sort('-publishedDate');
+
+						q.exec(function (err, results) {
+							locals.projects = results;
+							next();
+						});
 					});
 				});
 			});
