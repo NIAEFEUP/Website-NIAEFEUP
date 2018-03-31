@@ -266,63 +266,18 @@
             }
         }
     }
-    #project-1 {
-        background: url("../images/projects/project-website.jpg") no-repeat center center;
+    .project-preview {
+        background: no-repeat center center;
         background-size: cover;
-        #project-1-description {
+        .project-preview-description {
             background-color: rgba(0, 0, 0, 0.6);
             width: 100%;
             height: 100%;
             display: none;
         }
     }
-    #project-1:hover {
-        #project-1-description {
-            display: block;
-        }
-    }
-    #project-2 {
-        background: url("../images/projects/project-tts.jpg") no-repeat center center;
-        background-size: cover;
-        #project-2-description {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            height: 100%;
-            display: none;
-        }
-    }
-    #project-2:hover {
-        #project-2-description {
-            display: block;
-        }
-    }
-    #project-3 {
-        background: url("../images/projects/project-workshop.jpg") no-repeat center center;
-        background-size: cover;
-        #project-3-description {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            height: 100%;
-            display: none;
-        }
-    }
-    #project-3:hover {
-        #project-3-description {
-            display: block;
-        }
-    }
-    #project-4 {
-        background: url("../images/projects/project-enei.jpg") no-repeat center center;
-        background-size: cover;
-        #project-4-description {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            height: 100%;
-            display: none;
-        }
-    }
-    #project-4:hover {
-        #project-4-description {
+    .project-preview:hover {
+        .project-preview-description {
             display: block;
         }
     }
