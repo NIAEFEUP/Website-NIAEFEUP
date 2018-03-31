@@ -266,18 +266,18 @@
             }
         }
     }
-    #project-1 {
+    .project-preview {
         background: no-repeat center center;
         background-size: cover;
-        #project-1-description {
+        .project-preview-description {
             background-color: rgba(0, 0, 0, 0.6);
             width: 100%;
             height: 100%;
             display: none;
         }
     }
-    #project-1:hover {
-        #project-1-description {
+    .project-preview:hover {
+        .project-preview-description {
             display: block;
         }
     }
