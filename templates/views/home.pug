@@ -78,51 +78,31 @@ block content
             .col-md-2.col-md-offset-1
                 p.title PORTFÓLIO
         .row#project-photos
-            .col-md-3#project-1.project
-                #project-1-description.text-center.project-description-padding
-                    .icons.text-center
-                        a.fa.fa-globe(href='/', title='Website')
-                    .project-title WEBSITE NI
-                    hr.separator
-                    .project-description Website responsivo e com backend
-            .col-md-3#project-2.project
-                #project-2-description.project-description-padding
-                    .icons.text-center
-                        a.fa.fa-globe(href='https://ni.fe.up.pt/TTS', title='Timetable Selector')
-                    .project-title TIMETABLE SELECTOR
-                    hr.separator
-                    .project-description Plataforma que permite construir horários
-            .col-md-3#project-3.project
-                #project-3-description.project-description-padding
-                    .icons.text-center
-                        i.fa.fa-book
-                    .project-title WORKSHOP C++
-                    hr.separator
-                    .project-description Workshop para introduzir C++ aos novos alunos
-            .col-md-3#project-4.project
-                #project-4-description.project-description-padding
-                    .icons.text-center
-                        a.fa.fa-globe(href='http://enei.pt/', title='ENEI')
-                    .project-title ENEI 2018
-                    hr.separator
-                    .project-description Encontro Nacional de Estudantes de Informática
+            each project in projects
+                .col-md-3.project-preview.project(style={background: "url(/images/projects/"+project.image.filename+")"})
+                    .project-preview-description.text-center.project-description-padding
+                        .icons.text-center
+                            a.fa.fa-globe(href='/', title='Website')
+                        .project-title #{project.title}
+                        hr.separator
+                        .project-description #{project.description}
 
     section#container-feup
         .row.info
             .col-md-3.offset-md-2.text-center
-                .number 10
+                .number #{projects_count}
                 hr.separator
                 .description PROJETOS
             .col-md-3.text-center
-                .number 5
+                .number #{events_count}
                 hr.separator
                 .description EVENTOS
             .col-md-3.text-center
-                .number 20
+                .number #{workshops_count}
                 hr.separator
                 .description WORKSHOPS
             .col-md-3.text-center
-                .number 30
+                .number #{members_count}
                 hr.separator
                 .description MEMBROS
 
