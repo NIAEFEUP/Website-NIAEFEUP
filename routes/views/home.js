@@ -40,7 +40,13 @@ exports = module.exports = function (req, res) {
 
 						q.exec(function (err, results) {
 							locals.projects = results;
-							next();
+
+							var q = keystone.list('Banner').model.find();
+
+							q.exec(function (err, results) {
+								locals.banners = results;
+								next();
+							});
 						});
 					});
 				});

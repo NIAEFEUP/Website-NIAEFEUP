@@ -2,13 +2,71 @@ extends ../layouts/default
 
 block content
     section#hero.hero
-        .item.center-block
-            .slide-info.center-block
-                p.white-title ENEI 2018
-                hr.white-separator
-                p.white-subtitle O Encontro Nacional de Estudantes de Informática chega brevemente à cidade do Porto, não percas o evento do ano!
-                a(href='https://enei.pt/')
-                    button.btn.btn-default.see-more-button VER MAIS
+        #slider
+            case banners.length
+                when 1
+                    ul    
+                        each banner in banners
+                            li
+                                .item.center-block(style={background: "url(/images/home/"+banner.image.filename+") no-repeat center center; background-size: cover"})
+                                    .slide-info.center-block
+                                        p.white-title #{banner.title}
+                                        hr.white-separator
+                                        p.white-subtitle #{banner.description}
+                                        case banner.link
+                                            when null
+                                                br
+                                            default
+                                                a(href=banner.link)
+                                                    button.btn.btn-default.see-more-button VER MAIS
+                when 2
+                    a.control_next >>
+                    a.control_prev <<
+                    ul    
+                        each banner in banners
+                            li
+                                .item.center-block(style={background: "url(/images/home/"+banner.image.filename+") no-repeat center center; background-size: cover"})
+                                    .slide-info.center-block
+                                        p.white-title #{banner.title}
+                                        hr.white-separator
+                                        p.white-subtitle #{banner.description}
+                                        case banner.link
+                                            when null
+                                                br
+                                            default
+                                                a(href=banner.link)
+                                                    button.btn.btn-default.see-more-button VER MAIS
+                        each banner in banners
+                            li
+                                .item.center-block(style={background: "url(/images/home/"+banner.image.filename+") no-repeat center center; background-size: cover"})
+                                    .slide-info.center-block
+                                        p.white-title #{banner.title}
+                                        hr.white-separator
+                                        p.white-subtitle #{banner.description}
+                                        case banner.link
+                                            when null
+                                                br
+                                            default
+                                                a(href=banner.link)
+                                                    button.btn.btn-default.see-more-button VER MAIS
+                default
+                    a.control_next >>
+                    a.control_prev <<
+                    ul    
+                        each banner in banners
+                            li
+                                .item.center-block(style={background: "url(/images/home/"+banner.image.filename+") no-repeat center center; background-size: cover"})
+                                    .slide-info.center-block
+                                        p.white-title #{banner.title}
+                                        hr.white-separator
+                                        p.white-subtitle #{banner.description}
+                                        case banner.link
+                                            when null
+                                                br
+                                            default
+                                                a(href=banner.link)
+                                                    button.btn.btn-default.see-more-button VER MAIS
+                            
 
     section#about
     section#info
@@ -157,6 +215,7 @@ block content
                     map: map
                 });
                 marker.setMap(map);
-
             }
+            
+
         script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7BCaSIjFTOMKkzBMI6uzlJSsF19QJ4fs&callback=initMap')
