@@ -13,12 +13,11 @@ block content
                                         p.white-title #{banner.title}
                                         hr.white-separator
                                         p.white-subtitle #{banner.description}
-                                        case banner.link
-                                            when null
-                                                br
-                                            default
-                                                a(href=banner.link)
-                                                    button.btn.btn-default.see-more-button VER MAIS
+                                        if banner.buttonText
+                                            a(href=banner.link)
+                                                button.btn.btn-default.see-more-button #{banner.buttonText}
+                                        else
+                                            br
                 when 2
                     a.control_next >>
                     a.control_prev <<
@@ -30,12 +29,11 @@ block content
                                         p.white-title #{banner.title}
                                         hr.white-separator
                                         p.white-subtitle #{banner.description}
-                                        case banner.link
-                                            when null
-                                                br
-                                            default
-                                                a(href=banner.link)
-                                                    button.btn.btn-default.see-more-button VER MAIS
+                                        if banner.buttonText
+                                            a(href=banner.link)
+                                                button.btn.btn-default.see-more-button #{banner.buttonText}
+                                        else
+                                            br
                         each banner in banners
                             li
                                 .item.center-block(style={background: "url(/images/home/"+banner.image.filename+") no-repeat center center; background-size: cover"})
@@ -43,12 +41,11 @@ block content
                                         p.white-title #{banner.title}
                                         hr.white-separator
                                         p.white-subtitle #{banner.description}
-                                        case banner.link
-                                            when null
-                                                br
-                                            default
-                                                a(href=banner.link)
-                                                    button.btn.btn-default.see-more-button VER MAIS
+                                        if banner.buttonText
+                                            a(href=banner.link)
+                                                button.btn.btn-default.see-more-button #{banner.buttonText}
+                                        else
+                                            br
                 default
                     a.control_next >>
                     a.control_prev <<
@@ -60,12 +57,11 @@ block content
                                         p.white-title #{banner.title}
                                         hr.white-separator
                                         p.white-subtitle #{banner.description}
-                                        case banner.link
-                                            when null
-                                                br
-                                            default
-                                                a(href=banner.link)
-                                                    button.btn.btn-default.see-more-button VER MAIS
+                                        if banner.buttonText
+                                            a(href=banner.link)
+                                                button.btn.btn-default.see-more-button #{banner.buttonText}
+                                        else
+                                            br
                             
 
     section#about

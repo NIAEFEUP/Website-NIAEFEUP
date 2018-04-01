@@ -26,6 +26,7 @@ Banner.add({
 		storage: localStorage,
 	},
 	description: { type: Types.Textarea },
+	buttonText: { type: String },
 	link: { type: Types.Url },
 });
 

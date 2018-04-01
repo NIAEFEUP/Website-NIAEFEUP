@@ -403,19 +403,19 @@
     top: 40%;
     z-index: 999;
     display: block;
-    padding: 4% 3%;
+    padding: 3% 2%;
     width: auto;
     height: auto;
-    background: #2a2a2a;
+    background: #585858;
     color: #fff;
     text-decoration: none;
-    opacity: 0.8;
+    opacity: 0.5;
     cursor: pointer;
     border: 0;
   }
   
   .control_prev:hover, .control_next:hover {
-    opacity: 1;
+    opacity: 0.8;
     transition: all 0.2s ease;
   }
   
