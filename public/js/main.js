@@ -5,14 +5,14 @@ jQuery(document).ready(function ($) {
 	var slideHeight = $('#slider ul li').height();
 	var sliderUlWidth = slideCount * slideWidth;
 
-	setInterval(function () {
-		moveRight();
-	}, 4000);
-
 	$('#slider').css({ width: slideWidth, height: slideHeight });
 
-	if (slideWidth !== sliderUlWidth)
-	    { $('#slider ul').css({ width: sliderUlWidth, marginLeft: -slideWidth }); }
+	if (slideWidth !== sliderUlWidth) {
+		setInterval(function () {
+			moveRight();
+		}, 4000);
+		$('#slider ul').css({ width: sliderUlWidth, marginLeft: -slideWidth });
+	}
 
 	$('#slider ul li:last-child').prependTo('#slider ul');
 
