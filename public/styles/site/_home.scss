@@ -266,7 +266,7 @@
     }
     .project-preview {
         background: no-repeat center center;
-        background-size: cover;
+        background-size: cover !important;
         .project-preview-description {
             background-color: rgba(0, 0, 0, 0.6);
             width: 100%;
