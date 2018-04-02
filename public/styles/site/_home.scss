@@ -28,10 +28,8 @@
 }
 
 .item {
-    background: url("../images/home/banner-enei.jpg") no-repeat center center;
     background-size: cover;
     height: $home-banner-mobile-version;
-    width: 100%;
     display: flex;
     align-items: center;
 }
@@ -266,63 +264,18 @@
             }
         }
     }
-    #project-1 {
-        background: url("../images/projects/project-website.jpg") no-repeat center center;
+    .project-preview {
+        background: no-repeat center center;
         background-size: cover;
-        #project-1-description {
+        .project-preview-description {
             background-color: rgba(0, 0, 0, 0.6);
             width: 100%;
             height: 100%;
             display: none;
         }
     }
-    #project-1:hover {
-        #project-1-description {
-            display: block;
-        }
-    }
-    #project-2 {
-        background: url("../images/projects/project-tts.jpg") no-repeat center center;
-        background-size: cover;
-        #project-2-description {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            height: 100%;
-            display: none;
-        }
-    }
-    #project-2:hover {
-        #project-2-description {
-            display: block;
-        }
-    }
-    #project-3 {
-        background: url("../images/projects/project-workshop.jpg") no-repeat center center;
-        background-size: cover;
-        #project-3-description {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            height: 100%;
-            display: none;
-        }
-    }
-    #project-3:hover {
-        #project-3-description {
-            display: block;
-        }
-    }
-    #project-4 {
-        background: url("../images/projects/project-enei.jpg") no-repeat center center;
-        background-size: cover;
-        #project-4-description {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            height: 100%;
-            display: none;
-        }
-    }
-    #project-4:hover {
-        #project-4-description {
+    .project-preview:hover {
+        .project-preview-description {
             display: block;
         }
     }
@@ -415,3 +368,62 @@
     height: 400px;
     width: 100%;
 }
+
+
+#slider {
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto 0 auto;
+    border-radius: 4px;
+  }
+  
+  #slider ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: $home-banner-mobile-version;
+    list-style: none;
+  }
+  
+  #slider ul li {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: $home-banner-mobile-version;
+    background: #ccc;
+    text-align: center;
+  }
+  
+  .control_prev,
+  .control_next {
+    position: absolute;
+    top: 40%;
+    z-index: 999;
+    display: block;
+    padding: 3% 2%;
+    width: auto;
+    height: auto;
+    background: #585858;
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.5;
+    cursor: pointer;
+    border: 0;
+  }
+  
+  .control_prev:hover, .control_next:hover {
+    opacity: 0.8;
+    transition: all 0.2s ease;
+  }
+  
+  .control_prev {
+    border-radius: 0 2px 2px 0;
+  }
+  
+  .control_next {
+    right: 0;
+    border-radius: 2px 0 0 2px;
+  }

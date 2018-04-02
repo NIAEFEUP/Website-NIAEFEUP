@@ -2,13 +2,67 @@ extends ../layouts/default
 
 block content
     section#hero.hero
-        .item.center-block
-            .slide-info.center-block
-                p.white-title ENEI 2018
-                hr.white-separator
-                p.white-subtitle O Encontro Nacional de Estudantes de Informática chega brevemente à cidade do Porto, não percas o evento do ano!
-                a(href='https://enei.pt/')
-                    button.btn.btn-default.see-more-button VER MAIS
+        #slider
+            case banners.length
+                when 1
+                    ul    
+                        each banner in banners
+                            li
+                                .item.center-block(style={background: "url(/images/home/"+banner.image.filename+") no-repeat center center; background-size: cover"})
+                                    .slide-info.center-block
+                                        p.white-title #{banner.title}
+                                        hr.white-separator
+                                        p.white-subtitle #{banner.description}
+                                        if banner.buttonText
+                                            a(href=banner.link)
+                                                button.btn.btn-default.see-more-button #{banner.buttonText}
+                                        else
+                                            br
+                when 2
+                    a.control_next >>
+                    a.control_prev <<
+                    ul    
+                        each banner in banners
+                            li
+                                .item.center-block(style={background: "url(/images/home/"+banner.image.filename+") no-repeat center center; background-size: cover"})
+                                    .slide-info.center-block
+                                        p.white-title #{banner.title}
+                                        hr.white-separator
+                                        p.white-subtitle #{banner.description}
+                                        if banner.buttonText
+                                            a(href=banner.link)
+                                                button.btn.btn-default.see-more-button #{banner.buttonText}
+                                        else
+                                            br
+                        each banner in banners
+                            li
+                                .item.center-block(style={background: "url(/images/home/"+banner.image.filename+") no-repeat center center; background-size: cover"})
+                                    .slide-info.center-block
+                                        p.white-title #{banner.title}
+                                        hr.white-separator
+                                        p.white-subtitle #{banner.description}
+                                        if banner.buttonText
+                                            a(href=banner.link)
+                                                button.btn.btn-default.see-more-button #{banner.buttonText}
+                                        else
+                                            br
+                default
+                    a.control_next >>
+                    a.control_prev <<
+                    ul    
+                        each banner in banners
+                            li
+                                .item.center-block(style={background: "url(/images/home/"+banner.image.filename+") no-repeat center center; background-size: cover"})
+                                    .slide-info.center-block
+                                        p.white-title #{banner.title}
+                                        hr.white-separator
+                                        p.white-subtitle #{banner.description}
+                                        if banner.buttonText
+                                            a(href=banner.link)
+                                                button.btn.btn-default.see-more-button #{banner.buttonText}
+                                        else
+                                            br
+                            
 
     section#about
     section#info
@@ -78,51 +132,31 @@ block content
             .col-md-2.col-md-offset-1
                 p.title PORTFÓLIO
         .row#project-photos
-            .col-md-3#project-1.project
-                #project-1-description.text-center.project-description-padding
-                    .icons.text-center
-                        a.fa.fa-globe(href='/', title='Website')
-                    .project-title WEBSITE NI
-                    hr.separator
-                    .project-description Website responsivo e com backend
-            .col-md-3#project-2.project
-                #project-2-description.project-description-padding
-                    .icons.text-center
-                        a.fa.fa-globe(href='https://ni.fe.up.pt/TTS', title='Timetable Selector')
-                    .project-title TIMETABLE SELECTOR
-                    hr.separator
-                    .project-description Plataforma que permite construir horários
-            .col-md-3#project-3.project
-                #project-3-description.project-description-padding
-                    .icons.text-center
-                        i.fa.fa-book
-                    .project-title WORKSHOP C++
-                    hr.separator
-                    .project-description Workshop para introduzir C++ aos novos alunos
-            .col-md-3#project-4.project
-                #project-4-description.project-description-padding
-                    .icons.text-center
-                        a.fa.fa-globe(href='http://enei.pt/', title='ENEI')
-                    .project-title ENEI 2018
-                    hr.separator
-                    .project-description Encontro Nacional de Estudantes de Informática
+            each project in projects
+                .col-md-3.project-preview.project(style={background: "url(/images/projects/"+project.image.filename+")"})
+                    .project-preview-description.text-center.project-description-padding
+                        .icons.text-center
+                            a.fa.fa-globe(href='/', title='Website')
+                        .project-title #{project.title}
+                        hr.separator
+                        .project-description #{project.description}
 
     section#container-feup
         .row.info
             .col-md-3.offset-md-2.text-center
-                .number 10
+                .number #{projects_count}
                 hr.separator
                 .description PROJETOS
             .col-md-3.text-center
-                .number 5
+                .number #{events_count}
                 hr.separator
                 .description EVENTOS
             .col-md-3.text-center
-                .number 20
+                .number #{workshops_count}
                 hr.separator
                 .description WORKSHOPS
             .col-md-3.text-center
-                .number 30
+                .number #{members_count}
                 hr.separator
                 .description MEMBROS
 
@@ -177,6 +211,7 @@ block content
                     map: map
                 });
                 marker.setMap(map);
-
             }
+            
+
         script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7BCaSIjFTOMKkzBMI6uzlJSsF19QJ4fs&callback=initMap')

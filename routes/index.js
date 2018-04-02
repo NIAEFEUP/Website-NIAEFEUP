@@ -49,7 +49,7 @@ exports = module.exports = function(app) {
 
     if(process.env.RECRUTAMENTO == "true"){
         app.get('/candidatura',middleware.nonUser,routes.views.candidatura);
-        app.post('/candidatura',middleware.nonUser,routes.views.candidatura.create);
+        app.post('/candidatura',middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
     }
 
     app.get('/entrevistas',middleware.nonRecruta,routes.views.entrevistas);

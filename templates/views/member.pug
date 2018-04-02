@@ -13,9 +13,12 @@ block content
             .row#cargo
               em #{member.position}
             nav.social
-              a.fa.fa-linkedin.fa-icon-border(href=member.linkedin, title='LinkedIn')
-              a.fa.fa-github.fa-icon-border(href=member.github, title='Github')
-              a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
+              if member.linkedin
+                a.fa.fa-linkedin.fa-icon-border(href=member.linkedin, title='LinkedIn')
+              if member.github
+                a.fa.fa-github.fa-icon-border(href=member.github, title='Github')
+              if member.website
+                a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
     section.container
       if !member.public
         div.container
