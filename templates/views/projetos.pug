@@ -19,6 +19,10 @@ block content
                                 .caption
                                     h3  #{project.title}
                                     h4 #{project.state}
+                                    if project.link
+                                        a(href=project.link, title='Website') Visitar
+                                    else
+                                        a                                    
                                     hr
                                     p  #{project.description}
                     when "workshop"
@@ -28,6 +32,10 @@ block content
                                 .caption
                                     h3  #{project.title}
                                     h4 #{project.state}
+                                    if project.link
+                                        a(href=project.link, title='Website') Visitar
+                                    else
+                                        a 
                                     hr
                                     p  #{project.description}
                     default 
@@ -37,6 +45,10 @@ block content
                                 .caption
                                     h3  #{project.title}
                                     h4 #{project.state}
+                                    if project.link
+                                        a(href=project.link, title='Website') Visitar
+                                    else
+                                        a 
                                     hr
                                     p  #{project.description}
                 

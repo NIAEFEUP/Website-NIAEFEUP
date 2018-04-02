@@ -136,7 +136,10 @@ block content
                 .col-md-3.project-preview.project(style={background: "url(/images/projects/"+project.image.filename+")"})
                     .project-preview-description.text-center.project-description-padding
                         .icons.text-center
-                            a.fa.fa-globe(href='/', title='Website')
+                            if project.link
+                                a.fa.fa-globe(href=project.link, title='Website')
+                            else
+                                a
                         .project-title #{project.title}
                         hr.separator
                         .project-description #{project.description}
