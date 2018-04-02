@@ -29,7 +29,8 @@ Project.add({
 		type: Types.File,
 		storage: localStorage,
 	},
-	description: { type: Types.Html, wysiwyg: true, height: 150 },
+	description: { type: Types.Textarea },
+	link: { type: Types.Url },
 });
 
 Project.defaultColumns = 'title, type, state, author, publishedDate';
