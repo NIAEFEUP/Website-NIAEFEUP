@@ -28,10 +28,8 @@
 }
 
 .item {
-    background: url("../images/home/banner-enei.jpg") no-repeat center center;
     background-size: cover;
     height: $home-banner-mobile-version;
-    width: 100%;
     display: flex;
     align-items: center;
 }
@@ -370,3 +368,62 @@
     height: 400px;
     width: 100%;
 }
+
+
+#slider {
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto 0 auto;
+    border-radius: 4px;
+  }
+  
+  #slider ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: $home-banner-mobile-version;
+    list-style: none;
+  }
+  
+  #slider ul li {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: $home-banner-mobile-version;
+    background: #ccc;
+    text-align: center;
+  }
+  
+  .control_prev,
+  .control_next {
+    position: absolute;
+    top: 40%;
+    z-index: 999;
+    display: block;
+    padding: 3% 2%;
+    width: auto;
+    height: auto;
+    background: #585858;
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.5;
+    cursor: pointer;
+    border: 0;
+  }
+  
+  .control_prev:hover, .control_next:hover {
+    opacity: 0.8;
+    transition: all 0.2s ease;
+  }
+  
+  .control_prev {
+    border-radius: 0 2px 2px 0;
+  }
+  
+  .control_next {
+    right: 0;
+    border-radius: 2px 0 0 2px;
+  }
