@@ -5,6 +5,10 @@ jQuery(document).ready(function ($) {
 	var slideHeight = $('#slider ul li').height();
 	var sliderUlWidth = slideCount * slideWidth;
 
+	setInterval(function () {
+		moveRight();
+	}, 4000);
+
 	$('#slider').css({ width: slideWidth, height: slideHeight });
 
 	if (slideWidth !== sliderUlWidth)
