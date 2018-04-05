@@ -59,6 +59,9 @@ exports = module.exports = function (app) {
 
 	app.get('/portfolio', routes.views.projetos);
 
+	app.get('/projecteditor', middleware.nonRecruta, routes.views.projecteditor);
+	app.post('/projecteditor', middleware.User_Password, routes.views.projecteditor.update);
+
     // Photo Upload Routes
 	app.post('/api/profile/photo/update', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.update);
 	app.post('/api/profile/photo/remove', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.remove);
