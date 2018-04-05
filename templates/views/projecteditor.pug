@@ -144,7 +144,7 @@ block content
 
 				//This function is executed when the file uploads successfully.
 				success: function() {
-					window.location.href = "./profile";
+					window.location.href = "./projecteditor";
 				},
 
 				//This error function is called if the POST fails for submitting the file itself.
@@ -170,7 +170,7 @@ block content
 				type: 'POST',
 
 				success: function() {
-					window.location.href = "./profile";
+					window.location.href = "./projecteditor";
 				},
 				error: function(err) {
 					console.error('Server status: ' + err.status);

@@ -33,7 +33,7 @@ exports = module.exports = function(req, res) {
 };
 
 /**
- * Update user profile
+ * Update Project data
  */
 exports.update = function(req, res, next) {
     User.model.findById(res.locals.user.id).exec(function(err, item) {
@@ -84,16 +84,34 @@ exports.update = function(req, res, next) {
                   res.locals.validationErrors = err.errors;
               } else {
                   req.flash('success', 'Your profile has been updated!');
-                  return res.redirect('/profile');
+                  return res.redirect('/projecteditor');
               }
               next();
           });
         }else{
             req.flash('warning', 'A password deve ser igual');
-            return res.redirect('/profile');
+            return res.redirect('/projecteditor');
             next();
         }
 
 
     });
+}
+
+/**
+ * Create new Project
+ */
+exports.create = (req, res, next) => {
+    req.flash('error', 'Create is WIP');
+    return res.redirect('/projecteditor');
+    next();
+}
+
+/**
+ * Delete a Project
+ */
+exports.delete = (req, res, next) => {
+    req.flash('error', 'Delete is WIP');
+    return res.redirect('/projecteditor');
+    next();
 }
