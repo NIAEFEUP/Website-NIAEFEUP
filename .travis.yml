@@ -1,5 +1,5 @@
 language: node_js
-node_js: lts
+node_js: 8.11.1
 services: mongodb
 
 cache:
@@ -11,6 +11,10 @@ jobs:
     - stage: test
       script:
         - npm run lint
+      if: branch IN (develop, master)
+    - stage: test
+      script:
+        - echo 'tests not available'
       if: branch IN (develop, master)
     - stage: deploy-staging
       if: branch = develop
