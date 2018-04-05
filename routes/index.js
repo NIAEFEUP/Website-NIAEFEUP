@@ -28,38 +28,38 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-    views: importRoutes('./views'),
-    api: importRoutes('./api'),
+	views: importRoutes('./views'),
+	api: importRoutes('./api'),
 };
 
 // Setup Route Bindings
-exports = module.exports = function(app) {
+exports = module.exports = function (app) {
     // Views
-    app.get('/', routes.views.home);
-    app.get('/signin', middleware.requireUser, routes.views.home);
-    app.get('/profile', middleware.requireUser, routes.views.profile);
-    app.post('/profile', middleware.User_Password, routes.views.profile.update);
-    app.get('/members', routes.views.members);
-    app.get('/member/:id', routes.views.member);
-    app.get('/blog/:category?', routes.views.blog);
-    app.get('/blog/post/:post', routes.views.post);
+	app.get('/', routes.views.home);
+	app.get('/signin', middleware.requireUser, routes.views.home);
+	app.get('/profile', middleware.requireUser, routes.views.profile);
+	app.post('/profile', middleware.User_Password, routes.views.profile.update);
+	app.get('/members', routes.views.members);
+	app.get('/member/:id', routes.views.member);
+	app.get('/blog/:category?', routes.views.blog);
+	app.get('/blog/post/:post', routes.views.post);
 
-    app.get('/email', middleware.requireAdmin, routes.views.email);
-    app.post('/email', middleware.requireAdmin, routes.views.email.send);
+	app.get('/email', middleware.requireAdmin, routes.views.email);
+	app.post('/email', middleware.requireAdmin, routes.views.email.send);
 
-    if(process.env.RECRUTAMENTO == "true"){
-        app.get('/candidatura',middleware.nonUser,routes.views.candidatura);
-        app.post('/candidatura',middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
-    }
+	if (process.env.RECRUTAMENTO === 'true') {
+		app.get('/candidatura', middleware.nonUser, routes.views.candidatura);
+		app.post('/candidatura', middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
+	}
 
-    app.get('/entrevistas',middleware.nonRecruta,routes.views.entrevistas);
-    app.post('/entrevistas_accept',middleware.requireAdmin,routes.views.entrevistas.approve);
-    app.get('/entrevista/:id',middleware.nonRecruta,routes.views.entrevista);
-    app.post('/entrevista',middleware.nonRecruta,routes.views.entrevista.create);
+	app.get('/entrevistas', middleware.nonRecruta, routes.views.entrevistas);
+	app.post('/entrevistas_accept', middleware.requireAdmin, routes.views.entrevistas.approve);
+	app.get('/entrevista/:id', middleware.nonRecruta, routes.views.entrevista);
+	app.post('/entrevista', middleware.nonRecruta, routes.views.entrevista.create);
 
-    app.get('/portfolio', routes.views.projetos);
+	app.get('/portfolio', routes.views.projetos);
 
     // Photo Upload Routes
-    app.post('/api/profile/photo/update', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.update);
-    app.post('/api/profile/photo/remove', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.remove);
+	app.post('/api/profile/photo/update', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.update);
+	app.post('/api/profile/photo/remove', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.remove);
 };
