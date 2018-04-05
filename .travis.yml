@@ -1,0 +1,23 @@
+language: node_js
+node_js: lts
+services: mongodb
+
+cache:
+  directories:
+    - node_modules
+    
+jobs:
+  include:
+    - stage: test
+      script:
+        - npm run lint
+      if: branch IN (develop, master)
+    - stage: deploy-staging
+      if: branch = develop
+      script: 
+        - npm run prepublish
+    - stage: deploy-production
+      if: branch = master
+      script:
+        - npm run prepublish
+
