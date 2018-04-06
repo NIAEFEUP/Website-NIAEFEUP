@@ -1,3 +1,6 @@
 {
-    "extends": "keystone"
+    "extends": "keystone",
+    "globals": {
+        "jQuery": true
+    }
 }

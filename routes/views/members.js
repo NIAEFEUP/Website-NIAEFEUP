@@ -6,14 +6,14 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
-    // locals.section is used to set the currently selected
-    // item in the header navigation.
+	// locals.section is used to set the currently selected
+	// item in the header navigation.
 	locals.section = 'members';
 	locals.filters = {
 		category: req.params.category,
 	};
 
-    // Load all members
+	// Load all members
 	view.on('init', function (next) {
 
 		User.model.find().sort('name.first').exec(function (err, results) {
@@ -25,6 +25,8 @@ exports = module.exports = function (req, res) {
 			locals.direcao = [6];
 			locals.members = [];
 			locals.recrutas = [];
+
+			let result;
 
 			for (result of results) {
 				switch (result.position) {
@@ -60,6 +62,6 @@ exports = module.exports = function (req, res) {
 
 	});
 
-    // Render the view
+	// Render the view
 	view.render('members');
 };

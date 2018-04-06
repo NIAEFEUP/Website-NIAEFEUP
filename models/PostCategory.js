@@ -1,11 +1,11 @@
-var keystone = require('keystone');
+let keystone = require('keystone');
 
 /**
  * PostCategory Model
  * ==================
  */
 
-var PostCategory = new keystone.List('PostCategory', {
+let PostCategory = new keystone.List('PostCategory', {
 	autokey: { from: 'name', path: 'key', unique: true },
 });
 

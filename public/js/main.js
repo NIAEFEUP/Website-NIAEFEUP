@@ -1,9 +1,8 @@
 jQuery(document).ready(function ($) {
-
-	var slideCount = $('#slider ul li').length;
-	var slideWidth = $('#slider ul li').width();
-	var slideHeight = $('#slider ul li').height();
-	var sliderUlWidth = slideCount * slideWidth;
+	let slideCount = $('#slider ul li').length;
+	let slideWidth = $('#slider ul li').width();
+	let slideHeight = $('#slider ul li').height();
+	let sliderUlWidth = slideCount * slideWidth;
 
 	$('#slider').css({ width: slideWidth, height: slideHeight });
 
@@ -41,5 +40,4 @@ jQuery(document).ready(function ($) {
 	$('.control_next').click(function () {
 		moveRight();
 	});
-
 });
