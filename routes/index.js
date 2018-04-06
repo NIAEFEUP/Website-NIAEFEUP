@@ -43,6 +43,7 @@ exports = module.exports = function (app) {
 	app.get('/member/:id', routes.views.member);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
+	app.get('/darts', middleware.requireUser, routes.views.darts);
 
 	app.get('/email', middleware.requireAdmin, routes.views.email);
 	app.post('/email', middleware.requireAdmin, routes.views.email.send);
