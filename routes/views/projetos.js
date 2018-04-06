@@ -1,28 +1,24 @@
 var keystone = require('keystone');
 
 exports = module.exports = function (req, res) {
+	let view = new keystone.View(req, res);
+	let locals = res.locals;
 
-	var view = new keystone.View(req, res);
-	var locals = res.locals;
-
-    // Set locals
+	// Set locals
 	locals.section = 'projects';
 	locals.filters = {
 		project: req.params.project,
 	};
 
-    // Load projects
+	// Load projects
 	view.on('init', function (next) {
-
-
-		var q = keystone.list('Project').model.find().sort('-publishedDate');
+		let q = keystone.list('Project').model.find().sort('-publishedDate');
 
 		q.exec(function (err, results) {
 			locals.projects = results;
 			next(err);
 		});
-
 	});
-    // Render the view
+	// Render the view
 	view.render('projetos');
 };
