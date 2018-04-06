@@ -1,17 +1,17 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+let keystone = require('keystone');
+let Types = keystone.Field.Types;
 
 /**
  * Banner Model
  * ==========
  */
 
-var Banner = new keystone.List('Banner', {
+let Banner = new keystone.List('Banner', {
 	map: { name: 'title' },
 	autokey: { path: 'slug', from: 'title', unique: true },
 });
 
-var localStorage = new keystone.Storage({
+let localStorage = new keystone.Storage({
 	adapter: keystone.Storage.Adapters.FS,
 	fs: {
 		path: './public/images/home/',

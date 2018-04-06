@@ -34,7 +34,7 @@ var routes = {
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
-    // Views
+	// Views
 	app.get('/', routes.views.home);
 	app.get('/signin', middleware.requireUser, routes.views.home);
 	app.get('/profile', middleware.requireUser, routes.views.profile);
@@ -63,7 +63,7 @@ exports = module.exports = function (app) {
 	app.get('/meetingscheduler', middleware.nonRecruta, routes.views.meetingscheduler);
 	//TODO: Post for meetingscheduler
 
-    // Photo Upload Routes
+	// Photo Upload Routes
 	app.post('/api/profile/photo/update', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.update);
 	app.post('/api/profile/photo/remove', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.remove);
 };
