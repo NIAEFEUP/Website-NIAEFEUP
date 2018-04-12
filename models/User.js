@@ -25,6 +25,12 @@ User.add({
 		initial: true,
 		required: true,
 	},
+	permissionGroup: {
+		type: Types.Select,
+		options: 'Admin, President, Board, Member, Recruit',
+		initial: true,
+		required: true,
+	},
 });
 
 // Provide access to Keystone
@@ -41,5 +47,5 @@ User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 /**
  * Registration
  */
-User.defaultColumns = 'name, email, isAdmin';
+User.defaultColumns = 'name, email, isAdmin, permissionGroup';
 User.register();
