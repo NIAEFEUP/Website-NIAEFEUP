@@ -35,3 +35,15 @@ PermissionGroup.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
  */
 PermissionGroup.defaultColumns = 'name, email, isAdmin, permissionGroup';
 PermissionGroup.register();
+
+/**
+ * Permission group name to permission level correspondence:
+ * 
+ * Admin 		0
+ * President	20
+ * Board		40
+ * Member		60
+ * Recruit		80
+ * MAX			99
+ * 
+ */
