@@ -5,24 +5,40 @@ block content
 
 		div.page-header(style="margin-top: 7em;")
 			h1 Requisição de material
-
 		form.form-horizontal(method='post')
 			div.form-group
-				label.col-sm-4 Nome
+				label.col-sm-4 Responsável
 				div.col-sm-8
 					input.form-control(
-					required=false,
-					disabled=true,
-					name='name',
+					required=true,
+					disabled=false,
+					name='responsavel.full',
 					type='text',
-					value=user.name.first + " " + user.name.last)
+					value=user.name.full,
+					readonly
+					)
+			div.form-group
+				label.col-sm-4 Emprestado a
+				div.col-sm-8
+					input.form-control(
+						required=true,
+						disabled=false,
+						name='emprestado.full',
+						type='text'
+					)
+			div.form-group 
+				label.col-sm-4 Requisitado para mim
+				div.col-sm-8
+					input.form-check-input(
+						type='checkbox'
+					)
 			div.form-group
 				label.col-sm-4 Data
 				div.col-sm-8
 					input.form-control(
                     required=true,
                     disabled=true,
-					name='date',
+					name='data',
 					type='datetime',
                     value=(new Date()).toString())
 			div.form-group
@@ -39,6 +55,6 @@ block content
 						option Outro
 			div.form-group
 				div.col-sm-offset-4.col-sm-8
-					button.login.btn.btn-primary(type='submit') Save
+					button.login.btn.btn-primary(type='submit') Requisitar
 			div.pull-right
 				a(href="/") Return to home page
