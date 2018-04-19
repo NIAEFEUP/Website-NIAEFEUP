@@ -1,6 +1,6 @@
-var keystone = require('keystone');
-var Entrevista = keystone.list('Entrevista');
-var Candidatura = keystone.list('Candidatura');
+const keystone = require('keystone');
+const Entrevista = keystone.list('Entrevista');
+const Candidatura = keystone.list('Candidatura');
 
 exports = module.exports = function (req, res) {
 	let view = new keystone.View(req, res);

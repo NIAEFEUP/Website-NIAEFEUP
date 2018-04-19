@@ -1,6 +1,9 @@
 {
-    "extends": "keystone",
-    "globals": {
-        "jQuery": true
-    }
+  "extends": "keystone",
+  "globals": {
+	"jQuery": true
+  },
+  "rules": {
+	"no-var": 2
+  }
 }
