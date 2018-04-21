@@ -9,22 +9,24 @@ block content
 			h3.text-center#members-subtitle.center-block MEMBROS
 			.row
 				each direction_member in direcao
-					.col-md-4.col-sm-6.col-xs-12
-						.team-member
-							a(href="./member/"+direction_member._id)
-								img.img-responsive(src=direction_member.photo_path, alt=direction_member.position)
-								aside.info-member
-									div
-										h4 #{direction_member.name.first} #{direction_member.name.last}
-										em #{direction_member.position}
-										hr
-									nav.social
-										if direction_member.linkedin
-											a.fa.fa-linkedin.fa-icon-border(href=direction_member.linkedin, title='LinkedIn')
-										if direction_member.github
-											a.fa.fa-github.fa-icon-border(href=direction_member.github, title='Github')
-										if direction_member.website
-											a.fa.fa-globe.fa-icon-border(href=direction_member.website, title='Website')
+					//Making accesses null safe (it is necessary to check both)
+					if direction_member && direction_member.name
+						.col-md-4.col-sm-6.col-xs-12
+							.team-member
+								a(href="./member/"+direction_member._id)
+									img.img-responsive(src=direction_member.photo_path, alt=direction_member.position)
+									aside.info-member
+										div
+											h4 #{direction_member.name.first} #{direction_member.name.last}
+											em #{direction_member.position}
+											hr
+										nav.social
+											if direction_member.linkedin
+												a.fa.fa-linkedin.fa-icon-border(href=direction_member.linkedin, title='LinkedIn')
+											if direction_member.github
+												a.fa.fa-github.fa-icon-border(href=direction_member.github, title='Github')
+											if direction_member.website
+												a.fa.fa-globe.fa-icon-border(href=direction_member.website, title='Website')
 			// MEMBROS
 		section#active-members
 			.row

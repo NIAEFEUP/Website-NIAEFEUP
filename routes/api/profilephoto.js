@@ -38,11 +38,11 @@ const deleteFile = function (model) {
 
 const removePhotoByUserId = function (userId) {
 	return getUserPhotoModel(userId)
-	.then((model) => {
-		if (model) {
-			deleteFile(model);
-		}
-	});
+		.then((model) => {
+			if (model) {
+				deleteFile(model);
+			}
+		});
 };
 
 const createPhoto = function (req) {
@@ -132,17 +132,17 @@ exports.remove = function (req, res) {
 			else reject();
 		});
 	})
-	.then(() => removePhotoByUserId(userId))
-	.then(() => {
-		req.flash('success', 'Foto de perfil removida com sucesso!');
-		return res.apiResponse({
-			success: true,
+		.then(() => removePhotoByUserId(userId))
+		.then(() => {
+			req.flash('success', 'Foto de perfil removida com sucesso!');
+			return res.apiResponse({
+				success: true,
+			});
+		})
+		.catch(() => {
+			req.flash('error', 'Ocorreu um erro, tenta mais tarde!');
+			return res.apiError('error');
 		});
-	})
-	.catch(() => {
-		req.flash('error', 'Ocorreu um erro, tenta mais tarde!');
-		return res.apiError('error');
-	});
 };
 
 

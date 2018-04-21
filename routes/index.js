@@ -17,24 +17,23 @@
  * See the Express application routing documentation for more information:
  * http://expressjs.com/api.html#app.VERB
  */
-
-var keystone = require('keystone');
-var middleware = require('./middleware');
-var importRoutes = keystone.importer(__dirname);
+const keystone = require('keystone');
+const middleware = require('./middleware');
+const importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
-var routes = {
+const routes = {
 	views: importRoutes('./views'),
 	api: importRoutes('./api'),
 };
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
-    // Views
+	// Views
 	app.get('/', routes.views.home);
 	app.get('/signin', middleware.requireUser, routes.views.home);
 	app.get('/profile', middleware.requireUser, routes.views.profile);
@@ -59,7 +58,7 @@ exports = module.exports = function (app) {
 
 	app.get('/portfolio', routes.views.projetos);
 
-    // Photo Upload Routes
+	// Photo Upload Routes
 	app.post('/api/profile/photo/update', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.update);
 	app.post('/api/profile/photo/remove', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.remove);
 };

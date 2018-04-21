@@ -1,17 +1,14 @@
-var keystone = require('keystone');
+const keystone = require('keystone');
 
 exports = module.exports = function (req, res) {
+	let view = new keystone.View(req, res);
+	let locals = res.locals;
 
-	var view = new keystone.View(req, res);
-	var locals = res.locals;
-
-    // locals.section is used to set the currently selected
-    // item in the header navigation.
+	// locals.section is used to set the currently selected
+	// item in the header navigation.
 	locals.section = 'home';
 
 	view.on('init', function (next) {
-
-
 		keystone.list('Project').model.count({ type: 'project' }, function (err, count) {
 			if (err) {
 				locals.projects_count = 0;
@@ -36,12 +33,12 @@ exports = module.exports = function (req, res) {
 						} else {
 							locals.members_count = count - 1;
 						}
-						var q = keystone.list('Project').model.find().where('state', 'completed').sort('-publishedDate').limit(4);
+						let q = keystone.list('Project').model.find().where('state', 'completed').sort('-publishedDate').limit(4);
 
 						q.exec(function (err, results) {
 							locals.projects = results;
 
-							var q = keystone.list('Banner').model.find();
+							let q = keystone.list('Banner').model.find();
 
 							q.exec(function (err, results) {
 								locals.banners = results;
@@ -54,6 +51,6 @@ exports = module.exports = function (req, res) {
 		});
 	});
 
-    // Render the view
+	// Render the view
 	view.render('home');
 };
