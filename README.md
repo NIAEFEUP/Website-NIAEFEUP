@@ -31,7 +31,7 @@ O objetivo deste projeto é que o [site](https://ni.fe.up.pt) do Núcleo seja di
 
 * Criar um ficheiro .env no directório principal e adicionar:
 ```
- MONGO_URI=mongodb://<user>:<password>:@ds157853.mlab.com:57835/yournewdb
+ MONGO_URI=mongodb://<user>:<password>@<endereço>:<porta>/<nome_db>
  COOKIE_SECRET=u|_*J5<+Ed4eM#$g)B|G)z$8fy$Pt$E36MC=lnok;o6-]:cWnPuJdR>X*Z,bWDO
 ```
 O COOKIE_SECRET é uma string grande e random, pode ser qualquer coisa.
