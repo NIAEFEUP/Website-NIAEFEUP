@@ -14,3 +14,9 @@ jobs:
     - stage: test
       script:
         - npm run test
+    - stage: deploy-dev
+      if: branch = fix/pipeline
+      script:
+        - npm install now --no-save
+        - now --token $NOW_TOKEN
+
