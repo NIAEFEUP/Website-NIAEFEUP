@@ -16,7 +16,7 @@ jobs:
         - npm run test
     - stage: deploy-dev
       if: branch = fix/pipeline
-      before-install: npm install now
       script:
+        - npm install now
         - now --token $NOW_TOKEN
 
