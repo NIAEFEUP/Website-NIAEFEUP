@@ -27,11 +27,20 @@ User.add({
 	},
 	permissionGroup: {
 		type: Types.Select,
-		options: 'Admin, President, Board, Member, Recruit',
+		numeric: true, 
+		options: [
+			{ value: 0, label: 'Admin' }, 
+			{ value: 20, label: 'President' },
+			{ value: 40, label: 'Board' },
+			{ value: 60, label: 'Member' },
+			{ value: 80, label: 'Recruit' }
+		],
 		initial: true,
 		required: true,
-	},
+	}
 });
+
+
 
 // Provide access to Keystone
 User.schema.virtual('canAccessKeystone').get(function () {
