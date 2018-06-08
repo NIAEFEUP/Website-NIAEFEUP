@@ -19,13 +19,7 @@ User.add({
 	public: { type: Boolean, label: 'Is the profile public?', initial: true },
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
-	position: {
-		type: Types.Select,
-		options: 'Admin, Membro, Recruta, Presidente, Vice-Presidente e Gestor de Projetos, Vice-Presidente e Gestor de Eventos, Tesoureiro, Secretário e Responsável pela Sala, Responsável pela Imagem e Comunicação',
-		initial: true,
-		required: true,
-	},
-	permissionGroup: {
+	permissionGroupValue: {
 		type: Types.Select,
 		numeric: true, 
 		options: [
@@ -37,14 +31,29 @@ User.add({
 		],
 		initial: true,
 		required: true,
+	},
+	position: {
+		type: Types.Select,
+		options: 'Admin, Membro, Recruta, Presidente, Vice-Presidente e Gestor de Projetos, Vice-Presidente e Gestor de Eventos, Tesoureiro, Secretário e Responsável pela Sala, Responsável pela Imagem e Comunicação',
+		dependsOn: { permissionGroup: 40},
+		initial: true,
+		required: true,
 	}
 });
+
 
 
 
 // Provide access to Keystone
 User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
+});
+
+// Get permissionGroup in {value, label} format
+User.schema.virtual('permissionGroup').get(function () {
+	let permissions = this.schema.path('permissionGroupValue').options.options;
+	return permissions.find(perm => perm.value == this.permissionGroupValue);
+				
 });
 
 

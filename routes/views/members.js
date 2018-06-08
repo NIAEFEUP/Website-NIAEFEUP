@@ -1,6 +1,11 @@
 var keystone = require('keystone');
 var User = keystone.list('User');
 
+function getPermGroupValue(permGroupLabel) {
+	let permissions = User.schema.path('permissionGroupValue').options.options;
+	return permissions.find(perm => perm.label == permGroupLabel).value;
+}
+
 exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
@@ -18,43 +23,29 @@ exports = module.exports = function (req, res) {
 
 		User.model.find().sort('name.first').exec(function (err, results) {
 
+			
 			if (err || !results.length) {
 				return next(err);
 			}
 
-			locals.direcao = [6];
+			locals.direcao = [];
 			locals.members = [];
 			locals.recrutas = [];
 
 			let result;
 
 			for (result of results) {
-				switch (result.position) {
-					case 'Presidente':
-						locals.direcao[0] = result;
-						break;
-					case 'Vice-Presidente e Gestor de Projetos':
-						locals.direcao[1] = result;
-						break;
-					case 'Vice-Presidente e Gestor de Eventos':
-						locals.direcao[2] = result;
-						break;
-					case 'Tesoureiro':
-						locals.direcao[3] = result;
-						break;
-					case 'Secretário e Responsável pela Sala':
-						locals.direcao[4] = result;
-						break;
-					case 'Responsável pela Imagem e Comunicação':
-						locals.direcao[5] = result;
-						break;
-					case 'Membro':
-						locals.members.push(result);
-						break;
-					case 'Recruta':
-						locals.recrutas.push(result);
-						break;
+
+				let permGroup = result.permissionGroup;
+
+				if(permGroup.value <= getPermGroupValue('Board')) {
+					locals.direcao.push(result);
+				} else if (permGroup.value == getPermGroupValue('Member')) {
+					locals.members.push(result);
+				} else {
+					locals.recrutas.push(result);
 				}
+				
 			}
 
 			next(err);
