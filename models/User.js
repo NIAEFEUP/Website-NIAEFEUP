@@ -33,15 +33,12 @@ User.add({
 		required: true,
 	},
 	position: {
-		type: Types.Select,
-		options: 'Admin, Membro, Recruta, Presidente, Vice-Presidente e Gestor de Projetos, Vice-Presidente e Gestor de Eventos, Tesoureiro, Secretário e Responsável pela Sala, Responsável pela Imagem e Comunicação',
-		dependsOn: { permissionGroup: 40},
+		type: Types.Text,
+		dependsOn: { permissionGroupValue: 40},
 		initial: true,
 		required: true,
 	}
 });
-
-
 
 
 // Provide access to Keystone
@@ -56,6 +53,12 @@ User.schema.virtual('permissionGroup').get(function () {
 				
 });
 
+// Get permissionGroup in {value, label} format
+User.schema.virtual('positionLabel').get(function () {
+	return this.position || this.permissionGroup.label;
+				
+});
+
 
 /**
  * Relationships
@@ -65,5 +68,5 @@ User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 /**
  * Registration
  */
-User.defaultColumns = 'name, email, isAdmin, permissionGroup';
+User.defaultColumns = 'name, email, isAdmin, permissionGroupValue';
 User.register();

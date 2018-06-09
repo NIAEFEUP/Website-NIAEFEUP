@@ -18,7 +18,7 @@ block content
 									aside.info-member
 										div
 											h4 #{direction_member.name.first} #{direction_member.name.last}
-											em #{direction_member.position}
+											em #{direction_member.position || direction_member.permissionGroup.label}
 											hr
 										nav.social
 											if direction_member.linkedin
@@ -38,7 +38,7 @@ block content
 								aside.info-member
 									div
 										h4 #{member.name.first} #{member.name.last}
-										em #{member.position}
+										em #{member.positionLabel}
 										hr
 									nav.social
 										if member.linkedin
@@ -58,7 +58,7 @@ block content
 								aside.info-member
 									div
 										h4 #{recruta.name.first} #{recruta.name.last}
-										em #{recruta.position}
+										em #{recruta.positionLabel}
 										hr
 									nav.social
 										if recruta.linkedin

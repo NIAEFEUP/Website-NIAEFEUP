@@ -38,6 +38,10 @@ exports = module.exports = function (req, res) {
 
 				let permGroup = result.permissionGroup;
 
+				if(permGroup.value == getPermGroupValue('Admin')){
+					continue;
+				}
+
 				if(permGroup.value <= getPermGroupValue('Board')) {
 					locals.direcao.push(result);
 				} else if (permGroup.value == getPermGroupValue('Member')) {
@@ -48,8 +52,18 @@ exports = module.exports = function (req, res) {
 				
 			}
 
+			locals.direcao.sort(
+				(a,b) => {
+					if(a.permissionGroupValue == b.permissionGroupValue) {
+						return a.name - b.name;
+					} else {
+						return a.permissionGroupValue - b.permissionGroupValue;
+					}
+				});
 			next(err);
 		});
+
+	
 
 	});
 
