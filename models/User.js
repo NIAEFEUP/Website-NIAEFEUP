@@ -25,6 +25,7 @@ User.add({
 		options: [
 			{ value: 0, label: 'Admin' }, 
 			{ value: 20, label: 'President' },
+			{ value: 30, label: 'VicePresident' },
 			{ value: 40, label: 'Board' },
 			{ value: 60, label: 'Member' },
 			{ value: 80, label: 'Recruit' }
@@ -34,9 +35,8 @@ User.add({
 	},
 	position: {
 		type: Types.Text,
-		dependsOn: { permissionGroupValue: 40},
-		initial: true,
-		required: true,
+		dependsOn: {permissionGroupValue: { or:  [30, 40] }}, //only shows if permission level is (VP or Board)
+		initial: true
 	}
 });
 

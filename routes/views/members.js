@@ -28,6 +28,7 @@ exports = module.exports = function (req, res) {
 				return next(err);
 			}
 
+			locals.direcao_presidencia = [];
 			locals.direcao = [];
 			locals.members = [];
 			locals.recrutas = [];
@@ -42,9 +43,11 @@ exports = module.exports = function (req, res) {
 					continue;
 				}
 
-				if(permGroup.value <= getPermGroupValue('Board')) {
+				if (permGroup.value <= getPermGroupValue('VicePresident')) {
+					locals.direcao_presidencia.push(result);
+				} else if (permGroup.value <= getPermGroupValue('Board')) {
 					locals.direcao.push(result);
-				} else if (permGroup.value == getPermGroupValue('Member')) {
+				} else if (permGroup.value <= getPermGroupValue('Member')) {
 					locals.members.push(result);
 				} else {
 					locals.recrutas.push(result);
@@ -52,19 +55,18 @@ exports = module.exports = function (req, res) {
 				
 			}
 
-			locals.direcao.sort(
+			locals.direcao_presidencia.sort(
 				(a,b) => {
 					if(a.permissionGroupValue == b.permissionGroupValue) {
 						return a.name - b.name;
 					} else {
 						return a.permissionGroupValue - b.permissionGroupValue;
 					}
-				});
-			next(err);
+			});		
+			
+
+			next(err);	
 		});
-
-	
-
 	});
 
 	// Render the view
