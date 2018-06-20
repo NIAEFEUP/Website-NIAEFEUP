@@ -1,9 +1,9 @@
 var keystone = require('keystone');
 var User = keystone.list('User');
 
-function getPermGroupValue(permGroupLabel) {
+function getPermGroupValue (permGroupLabel) {
 	let permissions = User.schema.path('permissionGroupValue').options.options;
-	return permissions.find(perm => perm.label == permGroupLabel).value;
+	return permissions.find(perm => perm.label === permGroupLabel).value;
 }
 
 exports = module.exports = function (req, res) {
@@ -23,7 +23,6 @@ exports = module.exports = function (req, res) {
 
 		User.model.find().sort('name.first').exec(function (err, results) {
 
-			
 			if (err || !results.length) {
 				return next(err);
 			}
@@ -39,7 +38,7 @@ exports = module.exports = function (req, res) {
 
 				let permGroup = result.permissionGroup;
 
-				if(permGroup.value == getPermGroupValue('Admin')){
+				if (permGroup.value === getPermGroupValue('Admin')) {
 					continue;
 				}
 
@@ -52,20 +51,19 @@ exports = module.exports = function (req, res) {
 				} else {
 					locals.recrutas.push(result);
 				}
-				
 			}
 
 			locals.direcao_presidencia.sort(
-				(a,b) => {
-					if(a.permissionGroupValue == b.permissionGroupValue) {
+				(a, b) => {
+					if (a.permissionGroupValue === b.permissionGroupValue) {
 						return a.name - b.name;
 					} else {
 						return a.permissionGroupValue - b.permissionGroupValue;
 					}
-			});		
-			
+				});
 
-			next(err);	
+
+			next(err);
 		});
 	});
 

@@ -21,23 +21,23 @@ User.add({
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 	permissionGroupValue: {
 		type: Types.Select,
-		numeric: true, 
+		numeric: true,
 		options: [
-			{ value: 0, label: 'Admin' }, 
+			{ value: 0, label: 'Admin' },
 			{ value: 20, label: 'President' },
 			{ value: 30, label: 'VicePresident' },
 			{ value: 40, label: 'Board' },
 			{ value: 60, label: 'Member' },
-			{ value: 80, label: 'Recruit' }
+			{ value: 80, label: 'Recruit' },
 		],
 		initial: true,
 		required: true,
 	},
 	position: {
 		type: Types.Text,
-		dependsOn: {permissionGroupValue: { or:  [30, 40] }}, //only shows if permission level is (VP or Board)
-		initial: true
-	}
+		dependsOn: { permissionGroupValue: { or: [30, 40] } }, // only shows if permission level is (VP or Board)
+		initial: true,
+	},
 });
 
 
@@ -49,14 +49,12 @@ User.schema.virtual('canAccessKeystone').get(function () {
 // Get permissionGroup in {value, label} format
 User.schema.virtual('permissionGroup').get(function () {
 	let permissions = this.schema.path('permissionGroupValue').options.options;
-	return permissions.find(perm => perm.value == this.permissionGroupValue);
-				
+	return permissions.find(perm => perm.value === this.permissionGroupValue);
 });
 
 // Get permissionGroup in {value, label} format
 User.schema.virtual('positionLabel').get(function () {
 	return this.position || this.permissionGroup.label;
-				
 });
 
 
