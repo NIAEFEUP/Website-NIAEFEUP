@@ -42,11 +42,11 @@ exports = module.exports = function (req, res) {
 					continue;
 				}
 
-				if (permGroup.value <= getPermGroupValue('VicePresident')) {
+				if (permGroup.value <= getPermGroupValue('Vice-Presidente')) {
 					locals.direcao_presidencia.push(result);
 				} else if (permGroup.value <= getPermGroupValue('Board')) {
 					locals.direcao.push(result);
-				} else if (permGroup.value <= getPermGroupValue('Member')) {
+				} else if (permGroup.value <= getPermGroupValue('Membro')) {
 					locals.members.push(result);
 				} else {
 					locals.recrutas.push(result);
