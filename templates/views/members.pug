@@ -4,9 +4,32 @@ block content
 	header#members-header
 		h2.text-center#members-title.center-block EQUIPA
 	.container#members
-		// DIREÇÃO
+		
 		section#direction-members
 			h3.text-center#members-subtitle.center-block MEMBROS
+			// DIREÇÃO - Presidencia
+			.row
+				.col-md-2
+				each direction_member in direcao_presidencia
+					//Making accesses null safe (it is necessary to check both)
+					if direction_member && direction_member.name
+						.col-md-4.col-sm-6.col-xs-12
+							.team-member
+								a(href="./member/"+direction_member._id)
+									img.img-responsive(src=direction_member.photo_path, alt=direction_member.position)
+									aside.info-member
+										div
+											h4 #{direction_member.name.first} #{direction_member.name.last}
+											em #{direction_member.position || direction_member.permissionGroup.label}
+											hr
+										nav.social
+											if direction_member.linkedin
+												a.fa.fa-linkedin.fa-icon-border(href=direction_member.linkedin, title='LinkedIn')
+											if direction_member.github
+												a.fa.fa-github.fa-icon-border(href=direction_member.github, title='Github')
+											if direction_member.website
+												a.fa.fa-globe.fa-icon-border(href=direction_member.website, title='Website')
+			// Restante Direção
 			.row
 				each direction_member in direcao
 					//Making accesses null safe (it is necessary to check both)
@@ -18,7 +41,7 @@ block content
 									aside.info-member
 										div
 											h4 #{direction_member.name.first} #{direction_member.name.last}
-											em #{direction_member.position}
+											em #{direction_member.position || direction_member.permissionGroup.label}
 											hr
 										nav.social
 											if direction_member.linkedin
@@ -38,7 +61,7 @@ block content
 								aside.info-member
 									div
 										h4 #{member.name.first} #{member.name.last}
-										em #{member.position}
+										em #{member.positionLabel}
 										hr
 									nav.social
 										if member.linkedin
@@ -58,7 +81,7 @@ block content
 								aside.info-member
 									div
 										h4 #{recruta.name.first} #{recruta.name.last}
-										em #{recruta.position}
+										em #{recruta.positionLabel}
 										hr
 									nav.social
 										if recruta.linkedin

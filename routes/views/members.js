@@ -1,6 +1,11 @@
 const keystone = require('keystone');
 const User = keystone.list('User');
 
+function getPermGroupValue (permGroupLabel) {
+	let permissions = User.schema.path('permissionGroupValue').options.options;
+	return permissions.find(perm => perm.label === permGroupLabel).value;
+}
+
 exports = module.exports = function (req, res) {
 
 	const view = new keystone.View(req, res);
@@ -22,44 +27,44 @@ exports = module.exports = function (req, res) {
 				return next(err);
 			}
 
-			locals.direcao = [6];
+			locals.direcao_presidencia = [];
+			locals.direcao = [];
 			locals.members = [];
 			locals.recrutas = [];
 
 			let result;
 
 			for (result of results) {
-				switch (result.position) {
-					case 'Presidente':
-						locals.direcao[0] = result;
-						break;
-					case 'Vice-Presidente e Gestor de Projetos':
-						locals.direcao[1] = result;
-						break;
-					case 'Vice-Presidente e Gestor de Eventos':
-						locals.direcao[2] = result;
-						break;
-					case 'Tesoureiro':
-						locals.direcao[3] = result;
-						break;
-					case 'Secretário e Responsável pela Sala':
-						locals.direcao[4] = result;
-						break;
-					case 'Responsável pela Imagem e Comunicação':
-						locals.direcao[5] = result;
-						break;
-					case 'Membro':
-						locals.members.push(result);
-						break;
-					case 'Recruta':
-						locals.recrutas.push(result);
-						break;
+
+				let permGroup = result.permissionGroup;
+
+				if (permGroup.value === getPermGroupValue('Admin')) {
+					continue;
+				}
+
+				if (permGroup.value <= getPermGroupValue('Vice-Presidente')) {
+					locals.direcao_presidencia.push(result);
+				} else if (permGroup.value <= getPermGroupValue('Board')) {
+					locals.direcao.push(result);
+				} else if (permGroup.value <= getPermGroupValue('Membro')) {
+					locals.members.push(result);
+				} else {
+					locals.recrutas.push(result);
 				}
 			}
 
+			locals.direcao_presidencia.sort(
+				(a, b) => {
+					if (a.permissionGroupValue === b.permissionGroupValue) {
+						return a.name - b.name;
+					} else {
+						return a.permissionGroupValue - b.permissionGroupValue;
+					}
+				});
+
+
 			next(err);
 		});
-
 	});
 
 	// Render the view

@@ -19,17 +19,42 @@ User.add({
 	public: { type: Boolean, label: 'Is the profile public?', initial: true },
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
-	position: {
+	permissionGroupValue: {
 		type: Types.Select,
-		options: 'Admin, Membro, Recruta, Presidente, Vice-Presidente e Gestor de Projetos, Vice-Presidente e Gestor de Eventos, Tesoureiro, Secretário e Responsável pela Sala, Responsável pela Imagem e Comunicação',
+		numeric: true,
+		options: [
+			{ value: 0, label: 'Admin' },
+			{ value: 20, label: 'Presidente' },
+			{ value: 30, label: 'Vice-Presidente' },
+			{ value: 40, label: 'Board' },
+			{ value: 60, label: 'Membro' },
+			{ value: 80, label: 'Recruta' },
+		],
 		initial: true,
 		required: true,
 	},
+	position: {
+		type: Types.Text,
+		dependsOn: { permissionGroupValue: { or: [30, 40] } }, // only shows if permission level is (VP or Board)
+		initial: true,
+	},
 });
+
 
 // Provide access to Keystone
 User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
+});
+
+// Get permissionGroup in {value, label} format
+User.schema.virtual('permissionGroup').get(function () {
+	let permissions = this.schema.path('permissionGroupValue').options.options;
+	return permissions.find(perm => perm.value === this.permissionGroupValue);
+});
+
+// Get permissionGroup in {value, label} format
+User.schema.virtual('positionLabel').get(function () {
+	return this.position || this.permissionGroup.label;
 });
 
 
@@ -41,5 +66,5 @@ User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 /**
  * Registration
  */
-User.defaultColumns = 'name, email, isAdmin';
+User.defaultColumns = 'name, email, isAdmin, permissionGroupValue';
 User.register();
