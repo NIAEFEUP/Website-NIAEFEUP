@@ -76,11 +76,20 @@ exports.nonUser = function (req, res, next) {
 	}
 };
 
+/**
+ * Returns a numeric value associated with the given string
+ * @param {string} permGroupLabel label of the permission group to get the value of 
+ */
+function getPermGroupValue (permGroupLabel) {
+	let permissions = User.schema.path('permissionGroupValue').options.options;
+	return permissions.find(perm => perm.label === permGroupLabel).value;
+}
+
 exports.nonRecruta = function (req, res, next) {
 
 	if (!req.user) {
 		res.redirect('/');
-	} else if (req.user.position === 'Recruta') {
+	} else if (req.user.permissionGroup.value <= getPermGroupValue('Membro')) {
 		req.flash('warning', 'Esta página é só para membros.');
 		res.redirect('/');
 	} else {
@@ -88,7 +97,7 @@ exports.nonRecruta = function (req, res, next) {
 	}
 };
 
-// TODO fazer a validação do lado do servidor dos dados da candidatura
+
 exports.validateApplication = function (req, res, next) {
 	let currYear = req.body.ano_curricular;
 	if (currYear >= 1) {
