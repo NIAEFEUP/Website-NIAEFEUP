@@ -61,6 +61,19 @@ exports.requirePresident = function (req, res, next) {
 	}
 };
 
+exports.requirePresidency = function (req, res, next) {
+	if (!isLogged(req)) {
+		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
+		res.redirect('/keystone/signin');
+	} else if (req.user.permissionGroup.value > getPermGroupValue('Vice-Presidente')) {
+		req.flash('warning', 'Precisas de ter permissões de Presidência.');
+		res.redirect('/');
+	} else {
+		next();
+	}
+};
+
+
 exports.requireBoard = function (req, res, next) {
 	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
@@ -118,18 +131,6 @@ exports.nonUser = function (req, res, next) {
 		next();
 	}
 };
-
-// exports.nonRecruta = function (req, res, next) {
-
-// 	if (!isLogged(req)) {
-// 		res.redirect('/');
-// 	} else if (req.user.permissionGroup.value <= getPermGroupValue('Membro')) {
-// 		req.flash('warning', 'Esta página é só para membros.');
-// 		res.redirect('/');
-// 	} else {
-// 		next();
-// 	}
-// };
 
 
 exports.validateApplication = function (req, res, next) {

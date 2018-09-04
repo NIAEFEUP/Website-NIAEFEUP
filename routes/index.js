@@ -44,8 +44,8 @@ exports = module.exports = function (app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 
-	app.get('/email', middleware.requireAdmin, routes.views.email);
-	app.post('/email', middleware.requireAdmin, routes.views.email.send);
+	app.get('/email', middleware.requirePresidency, routes.views.email);
+	app.post('/email', middleware.requirePresidency, routes.views.email.send);
 
 	if (process.env.RECRUTAMENTO === 'true') {
 		app.get('/candidatura', middleware.nonUser, routes.views.candidatura);
@@ -53,7 +53,7 @@ exports = module.exports = function (app) {
 	}
 
 	app.get('/entrevistas', middleware.requireMember, routes.views.entrevistas);
-	app.post('/entrevistas_accept', middleware.requireAdmin, routes.views.entrevistas.approve);
+	app.post('/entrevistas_accept', middleware.requirePresidency, routes.views.entrevistas.approve);
 	app.get('/entrevista/:id', middleware.requireMember, routes.views.entrevista);
 	app.post('/entrevista', middleware.requireMember, routes.views.entrevista.create);
 
