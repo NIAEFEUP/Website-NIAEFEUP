@@ -59,6 +59,16 @@ User.schema.virtual('positionLabel').get(function () {
 
 
 /**
+ * Returns a numeric value associated with the given string
+ * @param {string} permGroupLabel label of the permission group to get the value of
+ */
+module.exports.getPermGroupValue = function getPermGroupValue (permGroupLabel) {
+	let permissions = User.schema.path('permissionGroupValue').options.options;
+	return permissions.find(perm => perm.label === permGroupLabel).value;
+};
+
+
+/**
  * Relationships
  */
 User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });

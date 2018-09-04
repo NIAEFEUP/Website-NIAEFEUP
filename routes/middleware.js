@@ -9,6 +9,8 @@
  */
 var _ = require('lodash');
 
+var getPermGroupValue = require('../models/User').getPermGroupValue;
+
 
 /**
 	Initialises the standard view locals
@@ -42,12 +44,53 @@ exports.flashMessages = function (req, res, next) {
 	next();
 };
 
+function isLogged (req) {
+	return !!req.user;
+}
+
+
+exports.requirePresident = function (req, res, next) {
+	if (!isLogged(req)) {
+		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
+		res.redirect('/keystone/signin');
+	} else if (req.user.permissionGroup.value > getPermGroupValue('Presidente')) {
+		req.flash('warning', 'Precisas de ter permissões de Presidente.');
+		res.redirect('/');
+	} else {
+		next();
+	}
+};
+
+exports.requireBoard = function (req, res, next) {
+	if (!isLogged(req)) {
+		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
+		res.redirect('/keystone/signin');
+	} else if (req.user.permissionGroup.value > getPermGroupValue('Board')) {
+		req.flash('warning', 'Precisas de ter permissões de direção.');
+		res.redirect('/');
+	} else {
+		next();
+	}
+};
+
+
+exports.requireMember = function (req, res, next) {
+	if (!isLogged(req)) {
+		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
+		res.redirect('/keystone/signin');
+	} else if (req.user.permissionGroup.value > getPermGroupValue('Membro')) {
+		req.flash('warning', 'Precisas de ter permissões de membro.');
+		res.redirect('/');
+	} else {
+		next();
+	}
+};
 
 /**
 	Prevents people from accessing protected pages when they're not signed in
  */
 exports.requireUser = function (req, res, next) {
-	if (!req.user) {
+	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
 		res.redirect('/keystone/signin');
 	} else {
@@ -56,7 +99,7 @@ exports.requireUser = function (req, res, next) {
 };
 
 exports.requireAdmin = function (req, res, next) {
-	if (!req.user) {
+	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
 		res.redirect('/');
 	} else if (req.user.isAdmin) {
@@ -76,26 +119,17 @@ exports.nonUser = function (req, res, next) {
 	}
 };
 
-/**
- * Returns a numeric value associated with the given string
- * @param {string} permGroupLabel label of the permission group to get the value of 
- */
-function getPermGroupValue (permGroupLabel) {
-	let permissions = User.schema.path('permissionGroupValue').options.options;
-	return permissions.find(perm => perm.label === permGroupLabel).value;
-}
+// exports.nonRecruta = function (req, res, next) {
 
-exports.nonRecruta = function (req, res, next) {
-
-	if (!req.user) {
-		res.redirect('/');
-	} else if (req.user.permissionGroup.value <= getPermGroupValue('Membro')) {
-		req.flash('warning', 'Esta página é só para membros.');
-		res.redirect('/');
-	} else {
-		next();
-	}
-};
+// 	if (!isLogged(req)) {
+// 		res.redirect('/');
+// 	} else if (req.user.permissionGroup.value <= getPermGroupValue('Membro')) {
+// 		req.flash('warning', 'Esta página é só para membros.');
+// 		res.redirect('/');
+// 	} else {
+// 		next();
+// 	}
+// };
 
 
 exports.validateApplication = function (req, res, next) {
@@ -110,7 +144,7 @@ exports.validateApplication = function (req, res, next) {
 };
 
 exports.User_Password = function (req, res, next) {
-	if (!req.user) {
+	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
 		res.redirect('/keystone/signin');
 	} else {

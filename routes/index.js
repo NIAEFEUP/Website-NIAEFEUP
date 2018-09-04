@@ -52,10 +52,10 @@ exports = module.exports = function (app) {
 		app.post('/candidatura', middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
 	}
 
-	app.get('/entrevistas', middleware.nonRecruta, routes.views.entrevistas);
+	app.get('/entrevistas', middleware.requireMember, routes.views.entrevistas);
 	app.post('/entrevistas_accept', middleware.requireAdmin, routes.views.entrevistas.approve);
-	app.get('/entrevista/:id', middleware.nonRecruta, routes.views.entrevista);
-	app.post('/entrevista', middleware.nonRecruta, routes.views.entrevista.create);
+	app.get('/entrevista/:id', middleware.requireMember, routes.views.entrevista);
+	app.post('/entrevista', middleware.requireMember, routes.views.entrevista.create);
 
 	app.get('/portfolio', routes.views.projetos);
 

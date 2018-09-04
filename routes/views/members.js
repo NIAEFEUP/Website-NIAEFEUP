@@ -1,10 +1,6 @@
 var keystone = require('keystone');
 var User = keystone.list('User');
-
-function getPermGroupValue (permGroupLabel) {
-	let permissions = User.schema.path('permissionGroupValue').options.options;
-	return permissions.find(perm => perm.label === permGroupLabel).value;
-}
+var getPermGroupValue = require('../../models/User').getPermGroupValue;
 
 exports = module.exports = function (req, res) {
 
