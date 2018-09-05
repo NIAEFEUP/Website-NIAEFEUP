@@ -83,3 +83,36 @@ patch:
   'npm:tunnel-agent:20170305':
     - node-sass-middleware > node-sass > request > tunnel-agent:
         patched: '2018-06-26T07:17:35.148Z'
+  'npm:hoek:20180212':
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
