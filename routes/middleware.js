@@ -123,7 +123,7 @@ exports.requireAdmin = function (req, res, next) {
 };
 
 exports.nonUser = function (req, res, next) {
-	if (req.user) {
+	if (isLogged(req)) {
 		req.flash('error', 'Já és membro do NIAEFEUP!');
 		res.redirect('/');
 	} else {
