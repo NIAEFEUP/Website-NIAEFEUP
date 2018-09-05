@@ -82,3 +82,46 @@ patch:
         patched: '2018-07-03T07:09:47.759Z'
     - keystone > grappling-hook > lodash:
         patched: '2018-07-03T07:09:47.759Z'
+  'npm:mime:20170907':
+    - keystone > embedly > superagent > mime:
+        patched: '2018-06-26T07:17:35.148Z'
+    - keystone > express > send > mime:
+        patched: '2018-06-26T07:17:35.148Z'
+    - keystone > express > serve-static > send > mime:
+        patched: '2018-06-26T07:17:35.148Z'
+  'npm:tunnel-agent:20170305':
+    - node-sass-middleware > node-sass > request > tunnel-agent:
+        patched: '2018-06-26T07:17:35.148Z'
+  'npm:hoek:20180212':
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
