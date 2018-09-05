@@ -1,7 +1,6 @@
-var keystone = require('keystone');
-var Candidatura = keystone.list('Candidatura');
-var nodemailer = require('nodemailer');
-
+const keystone = require('keystone');
+const Candidatura = keystone.list('Candidatura');
+const nodemailer = require('nodemailer');
 
 exports = module.exports = function (req, res) {
 	let view = new keystone.View(req, res);
@@ -37,7 +36,6 @@ exports.send = function (req, res, next) {
 				let text = req.body.email_text.replace(/\r?\n/g, '<br />');
 
 				let message = '<div> ' + text + '</div>';
-
 
 				// signature
 				message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\' height=\'80\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';

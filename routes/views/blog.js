@@ -1,5 +1,5 @@
-var keystone = require('keystone');
-var async = require('async');
+const keystone = require('keystone');
+const async = require('async');
 
 exports = module.exports = function (req, res) {
 	let view = new keystone.View(req, res);

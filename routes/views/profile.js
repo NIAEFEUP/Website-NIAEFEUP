@@ -1,7 +1,7 @@
-var keystone = require('keystone');
+const keystone = require('keystone');
 
-var User = keystone.list('User');
-var FileData = keystone.list('FileUpload');
+const User = keystone.list('User');
+const FileData = keystone.list('FileUpload');
 
 exports = module.exports = function (req, res) {
 	let view = new keystone.View(req, res);
@@ -44,11 +44,7 @@ exports.update = function (req, res, next) {
 
 		let publicProfile;
 
-		if (req.body.public === 'on') {
-			publicProfile = true;
-		} else {
-			publicProfile = false;
-		}
+		publicProfile = req.body.public === 'on';
 
 		let formData = {
 			name: { first: req.body.first, last: req.body.last },

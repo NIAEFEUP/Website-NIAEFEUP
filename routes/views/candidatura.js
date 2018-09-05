@@ -1,6 +1,6 @@
-var keystone = require('keystone');
-var Candidatura = keystone.list('Candidatura');
-var nodemailer = require('nodemailer');
+const keystone = require('keystone');
+const Candidatura = keystone.list('Candidatura');
+const nodemailer = require('nodemailer');
 
 exports = module.exports = function (req, res) {
 	let view = new keystone.View(req, res);
@@ -8,7 +8,6 @@ exports = module.exports = function (req, res) {
 	// Render the view
 	view.render('candidatura');
 };
-
 
 exports.create = function (req, res, next) {
 	let novaCand = new Candidatura.model(req.body);

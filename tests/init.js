@@ -1,8 +1,8 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'test';
 require('dotenv').load();
 
-var keystone = require('keystone');
-var chai = require('chai');
+const keystone = require('keystone');
+const chai = require('chai');
 
 keystone.init({
 	'name': 'YourExactProjectName',
