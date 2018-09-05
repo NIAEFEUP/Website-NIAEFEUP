@@ -7,9 +7,10 @@
  * you have more middleware you may want to group it as separate
  * modules in your project's /lib directory.
  */
-var _ = require('lodash');
+const _ = require('lodash');
 
-var getPermGroupValue = require('../models/User').getPermGroupValue;
+const getPermGroupValue = require('../models/User').getPermGroupValue;
+const PERMISSION_GROUP = require('../models/User').PERMISSION_GROUP;
 
 
 /**
@@ -53,7 +54,7 @@ exports.requirePresident = function (req, res, next) {
 	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
 		res.redirect('/keystone/signin');
-	} else if (req.user.permissionGroup.value > getPermGroupValue('Presidente')) {
+	} else if (req.user.permissionGroup.value > getPermGroupValue(PERMISSION_GROUP.PRESIDENT)) {
 		req.flash('warning', 'Precisas de ter permissões de Presidente.');
 		res.redirect('/');
 	} else {
@@ -65,7 +66,7 @@ exports.requirePresidency = function (req, res, next) {
 	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
 		res.redirect('/keystone/signin');
-	} else if (req.user.permissionGroup.value > getPermGroupValue('Vice-Presidente')) {
+	} else if (req.user.permissionGroup.value > getPermGroupValue(PERMISSION_GROUP.VICE_PRESIDENT)) {
 		req.flash('warning', 'Precisas de ter permissões de Presidência.');
 		res.redirect('/');
 	} else {
@@ -78,7 +79,7 @@ exports.requireBoard = function (req, res, next) {
 	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
 		res.redirect('/keystone/signin');
-	} else if (req.user.permissionGroup.value > getPermGroupValue('Board')) {
+	} else if (req.user.permissionGroup.value > getPermGroupValue(PERMISSION_GROUP.BOARD)) {
 		req.flash('warning', 'Precisas de ter permissões de direção.');
 		res.redirect('/');
 	} else {
@@ -91,7 +92,7 @@ exports.requireMember = function (req, res, next) {
 	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
 		res.redirect('/keystone/signin');
-	} else if (req.user.permissionGroup.value > getPermGroupValue('Membro')) {
+	} else if (req.user.permissionGroup.value > getPermGroupValue(PERMISSION_GROUP.MEMBER)) {
 		req.flash('warning', 'Precisas de ter permissões de membro.');
 		res.redirect('/');
 	} else {

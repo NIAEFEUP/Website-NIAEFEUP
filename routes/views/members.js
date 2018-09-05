@@ -1,6 +1,7 @@
 var keystone = require('keystone');
 var User = keystone.list('User');
-var getPermGroupValue = require('../../models/User').getPermGroupValue;
+const getPermGroupValue = require('../../models/User').getPermGroupValue;
+const PERMISSION_GROUP = require('../../models/User').PERMISSION_GROUP;
 
 exports = module.exports = function (req, res) {
 
@@ -34,15 +35,15 @@ exports = module.exports = function (req, res) {
 
 				let permGroup = result.permissionGroup;
 
-				if (permGroup.value === getPermGroupValue('Admin')) {
+				if (permGroup.value === getPermGroupValue(PERMISSION_GROUP.ADMIN)) {
 					continue;
 				}
 
-				if (permGroup.value <= getPermGroupValue('Vice-Presidente')) {
+				if (permGroup.value <= getPermGroupValue(PERMISSION_GROUP.VICE_PRESIDENT)) {
 					locals.direcao_presidencia.push(result);
-				} else if (permGroup.value <= getPermGroupValue('Board')) {
+				} else if (permGroup.value <= getPermGroupValue(PERMISSION_GROUP.BOARD)) {
 					locals.direcao.push(result);
-				} else if (permGroup.value <= getPermGroupValue('Membro')) {
+				} else if (permGroup.value <= getPermGroupValue(PERMISSION_GROUP.MEMBER)) {
 					locals.members.push(result);
 				} else {
 					locals.recrutas.push(result);

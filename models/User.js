@@ -1,6 +1,18 @@
 let keystone = require('keystone');
 let Types = keystone.Field.Types;
 
+
+const PERMISSION_GROUP = {
+	ADMIN: 'Admin',
+	PRESIDENT: 'Presidente',
+	VICE_PRESIDENT: 'Vice-Presidente',
+	BOARD: 'Board',
+	MEMBER: 'Membro',
+	RECRUIT: 'Recruta',
+};
+
+module.exports.PERMISSION_GROUP = PERMISSION_GROUP;
+
 /**
  * User Model
  * ==========
@@ -23,12 +35,12 @@ User.add({
 		type: Types.Select,
 		numeric: true,
 		options: [
-			{ value: 0, label: 'Admin' },
-			{ value: 20, label: 'Presidente' },
-			{ value: 30, label: 'Vice-Presidente' },
-			{ value: 40, label: 'Board' },
-			{ value: 60, label: 'Membro' },
-			{ value: 80, label: 'Recruta' },
+			{ value: 0, label: PERMISSION_GROUP.ADMIN },
+			{ value: 20, label: PERMISSION_GROUP.PRESIDENT },
+			{ value: 30, label: PERMISSION_GROUP.VICE_PRESIDENT },
+			{ value: 40, label: PERMISSION_GROUP.BOARD },
+			{ value: 60, label: PERMISSION_GROUP.MEMBER },
+			{ value: 80, label: PERMISSION_GROUP.RECRUIT },
 		],
 		initial: true,
 		required: true,
