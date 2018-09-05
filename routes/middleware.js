@@ -9,6 +9,9 @@
  */
 const _ = require('lodash');
 
+const getPermGroupValue = require('../models/User').getPermGroupValue;
+const PERMISSION_GROUP = require('../models/User').PERMISSION_GROUP;
+
 /**
  Initialises the standard view locals
 
@@ -40,11 +43,66 @@ exports.flashMessages = function (req, res, next) {
 	next();
 };
 
+function isLogged (req) {
+	return !!req.user;
+}
+
+
+exports.requirePresident = function (req, res, next) {
+	if (!isLogged(req)) {
+		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
+		res.redirect('/keystone/signin');
+	} else if (req.user.permissionGroup.value > getPermGroupValue(PERMISSION_GROUP.PRESIDENT)) {
+		req.flash('warning', 'Precisas de ter permissões de Presidente.');
+		res.redirect('/');
+	} else {
+		next();
+	}
+};
+
+exports.requirePresidency = function (req, res, next) {
+	if (!isLogged(req)) {
+		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
+		res.redirect('/keystone/signin');
+	} else if (req.user.permissionGroup.value > getPermGroupValue(PERMISSION_GROUP.VICE_PRESIDENT)) {
+		req.flash('warning', 'Precisas de ter permissões de Presidência.');
+		res.redirect('/');
+	} else {
+		next();
+	}
+};
+
+
+exports.requireBoard = function (req, res, next) {
+	if (!isLogged(req)) {
+		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
+		res.redirect('/keystone/signin');
+	} else if (req.user.permissionGroup.value > getPermGroupValue(PERMISSION_GROUP.BOARD)) {
+		req.flash('warning', 'Precisas de ter permissões de direção.');
+		res.redirect('/');
+	} else {
+		next();
+	}
+};
+
+
+exports.requireMember = function (req, res, next) {
+	if (!isLogged(req)) {
+		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
+		res.redirect('/keystone/signin');
+	} else if (req.user.permissionGroup.value > getPermGroupValue(PERMISSION_GROUP.MEMBER)) {
+		req.flash('warning', 'Precisas de ter permissões de membro.');
+		res.redirect('/');
+	} else {
+		next();
+	}
+};
+
 /**
  Prevents people from accessing protected pages when they're not signed in
  */
 exports.requireUser = function (req, res, next) {
-	if (!req.user) {
+	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
 		res.redirect('/keystone/signin');
 	} else {
@@ -53,7 +111,7 @@ exports.requireUser = function (req, res, next) {
 };
 
 exports.requireAdmin = function (req, res, next) {
-	if (!req.user) {
+	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
 		res.redirect('/');
 	} else if (req.user.isAdmin) {
@@ -65,7 +123,7 @@ exports.requireAdmin = function (req, res, next) {
 };
 
 exports.nonUser = function (req, res, next) {
-	if (req.user) {
+	if (isLogged(req)) {
 		req.flash('error', 'Já és membro do NIAEFEUP!');
 		res.redirect('/');
 	} else {
@@ -73,19 +131,7 @@ exports.nonUser = function (req, res, next) {
 	}
 };
 
-exports.nonRecruta = function (req, res, next) {
 
-	if (!req.user) {
-		res.redirect('/');
-	} else if (req.user.position === 'Recruta') {
-		req.flash('warning', 'Esta página é só para membros.');
-		res.redirect('/');
-	} else {
-		next();
-	}
-};
-
-// TODO fazer a validação do lado do servidor dos dados da candidatura
 exports.validateApplication = function (req, res, next) {
 	let currYear = req.body.ano_curricular;
 	if (currYear >= 1) {
@@ -98,7 +144,7 @@ exports.validateApplication = function (req, res, next) {
 };
 
 exports.User_Password = function (req, res, next) {
-	if (!req.user) {
+	if (!isLogged(req)) {
 		req.flash('error', 'Por favor faz o login antes de aceder a este conteúdo.');
 		res.redirect('/keystone/signin');
 	} else {
