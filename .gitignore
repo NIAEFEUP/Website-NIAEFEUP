@@ -2,7 +2,6 @@
 public/uploads/members/*
 public/styles/site.css
 package-lock.json
-db_backup/
 
 # Logs
 logs
