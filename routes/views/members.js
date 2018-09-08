@@ -1,5 +1,7 @@
 const keystone = require('keystone');
 const User = keystone.list('User');
+const getPermGroupValue = require('../../models/User').getPermGroupValue;
+const PERMISSION_GROUP = require('../../models/User').PERMISSION_GROUP;
 
 exports = module.exports = function (req, res) {
 
@@ -22,44 +24,44 @@ exports = module.exports = function (req, res) {
 				return next(err);
 			}
 
-			locals.direcao = [6];
+			locals.direcao_presidencia = [];
+			locals.direcao = [];
 			locals.members = [];
 			locals.recrutas = [];
 
 			let result;
 
 			for (result of results) {
-				switch (result.position) {
-					case 'Presidente':
-						locals.direcao[0] = result;
-						break;
-					case 'Vice-Presidente e Gestor de Projetos':
-						locals.direcao[1] = result;
-						break;
-					case 'Vice-Presidente e Gestor de Eventos':
-						locals.direcao[2] = result;
-						break;
-					case 'Tesoureiro':
-						locals.direcao[3] = result;
-						break;
-					case 'Secretário e Responsável pela Sala':
-						locals.direcao[4] = result;
-						break;
-					case 'Responsável pela Imagem e Comunicação':
-						locals.direcao[5] = result;
-						break;
-					case 'Membro':
-						locals.members.push(result);
-						break;
-					case 'Recruta':
-						locals.recrutas.push(result);
-						break;
+
+				let permGroup = result.permissionGroup;
+
+				if (permGroup.value === getPermGroupValue(PERMISSION_GROUP.ADMIN)) {
+					continue;
+				}
+
+				if (permGroup.value <= getPermGroupValue(PERMISSION_GROUP.VICE_PRESIDENT)) {
+					locals.direcao_presidencia.push(result);
+				} else if (permGroup.value <= getPermGroupValue(PERMISSION_GROUP.BOARD)) {
+					locals.direcao.push(result);
+				} else if (permGroup.value <= getPermGroupValue(PERMISSION_GROUP.MEMBER)) {
+					locals.members.push(result);
+				} else {
+					locals.recrutas.push(result);
 				}
 			}
 
+			locals.direcao_presidencia.sort(
+				(a, b) => {
+					if (a.permissionGroupValue === b.permissionGroupValue) {
+						return a.name - b.name;
+					} else {
+						return a.permissionGroupValue - b.permissionGroupValue;
+					}
+				});
+
+
 			next(err);
 		});
-
 	});
 
 	// Render the view
