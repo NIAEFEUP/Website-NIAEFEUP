@@ -2,15 +2,15 @@ let keystone = require('keystone');
 let Types = keystone.Field.Types;
 
 /**
- * Candidatura Model
+ * Candidato Model
  * ==========
  */
-let Candidatura = new keystone.List('Candidatura', {
+let Candidato = new keystone.List('Candidato', {
 	nocreate: true,
 	noedit: true,
 });
 
-Candidatura.add({
+Candidato.add({
 	name: { type: Types.Name, required: true },
 	numero_up: { type: Types.Number, required: true, unique: true },
 	email: { type: Types.Email, required: true, unique: true },
@@ -21,17 +21,17 @@ Candidatura.add({
 	github: { type: Types.Url },
 	website: { type: Types.Url },
 	tecnologias: { type: String },
-	entrevista: { type: Types.Boolean, default: false },
 	aceite: { type: Types.Boolean, default: false },
+	fase_candidatura: { type: Types.Relationship, ref: 'FaseCandidatura' },
 });
 
 /**
  * Relationships
  */
-// Candidatura.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
+Candidato.relationship({ path: 'respostas_candidatura', ref: 'RespostaCandidatura', refPath: 'candidato' });
 
 /**
  * Registration
  */
-Candidatura.defaultColumns = 'name, email, porque_ni, entrevista';
-Candidatura.register();
+Candidato.defaultColumns = 'name, email, porque_ni, entrevista';
+Candidato.register();
