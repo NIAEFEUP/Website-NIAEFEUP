@@ -1,5 +1,5 @@
 const keystone = require('keystone');
-const Candidatura = keystone.list('Candidatura');
+const Candidato = keystone.list('Candidato');
 const User = keystone.list('User');
 const nodemailer = require('nodemailer');
 const https = require('https');
@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
 	// Load all members
 	view.on('init', function (next) {
 
-		Candidatura.model.find({}, '_id name numero_up entrevista aceite').sort('numero_up').exec(function (err, results) {
+		Candidato.model.find({}, '_id name numero_up entrevista aceite').sort('numero_up').exec(function (err, results) {
 
 			if (err || !results.length) {
 				return next(err);
@@ -35,7 +35,7 @@ exports = module.exports = function (req, res) {
 
 exports.approve = function (req, res) {
 
-	Candidatura.model.find({ _id: { $in: req.body.accept } }).exec(function (err, results) {
+	Candidato.model.find({ _id: { $in: req.body.accept } }).exec(function (err, results) {
 
 		const password = Math.random().toString(36).substring(7);
 
@@ -119,7 +119,7 @@ exports.approve = function (req, res) {
 				}
 			});
 
-			Candidatura.model.update({ _id: result._id }, { $set: { aceite: true } },
+			Candidato.model.update({ _id: result._id }, { $set: { aceite: true } },
 				function (err, affected, resp) {
 					if (err) { console.log('Update da candidatura falhou.'); }
 				});

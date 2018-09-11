@@ -6,17 +6,26 @@ let Types = keystone.Field.Types;
  * ==========
  */
 let FaseCandidatura = new keystone.List('FaseCandidatura', {
-	nocreate: true,
-	noedit: true,
+	label: 'Fases Candidatura',
+	singular: 'Fase Candidatura',
+	plural: 'Fases Candidatura',
+	path: 'fases-candidatura',
 });
 
 FaseCandidatura.add({
-	ano: { type: Types.Number, required: true },
-	fase: { type: Types.Number, required: true, unique: true },
-	data_inicio: { type: Types.Date, required: true, unique: true },
-	data_fim: { type: Types.Date, required: true, unique: true },
-	ativa: { type: Types.Boolean, required: true, default: false },
-	pergunta_candidatura: { type: Types.Relationship, ref: 'PerguntaCandidatura', many: true },
+	name: { type: Types.Text,
+		watch: 'data_inicio data_fim',
+		value: function () {
+			const inicio = new Date(this.data_inicio);
+			const fim = new Date(this.data_fim);
+			return inicio.toDateString() + ' - ' + fim.toDateString();
+		},
+		noedit: true,
+		initial: false,
+	},
+	data_inicio: { type: Types.Date, required: true, unique: true, initial: true },
+	data_fim: { type: Types.Date, required: true, unique: true, initial: true },
+	ativa: { type: Types.Boolean, default: false },
 });
 
 /**
@@ -25,8 +34,9 @@ FaseCandidatura.add({
 FaseCandidatura.relationship({ path: 'candidatos', ref: 'Candidato', refPath: 'fase_candidatura' });
 FaseCandidatura.relationship({ path: 'perguntas', ref: 'PerguntaCandidatura', refPath: 'fase_candidatura' });
 
+
 /**
  * Registration
  */
-FaseCandidatura.defaultColumns = 'name, email, porque_ni, entrevista';
+FaseCandidatura.defaultColumns = 'name data_inicio, data_fim, ativa';
 FaseCandidatura.register();

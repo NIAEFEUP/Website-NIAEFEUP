@@ -1,5 +1,5 @@
 const keystone = require('keystone');
-const Candidatura = keystone.list('Candidatura');
+const Candidato = keystone.list('Candidato');
 const nodemailer = require('nodemailer');
 
 exports = module.exports = function (req, res) {
@@ -10,7 +10,7 @@ exports = module.exports = function (req, res) {
 };
 
 exports.send = function (req, res, next) {
-	Candidatura.model.find({ aceite: false }, 'email').exec(function (err, items) {
+	Candidato.model.find({ aceite: false }, 'email').exec(function (err, items) {
 		if (err) {
 			req.flash('error', 'Ocorreu um erro, tenta mais tarde!');
 			next(err);

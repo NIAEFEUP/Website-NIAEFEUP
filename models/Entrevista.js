@@ -11,7 +11,7 @@ let Entrevista = new keystone.List('Entrevista', {
 });
 
 Entrevista.add({
-	candidato_id: { type: Types.Relationship, ref: 'Candidatura', required: true, initial: true, unique: true, index: true },
+	candidato_id: { type: Types.Relationship, ref: 'Candidato', required: true, initial: true, unique: true, index: true },
 	entrevistador_1: { type: Types.Relationship, ref: 'User', required: true, initial: true },
 	// entrevistador_2: {type: Types.Relationship, ref: 'User', required: true, initial: true},
 	data: { type: Types.Date },

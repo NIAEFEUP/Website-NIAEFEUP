@@ -1,6 +1,6 @@
 const keystone = require('keystone');
 const Entrevista = keystone.list('Entrevista');
-const Candidatura = keystone.list('Candidatura');
+const Candidato = keystone.list('Candidato');
 
 exports = module.exports = function (req, res) {
 	let view = new keystone.View(req, res);
@@ -10,7 +10,7 @@ exports = module.exports = function (req, res) {
 
 	// Load the current post
 	view.on('init', function (next) {
-		Candidatura.model.findById(req.params.id).exec(function (err, results) {
+		Candidato.model.findById(req.params.id).exec(function (err, results) {
 			if (err) {
 				req.flash('error', 'Ocorreu um erro, tenta mais tarde!');
 				next(err);
@@ -63,7 +63,7 @@ exports.create = function (req, res, next) {
 				res.redirect('/entrevistas');
 			}
 		} else {
-			Candidatura.model.update({ _id: cand_id }, { $set: { entrevista: true } },
+			Candidato.model.update({ _id: cand_id }, { $set: { entrevista: true } },
 				function (err, affected, resp) {
 					if (!err) {
 						req.flash('success', 'Entrevista realizada, Obrigado!');

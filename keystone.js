@@ -57,6 +57,7 @@ keystone.set('routes', require('./routes'));
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
 	users: 'users',
+	Candidaturas: ['FaseCandidatura', 'PerguntaCandidatura', 'Candidato', 'RespostaCandidatura'],
 });
 
 if (!process.env.RECRUTAMENTO) {

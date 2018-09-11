@@ -1,5 +1,5 @@
 const keystone = require('keystone');
-const Candidatura = keystone.list('Candidatura');
+const Candidato = keystone.list('Candidato');
 const nodemailer = require('nodemailer');
 
 exports = module.exports = function (req, res) {
@@ -10,7 +10,7 @@ exports = module.exports = function (req, res) {
 };
 
 exports.create = function (req, res, next) {
-	let novaCand = new Candidatura.model(req.body);
+	let novaCand = new Candidato.model(req.body);
 
 	novaCand.save(function (err) {
 		if (err) {

@@ -6,13 +6,17 @@ let Types = keystone.Field.Types;
  * ==========
  */
 let PerguntaCandidatura = new keystone.List('PerguntaCandidatura', {
-	nocreate: true,
-	noedit: true,
+	map: { name: 'pergunta' },
+	label: 'Perguntas Candidaturas',
+	path: 'perguntas-candidaturas',
+	singular: 'Pergunta Candidatura',
+	plural: 'Perguntas Candidaturas',
+
 });
 
 PerguntaCandidatura.add({
-	pergunta: { type: Types.Text, required: true },
-	fase_candidatura: { type: Types.Relationship, ref: 'FaseCandidatura' },
+	pergunta: { type: Types.Text, required: true, initial: true, index: true },
+	fase_candidatura: { type: Types.Relationship, ref: 'FaseCandidatura', required: true, initial: true },
 });
 
 /**
@@ -24,5 +28,5 @@ PerguntaCandidatura.relationship({ path: 'respostas', ref: 'RespostaCandidatura'
 /**
  * Registration
  */
-PerguntaCandidatura.defaultColumns = 'name, email, porque_ni, entrevista';
+PerguntaCandidatura.defaultColumns = 'pergunta, fase_candidatura';
 PerguntaCandidatura.register();
