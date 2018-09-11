@@ -25,7 +25,7 @@ FaseCandidatura.add({
 	},
 	data_inicio: { type: Types.Date, required: true, unique: true, initial: true },
 	data_fim: { type: Types.Date, required: true, unique: true, initial: true },
-	ativa: { type: Types.Boolean, default: false },
+	ativa: { type: Types.Boolean, default: false, initial: false },
 });
 
 /**
@@ -34,6 +34,49 @@ FaseCandidatura.add({
 FaseCandidatura.relationship({ path: 'candidatos', ref: 'Candidato', refPath: 'fase_candidatura' });
 FaseCandidatura.relationship({ path: 'perguntas', ref: 'PerguntaCandidatura', refPath: 'fase_candidatura' });
 
+
+FaseCandidatura.schema.pre('validate', function (next) {
+	if (this.data_inicio > this.data_fim) {
+		next(new Error('A data de fim não pode ser anterior à de inicio'));
+	} else {
+		next();
+	}
+});
+
+// Date Restrictions - Two Phases cannot overlap
+FaseCandidatura.schema.pre('save', function (next) {
+	FaseCandidatura.model.find({
+		$or: [
+			{
+				$and: [
+					{ data_inicio: { $lt: this.data_inicio } },
+					{ data_fim: { $gt: this.data_inicio } },
+				],
+			},
+			{
+				$and: [
+					{ data_fim: { $gt: this.data_fim } },
+					{ data_inicio: { $lt: this.data_fim } },
+				],
+			},
+			{
+				$and: [
+					{ data_inicio: { $gt: this.data_inicio } },
+					{ data_fim: { $lt: this.data_fim } },
+				],
+			},
+		],
+	})
+	.exec(function (err, fases) {
+		if (fases.length > 0) {
+			next(new Error('Esta Fase tem dias sobrepostos a uma já existente'));
+		} else {
+			next();
+		}
+
+	});
+
+});
 
 /**
  * Registration
