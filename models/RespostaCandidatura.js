@@ -6,6 +6,7 @@ let Types = keystone.Field.Types;
  * ==========
  */
 let RespostaCandidatura = new keystone.List('RespostaCandidatura', {
+	map: { name: 'resposta' },
 	label: 'Respostas Candidatura',
 	path: 'respostas-candidatura',
 	singular: 'Resposta Candidatura',
