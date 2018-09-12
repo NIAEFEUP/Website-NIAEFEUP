@@ -10,6 +10,11 @@
     top:$nav-bar-heigth;
 }
 
+.flash-msg {
+    z-index: 1;
+    position: relative;
+}
+
 .btn:focus, .btn:active, .btn.active, .btn:focus:active {
     background-image: none;
     outline: none;
