@@ -101,8 +101,11 @@ function noMultipleActive (next) {
 FaseCandidatura.schema.pre('save', noOverlap);
 FaseCandidatura.schema.pre('save', noMultipleActive);
 
+
+FaseCandidatura.defaultColumns = 'name data_inicio, data_fim, ativa';
+FaseCandidatura.defaultSort = '-ativa -data_inicio';
+
 /**
  * Registration
  */
-FaseCandidatura.defaultColumns = 'name data_inicio, data_fim, ativa';
 FaseCandidatura.register();
