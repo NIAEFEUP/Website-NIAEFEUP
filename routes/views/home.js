@@ -9,6 +9,24 @@ exports = module.exports = function (req, res) {
 	locals.section = 'home';
 
 	view.on('init', function (next) {
+
+		keystone.list('FaseCandidatura').model.findOne({
+			ativa: true,
+		}).exec(function (err, fase_candidatura) {
+			if (!err) {
+
+				const data_atual = Date.now();
+
+				console.log(new Date(data_atual));
+				console.log(typeof fase_candidatura.data_inicio);
+
+
+				if (fase_candidatura && new Date(fase_candidatura.data_inicio) <= new Date(data_atual) && new Date(fase_candidatura.data_fim) >= new Date(data_atual)) {
+					locals.fase_candidatura = fase_candidatura;
+				}
+			}
+		});
+
 		keystone.list('Project').model.count({ type: 'project' }, function (err, count) {
 			if (err) {
 				locals.projects_count = 0;
