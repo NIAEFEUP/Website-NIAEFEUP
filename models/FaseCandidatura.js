@@ -43,8 +43,7 @@ FaseCandidatura.schema.pre('validate', function (next) {
 	}
 });
 
-// Date Restrictions - Two Phases cannot overlap
-FaseCandidatura.schema.pre('save', function (next) {
+function noOverlap (next) {
 	FaseCandidatura.model.find({
 		$or: [
 			{
@@ -75,8 +74,32 @@ FaseCandidatura.schema.pre('save', function (next) {
 		}
 
 	});
+}
 
-});
+function noMultipleActive (next) {
+	FaseCandidatura.model.find({
+		$and:
+		[
+				{ ativa: { $eq: true } },
+				{ ativa: { $eq: this.ativa } },
+		],
+
+	})
+	.exec(function (err, fases) {
+		if (err) next(err);
+		if (fases.length > 0) {
+			next(new Error('Já existe uma fase ativa! Por favor termine a outra fase.'));
+		} else {
+			next();
+		}
+
+	});
+
+}
+
+// Phase Restrictions - Two Phases cannot overlap, and only one phase is active at a time
+FaseCandidatura.schema.pre('save', noOverlap);
+FaseCandidatura.schema.pre('save', noMultipleActive);
 
 /**
  * Registration
