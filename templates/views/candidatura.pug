@@ -70,6 +70,8 @@ block content
               i.fa.fa-globe.fa-icon
               label(for='Website') Website :
             input#field.form-control(type='url', placeholder='Website' name='website')
+          div.form-group
+            input#field.form-control(type='hidden', name='fase_candidatura', value=(locals.fase_candidatura ? locals.fase_candidatura._id : -1))
       .row
         .col-sm-6
           button#summit-btn.btn.btn-primary(type='submit') SUBMIT

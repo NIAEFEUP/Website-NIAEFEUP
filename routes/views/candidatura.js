@@ -1,22 +1,42 @@
 const keystone = require('keystone');
 const Candidato = keystone.list('Candidato');
+const FaseCandidatura = keystone.list('FaseCandidatura');
 const nodemailer = require('nodemailer');
 
 exports = module.exports = function (req, res) {
 	let view = new keystone.View(req, res);
 
-	// Render the view
-	view.render('candidatura');
+	FaseCandidatura.model.findOne(
+		{ ativa: true }
+		)
+		.exec(function (err, fase_candidatura) {
+			if (fase_candidatura) {
+				res.locals.fase_candidatura = fase_candidatura;
+				// Render the view
+				view.render('candidatura');
+			} else if (err) {
+				res.locals.fase_candidatura = { _id: -1 };
+				// Render the view
+				view.render('candidatura');
+			} else {
+				req.flash('error', 'Não existe nenhuma fase de candidatura ativa de momento!');
+				res.redirect('/');
+			}
+		});
+
+
 };
 
-exports.create = function (req, res, next) {
+exports.create = function (req, res) {
+
 	let novaCand = new Candidato.model(req.body);
 
 	novaCand.save(function (err) {
 		if (err) {
 			if (err.name === 'MongoError' && err.code === 11000) {
 				req.flash('error', 'Apenas te podes candidatar uma vez!');
-				res.redirect('/');
+
+				res.redirect('/candidatura');
 			} else {
 				req.flash('error', 'Ocorreu um erro, por favor tenta novamente!');
 				res.redirect('/candidatura');
@@ -61,9 +81,9 @@ exports.create = function (req, res, next) {
 				});
 			}
 
+			console.log('3');
 			req.flash('success', 'Candidatura submetida, Obrigado!');
 			res.redirect('/');
 		}
-		next();
 	});
 };

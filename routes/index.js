@@ -46,10 +46,10 @@ exports = module.exports = function (app) {
 	app.get('/email', middleware.requirePresidency, routes.views.email);
 	app.post('/email', middleware.requirePresidency, routes.views.email.send);
 
-	if (process.env.RECRUTAMENTO === 'true') {
-		app.get('/candidatura', middleware.nonUser, routes.views.candidatura);
-		app.post('/candidatura', middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
-	}
+
+	app.get('/candidatura', middleware.nonUser, routes.views.candidatura);
+	app.post('/candidatura', middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
+
 
 	app.get('/entrevistas', middleware.requireMember, routes.views.entrevistas);
 	app.post('/entrevistas_accept', middleware.requirePresidency, routes.views.entrevistas.approve);
