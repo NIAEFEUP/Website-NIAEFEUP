@@ -71,10 +71,10 @@ exports.approve = function (req, res) {
 					},
 				});
 
-				let message = '<p> Olá ' + results[i].name.first + ' ' + results[i].name.last + ' antes de mais Parabéns! Foste aceite no Núcleo de Informática, Bem Vind@!</p>';
-				message += ' <p> Para aderires ao google groups, clica no link a baixo: </p>';
+				let message = '<p> Olá ' + results[i].name.first + ' ' + results[i].name.last + ', antes de mais Parabéns! Foste aceite no Núcleo de Informática, Bem Vind@!</p>';
+				message += ' <p> Para aderires ao google groups, clica no link abaixo: </p>';
 				message += ' <a href=' + process.env.GOOGLE_GROUPS_INVITE + '> Google Groups</a>';
-				message += ' <p> Para aderires ao google drive, clica no link a baixo: </p>';
+				message += ' <p> Para aderires ao google drive, clica no link abaixo: </p>';
 				message += ' <a href=' + process.env.GOOGLE_DRIVE_INVITE + '> Google Drive</a>';
 				message += ' <p> Para acederes à tua conta de membro vai a https://ni.fe.up.pt/signin . O teu username é ' + results[i].email + ' e a palavra passe é ' + password + '. Recomendámos que modifiques a tua palavra passe o quanto antes!</p>';
 
@@ -117,7 +117,7 @@ exports.approve = function (req, res) {
 				linkedin: result.linkedin,
 				github: result.github,
 				website: result.website,
-				permissionGroup: getPermGroupValue(PERMISSION_GROUP.RECRUIT),
+				permissionGroupValue: getPermGroupValue(PERMISSION_GROUP.RECRUIT),
 			});
 
 			novoMembro.save(function (err) {
