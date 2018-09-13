@@ -60,10 +60,6 @@ keystone.set('nav', {
 	Candidaturas: ['FaseCandidatura', 'PerguntaCandidatura', 'Candidato', 'RespostaCandidatura'],
 });
 
-if (!process.env.RECRUTAMENTO) {
-	console.warn('WARNING: RECRUTAMENTO variable not set in env file!');
-}
-
 if (!process.env.GMAIL_PASS || !process.env.GMAIL_ADDRESS) {
 	console.warn('WARNING: You must define GMAIL_PASS and GMAIL_ADDRESS in the env file for the email notifier to work!');
 }
