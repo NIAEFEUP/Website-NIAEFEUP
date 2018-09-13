@@ -1,36 +1,46 @@
 const keystone = require('keystone');
 const Candidato = keystone.list('Candidato');
 const User = keystone.list('User');
+const FaseCandidatura = keystone.list('FaseCandidatura');
 const nodemailer = require('nodemailer');
 const https = require('https');
+const getPermGroupValue = require('../../models/User').getPermGroupValue;
+const PERMISSION_GROUP = require('../../models/User').PERMISSION_GROUP;
 
 exports = module.exports = function (req, res) {
 
 	const view = new keystone.View(req, res);
 	const locals = res.locals;
 
-	// Load all members
-	view.on('init', function (next) {
-
-		Candidato.model.find({}, '_id name numero_up entrevista aceite').sort('numero_up').exec(function (err, results) {
-
-			if (err || !results.length) {
-				return next(err);
-			} else if (results.length !== 0) {
-				locals.candidatos = results;
-			} else {
-				req.flash('warning', 'Ainda não há candidatos.');
+	FaseCandidatura.model.findOne({ ativa: true })
+		.exec(function (err, fase) {
+			if (err) {
+				req.flash('error', 'Ocorreu um erro. Por favor tente mais tarde.');
 				res.redirect('/');
+			} else if (!fase) {
+				req.flash('error', 'Não existe nenhuma fase de candidatura ativa de momento!');
+				res.redirect('/');
+			} else {
+
+				Candidato.model.find({ fase_candidatura: fase._id }, '_id name numero_up entrevistado aceite').sort('numero_up').exec(function (err, results) {
+
+
+					if (err) {
+						req.flash('error', 'Ocorreu um erro. Por favor tente mais tarde.');
+						res.redirect('/');
+					} else if (results.length !== 0) {
+						locals.candidatos = results;
+
+						view.render('entrevistas');
+					} else {
+						req.flash('warning', 'Ainda não há candidatos.');
+						res.redirect('/');
+					}
+
+				});
 			}
 
-			next();
 		});
-	});
-
-	// $('#table_id').DataTable();
-
-	// Render the view
-	view.render('entrevistas');
 };
 
 exports.approve = function (req, res) {
@@ -107,7 +117,7 @@ exports.approve = function (req, res) {
 				linkedin: result.linkedin,
 				github: result.github,
 				website: result.website,
-				position: 'Recruta',
+				permissionGroup: getPermGroupValue(PERMISSION_GROUP.RECRUIT),
 			});
 
 			novoMembro.save(function (err) {
@@ -119,14 +129,20 @@ exports.approve = function (req, res) {
 				}
 			});
 
-			Candidato.model.update({ _id: result._id }, { $set: { aceite: true } },
+			Candidato.model.update(
+				{ _id: result._id },
+				{ $set:
+					{ aceite: true },
+				},
 				function (err, affected, resp) {
-					if (err) { console.log('Update da candidatura falhou.'); }
+					if (err) {
+						req.flash('error', 'Erro a aceitar candidato!');
+						res.redirect('/entrevistas');
+					}
 				});
 		}
 
 	});
 
-	// TODO Passar os membros para User Recruta
 	res.redirect('/entrevistas');
 };

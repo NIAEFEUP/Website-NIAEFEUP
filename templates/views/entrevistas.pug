@@ -22,10 +22,10 @@ block content
                   if candidatos
                     each candidato in candidatos
                       if !candidato.aceite
-                        if candidato.entrevista
+                        if candidato.entrevistado
                           tr.success
                             if user.isAdmin
-                              td
+                              td.center
                                 if candidato.aceite
                                   input(type='checkbox', disabled, checked)
                                 else
@@ -36,7 +36,7 @@ block content
                               p #{candidato.numero_up}
                             td
                               a(href="/entrevista/" + candidato._id)
-                                p Entrevistado
+                                p Entrevista
                         else
                           tr.danger
                             if user.isAdmin

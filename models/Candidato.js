@@ -23,6 +23,7 @@ Candidato.add({
 	github: { type: Types.Url },
 	website: { type: Types.Url },
 	tecnologias: { type: String },
+	entrevistado: { type: Types.Boolean, default: false, initial: false },
 	aceite: { type: Types.Boolean, default: false },
 	fase_candidatura: { type: Types.Relationship, ref: 'FaseCandidatura', required: true, initial: true },
 });
