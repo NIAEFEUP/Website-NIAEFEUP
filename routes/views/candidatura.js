@@ -15,9 +15,8 @@ exports = module.exports = function (req, res) {
 				// Render the view
 				view.render('candidatura');
 			} else if (err) {
-				res.locals.fase_candidatura = { _id: -1 };
-				// Render the view
-				view.render('candidatura');
+				req.flash('error', 'Ocorreu um erro. Por favor tente mais tarde.');
+				res.redirect('/');
 			} else {
 				req.flash('error', 'Não existe nenhuma fase de candidatura ativa de momento!');
 				res.redirect('/');
@@ -81,7 +80,6 @@ exports.create = function (req, res) {
 				});
 			}
 
-			console.log('3');
 			req.flash('success', 'Candidatura submetida, Obrigado!');
 			res.redirect('/');
 		}

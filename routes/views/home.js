@@ -17,10 +17,6 @@ exports = module.exports = function (req, res) {
 
 				const data_atual = Date.now();
 
-				console.log(new Date(data_atual));
-				console.log(typeof fase_candidatura.data_inicio);
-
-
 				if (fase_candidatura && new Date(fase_candidatura.data_inicio) <= new Date(data_atual) && new Date(fase_candidatura.data_fim) >= new Date(data_atual)) {
 					locals.fase_candidatura = fase_candidatura;
 				}
