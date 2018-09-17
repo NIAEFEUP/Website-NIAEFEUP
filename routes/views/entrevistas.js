@@ -52,7 +52,7 @@ exports.approve = function (req, res) {
 		if (process.env.SLACK_INVITE && process.env.GOOGLE_DRIVE_INVITE
 			&& process.env.GOOGLE_GROUPS_INVITE && process.env.GMAIL_ADDRESS && process.env.GMAIL_PASS) {
 			for (let i = 0; i < results.length; i++) {
-				const url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE + '&email=' + results[i].email; // mudar para o email da pessoa
+				const url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE + '&email=' + results[i].email;
 
 				// send request for send slack invitation using slack Web API
 				https.get(url, (resp) => {
@@ -79,7 +79,7 @@ exports.approve = function (req, res) {
 				message += ' <p> Para acederes à tua conta de membro vai a <a href=\'https://ni.fe.up.pt/signin\'>https://ni.fe.up.pt/signin</a>.</p>';
 				message += ' <p> O teu username é ' + results[i].email + ' e a palavra passe é ' + password + '. Recomendamos que modifiques a tua palavra passe o quanto antes!</p>';
 
-				message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\' height=\'80\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
+				message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
 				message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
 				message += '<p><a href=\'https://ni.fe.up.pt\'>Website</a> | <a href=\'https://www.facebook.com/NIAEFEUP\'>Facebook</a> | <a href=\'https://www.instagram.com/niaefeup/\'>Instagram</a></p>';
 				message += '<p> Sala B315, Rua Dr.Roberto Frias, s/n 4200-465 Porto Portugal | <a href=\'https://goo.gl/maps/aj2LBqFkwjx\'>Google Maps</a></p>';
@@ -88,7 +88,7 @@ exports.approve = function (req, res) {
 				let mailOptions = {
 					from: process.env.GMAIL_ADDRESS,
 					to: results[i].email,
-					subject: 'Convite para Google Groups e Google Drive',
+					subject: 'Bem-vindo ao NIAEFEUP!',
 					html: message,
 					attachments: [{
 						filename: 'logo-niaefeup.png',
