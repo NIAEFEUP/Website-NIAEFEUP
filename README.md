@@ -65,3 +65,11 @@ Não se esqueçam do URI do mongo, alternativamente podem correr uma base de dad
 +---updates: Pasta com os scripts usados para fazer atualizações.
 Keystone.js: Entry point do website.
 ```
+
+### Estrutura do envfile (.env)
+
+* `GMAIL_ADDRESS` - E-mail sender das respostas às candidaturas
+* `GMAIL_PASS` - Password respetiva do e-mail acima
+* `SLACK_INVITE` - Link do invite para Slack
+* `GOOGLE_GROUPS_INVITE` - Link do invite para Google Groups
+* `GOOGLE_DRIVE_INVITE` - Link do invite para Google Drive
