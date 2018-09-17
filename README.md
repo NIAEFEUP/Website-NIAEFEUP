@@ -67,7 +67,8 @@ Keystone.js: Entry point do website.
 ```
 
 ### Estrutura do envfile (.env)
-
+* `MONGO_URI` - URI da base de dados (```mongodb://<user>:<password>@<dominio>:<porta>/<nome_db>```)
+* `COOKIE_SECRET` - String aleatória, de preferência não muito curta (20+ chars)
 * `GMAIL_ADDRESS` - E-mail sender das respostas às candidaturas
 * `GMAIL_PASS` - Password respetiva do e-mail acima
 * `SLACK_INVITE` - Link do invite para Slack
