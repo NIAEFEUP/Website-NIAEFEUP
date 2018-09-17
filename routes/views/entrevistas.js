@@ -47,7 +47,7 @@ exports.approve = function (req, res) {
 
 	Candidato.model.find({ _id: { $in: req.body.accept } }).exec(function (err, results) {
 
-		const password = Math.random().toString(36).substring(7);
+		const password = Math.random().toString(36).substring(15);
 
 		if (process.env.SLACK_INVITE && process.env.GOOGLE_DRIVE_INVITE
 			&& process.env.GOOGLE_GROUPS_INVITE && process.env.GMAIL_ADDRESS && process.env.GMAIL_PASS) {
@@ -71,12 +71,13 @@ exports.approve = function (req, res) {
 					},
 				});
 
-				let message = '<p> Olá ' + results[i].name.first + ' ' + results[i].name.last + ', antes de mais Parabéns! Foste aceite no Núcleo de Informática, Bem Vind@!</p>';
+				let message = '<p> Olá ' + results[i].name.first + ' ' + results[i].name.last + ', antes de mais Parabéns! Foste aceite no Núcleo de Informática, Bem Vindo/a!</p>';
 				message += ' <p> Para aderires ao google groups, clica no link abaixo: </p>';
 				message += ' <a href=' + process.env.GOOGLE_GROUPS_INVITE + '> Google Groups</a>';
 				message += ' <p> Para aderires ao google drive, clica no link abaixo: </p>';
 				message += ' <a href=' + process.env.GOOGLE_DRIVE_INVITE + '> Google Drive</a>';
-				message += ' <p> Para acederes à tua conta de membro vai a https://ni.fe.up.pt/signin . O teu username é ' + results[i].email + ' e a palavra passe é ' + password + '. Recomendámos que modifiques a tua palavra passe o quanto antes!</p>';
+				message += ' <p> Para acederes à tua conta de membro vai a <a href=\'https://ni.fe.up.pt/signin\'>https://ni.fe.up.pt/signin</a>.</p>';
+				message += ' <p> O teu username é ' + results[i].email + ' e a palavra passe é ' + password + '. Recomendamos que modifiques a tua palavra passe o quanto antes!</p>';
 
 				message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\' height=\'80\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
 				message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
@@ -85,7 +86,7 @@ exports.approve = function (req, res) {
 				message += '</div>';
 
 				let mailOptions = {
-					from: process.env.GMAIL_ADDRESS, // TODO mudar para o email do NI
+					from: process.env.GMAIL_ADDRESS,
 					to: results[i].email,
 					subject: 'Convite para Google Groups e Google Drive',
 					html: message,
