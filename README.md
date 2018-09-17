@@ -50,6 +50,10 @@ Mais informações sobre este ficheiro estão disponíveis abaixo.
  ```bash
   npm install -g nodemon
   ```
+Para iniciar:
+ ```bash
+  nodemon keystone
+  ```
 
   Desta forma, cada vez que houver alterações no código, a aplicação é recompilada e reiniciada para aplicar as alterações efetuadas.
 
