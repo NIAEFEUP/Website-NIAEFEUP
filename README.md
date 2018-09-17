@@ -14,20 +14,20 @@ O objetivo deste projeto é que o [site](https://ni.fe.up.pt) do Núcleo seja di
 
 ### Como instalar/executar
 
-1. Clonar o repositório e entrar dentro do novo directório
+#### 1. Clonar o repositório e entrar dentro do novo directório
 
   ```bash
   git clone https://github.com/NIAEFEUP/Website-NIAEFEUP.git
   cd Website-NIAEFEUP
   ```
 
-2. Instalar as dependências do package.json:
+#### 2. Instalar as dependências do package.json:
 
   ```bash
   npm install
   ```
 
-3. Adicionar as variáveis de ambiente:
+#### 3. Adicionar as variáveis de ambiente:
 
 * Criar um ficheiro .env no directório principal e adicionar:
 ```
@@ -37,11 +37,24 @@ O objetivo deste projeto é que o [site](https://ni.fe.up.pt) do Núcleo seja di
 O COOKIE_SECRET é uma string grande e random, pode ser qualquer coisa.
 Não se esqueçam do URI do mongo, alternativamente podem correr uma base de dados local e fazer a ligação ao localhost.
 
-4. Iniciar o servidor:
+Mais informações sobre este ficheiro estão disponíveis abaixo.
+
+#### 4. Iniciar o servidor:
 
   ```bash
   node keystone
   ```
+
+  Para ter __hot reload__ é possivel correr a app com `nodemon`, para tal é necessário instalá-la como uma dependencia global, acessível em todo o sistema.
+
+ ```bash
+  npm install -g nodemon
+  ```
+
+  Desta forma, cada vez que houver alterações no código, a aplicação é recompilada e reiniciada para aplicar as alterações efetuadas.
+
+  - Para reiniciar manualmente, escrever `rs` no terminal
+  - Para terminar, enviar sinal SIGTERM `^C` 
 
 ### Estrutura do projeto
 
