@@ -173,3 +173,17 @@ exports.create = function (req, res) {
 
 
 };
+
+exports.delete = function (req, res) {
+
+	Candidato.model.findById(req.params.id)
+		.remove(function (err) {
+			if (err) {
+				req.flash('error', 'Não foi possível encontrar o candidato.');
+				res.redirect('/entrevistas');
+			} else {
+				req.flash('success', 'A candidatura foi eliminada');
+				res.redirect('/entrevistas');
+			}
+		});
+};

@@ -48,7 +48,10 @@ block content
                             td
                               a(href="/entrevista/" + candidato._id) 
                                 p Entrevistar
-            if user.isAdmin && candidatos
-              button.btn.btn-default(type="Submit") Guardar
+                            td
+                              button(formaction="/entrevista/delete/"+candidato._id formmethod="post")
+                                i.fas.fa-trash
+            if candidatos
+              button.btn.btn-default(type="Submit") Aceitar Selecionados
             if user.isAdmin
               a.btn.btn-default(href="/email") Enviar Email

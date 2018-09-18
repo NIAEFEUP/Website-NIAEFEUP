@@ -55,6 +55,7 @@ exports = module.exports = function (app) {
 	app.post('/entrevistas_accept', middleware.requirePresidency, routes.views.entrevistas.approve);
 	app.get('/entrevista/:id', middleware.requireMember, routes.views.entrevista);
 	app.post('/entrevista', middleware.requireMember, routes.views.entrevista.create);
+	app.post('/entrevista/delete/:id', middleware.requireBoard, routes.views.entrevista.delete);
 
 	app.get('/portfolio', routes.views.projetos);
 
