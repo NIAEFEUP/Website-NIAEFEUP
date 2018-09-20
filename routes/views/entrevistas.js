@@ -88,61 +88,59 @@ exports.approve = function (req, res) {
 											&& process.env.GOOGLE_GROUPS_INVITE
 											&& process.env.GMAIL_ADDRESS
 											&& process.env.GMAIL_PASS) {
-
-											for (let i = 0; i < results.length; i++) {
-												const url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE + '&email=' + results[i].email;
+											const url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE + '&email=' + candidato.email;
 
 												// send request for send slack invitation using slack Web API
-												https.get(url, (resp) => {
-													resp.on('data', (chunk) => { });
-													resp.on('end', () => { });
+											https.get(url, (resp) => {
+												resp.on('data', (chunk) => { });
+												resp.on('end', () => { });
 
-												}).on('error', (err) => {
-													console.log('Error: ' + err.message);
-												});
+											}).on('error', (err) => {
+												console.log('Error: ' + err.message);
+											});
 
-												let transporter = nodemailer.createTransport({
-													service: 'Gmail',
-													auth: {
-														user: process.env.GMAIL_ADDRESS,
-														pass: process.env.GMAIL_PASS,
-													},
-												});
+											let transporter = nodemailer.createTransport({
+												service: 'Gmail',
+												auth: {
+													user: process.env.GMAIL_ADDRESS,
+													pass: process.env.GMAIL_PASS,
+												},
+											});
 
-												let message = '<p> Olá ' + results[i].name.first + ' ' + results[i].name.last + ', antes de mais Parabéns! Foste aceite no Núcleo de Informática, Bem Vindo/a!</p>';
-												message += ' <p> Para aderires ao google groups, clica no link abaixo: </p>';
-												message += ' <a href=' + process.env.GOOGLE_GROUPS_INVITE + '> Google Groups</a>';
-												message += ' <p> Para aderires ao google drive, clica no link abaixo: </p>';
-												message += ' <a href=' + process.env.GOOGLE_DRIVE_INVITE + '> Google Drive</a>';
-												message += ' <p> Para acederes à tua conta de membro vai a <a href=\'https://ni.fe.up.pt/signin\'>https://ni.fe.up.pt/signin</a>.</p>';
-												message += ' <p> O teu username é ' + results[i].email + ' e a palavra passe é ' + password + '. Recomendamos que modifiques a tua palavra passe o quanto antes!</p>';
+											let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ', antes de mais Parabéns! Foste aceite no Núcleo de Informática, Bem Vindo/a!</p>';
+											message += ' <p> Para aderires ao google groups, clica no link abaixo: </p>';
+											message += ' <a href=' + process.env.GOOGLE_GROUPS_INVITE + '> Google Groups</a>';
+											message += ' <p> Para aderires ao google drive, clica no link abaixo: </p>';
+											message += ' <a href=' + process.env.GOOGLE_DRIVE_INVITE + '> Google Drive</a>';
+											message += ' <p> Para acederes à tua conta de membro vai a <a href=\'https://ni.fe.up.pt/signin\'>https://ni.fe.up.pt/signin</a>.</p>';
+											message += ' <p> O teu username é ' + candidato.email + ' e a palavra passe é ' + password + '. Recomendamos que modifiques a tua palavra passe o quanto antes!</p>';
 
-												message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
-												message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
-												message += '<p><a href=\'https://ni.fe.up.pt\'>Website</a> | <a href=\'https://www.facebook.com/NIAEFEUP\'>Facebook</a> | <a href=\'https://www.instagram.com/niaefeup/\'>Instagram</a></p>';
-												message += '<p> Sala B315, Rua Dr.Roberto Frias, s/n 4200-465 Porto Portugal | <a href=\'https://goo.gl/maps/aj2LBqFkwjx\'>Google Maps</a></p>';
-												message += '</div>';
+											message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
+											message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
+											message += '<p><a href=\'https://ni.fe.up.pt\'>Website</a> | <a href=\'https://www.facebook.com/NIAEFEUP\'>Facebook</a> | <a href=\'https://www.instagram.com/niaefeup/\'>Instagram</a></p>';
+											message += '<p> Sala B315, Rua Dr.Roberto Frias, s/n 4200-465 Porto Portugal | <a href=\'https://goo.gl/maps/aj2LBqFkwjx\'>Google Maps</a></p>';
+											message += '</div>';
 
-												let mailOptions = {
-													from: process.env.GMAIL_ADDRESS,
-													to: results[i].email,
-													subject: 'Bem-vindo ao NIAEFEUP!',
-													html: message,
-													attachments: [{
-														filename: 'logo-niaefeup.png',
-														path: 'https://ni.fe.up.pt/images/logo-niaefeup.png',
-														cid: 'id_1234698',
-													}],
-												};
+											let mailOptions = {
+												from: process.env.GMAIL_ADDRESS,
+												to: candidato.email,
+												subject: 'Bem-vindo ao NIAEFEUP!',
+												html: message,
+												attachments: [{
+													filename: 'logo-niaefeup.png',
+													path: 'https://ni.fe.up.pt/images/logo-niaefeup.png',
+													cid: 'id_1234698',
+												}],
+											};
 
-												transporter.sendMail(mailOptions, function (error, info) {
-													if (error) {
-														console.log(error);
-													} else {
-														console.log('Email sent: ' + info.response);
-													}
-												});
-											}
+											transporter.sendMail(mailOptions, function (error, info) {
+												if (error) {
+													console.log(error);
+												} else {
+													console.log('Email sent: ' + info.response);
+												}
+											});
+
 										}
 									}
 								});
@@ -170,6 +168,99 @@ exports.approve = function (req, res) {
 			}
 
 		});
+
+
+	});
+
+};
+
+exports.close = function (req, res) {
+
+	FaseCandidatura.model.findOne({ ativa: true }).exec(function (err, result) {
+
+		if (err) {
+			req.flash('error', 'Não existe nenhuma fase ativa');
+			res.redirect('/');
+		} else if (result) {
+			Candidato.model.find({
+				fase_candidatura: result._id,
+				entrevistado: true,
+				aceite: false,
+			}).exec((err, results) => {
+				let errorCount = 0;
+
+				Promise.all(
+					results.map(candidato => {
+						return new Promise((resolve, reject) => {
+							if (process.env.GMAIL_ADDRESS
+								&& process.env.GMAIL_PASS) {
+
+								let transporter = nodemailer.createTransport({
+									service: 'Gmail',
+									auth: {
+										user: process.env.GMAIL_ADDRESS,
+										pass: process.env.GMAIL_PASS,
+									},
+								});
+
+								let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ', antes de mais Parabéns! Foste aceite no Núcleo de Informática, Bem Vindo/a!</p>';
+								message += ' <p> Para aderires ao google groups, clica no link abaixo: </p>';
+								message += ' <a href=' + process.env.GOOGLE_GROUPS_INVITE + '> Google Groups</a>';
+								message += ' <p> Para aderires ao google drive, clica no link abaixo: </p>';
+								message += ' <a href=' + process.env.GOOGLE_DRIVE_INVITE + '> Google Drive</a>';
+								message += ' <p> Para acederes à tua conta de membro vai a <a href=\'https://ni.fe.up.pt/signin\'>https://ni.fe.up.pt/signin</a>.</p>';
+								message += ' <p> O teu username é ' + candidato.email + ' e a palavra passe é ' + password + '. Recomendamos que modifiques a tua palavra passe o quanto antes!</p>';
+
+								message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
+								message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
+								message += '<p><a href=\'https://ni.fe.up.pt\'>Website</a> | <a href=\'https://www.facebook.com/NIAEFEUP\'>Facebook</a> | <a href=\'https://www.instagram.com/niaefeup/\'>Instagram</a></p>';
+								message += '<p> Sala B315, Rua Dr.Roberto Frias, s/n 4200-465 Porto Portugal | <a href=\'https://goo.gl/maps/aj2LBqFkwjx\'>Google Maps</a></p>';
+								message += '</div>';
+
+								let mailOptions = {
+									from: process.env.GMAIL_ADDRESS,
+									to: candidato.email,
+									subject: 'Candidatura NIAEFEUP',
+									html: message,
+									attachments: [{
+										filename: 'logo-niaefeup.png',
+										path: 'https://ni.fe.up.pt/images/logo-niaefeup.png',
+										cid: 'id_1234698',
+									}],
+								};
+
+								transporter.sendMail(mailOptions, function (error, info) {
+									if (error) {
+										errorCount++;
+										console.error(error);
+									} else {
+										console.log('Email sent: ' + info.response);
+									}
+								});
+
+
+								resolve();
+							}
+						});
+					})).then(() => {
+						if (errorCount > 0) {
+							if (errorCount < results.length) {
+								req.flash('warning', 'Ocorreu um erro, ' + errorCount + ' dos ' + results.length + ' emails não foram enviados com sucesso');
+								res.redirect('/entrevistas');
+							} else {
+								req.flash('error', 'Ocorreu um erro, nenhum email foi enviado com sucesso');
+								res.redirect('/entrevistas');
+							}
+						} else {
+
+
+							req.flash('success', results.length + ' candidatos foram aceites!');
+							res.redirect('/entrevistas');
+						}
+
+					});
+			});
+		}
 
 
 	});
