@@ -37,6 +37,9 @@ block content
                             td
                               a(href="/entrevista/" + candidato._id)
                                 p Entrevista
+                            td
+                              button(formaction="/entrevista/delete/"+candidato._id formmethod="post")
+                                i.fas.fa-trash
                         else
                           tr.danger
                             if user.isAdmin
