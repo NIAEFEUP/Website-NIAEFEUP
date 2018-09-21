@@ -35,7 +35,7 @@ block content
                                   div(data-toggle="buttons").btn-group-toggle
                                     label.btn.btn-primary.check-btn
                                       i.fas.fa-check
-                                      input(type="checkbox" name="accept" autocomplete="off")
+                                      input(type="checkbox" name="accept" value=candidato._id autocomplete="off")
                             td #{candidato.name.full}
                             td
                               a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank") #{candidato.numero_up}
@@ -56,8 +56,8 @@ block content
                             td
                               button(formaction="/entrevista/delete/"+candidato._id formmethod="post").btn.btn-danger
                                 i.fas.fa-trash
-            if candidatos
-              button.btn.btn-default(type="Submit") Aceitar Selecionados
             if user.isAdmin
-              a.btn.btn-default(href="/email") Enviar Email
+              if candidatos
+                button.btn.btn-default(type="Submit") Aceitar Selecionados
+                a.btn.btn-default(href="/email") Enviar Email
               button.btn.btn-default(formaction="/entrevistas/close" formmethod="post") Terminar Fase
