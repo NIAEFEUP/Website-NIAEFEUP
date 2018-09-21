@@ -31,7 +31,6 @@ exports.send = function (req, res, next) {
 				}
 
 				let receivers = items_email.join(' , ');
-				console.log(receivers);
 
 				let text = req.body.email_text.replace(/\r?\n/g, '<br />');
 

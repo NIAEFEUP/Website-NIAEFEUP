@@ -11,10 +11,10 @@ block content
           div.container.col-sm-1
           div.container.col-sm-10
             .table-responsive
-              table.table.table-hover.display#table_id
+              table.table.table-hover.display.vertical-aligned-items#table_id
                 thead
                   if user.isAdmin
-                    th Aceitar
+                    th.center Aceitar
                   th Nome
                   th Número UP
                   th 
@@ -26,35 +26,35 @@ block content
                           tr.success
                             if user.isAdmin
                               td.center
-                                if candidato.aceite
-                                  input(type='checkbox', disabled, checked)
+                                if candidato.aceite  
+                                  div(data-toggle="buttons").btn-group-toggle
+                                    label.btn.btn-primary.check-btn.active 
+                                      i.fas.fa-check
+                                      input(type="checkbox" checked autocomplete="off")
                                 else
-                                  input(type="checkbox" name="accept" value="" + candidato._id)
+                                  div(data-toggle="buttons").btn-group-toggle
+                                    label.btn.btn-primary.check-btn
+                                      i.fas.fa-check
+                                      input(type="checkbox" name="accept" autocomplete="off")
+                            td #{candidato.name.full}
                             td
-                              p #{candidato.name.full}
+                              a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank") #{candidato.numero_up}
                             td
-                              a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank")
-                                p #{candidato.numero_up}
+                              a(href="/entrevista/" + candidato._id) Entrevista
                             td
-                              a(href="/entrevista/" + candidato._id)
-                                p Entrevista
-                            td
-                              button(formaction="/entrevista/delete/"+candidato._id formmethod="post")
+                              button(formaction="/entrevista/delete/"+candidato._id formmethod="post").btn.btn-danger
                                 i.fas.fa-trash
                         else
                           tr.danger
                             if user.isAdmin
                                 td  
+                            td #{candidato.name.full}
                             td
-                              p #{candidato.name.full}
+                              a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank") #{candidato.numero_up}
                             td
-                              a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank")
-                                p #{candidato.numero_up}
+                              a(href="/entrevista/" + candidato._id) Entrevistar
                             td
-                              a(href="/entrevista/" + candidato._id) 
-                                p Entrevistar
-                            td
-                              button(formaction="/entrevista/delete/"+candidato._id formmethod="post")
+                              button(formaction="/entrevista/delete/"+candidato._id formmethod="post").btn.btn-danger
                                 i.fas.fa-trash
             if candidatos
               button.btn.btn-default(type="Submit") Aceitar Selecionados

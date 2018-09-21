@@ -27,3 +27,23 @@
     background-color: $primary-color;
     color: white;
 }
+
+.check-btn {
+    background-color: transparent;
+    border: 2px solid rgb(0, 70, 0);
+    color: rgb(0,70,0);
+}
+
+.check-btn:hover, .check-btn:active, .check-btn:focus, .check-btn:visited {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    color: rgb(0,70,0) !important;
+    border: 2px solid rgb(0, 70, 0) !important;
+}
+.check-btn.active, .check-btn.active:hover, .check-btn.active:active, .check-btn.active:focus, .check-btn.active:visited  {
+    background-color: rgb(0,70,0) !important;
+    color: white !important;
+}
+
+.vertical-aligned-items td{
+    vertical-align: middle !important
+}
