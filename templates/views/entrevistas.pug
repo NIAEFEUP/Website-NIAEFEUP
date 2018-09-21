@@ -33,7 +33,8 @@ block content
                             td
                               p #{candidato.name.full}
                             td
-                              p #{candidato.numero_up}
+                              a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank")
+                                p #{candidato.numero_up}
                             td
                               a(href="/entrevista/" + candidato._id)
                                 p Entrevista
@@ -47,7 +48,8 @@ block content
                             td
                               p #{candidato.name.full}
                             td
-                              p #{candidato.numero_up}
+                              a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank")
+                                p #{candidato.numero_up}
                             td
                               a(href="/entrevista/" + candidato._id) 
                                 p Entrevistar
