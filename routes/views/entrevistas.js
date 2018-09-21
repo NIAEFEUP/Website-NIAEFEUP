@@ -176,7 +176,7 @@ exports.approve = function (req, res) {
 
 exports.close = function (req, res) {
 
-	FaseCandidatura.model.findOne({ ativa: true }).exec(function (err, result) {
+	FaseCandidatura.model.findOneAndUpdate({ ativa: true }, { $set: { ativa: false } }).exec(function (err, result) {
 
 		if (err) {
 			req.flash('error', 'Não existe nenhuma fase ativa');
@@ -203,13 +203,10 @@ exports.close = function (req, res) {
 									},
 								});
 
-								let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ', antes de mais Parabéns! Foste aceite no Núcleo de Informática, Bem Vindo/a!</p>';
-								message += ' <p> Para aderires ao google groups, clica no link abaixo: </p>';
-								message += ' <a href=' + process.env.GOOGLE_GROUPS_INVITE + '> Google Groups</a>';
-								message += ' <p> Para aderires ao google drive, clica no link abaixo: </p>';
-								message += ' <a href=' + process.env.GOOGLE_DRIVE_INVITE + '> Google Drive</a>';
-								message += ' <p> Para acederes à tua conta de membro vai a <a href=\'https://ni.fe.up.pt/signin\'>https://ni.fe.up.pt/signin</a>.</p>';
-								message += ' <p> O teu username é ' + candidato.email + ' e a palavra passe é ' + password + '. Recomendamos que modifiques a tua palavra passe o quanto antes!</p>';
+								let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',</p>';
+								message += ' <p> Antes de mais, agradecemos sinceramente o teu interesse em fazer parte do NIAEFEUP e pelo tempo dispendido na tua candidatura ao Núcleo. </p>';
+								message += ' <p> Após discussão interna e análise tanto da tua entrevista como da tua candidatura, vimos, infelizmente, informar-te que não iremos avançar com o processo. </p>';
+								message += ' <p> Ainda assim, teremos todo o gosto em ajudar-te com o que for necessário e em voltar a receber a tua candidatura numa futura fase de recrutamento. </p>';
 
 								message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
 								message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
@@ -252,10 +249,8 @@ exports.close = function (req, res) {
 								res.redirect('/entrevistas');
 							}
 						} else {
-
-
-							req.flash('success', results.length + ' candidatos foram aceites!');
-							res.redirect('/entrevistas');
+							req.flash('success', results.length + ' emails foram enviados!');
+							res.redirect('/');
 						}
 
 					});
