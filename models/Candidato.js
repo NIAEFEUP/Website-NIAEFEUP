@@ -36,5 +36,5 @@ Candidato.relationship({ path: 'respostas_candidatura', ref: 'RespostaCandidatur
 /**
  * Registration
  */
-Candidato.defaultColumns = 'name, email, porque_ni, entrevista, fase_candidatura';
+Candidato.defaultColumns = 'name, email, porque_ni, entrevistado, aceite';
 Candidato.register();
