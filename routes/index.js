@@ -54,6 +54,7 @@ exports = module.exports = function (app) {
 	app.get('/entrevistas', middleware.requireMember, routes.views.entrevistas);
 	app.post('/entrevistas_accept', middleware.requirePresidency, routes.views.entrevistas.approve);
 	app.post('/entrevistas/close', middleware.requirePresidency, routes.views.entrevistas.close);
+	app.post('/entrevistas/notificar', middleware.requirePresidency, routes.views.entrevistas.notify);
 	app.get('/entrevista/:id', middleware.requireMember, routes.views.entrevista);
 	app.post('/entrevista', middleware.requireMember, routes.views.entrevista.create);
 	app.post('/entrevista/delete/:id', middleware.requireBoard, routes.views.entrevista.delete);

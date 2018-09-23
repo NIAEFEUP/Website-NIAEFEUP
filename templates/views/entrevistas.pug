@@ -1,6 +1,30 @@
 extends ../layouts/default
 
+
 block content
+  - 
+    function getDate(date) {
+      let dateResult = { year: date.getFullYear()};
+
+      let month = (date.getMonth() + 1).toString();
+      dateResult.month = (month.length === 1) ? ('0' + month) : month;
+      let day = date.getDate().toString();
+      dateResult.day = (day.length === 1) ? ('0' + day) : day;
+      let hour = date.getHours().toString();
+      dateResult.hour = (hour.length === 1) ? ('0' + hour) : hour;
+      let minute = date.getMinutes().toString();
+      dateResult.minute = (minute.length === 1) ? ('0' + minute) : minute;
+      return dateResult;
+    }
+  - 
+    function formatDate(date) { 
+      if(date) {
+        date = getDate(date);
+        return date.day + '-' + date.month + '-' + date.year + ' ' + date.hour + ':' + date.minute; 
+      } else {
+        return 'Não Marcada'
+      }
+    };
   header#candidacy-header.page-header
     h1#candidacy-title.text-center.container ENTREVISTAS
   div.container
@@ -17,6 +41,7 @@ block content
                     th.center Aceitar
                   th Nome
                   th Número UP
+                  th Data Entrevista
                   th 
                 tbody
                   if candidatos
@@ -39,8 +64,9 @@ block content
                             td #{candidato.name.full}
                             td
                               a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank") #{candidato.numero_up}
+                            td #{formatDate(candidato.data_entrevista)}                              
                             td
-                              a(href="/entrevista/" + candidato._id) Entrevista
+                              a(href="/entrevista/" + candidato._id) Consultar Entrevista
                             td
                               button(formaction="/entrevista/delete/"+candidato._id formmethod="post").btn.btn-danger
                                 i.fas.fa-trash
@@ -51,6 +77,7 @@ block content
                             td #{candidato.name.full}
                             td
                               a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank") #{candidato.numero_up}
+                            td #{formatDate(candidato.data_entrevista)}
                             td
                               a(href="/entrevista/" + candidato._id) Entrevistar
                             td
@@ -61,3 +88,4 @@ block content
                 button.btn.btn-default(type="Submit") Aceitar Selecionados
                 a.btn.btn-default(href="/email") Enviar Email
               button.btn.btn-default(formaction="/entrevistas/close" formmethod="post") Terminar Fase
+              button.btn.btn-default(formaction="/entrevistas/notificar" formmethod="post") Notificar Entrevista

@@ -24,6 +24,7 @@ Candidato.add({
 	website: { type: Types.Url },
 	tecnologias: { type: String },
 	entrevistado: { type: Types.Boolean, default: false, initial: false },
+	data_entrevista: { type: Types.Datetime },
 	aceite: { type: Types.Boolean, default: false },
 	fase_candidatura: { type: Types.Relationship, ref: 'FaseCandidatura', required: true, initial: true },
 });
@@ -36,5 +37,5 @@ Candidato.relationship({ path: 'respostas_candidatura', ref: 'RespostaCandidatur
 /**
  * Registration
  */
-Candidato.defaultColumns = 'name, email, porque_ni, entrevistado, aceite';
+Candidato.defaultColumns = 'name, email, porque_ni, data_entrevista, entrevistado, aceite';
 Candidato.register();
