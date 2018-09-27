@@ -71,6 +71,18 @@
     color: $grey-color;
 }
 
+#candidaturas-open a {
+    position: relative;
+    margin-top: $nav-bar-heigth;
+    background-color: $primary-color;
+    padding: 20px 0px;
+    font-size: $font-size-header;
+    text-align: center;
+    text-decoration: none;
+    color: $light-grey-color;
+    display: block;
+}
+
 #hero {
     overflow: hidden;
     display: flex;
@@ -373,7 +385,7 @@
 #slider {
     position: relative;
     overflow: hidden;
-    margin: 20px auto 0 auto;
+    margin: 0 auto 0 auto;
     border-radius: 4px;
   }
   
