@@ -4,10 +4,19 @@
 .align-center{
     align-items: center;
 }
+.center{
+    text-align: center;
+}
+
 #flash-messages{
     width: 100%;
     position: absolute;
     top:$nav-bar-heigth;
+}
+
+.flash-msg {
+    z-index: 1;
+    position: relative;
 }
 
 .btn:focus, .btn:active, .btn.active, .btn:focus:active {
@@ -17,4 +26,24 @@
     box-shadow: none;
     background-color: $primary-color;
     color: white;
+}
+
+.check-btn {
+    background-color: transparent;
+    border: 2px solid rgb(0, 70, 0);
+    color: rgb(0,70,0);
+}
+
+.check-btn:hover, .check-btn:active, .check-btn:focus, .check-btn:visited {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    color: rgb(0,70,0) !important;
+    border: 2px solid rgb(0, 70, 0) !important;
+}
+.check-btn.active, .check-btn.active:hover, .check-btn.active:active, .check-btn.active:focus, .check-btn.active:visited  {
+    background-color: rgb(0,70,0) !important;
+    color: white !important;
+}
+
+.vertical-aligned-items td{
+    vertical-align: middle !important
 }

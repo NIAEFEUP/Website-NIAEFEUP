@@ -1,6 +1,10 @@
 extends ../layouts/default
 
 block content
+    if fase_candidatura
+        section#candidaturas-open
+            a(href='/candidatura') As Candidaturas estão abertas! Clica aqui para submeter a tua!
+        
     section#hero.hero
         #slider
             case banners.length

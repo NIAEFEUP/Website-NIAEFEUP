@@ -46,15 +46,18 @@ exports = module.exports = function (app) {
 	app.get('/email', middleware.requirePresidency, routes.views.email);
 	app.post('/email', middleware.requirePresidency, routes.views.email.send);
 
-	if (process.env.RECRUTAMENTO === 'true') {
-		app.get('/candidatura', middleware.nonUser, routes.views.candidatura);
-		app.post('/candidatura', middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
-	}
+
+	app.get('/candidatura', middleware.nonUser, routes.views.candidatura);
+	app.post('/candidatura', middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
+
 
 	app.get('/entrevistas', middleware.requireMember, routes.views.entrevistas);
 	app.post('/entrevistas_accept', middleware.requirePresidency, routes.views.entrevistas.approve);
+	app.post('/entrevistas/close', middleware.requirePresidency, routes.views.entrevistas.close);
+	app.post('/entrevistas/notificar', middleware.requirePresidency, routes.views.entrevistas.notify);
 	app.get('/entrevista/:id', middleware.requireMember, routes.views.entrevista);
 	app.post('/entrevista', middleware.requireMember, routes.views.entrevista.create);
+	app.post('/entrevista/delete/:id', middleware.requireBoard, routes.views.entrevista.delete);
 
 	app.get('/portfolio', routes.views.projetos);
 

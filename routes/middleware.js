@@ -20,6 +20,7 @@ const PERMISSION_GROUP = require('../models/User').PERMISSION_GROUP;
  or replace it with your own templates / logic.
  */
 exports.initLocals = function (req, res, next) {
+
 	res.locals.navLinks = [
 		{ label: 'Home', key: 'home', href: '/' },
 		{ label: 'Members', key: 'home', href: '/members' },
@@ -33,6 +34,7 @@ exports.initLocals = function (req, res, next) {
  Fetches and clears the flashMessages before a view is rendered
  */
 exports.flashMessages = function (req, res, next) {
+
 	const flashMessages = {
 		info: req.flash('info'),
 		success: req.flash('success'),

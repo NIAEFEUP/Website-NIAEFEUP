@@ -1,6 +1,30 @@
 extends ../layouts/default
 
+
 block content
+  - 
+    function getDate(date) {
+      let dateResult = { year: date.getFullYear()};
+
+      let month = (date.getMonth() + 1).toString();
+      dateResult.month = (month.length === 1) ? ('0' + month) : month;
+      let day = date.getDate().toString();
+      dateResult.day = (day.length === 1) ? ('0' + day) : day;
+      let hour = date.getHours().toString();
+      dateResult.hour = (hour.length === 1) ? ('0' + hour) : hour;
+      let minute = date.getMinutes().toString();
+      dateResult.minute = (minute.length === 1) ? ('0' + minute) : minute;
+      return dateResult;
+    }
+  - 
+    function formatDate(date) { 
+      if(date) {
+        date = getDate(date);
+        return date.day + '-' + date.month + '-' + date.year + ' ' + date.hour + ':' + date.minute; 
+      } else {
+        return 'Não Marcada'
+      }
+    };
   header#candidacy-header.page-header
     h1#candidacy-title.text-center.container ENTREVISTAS
   div.container
@@ -11,44 +35,58 @@ block content
           div.container.col-sm-1
           div.container.col-sm-10
             .table-responsive
-              table.table.table-hover.display#table_id
+              table.table.table-hover.display.vertical-aligned-items#table_id
                 thead
                   if user.isAdmin
-                    th Aceitar
+                    th.center Aceitar
                   th Nome
                   th Número UP
-                  th 
+                  th Data Entrevista
+                  th Entrevistar
+                  th Eliminar 
                 tbody
                   if candidatos
                     each candidato in candidatos
                       if !candidato.aceite
-                        if candidato.entrevista
+                        if candidato.entrevistado
                           tr.success
                             if user.isAdmin
-                              td
-                                if candidato.aceite
-                                  input(type='checkbox', disabled, checked)
+                              td.center
+                                if candidato.aceite  
+                                  div(data-toggle="buttons").btn-group-toggle
+                                    label.btn.btn-primary.check-btn.active 
+                                      i.fas.fa-check
+                                      input(type="checkbox" checked autocomplete="off")
                                 else
-                                  input(type="checkbox" name="accept" value="" + candidato._id)
+                                  div(data-toggle="buttons").btn-group-toggle
+                                    label.btn.btn-primary.check-btn
+                                      i.fas.fa-check
+                                      input(type="checkbox" name="accept" value=candidato._id autocomplete="off")
+                            td #{candidato.name.full}
                             td
-                              p #{candidato.name.full}
+                              a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank") #{candidato.numero_up}
+                            td #{formatDate(candidato.data_entrevista)}                              
                             td
-                              p #{candidato.numero_up}
+                              a(href="/entrevista/" + candidato._id) Consultar Entrevista
                             td
-                              a(href="/entrevista/" + candidato._id)
-                                p Entrevistado
+                              button(formaction="/entrevista/delete/"+candidato._id formmethod="post").btn.btn-danger
+                                i.fas.fa-trash
                         else
                           tr.danger
                             if user.isAdmin
                                 td  
+                            td #{candidato.name.full}
                             td
-                              p #{candidato.name.full}
+                              a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank") #{candidato.numero_up}
+                            td #{formatDate(candidato.data_entrevista)}
                             td
-                              p #{candidato.numero_up}
+                              a(href="/entrevista/" + candidato._id) Entrevistar
                             td
-                              a(href="/entrevista/" + candidato._id) 
-                                p Entrevistar
-            if user.isAdmin && candidatos
-              button.btn.btn-default(type="Submit") Guardar
+                              button(formaction="/entrevista/delete/"+candidato._id formmethod="post").btn.btn-danger
+                                i.fas.fa-trash
             if user.isAdmin
-              a.btn.btn-default(href="/email") Enviar Email
+              if candidatos
+                button.btn.btn-default(type="Submit") Aceitar Selecionados
+                a.btn.btn-default(href="/email") Enviar Email
+              button.btn.btn-default(formaction="/entrevistas/close" formmethod="post") Terminar Fase
+              button.btn.btn-default(formaction="/entrevistas/notificar" formmethod="post") Notificar Entrevista
