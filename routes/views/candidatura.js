@@ -12,14 +12,19 @@ exports = module.exports = function (req, res) {
 		)
 		.exec(function (err, fase_candidatura) {
 			if (fase_candidatura) {
-				res.locals.fase_candidatura = fase_candidatura;
-				// Render the view
-				view.render('candidatura');
+
+				const data_atual = Date.now();
+
+				if (new Date(fase_candidatura.data_inicio) <= new Date(data_atual) && new Date(fase_candidatura.data_fim) >= new Date(data_atual)) {
+					res.locals.fase_candidatura = fase_candidatura;
+					// Render the view
+					view.render('candidatura');
+				} else {
+					req.flash('error', 'Não existe nenhuma fase de candidatura ativa de momento!');
+					res.redirect('/');
+				}
 			} else if (err) {
 				req.flash('error', 'Ocorreu um erro. Por favor tente mais tarde.');
-				res.redirect('/');
-			} else {
-				req.flash('error', 'Não existe nenhuma fase de candidatura ativa de momento!');
 				res.redirect('/');
 			}
 		});
