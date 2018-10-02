@@ -19,6 +19,7 @@ Candidato.add({
 	curso: { type: String, required: true, initial: true },
 	ano_curricular: { type: Types.Number, required: true, initial: true },
 	porque_ni: { type: String, label: 'Porque o ni?', required: true, initial: true },
+	papel_ni: { type: String, label: 'O que te verias a fazer no NI (Projetos, Imagem, Organização de Eventos/Workshops)?', required: true, initial: true },
 	linkedin: { type: Types.Url },
 	github: { type: Types.Url },
 	website: { type: Types.Url },
@@ -37,5 +38,5 @@ Candidato.relationship({ path: 'respostas_candidatura', ref: 'RespostaCandidatur
 /**
  * Registration
  */
-Candidato.defaultColumns = 'name, email, porque_ni, data_entrevista, entrevistado, aceite';
+Candidato.defaultColumns = 'name, email, ano_curricular, data_entrevista, entrevistado, aceite';
 Candidato.register();
