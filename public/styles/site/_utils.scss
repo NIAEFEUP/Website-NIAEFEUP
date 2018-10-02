@@ -19,6 +19,10 @@
     position: relative;
 }
 
+.no-padding {
+    padding: 0;
+}
+
 .btn:focus, .btn:active, .btn.active, .btn:focus:active {
     background-image: none;
     outline: none;
