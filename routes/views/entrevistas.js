@@ -46,7 +46,7 @@ exports = module.exports = function (req, res) {
 
 exports.approve = function (req, res) {
 
-	Candidato.model.find({ _id: { $in: req.body.accept } }).exec(function (err, results) {
+	Candidato.model.find({ _id: { $in: req.body.selectedCandidates } }).exec(function (err, results) {
 
 
 		let errorCount = 0;
@@ -369,4 +369,12 @@ exports.notify = function (req, res) {
 
 	});
 
+};
+
+exports.reject = function (req, res) {
+	Candidato.model.find({ _id: { $in: req.body.selectedCandidates } }).exec(function (err, results) {
+		results.map(candidato => {
+			console.log('Rejecting candidate ' + candidato.name.first + ' ' + candidato.name.last);
+		});
+	});
 };

@@ -38,7 +38,7 @@ block content
               table.table.table-hover.display.vertical-aligned-items#table_id
                 thead
                   if user.isAdmin
-                    th.center Aceitar
+                    th.center Selecionar
                   th Nome
                   th Número UP
                   th Data Entrevista
@@ -47,45 +47,32 @@ block content
                   if candidatos
                     each candidato in candidatos
                       if !candidato.aceite
-                        if candidato.entrevistado
-                          tr.success
-                            if user.isAdmin
+                        mixin candidate-select(openAction)
+                          if user.isAdmin
                               td.center
-                                if candidato.aceite  
-                                  div(data-toggle="buttons").btn-group-toggle
-                                    label.btn.btn-primary.check-btn.active 
-                                      i.fas.fa-check
-                                      input(type="checkbox" checked autocomplete="off")
-                                else
-                                  div(data-toggle="buttons").btn-group-toggle
-                                    label.btn.btn-primary.check-btn
-                                      i.fas.fa-check
-                                      input(type="checkbox" name="accept" value=candidato._id autocomplete="off")
-                            td #{candidato.name.full}
-                            td
-                              a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank") #{candidato.numero_up}
-                            td #{formatDate(candidato.data_entrevista)}                              
-                            td
-                              a(href="/entrevista/" + candidato._id) Consultar Entrevista
-                            td
-                              button(formaction="/entrevista/delete/"+candidato._id formmethod="post").btn.btn-danger
-                                i.fas.fa-trash
-                        else
-                          tr.danger
-                            if user.isAdmin
-                                td  
-                            td #{candidato.name.full}
+                                div(data-toggle="buttons").btn-group-toggle
+                                  label.btn.btn-primary.check-btn
+                                    i.fas.fa-check
+                                    input(type="checkbox" name="selectedCandidates" value=candidato._id autocomplete="off")
+                          td #{candidato.name.full}
                             td
                               a(href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico="+candidato.numero_up target="_blank") #{candidato.numero_up}
                             td #{formatDate(candidato.data_entrevista)}
                             td
-                              a(href="/entrevista/" + candidato._id) Entrevistar
+                              a(href="/entrevista/" + candidato._id)= openAction
                             td
                               button(formaction="/entrevista/delete/"+candidato._id formmethod="post").btn.btn-danger
                                 i.fas.fa-trash
+                        if candidato.entrevistado
+                          tr.success
+                            +candidate-select("Consultar Entrevista")
+                        else
+                          tr.danger
+                            +candidate-select("Entrevistar")
             if user.isAdmin
               if candidatos
                 button.btn.btn-default(type="Submit") Aceitar Selecionados
+                button.btn.btn-default(formaction="/entrevistas/rejeitar" formmethod="post") Rejeitar Selecionados
                 a.btn.btn-default(href="/email") Enviar Email
-              button.btn.btn-default(formaction="/entrevistas/close" formmethod="post") Terminar Fase
               button.btn.btn-default(formaction="/entrevistas/notificar" formmethod="post") Notificar Entrevista
+              button.btn.btn-default(formaction="/entrevistas/close" formmethod="post") Terminar Fase
