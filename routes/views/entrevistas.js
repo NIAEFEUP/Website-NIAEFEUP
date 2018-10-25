@@ -22,7 +22,7 @@ exports = module.exports = function (req, res) {
 				res.redirect('/');
 			} else {
 
-				Candidato.model.find({ fase_candidatura: fase._id }, '_id name numero_up entrevistado aceite data_entrevista').sort('entrevistado -data_entrevista').exec(function (err, results) {
+				Candidato.model.find({ fase_candidatura: fase._id }, '_id name numero_up entrevistado aceite rejeitado data_entrevista').sort('entrevistado -data_entrevista').exec(function (err, results) {
 
 
 					if (err) {
@@ -372,9 +372,19 @@ exports.notify = function (req, res) {
 };
 
 exports.reject = function (req, res) {
-	Candidato.model.find({ _id: { $in: req.body.selectedCandidates } }).exec(function (err, results) {
-		results.map(candidato => {
-			console.log('Rejecting candidate ' + candidato.name.first + ' ' + candidato.name.last);
+	let candidateIds = req.body.selectedCandidates;
+	if (req.body.selectedCandidates === undefined) {
+		req.flash('error', 'Não foram selecionados candidatos para reijeitar');
+		res.redirect('/entrevistas');
+	}
+	if (!Array.isArray(candidateIds)) {
+		candidateIds = [req.body.selectedCandidates];
+	}
+
+	for (let idOfCandidate of candidateIds) {
+		Candidato.model.findOneAndUpdate({ _id: idOfCandidate }, { $set: { aceite: false, rejeitado: true } }).exec(function (err, results) {
+			// TODO SEND EMAIL HERE
 		});
-	});
+	}
+	res.redirect('/entrevistas');
 };

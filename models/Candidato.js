@@ -26,6 +26,7 @@ Candidato.add({
 	entrevistado: { type: Types.Boolean, default: false, initial: false },
 	data_entrevista: { type: Types.Datetime },
 	aceite: { type: Types.Boolean, default: false },
+	rejeitado: { type: Types.Boolean, default: false },
 	fase_candidatura: { type: Types.Relationship, ref: 'FaseCandidatura', required: true, initial: true },
 });
 

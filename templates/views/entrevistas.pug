@@ -46,7 +46,7 @@ block content
                 tbody
                   if candidatos
                     each candidato in candidatos
-                      if !candidato.aceite
+                      if !candidato.aceite && !candidato.rejeitado
                         mixin candidate-select(openAction)
                           if user.isAdmin
                               td.center
