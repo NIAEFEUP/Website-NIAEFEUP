@@ -403,8 +403,6 @@ exports.reject = function (req, res) {
 
 					if (err || !candidato) {
 						failedCandidates = [...failedCandidates, idOfCandidate];
-						resolve();
-
 					} else {
 
 						if (process.env.GMAIL_ADDRESS
@@ -447,13 +445,16 @@ exports.reject = function (req, res) {
 								if (error) {
 									console.log('ERROR SENDING REJECT MAIL TO ' + candidato.first + ' ' + candidato.last);
 									console.error(error);
+									failedCandidates = [...failedCandidates, idOfCandidate];
 								} else {
 									console.log('Email sent: ' + info.response);
 								}
 							});
-							resolve();
+
 						}
 					}
+
+					resolve();
 
 				});
 			});
@@ -466,76 +467,11 @@ exports.reject = function (req, res) {
 				errMsg += `${id}, `;
 			}
 
-			console.log('====================================');
-			console.log(failedCandidates);
-			console.log('====================================');
 			req.flash('error', errMsg);
 		}
 
 		res.redirect('/entrevistas');
 	});
-
-	// for (let idOfCandidate of candidateIds) {
-
-	// 	Candidato.model.findOneAndUpdate({ _id: idOfCandidate, entrevistado: false }, { $set: { aceite: false, rejeitado: true } }).exec(function (err, candidato) {
-
-	// 		if (err || !candidato) {
-	// 			failedCandidates = [...failedCandidates, idOfCandidate];
-	// 			console.log(failedCandidates);
-
-
-	// 		} else {
-
-	// 			if (process.env.GMAIL_ADDRESS
-	// 					&& process.env.GMAIL_PASS) {
-
-	// 				let transporter = nodemailer.createTransport({
-	// 					service: 'Gmail',
-	// 					auth: {
-	// 						user: process.env.GMAIL_ADDRESS,
-	// 						pass: process.env.GMAIL_PASS,
-	// 					},
-	// 				});
-
-	// 				let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',</p>';
-	// 				message += ' <p> Infelizmente, este ano, devido a um número muito elevado de candidatos, foi necessário filtrar alguns candidatos, tendo por base a tua candidatura. </p>';
-	// 				message += ' <p> Deste modo, não iremos prosseguir com o teu processo de recrutamento. </p>';
-	// 				message += ' <p> No entanto, contamos contigo numa futura fase de recrutamento! </p>';
-
-	// 				message += ' <p> Obrigado pelo teu interesse, </p>';
-
-	// 				message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
-	// 				message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
-	// 				message += '<p><a href=\'https://ni.fe.up.pt\'>Website</a> | <a href=\'https://www.facebook.com/NIAEFEUP\'>Facebook</a> | <a href=\'https://www.instagram.com/niaefeup/\'>Instagram</a></p>';
-	// 				message += '<p> Sala B315, Rua Dr.Roberto Frias, s/n 4200-465 Porto Portugal | <a href=\'https://goo.gl/maps/aj2LBqFkwjx\'>Google Maps</a></p>';
-	// 				message += '</div>';
-
-	// 				let mailOptions = {
-	// 					from: process.env.GMAIL_ADDRESS,
-	// 					to: candidato.email,
-	// 					subject: 'Candidatura NIAEFEUP',
-	// 					html: message,
-	// 					attachments: [{
-	// 						filename: 'logo-niaefeup.png',
-	// 						path: 'https://ni.fe.up.pt/images/logo-niaefeup.png',
-	// 						cid: 'id_1234698',
-	// 					}],
-	// 				};
-
-	// 				transporter.sendMail(mailOptions, function (error, info) {
-	// 					if (error) {
-	// 						console.log('ERROR SENDING REJECT MAIL TO ' + candidato.first + ' ' + candidato.last);
-	// 						console.error(error);
-	// 					} else {
-	// 						console.log('Email sent: ' + info.response);
-	// 					}
-	// 				});
-	// 			}
-	// 		}
-
-	// 	});
-
-	// };
 
 
 };
