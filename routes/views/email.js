@@ -17,7 +17,7 @@ exports.send = function (req, res, next) {
 			next(err);
 		} else {
 
-			Candidato.model.find({ aceite: false, fase_candidatura: fase._id }, 'email').exec(function (err, items) {
+			Candidato.model.find({ aceite: false, rejeitado: false, fase_candidatura: fase._id }, 'email').exec(function (err, items) {
 				if (err) {
 					req.flash('error', 'Ocorreu um erro, tenta mais tarde!');
 					next(err);
