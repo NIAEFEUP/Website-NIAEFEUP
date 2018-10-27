@@ -417,9 +417,9 @@ exports.reject = function (req, res) {
 							});
 
 							let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',</p>';
-							message += ' <p> Infelizmente, este ano, devido a um número muito elevado de candidatos, foi necessário filtrar alguns candidatos, tendo por base a tua candidatura. </p>';
+							message += ' <p> Infelizmente, este ano, devido a um número muito elevado de candidatos, foi necessário filtrar alguns candidatos, tendo por base a sua candidatura. </p>';
 							message += ' <p> Deste modo, não iremos prosseguir com o teu processo de recrutamento. </p>';
-							message += ' <p> No entanto, contamos contigo numa futura fase de recrutamento! </p>';
+							message += ' <p> No entanto, contamos contigo para uma futura fase de recrutamento! </p>';
 
 							message += ' <p> Obrigado pelo teu interesse, </p>';
 
@@ -443,7 +443,7 @@ exports.reject = function (req, res) {
 
 							transporter.sendMail(mailOptions, function (error, info) {
 								if (error) {
-									console.log('ERROR SENDING REJECT MAIL TO ' + candidato.first + ' ' + candidato.last);
+									console.log('ERROR SENDING REJECT MAIL TO ' + candidato.name.first + ' ' + candidato.name.last);
 									console.error(error);
 									failedCandidates = [...failedCandidates, idOfCandidate];
 								} else {
@@ -461,7 +461,7 @@ exports.reject = function (req, res) {
 		})
 	).then(() => {
 
-		if (failedCandidates) {
+		if (failedCandidates.length > 0) {
 			let errMsg = 'Ocorreu um erro ao rejeitar candidatos: ';
 			for (const id of failedCandidates) {
 				errMsg += `${id}, `;
