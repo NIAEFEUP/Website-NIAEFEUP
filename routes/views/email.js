@@ -38,7 +38,8 @@ exports.send = function (req, res, next) {
 						}
 
 						let receivers = items_email.join(' , ');
-
+						console.log('SENDING TO:');
+						console.log(receivers);
 						let text = req.body.email_text.replace(/\r?\n/g, '<br />');
 
 						let message = '<div> ' + text + '</div>';
@@ -53,7 +54,7 @@ exports.send = function (req, res, next) {
 
 						let mailOptions = {
 							from: process.env.GMAIL_ADDRESS,
-							to: receivers,
+							bcc: receivers,
 							subject: req.body.email_subject,
 							html: message,
 							attachments: [{
