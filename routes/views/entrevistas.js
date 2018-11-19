@@ -70,8 +70,6 @@ exports.approve = function (req, res) {
 		}
 
 		if (results.length !== req.body.selectedCandidates.length) {
-			console.log('cenas1', results);
-			console.log('cenas2', req.body.selectedCandidates);
 			req.flash('warning', 'Nem todos os candidatos selecionados puderam ser aceites. Necessitam de ser entrevistados primeiro!');
 			res.redirect('/entrevistas');
 			return;
