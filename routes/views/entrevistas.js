@@ -190,6 +190,7 @@ exports.close = function (req, res) {
 				aceite: false,
 				// Because of the migration, some candidates do not have the rejeitado variable set
 				$or: [{ rejeitado: false }, { rejeitado: { $exists: false } }],
+
 			}).exec((err, results) => {
 				let errorCount = 0;
 
@@ -271,6 +272,7 @@ exports.notify = function (req, res) {
 				fase_candidatura: result._id,
 				// Because of the migration, some candidates do not have the rejeitado variable set
 				$or: [{ rejeitado: false }, { rejeitado: { $exists: false } }],
+
 				data_entrevista: { $exists: true },
 			}).exec((err, results) => {
 				let errorCount = 0;
@@ -348,6 +350,7 @@ exports.reject = function (req, res) {
 					if (err || !candidato) {
 						failedCandidates = [...failedCandidates, idOfCandidate];
 					} else {
+
 
 						let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',</p>';
 						message += ' <p> Infelizmente, este ano, devido a um número muito elevado de candidatos, foi necessário filtrar alguns candidatos, tendo por base a sua candidatura. </p>';

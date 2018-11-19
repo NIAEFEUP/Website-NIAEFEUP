@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.8.0
+version: v1.12.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -73,3 +73,55 @@ patch:
   'npm:moment:20170905':
     - keystone > moment:
         patched: '2017-12-01T08:58:21.476Z'
+  'npm:lodash:20180130':
+    - keystone-email > juice > web-resource-inliner > lodash:
+        patched: '2018-07-03T07:09:47.759Z'
+    - keystone > asyncdi > lodash:
+        patched: '2018-07-03T07:09:47.759Z'
+    - keystone > cloudinary > lodash:
+        patched: '2018-07-03T07:09:47.759Z'
+    - keystone > grappling-hook > lodash:
+        patched: '2018-07-03T07:09:47.759Z'
+  'npm:mime:20170907':
+    - keystone > embedly > superagent > mime:
+        patched: '2018-06-26T07:17:35.148Z'
+    - keystone > express > send > mime:
+        patched: '2018-06-26T07:17:35.148Z'
+    - keystone > express > serve-static > send > mime:
+        patched: '2018-06-26T07:17:35.148Z'
+  'npm:tunnel-agent:20170305':
+    - node-sass-middleware > node-sass > request > tunnel-agent:
+        patched: '2018-06-26T07:17:35.148Z'
+  'npm:hoek:20180212':
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass > node-gyp > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > sntp > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
+    - keystone > less-middleware > less > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-19T07:09:22.153Z'
