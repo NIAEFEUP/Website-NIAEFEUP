@@ -46,6 +46,16 @@ exports = module.exports = function (req, res) {
 
 exports.approve = function (req, res) {
 
+	if (!process.env.SLACK_INVITE || !process.env.GOOGLE_DRIVE_INVITE
+		|| !process.env.GOOGLE_GROUPS_INVITE || !process.env.GMAIL_ADDRESS
+		|| !process.env.GMAIL_PASS) {
+
+		console.error('One of the following .env variables is not defined: SLACK_INVITE, GOOGLE_DRIVE_INVITE, GOOGLE_GROUPS_INVITE, GMAIL_ADDRESS or GMAIL_PASS, so candidates cannot be accepted');
+		req.flash('error', 'Não foram definidas as variáveis de ambiente necessárias para aceitar candidatos!\n(Consultar o terminal para mais detalhes)');
+		res.redirect('/entrevistas');
+		return;
+	}
+
 	if (req.body.selectedCandidates === undefined) {
 		req.flash('error', 'Não foram selecionados candidatos para rejeitar');
 		res.redirect('/entrevistas');
@@ -54,8 +64,17 @@ exports.approve = function (req, res) {
 
 	Candidato.model.find({ _id: { $in: req.body.selectedCandidates }, entrevistado: true }).exec(function (err, results) {
 
+		// When there is only 1 candidate selected the result is returned as a string and not as an array
+		if (!(req.body.selectedCandidates instanceof Array)) {
+			req.body.selectedCandidates = [req.body.selectedCandidates];
+		}
+
 		if (results.length !== req.body.selectedCandidates.length) {
+			console.log('cenas1', results);
+			console.log('cenas2', req.body.selectedCandidates);
 			req.flash('warning', 'Nem todos os candidatos selecionados puderam ser aceites. Necessitam de ser entrevistados primeiro!');
+			res.redirect('/entrevistas');
+			return;
 		}
 
 		let errorCount = 0;
@@ -63,7 +82,6 @@ exports.approve = function (req, res) {
 		Promise.all(
 			results.map(candidato => {
 				return new Promise((resolve, reject) => {
-
 
 					const password = Math.random().toString(36).substring(2);
 
@@ -93,44 +111,40 @@ exports.approve = function (req, res) {
 									if (err) {
 										errorCount++;
 									} else {
-										if (process.env.SLACK_INVITE
-											&& process.env.GOOGLE_DRIVE_INVITE
-											&& process.env.GOOGLE_GROUPS_INVITE
-											&& process.env.GMAIL_ADDRESS
-											&& process.env.GMAIL_PASS) {
+										// send request for send slack invitation using slack Web API
+										const url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE + '&email=' + candidato.email;
 
-											const url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE + '&email=' + candidato.email;
+										https.get(url, (resp) => {
+											resp.on('data', (chunk) => { });
+											resp.on('end', () => { });
 
-											// send request for send slack invitation using slack Web API
-											https.get(url, (resp) => {
-												resp.on('data', (chunk) => { });
-												resp.on('end', () => { });
+										}).on('error', (err) => {
+											console.log('Error: ' + err.message);
+										});
 
-											}).on('error', (err) => {
-												console.log('Error: ' + err.message);
-											});
+										let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',<p>';
+										message += ' <p>Antes de mais parabéns! Foste aceite no Núcleo de Informática, Bem vindo/a!</p>';
+										message += ' <p> Para aderires ao google groups, clica no link abaixo: </p>';
+										message += ' <a href=' + process.env.GOOGLE_GROUPS_INVITE + '> Google Groups</a>';
+										message += ' <p> Para aderires ao google drive, clica no link abaixo: </p>';
+										message += ' <a href=' + process.env.GOOGLE_DRIVE_INVITE + '> Google Drive</a>';
+										message += ' <p> Para acederes à tua conta de membro vai a <a href=\'https://ni.fe.up.pt/signin\'>https://ni.fe.up.pt/signin</a>.</p>';
+										message += ' <p> O teu username é ' + candidato.email + ' e a palavra passe é ' + password + '. Recomendamos que modifiques a tua palavra passe o quanto antes!</p>';
 
-											let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',<p>';
-											message += ' <p>Antes de mais parabéns! Foste aceite no Núcleo de Informática, Bem vindo/a!</p>';
-											message += ' <p> Para aderires ao google groups, clica no link abaixo: </p>';
-											message += ' <a href=' + process.env.GOOGLE_GROUPS_INVITE + '> Google Groups</a>';
-											message += ' <p> Para aderires ao google drive, clica no link abaixo: </p>';
-											message += ' <a href=' + process.env.GOOGLE_DRIVE_INVITE + '> Google Drive</a>';
-											message += ' <p> Para acederes à tua conta de membro vai a <a href=\'https://ni.fe.up.pt/signin\'>https://ni.fe.up.pt/signin</a>.</p>';
-											message += ' <p> O teu username é ' + candidato.email + ' e a palavra passe é ' + password + '. Recomendamos que modifiques a tua palavra passe o quanto antes!</p>';
+										message += ' <p>Esperamos ver-te em breve!</p>';
 
-											message += ' <p>Esperamos ver-te em breve!</p>';
+										let mailOptions = {
+											from: process.env.GMAIL_ADDRESS,
+											to: candidato.email,
+											subject: 'Bem-vindo ao NIAEFEUP!',
+											html: message,
+										};
 
-											let mailOptions = {
-												from: process.env.GMAIL_ADDRESS,
-												to: candidato.email,
-												subject: 'Bem-vindo ao NIAEFEUP!',
-												html: message,
-											};
+										console.log('esparguete');
 
-											email_wrapper.sendMail(mailOptions);
-										}
+										email_wrapper.sendMail(mailOptions);
 									}
+
 								});
 
 						}
@@ -176,7 +190,8 @@ exports.close = function (req, res) {
 				fase_candidatura: result._id,
 				entrevistado: true,
 				aceite: false,
-				rejeitado: false,
+				// Because of the migration, some candidates do not have the rejeitado variable set
+				$or: [{ rejeitado: false }, { rejeitado: { $exists: false } }],
 			}).exec((err, results) => {
 				let errorCount = 0;
 
@@ -195,7 +210,7 @@ exports.close = function (req, res) {
 							let mailOptions = {
 								from: process.env.GMAIL_ADDRESS,
 								to: candidato.email,
-								subject: '[NIAEFEUP] Candidatura',
+								subject: '[NIAEFEUP] Resultado Candidatura',
 								html: message,
 							};
 
@@ -256,7 +271,8 @@ exports.notify = function (req, res) {
 		} else if (result) {
 			Candidato.model.find({
 				fase_candidatura: result._id,
-				rejeitado: false,
+				// Because of the migration, some candidates do not have the rejeitado variable set
+				$or: [{ rejeitado: false }, { rejeitado: { $exists: false } }],
 				data_entrevista: { $exists: true },
 			}).exec((err, results) => {
 				let errorCount = 0;
@@ -278,7 +294,7 @@ exports.notify = function (req, res) {
 							let mailOptions = {
 								from: process.env.GMAIL_ADDRESS,
 								to: candidato.email,
-								subject: 'Entrevista NIAEFEUP',
+								subject: '[NIAEFEUP] Entrevista',
 								html: message,
 							};
 
