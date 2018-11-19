@@ -24,13 +24,10 @@ exports.send = function (req, res, next) {
 				} else if (items) {
 					const emails_candidatos = items.map(item => item.email);
 
-					const receivers = emails_candidatos.join(' , ');
-					console.log('SENDING TO:', receivers, emails_candidatos);
-
 					const text = req.body.email_text.replace(/\r?\n/g, '<br />');
 
 					// Why?
-					const message = '<div> ' + text + '</div>';
+					const message = '<div>' + text + '</div>';
 
 					let mailOptions = {
 						from: process.env.GMAIL_ADDRESS,
