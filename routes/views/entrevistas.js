@@ -2,7 +2,7 @@ const keystone = require('keystone');
 const Candidato = keystone.list('Candidato');
 const User = keystone.list('User');
 const FaseCandidatura = keystone.list('FaseCandidatura');
-const nodemailer = require('nodemailer');
+const email_wrapper = require('../utils/email_wrapper');
 const https = require('https');
 const getPermGroupValue = require('../../models/User').getPermGroupValue;
 const PERMISSION_GROUP = require('../../models/User').PERMISSION_GROUP;
@@ -46,6 +46,16 @@ exports = module.exports = function (req, res) {
 
 exports.approve = function (req, res) {
 
+	if (!process.env.SLACK_INVITE || !process.env.GOOGLE_DRIVE_INVITE
+		|| !process.env.GOOGLE_GROUPS_INVITE || !process.env.GMAIL_ADDRESS
+		|| !process.env.GMAIL_PASS) {
+
+		console.error('One of the following .env variables is not defined: SLACK_INVITE, GOOGLE_DRIVE_INVITE, GOOGLE_GROUPS_INVITE, GMAIL_ADDRESS or GMAIL_PASS, so candidates cannot be accepted');
+		req.flash('error', 'Não foram definidas as variáveis de ambiente necessárias para aceitar candidatos!\n(Consultar o terminal para mais detalhes)');
+		res.redirect('/entrevistas');
+		return;
+	}
+
 	if (req.body.selectedCandidates === undefined) {
 		req.flash('error', 'Não foram selecionados candidatos para rejeitar');
 		res.redirect('/entrevistas');
@@ -54,8 +64,15 @@ exports.approve = function (req, res) {
 
 	Candidato.model.find({ _id: { $in: req.body.selectedCandidates }, entrevistado: true }).exec(function (err, results) {
 
+		// When there is only 1 candidate selected the result is returned as a string and not as an array
+		if (!(req.body.selectedCandidates instanceof Array)) {
+			req.body.selectedCandidates = [req.body.selectedCandidates];
+		}
+
 		if (results.length !== req.body.selectedCandidates.length) {
 			req.flash('warning', 'Nem todos os candidatos selecionados puderam ser aceites. Necessitam de ser entrevistados primeiro!');
+			res.redirect('/entrevistas');
+			return;
 		}
 
 		let errorCount = 0;
@@ -63,7 +80,6 @@ exports.approve = function (req, res) {
 		Promise.all(
 			results.map(candidato => {
 				return new Promise((resolve, reject) => {
-
 
 					const password = Math.random().toString(36).substring(2);
 
@@ -93,66 +109,40 @@ exports.approve = function (req, res) {
 									if (err) {
 										errorCount++;
 									} else {
-										if (process.env.SLACK_INVITE
-											&& process.env.GOOGLE_DRIVE_INVITE
-											&& process.env.GOOGLE_GROUPS_INVITE
-											&& process.env.GMAIL_ADDRESS
-											&& process.env.GMAIL_PASS) {
-											const url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE + '&email=' + candidato.email;
+										// send request for send slack invitation using slack Web API
+										const url = 'https://slack.com/api/users.admin.invite?token=' + process.env.SLACK_INVITE + '&email=' + candidato.email;
 
-												// send request for send slack invitation using slack Web API
-											https.get(url, (resp) => {
-												resp.on('data', (chunk) => { });
-												resp.on('end', () => { });
+										https.get(url, (resp) => {
+											resp.on('data', (chunk) => { });
+											resp.on('end', () => { });
 
-											}).on('error', (err) => {
-												console.log('Error: ' + err.message);
-											});
+										}).on('error', (err) => {
+											console.log('Error: ' + err.message);
+										});
 
-											let transporter = nodemailer.createTransport({
-												service: 'Gmail',
-												auth: {
-													user: process.env.GMAIL_ADDRESS,
-													pass: process.env.GMAIL_PASS,
-												},
-											});
+										let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',<p>';
+										message += ' <p>Antes de mais parabéns! Foste aceite no Núcleo de Informática, Bem vindo/a!</p>';
+										message += ' <p> Para aderires ao google groups, clica no link abaixo: </p>';
+										message += ' <a href=' + process.env.GOOGLE_GROUPS_INVITE + '> Google Groups</a>';
+										message += ' <p> Para aderires ao google drive, clica no link abaixo: </p>';
+										message += ' <a href=' + process.env.GOOGLE_DRIVE_INVITE + '> Google Drive</a>';
+										message += ' <p> Para acederes à tua conta de membro vai a <a href=\'https://ni.fe.up.pt/signin\'>https://ni.fe.up.pt/signin</a>.</p>';
+										message += ' <p> O teu username é ' + candidato.email + ' e a palavra passe é ' + password + '. Recomendamos que modifiques a tua palavra passe o quanto antes!</p>';
 
-											let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ', antes de mais Parabéns! Foste aceite no Núcleo de Informática, Bem Vindo/a!</p>';
-											message += ' <p> Para aderires ao google groups, clica no link abaixo: </p>';
-											message += ' <a href=' + process.env.GOOGLE_GROUPS_INVITE + '> Google Groups</a>';
-											message += ' <p> Para aderires ao google drive, clica no link abaixo: </p>';
-											message += ' <a href=' + process.env.GOOGLE_DRIVE_INVITE + '> Google Drive</a>';
-											message += ' <p> Para acederes à tua conta de membro vai a <a href=\'https://ni.fe.up.pt/signin\'>https://ni.fe.up.pt/signin</a>.</p>';
-											message += ' <p> O teu username é ' + candidato.email + ' e a palavra passe é ' + password + '. Recomendamos que modifiques a tua palavra passe o quanto antes!</p>';
+										message += ' <p>Esperamos ver-te em breve!</p>';
 
-											message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
-											message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
-											message += '<p><a href=\'https://ni.fe.up.pt\'>Website</a> | <a href=\'https://www.facebook.com/NIAEFEUP\'>Facebook</a> | <a href=\'https://www.instagram.com/niaefeup/\'>Instagram</a></p>';
-											message += '<p> Sala B315, Rua Dr.Roberto Frias, s/n 4200-465 Porto Portugal | <a href=\'https://goo.gl/maps/aj2LBqFkwjx\'>Google Maps</a></p>';
-											message += '</div>';
+										let mailOptions = {
+											from: process.env.GMAIL_ADDRESS,
+											to: candidato.email,
+											subject: 'Bem-vindo ao NIAEFEUP!',
+											html: message,
+										};
 
-											let mailOptions = {
-												from: process.env.GMAIL_ADDRESS,
-												to: candidato.email,
-												subject: 'Bem-vindo ao NIAEFEUP!',
-												html: message,
-												attachments: [{
-													filename: 'logo-niaefeup.png',
-													path: 'https://ni.fe.up.pt/images/logo-niaefeup.png',
-													cid: 'id_1234698',
-												}],
-											};
+										console.log('esparguete');
 
-											transporter.sendMail(mailOptions, function (error, info) {
-												if (error) {
-													console.log(error);
-												} else {
-													console.log('Email sent: ' + info.response);
-												}
-											});
-
-										}
+										email_wrapper.sendMail(mailOptions);
 									}
+
 								});
 
 						}
@@ -198,59 +188,38 @@ exports.close = function (req, res) {
 				fase_candidatura: result._id,
 				entrevistado: true,
 				aceite: false,
-				rejeitado: false,
+				// Because of the migration, some candidates do not have the rejeitado variable set
+				$or: [{ rejeitado: false }, { rejeitado: { $exists: false } }],
+
 			}).exec((err, results) => {
 				let errorCount = 0;
 
 				Promise.all(
 					results.map(candidato => {
 						return new Promise((resolve, reject) => {
-							if (process.env.GMAIL_ADDRESS
-								&& process.env.GMAIL_PASS) {
-
-								let transporter = nodemailer.createTransport({
-									service: 'Gmail',
-									auth: {
-										user: process.env.GMAIL_ADDRESS,
-										pass: process.env.GMAIL_PASS,
-									},
-								});
-
-								let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',</p>';
-								message += ' <p> Antes de mais, agradecemos sinceramente o teu interesse em fazer parte do NIAEFEUP e pelo tempo dispendido na tua candidatura ao Núcleo. </p>';
-								message += ' <p> Após discussão interna e análise tanto da tua entrevista como da tua candidatura, vimos, infelizmente, informar-te que não iremos avançar com o processo. </p>';
-								message += ' <p> Ainda assim, teremos todo o gosto em ajudar-te com o que for necessário e em voltar a receber a tua candidatura numa futura fase de recrutamento. </p>';
-
-								message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
-								message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
-								message += '<p><a href=\'https://ni.fe.up.pt\'>Website</a> | <a href=\'https://www.facebook.com/NIAEFEUP\'>Facebook</a> | <a href=\'https://www.instagram.com/niaefeup/\'>Instagram</a></p>';
-								message += '<p> Sala B315, Rua Dr.Roberto Frias, s/n 4200-465 Porto Portugal | <a href=\'https://goo.gl/maps/aj2LBqFkwjx\'>Google Maps</a></p>';
-								message += '</div>';
-
-								let mailOptions = {
-									from: process.env.GMAIL_ADDRESS,
-									to: candidato.email,
-									subject: 'Candidatura NIAEFEUP',
-									html: message,
-									attachments: [{
-										filename: 'logo-niaefeup.png',
-										path: 'https://ni.fe.up.pt/images/logo-niaefeup.png',
-										cid: 'id_1234698',
-									}],
-								};
-
-								transporter.sendMail(mailOptions, function (error, info) {
-									if (error) {
-										errorCount++;
-										console.error(error);
-									} else {
-										console.log('Email sent: ' + info.response);
-									}
-								});
 
 
-								resolve();
-							}
+							let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',</p>';
+							message += ' <p> Antes de mais, agradecemos sinceramente o teu interesse em fazer parte do NIAEFEUP e pelo tempo dispendido na tua candidatura ao Núcleo. </p>';
+							message += ' <p> Após discussão interna e análise tanto da tua entrevista como da tua candidatura, vimos, infelizmente, informar-te que não iremos avançar com o processo. </p>';
+							message += ' <p> Ainda assim, teremos todo o gosto em ajudar-te com o que for necessário e em voltar a receber a tua candidatura numa futura fase de recrutamento. </p>';
+
+							message += ' <p> Obrigado pelo teu interesse, </p>';
+
+							let mailOptions = {
+								from: process.env.GMAIL_ADDRESS,
+								to: candidato.email,
+								subject: '[NIAEFEUP] Resultado Candidatura',
+								html: message,
+							};
+
+							email_wrapper.sendMail(mailOptions, function (error, _info) {
+								if (error) {
+									errorCount++;
+								}
+							});
+
+							resolve();
 						});
 					})).then(() => {
 						if (errorCount > 0) {
@@ -301,7 +270,9 @@ exports.notify = function (req, res) {
 		} else if (result) {
 			Candidato.model.find({
 				fase_candidatura: result._id,
-				rejeitado: false,
+				// Because of the migration, some candidates do not have the rejeitado variable set
+				$or: [{ rejeitado: false }, { rejeitado: { $exists: false } }],
+
 				data_entrevista: { $exists: true },
 			}).exec((err, results) => {
 				let errorCount = 0;
@@ -310,56 +281,31 @@ exports.notify = function (req, res) {
 				Promise.all(
 					results.map(candidato => {
 						return new Promise((resolve, reject) => {
-							if (process.env.GMAIL_ADDRESS
-								&& process.env.GMAIL_PASS) {
 
-								const interviewDate = getDate(candidato.data_entrevista);
+							const interviewDate = getDate(candidato.data_entrevista);
 
-								let transporter = nodemailer.createTransport({
-									service: 'Gmail',
-									auth: {
-										user: process.env.GMAIL_ADDRESS,
-										pass: process.env.GMAIL_PASS,
-									},
-								});
+							let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',</p>';
+							message += ' <p> Após verificarmos tanto a tua disponibilidade, como a dos membros para fazer a entrevista, marcámos a tua entrevista para: </p>';
+							message += ' <p> <span style="font-size:22px; font-weight:bold">' + interviewDate.day + '-' + interviewDate.month + '-' + interviewDate.year + ' às ' + interviewDate.hour + ':' + interviewDate.minute + '</span></p>';
+							message += ' <p> Por favor confirma a tua presença ou avisa-nos, em resposta a este e-mail, se por algum motivo não conseguires estar presente. </p>';
 
-								let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',</p>';
-								message += ' <p> Após verificarmos tanto a tua disponibilidade, como a dos membros para fazer a entrevista, marcámos a tua entrevista para: </p>';
-								message += ' <p> <span style="font-size:22px; font-weight:bold">' + interviewDate.day + '-' + interviewDate.month + '-' + interviewDate.year + ' às ' + interviewDate.hour + ':' + interviewDate.minute + '</span></p>';
-								message += ' <p> Por favor confirma a tua presença em resposta a este e-mail ou, se por algum motivo, não conseguires estar presente, avisa-nos na resposta. </p>';
+							message += ' <p> Ficamos à tua espera na B315! </p>';
 
-								message += ' <p> Ficamos à tua espera na B315!. </p>';
+							let mailOptions = {
+								from: process.env.GMAIL_ADDRESS,
+								to: candidato.email,
+								subject: '[NIAEFEUP] Entrevista',
+								html: message,
+							};
 
-								message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
-								message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
-								message += '<p><a href=\'https://ni.fe.up.pt\'>Website</a> | <a href=\'https://www.facebook.com/NIAEFEUP\'>Facebook</a> | <a href=\'https://www.instagram.com/niaefeup/\'>Instagram</a></p>';
-								message += '<p> Sala B315, Rua Dr.Roberto Frias, s/n 4200-465 Porto Portugal | <a href=\'https://goo.gl/maps/aj2LBqFkwjx\'>Google Maps</a></p>';
-								message += '</div>';
-
-								let mailOptions = {
-									from: process.env.GMAIL_ADDRESS,
-									to: candidato.email,
-									subject: 'Entrevista NIAEFEUP',
-									html: message,
-									attachments: [{
-										filename: 'logo-niaefeup.png',
-										path: 'https://ni.fe.up.pt/images/logo-niaefeup.png',
-										cid: 'id_1234698',
-									}],
-								};
-
-								transporter.sendMail(mailOptions, function (error, info) {
-									if (error) {
-										errorCount++;
-										console.error(error);
-									} else {
-										console.log('Email sent: ' + info.response);
-									}
-								});
+							email_wrapper.sendMail(mailOptions, function (error, _info) {
+								if (error) {
+									errorCount++;
+								}
+							});
 
 
-								resolve();
-							}
+							resolve();
 						});
 					})).then(() => {
 						if (errorCount > 0) {
@@ -405,53 +351,28 @@ exports.reject = function (req, res) {
 						failedCandidates = [...failedCandidates, idOfCandidate];
 					} else {
 
-						if (process.env.GMAIL_ADDRESS
-								&& process.env.GMAIL_PASS) {
 
-							let transporter = nodemailer.createTransport({
-								service: 'Gmail',
-								auth: {
-									user: process.env.GMAIL_ADDRESS,
-									pass: process.env.GMAIL_PASS,
-								},
-							});
+						let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',</p>';
+						message += ' <p> Infelizmente, este ano, devido a um número muito elevado de candidatos, foi necessário filtrar alguns candidatos, tendo por base a sua candidatura. </p>';
+						message += ' <p> Deste modo, não iremos prosseguir com o teu processo de recrutamento. </p>';
+						message += ' <p> No entanto, contamos contigo para uma futura fase de recrutamento! </p>';
 
-							let message = '<p> Olá ' + candidato.name.first + ' ' + candidato.name.last + ',</p>';
-							message += ' <p> Infelizmente, este ano, devido a um número muito elevado de candidatos, foi necessário filtrar alguns candidatos, tendo por base a sua candidatura. </p>';
-							message += ' <p> Deste modo, não iremos prosseguir com o teu processo de recrutamento. </p>';
-							message += ' <p> No entanto, contamos contigo para uma futura fase de recrutamento! </p>';
+						message += ' <p> Obrigado pelo teu interesse, </p>';
 
-							message += ' <p> Obrigado pelo teu interesse, </p>';
+						let mailOptions = {
+							from: process.env.GMAIL_ADDRESS,
+							to: candidato.email,
+							subject: '[NIAEFEUP] Candidatura',
+							html: message,
+						};
 
-							message += '<div style=\'float:left;\'><img src=\'cid:id_1234698\' alt=\'logo niaefeup\' title=\'logo\' style=\'display:block\' width=\'50\'></div><div style=\'padding-left:70px\'><h2>Núcleo de Informática da AEFEUP</h2>';
-							message += '<p><a href=\'ni@aefeup.pt\'>ni@aefeup.pt</a></p>';
-							message += '<p><a href=\'https://ni.fe.up.pt\'>Website</a> | <a href=\'https://www.facebook.com/NIAEFEUP\'>Facebook</a> | <a href=\'https://www.instagram.com/niaefeup/\'>Instagram</a></p>';
-							message += '<p> Sala B315, Rua Dr.Roberto Frias, s/n 4200-465 Porto Portugal | <a href=\'https://goo.gl/maps/aj2LBqFkwjx\'>Google Maps</a></p>';
-							message += '</div>';
+						email_wrapper.sendMail(mailOptions, (error, _info) => {
+							if (error) {
+								console.log('ERROR SENDING REJECT MAIL TO ' + candidato.name.first + ' ' + candidato.name.last);
+								failedCandidates = [...failedCandidates, idOfCandidate];
+							}
+						});
 
-							let mailOptions = {
-								from: process.env.GMAIL_ADDRESS,
-								to: candidato.email,
-								subject: 'Candidatura NIAEFEUP',
-								html: message,
-								attachments: [{
-									filename: 'logo-niaefeup.png',
-									path: 'https://ni.fe.up.pt/images/logo-niaefeup.png',
-									cid: 'id_1234698',
-								}],
-							};
-
-							transporter.sendMail(mailOptions, function (error, info) {
-								if (error) {
-									console.log('ERROR SENDING REJECT MAIL TO ' + candidato.name.first + ' ' + candidato.name.last);
-									console.error(error);
-									failedCandidates = [...failedCandidates, idOfCandidate];
-								} else {
-									console.log('Email sent: ' + info.response);
-								}
-							});
-
-						}
 					}
 
 					resolve();
@@ -472,6 +393,4 @@ exports.reject = function (req, res) {
 
 		res.redirect('/entrevistas');
 	});
-
-
 };
