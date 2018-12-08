@@ -1,10 +1,19 @@
+:root{
+    --soundboardButtonWidth: 80px;
+    --soundboardButtonHeight: 50px;
+    --soundboardProgressHeight: 5px;
+    --soundboardTextSize: 24px;
+}
+
 .soundboard-button
 {
-    width:50px;
-    height:20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:var(--soundboardTextSize);
+    width:var(--soundboardButtonWidth);
+    height:var(--soundboardButtonHeight);
     border: none;
-    background:gray;
-    color: white;
+    background:#444;
+    color: #ccc;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -12,16 +21,16 @@
 
 .sound-progress-bar
 {
-    width:50px;
-    height:5px;
-    background-color:red;
+    width:var(--soundboardButtonWidth);
+    height:var(--soundboardProgressHeight);
+    background-color:black;
 }
 
 .sound-progress-bar-thumb
 {
-    width:5px;
-    height:5px;
-    background-color:black
+    width:0px;
+    height:var(--soundboardProgressHeight);
+    background-color:#4cad4c;
 }
 
 #sound-board-header{
