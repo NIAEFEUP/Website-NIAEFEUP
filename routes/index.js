@@ -67,4 +67,5 @@ exports = module.exports = function (app) {
 	app.post('/api/profile/photo/remove', middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.remove);
 
 	app.get('/api/soundboard', keystone.middleware.api, routes.api.soundboard.get);
+	app.post('/api/soundboard', middleware.requireMember, routes.api.soundboard.upload);
 };
