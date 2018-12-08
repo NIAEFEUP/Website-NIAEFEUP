@@ -23,3 +23,21 @@
     height:5px;
     background-color:black
 }
+
+#sound-board-header{
+  background: url("../../images/home/launch-pad.jpg") no-repeat top center;
+  background-size: cover;
+
+  height: $header-height;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  #sound-board-title {
+	color: #FFFFFF;
+	font-family: $font-type;
+	font-weight: 700;
+	font-size: $font-size-header-title;
+	line-height: $header-height;
+	padding-top: 50px;
+  }
+}

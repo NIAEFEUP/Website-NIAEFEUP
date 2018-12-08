@@ -45,8 +45,7 @@ exports = module.exports = function (app) {
 
 	app.get('/email', middleware.requirePresidency, routes.views.email);
 	app.post('/email', middleware.requirePresidency, routes.views.email.send);
-
-
+	app.get('/sound-board', routes.views.soundBoard);
 	app.get('/candidatura', middleware.nonUser, routes.views.candidatura);
 	app.post('/candidatura', middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
 
