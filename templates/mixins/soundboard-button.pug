@@ -1,0 +1,19 @@
+script.
+    function playSoundboardSound(buttonElem){
+        var audio = new Audio(buttonElem.getAttribute("data-link"));
+        audio.play();
+        audio.addEventListener('timeupdate', () => {
+            let currentTime = audio.currentTime;
+            let duration = audio.duration;
+            console.log(buttonElem.parentElement);
+            let progressBarElem = buttonElem.parentElement.querySelector('.sound-progress-bar');
+            let progressBarThumbElem = progressBarElem.querySelector('.sound-progress-bar-thumb');
+            progressBarThumbElem.style.marginLeft = (progressBarElem.offsetWidth-progressBarThumbElem.offsetWidth) * (currentTime / duration) + 'px';
+        });
+    }
+
+mixin gen-soundboard-button(name, url)
+    div(class='soundboard-button-div')
+        button(class='soundboard-button' data-link=url onclick='playSoundboardSound(this)')= name
+        div(class='sound-progress-bar')
+            div(class='sound-progress-bar-thumb')

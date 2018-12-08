@@ -1,0 +1,25 @@
+.soundboard-button
+{
+    width:50px;
+    height:20px;
+    border: none;
+    background:gray;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.sound-progress-bar
+{
+    width:50px;
+    height:5px;
+    background-color:red;
+}
+
+.sound-progress-bar-thumb
+{
+    width:5px;
+    height:5px;
+    background-color:black
+}
