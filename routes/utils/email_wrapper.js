@@ -1,20 +1,20 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 let transporter;
 let mailing_service_success = false;
 
 if (!process.env.GMAIL_ADDRESS || !process.env.GMAIL_PASS) {
-	console.warn('GMAIL_ADRESS and GMAIL_PASS not specified, email service will not work.');
+	console.warn("GMAIL_ADRESS and GMAIL_PASS not specified, email service will not work.");
 	transporter = null;
 } else {
-    /**
+	/**
      * Creating the email transporter
      * Setting connection to pooled so that the connection is reused
      * rateLimit is set to 1, which with the default value of 1000 (1 second) of rateDelta limits the sending to 1 email per second - trying to ensure there is no overload
      * (There is no problem in email sending being slow, we just want it to be automatic)
      */
 	transporter = nodemailer.createTransport({
-		service: 'Gmail',
+		service: "Gmail",
 		auth: {
 			user: process.env.GMAIL_ADDRESS,
 			pass: process.env.GMAIL_PASS,
@@ -23,14 +23,14 @@ if (!process.env.GMAIL_ADDRESS || !process.env.GMAIL_PASS) {
 		rateLimit: 1,
 	});
 
-    // Verifying if the connection was made successfully
+	// Verifying if the connection was made successfully
 	transporter.verify((error, success) => {
 		if (error) {
 			mailing_service_success = false;
-			console.error('Error in connecting to mailing service: ', error);
+			console.error("Error in connecting to mailing service: ", error);
 		} else {
 			mailing_service_success = true;
-			console.log('The mailing service is ready to receive messages! (success: ', success, ')');
+			console.log("The mailing service is ready to receive messages! (success: ", success, ")");
 		}
 	});
 }
@@ -80,32 +80,32 @@ const getSignature = () => {
  */
 const sendMail = (mailOptions, callback) => {
 	if (!mailing_service_success) {
-		console.error('Attempting to send email when the connection test failed, aborting!');
+		console.error("Attempting to send email when the connection test failed, aborting!");
 		return;
 	}
 
 	if (!process.env.GMAIL_ADDRESS || !process.env.GMAIL_PASS) {
-		console.error('Attempted to send email without defining GMAIL_ADDRESS and GMAIL_PASS, aborting!');
+		console.error("Attempted to send email without defining GMAIL_ADDRESS and GMAIL_PASS, aborting!");
 		return;
 	}
 
 	if (!mailOptions) {
-		console.error('Attempted to send email without mailOptions specified, aborting!');
+		console.error("Attempted to send email without mailOptions specified, aborting!");
 		return;
 	}
 
 	if (!mailOptions.to && !mailOptions.bcc && !mailOptions.cc) {
-		console.error('Attempted to send email without recipients (to, cc, bcc), aborting!');
+		console.error("Attempted to send email without recipients (to, cc, bcc), aborting!");
 		return;
 	}
 
 	if (!mailOptions.subject) {
-		console.error('Attempted to send email without subject, aborting!');
+		console.error("Attempted to send email without subject, aborting!");
 		return;
 	}
 
 	if (!mailOptions.html) {
-		console.error('Attempted to send email without HTML body (plaintext is not being used due to the signature), aborting!');
+		console.error("Attempted to send email without HTML body (plaintext is not being used due to the signature), aborting!");
 		return;
 	}
 
@@ -113,31 +113,31 @@ const sendMail = (mailOptions, callback) => {
 		mailOptions.from = process.env.GMAIL_ADDRESS;
 	}
 
-    // Adding the signature
+	// Adding the signature
 	mailOptions.html += getSignature();
 
-    // Adding the logo to the attachments
+	// Adding the logo to the attachments
 	if (!mailOptions.attachments || !(mailOptions.attachments instanceof Array)) {
 		mailOptions.attachments = [];
 	}
 
 	mailOptions.attachments.push({
-		filename: 'logo-niaefeup.png',
-		path: 'https://ni.fe.up.pt/images/logo-niaefeup.png',
-		cid: 'id_1234698',
+		filename: "logo-niaefeup.png",
+		path: "https://ni.fe.up.pt/images/logo-niaefeup.png",
+		cid: "id_1234698",
 	});
 
-    // A default callback is defined to simplify handling response
+	// A default callback is defined to simplify handling response
 	transporter.sendMail(mailOptions, (err, info) => {
 		if (err) {
-			console.error('Error sending emails: ', err);
+			console.error("Error sending emails: ", err);
 		} else {
-			console.log('Email(s) successfully sent, response: ', info.response);
-			console.log('debug', info); // TODO: Remove probably
+			console.log("Email(s) successfully sent, response: ", info.response);
+			console.log("debug", info); // TODO: Remove probably
 			console.log(`${info.accepted.length} emails were accepted and ${info.rejected.length} were rejected.`);
 		}
 
-        // Calling the passed callback for email status, if it exists
+		// Calling the passed callback for email status, if it exists
 		callback && callback(err, info);
 	});
 };
