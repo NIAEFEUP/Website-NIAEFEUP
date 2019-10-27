@@ -1,4 +1,4 @@
-const keystone = require('keystone');
+const keystone = require("keystone");
 
 exports = module.exports = function (req, res) {
 	let view = new keystone.View(req, res);
@@ -6,11 +6,11 @@ exports = module.exports = function (req, res) {
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'home';
+	locals.section = "home";
 
-	view.on('init', function (next) {
+	view.on("init", function (next) {
 
-		keystone.list('FaseCandidatura').model.findOne({
+		keystone.list("FaseCandidatura").model.findOne({
 			ativa: true,
 		}).exec(function (err, fase_candidatura) {
 			if (!err) {
@@ -23,36 +23,36 @@ exports = module.exports = function (req, res) {
 			}
 		});
 
-		keystone.list('Project').model.count({ type: 'project' }, function (err, count) {
+		keystone.list("Project").model.count({ type: "project" }, function (err, count) {
 			if (err) {
 				locals.projects_count = 0;
 			} else {
 				locals.projects_count = count;
 			}
-			keystone.list('Project').model.count({ type: 'workshop' }, function (err, count) {
+			keystone.list("Project").model.count({ type: "workshop" }, function (err, count) {
 				if (err) {
 					locals.workshops_count = 0;
 				} else {
 					locals.workshops_count = count;
 				}
-				keystone.list('Project').model.count({ type: 'event' }, function (err, count) {
+				keystone.list("Project").model.count({ type: "event" }, function (err, count) {
 					if (err) {
 						locals.events_count = 0;
 					} else {
 						locals.events_count = count;
 					}
-					keystone.list('User').model.count(function (err, count) {
+					keystone.list("User").model.count(function (err, count) {
 						if (err) {
 							locals.members_count = 0;
 						} else {
 							locals.members_count = count - 1;
 						}
-						let q = keystone.list('Project').model.find().where('state', 'completed').sort('-publishedDate').limit(4);
+						let q = keystone.list("Project").model.find().where("state", "completed").sort("-publishedDate").limit(4);
 
 						q.exec(function (err, results) {
 							locals.projects = results;
 
-							let q = keystone.list('Banner').model.find();
+							let q = keystone.list("Banner").model.find();
 
 							q.exec(function (err, results) {
 								locals.banners = results;
@@ -66,5 +66,5 @@ exports = module.exports = function (req, res) {
 	});
 
 	// Render the view
-	view.render('home');
+	view.render("home");
 };
