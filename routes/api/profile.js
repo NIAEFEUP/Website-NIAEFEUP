@@ -1,13 +1,13 @@
-let keystone = require('keystone');
+let keystone = require("keystone");
 
-let User = keystone.list('User');
+let User = keystone.list("User");
 
 /**
  * List Users
  */
 exports.list = function (req, res) {
 	User.model.find(function (err, items) {
-		if (err) return res.apiError('database error', err);
+		if (err) return res.apiError("database error", err);
 
 		res.apiResponse({
 			users: items,
@@ -20,8 +20,8 @@ exports.list = function (req, res) {
  */
 exports.get = function (req, res) {
 	User.model.findById(req.params.id).exec(function (err, item) {
-		if (err) return res.apiError('database error', err);
-		if (!item) return res.apiError('not found');
+		if (err) return res.apiError("database error", err);
+		if (!item) return res.apiError("not found");
 
 		res.apiResponse({
 			user: item,
@@ -35,10 +35,10 @@ exports.get = function (req, res) {
  */
 exports.create = function (req, res) {
 	let item = new User.model();
-	let data = (req.method === 'POST') ? req.body : req.query;
+	let data = (req.method === "POST") ? req.body : req.query;
 
 	item.getUpdateHandler(req).process(data, function (err) {
-		if (err) return res.apiError('error', err);
+		if (err) return res.apiError("error", err);
 
 		res.apiResponse({
 			user: item,
@@ -51,13 +51,13 @@ exports.create = function (req, res) {
  */
 exports.update = function (req, res) {
 	User.model.findById(req.params.id).exec(function (err, item) {
-		if (err) return res.apiError('database error', err);
-		if (!item) return res.apiError('not found');
+		if (err) return res.apiError("database error", err);
+		if (!item) return res.apiError("not found");
 
-		let data = (req.method === 'POST') ? req.body : req.query;
+		let data = (req.method === "POST") ? req.body : req.query;
 
 		item.getUpdateHandler(req).process(data, function (err) {
-			if (err) return res.apiError('create error', err);
+			if (err) return res.apiError("create error", err);
 
 			res.apiResponse({
 				user: item,
@@ -71,11 +71,11 @@ exports.update = function (req, res) {
  */
 exports.remove = function (req, res) {
 	User.model.findById(req.params.id).exec(function (err, item) {
-		if (err) return res.apiError('database error', err);
-		if (!item) return res.apiError('not found');
+		if (err) return res.apiError("database error", err);
+		if (!item) return res.apiError("not found");
 
 		item.remove(function (err) {
-			if (err) return res.apiError('database error', err);
+			if (err) return res.apiError("database error", err);
 
 			return res.apiResponse({
 				success: true,

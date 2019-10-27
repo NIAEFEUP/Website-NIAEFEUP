@@ -1,4 +1,4 @@
-let keystone = require('keystone');
+let keystone = require("keystone");
 let Types = keystone.Field.Types;
 
 /**
@@ -6,16 +6,16 @@ let Types = keystone.Field.Types;
  * ==========
  */
 
-let Banner = new keystone.List('Banner', {
-	map: { name: 'title' },
-	autokey: { path: 'slug', from: 'title', unique: true },
+let Banner = new keystone.List("Banner", {
+	map: { name: "title" },
+	autokey: { path: "slug", from: "title", unique: true },
 });
 
 let localStorage = new keystone.Storage({
 	adapter: keystone.Storage.Adapters.FS,
 	fs: {
-		path: './public/images/home/',
-		publicPath: '/images/home/',
+		path: "./public/images/home/",
+		publicPath: "/images/home/",
 	},
 });
 
@@ -30,5 +30,5 @@ Banner.add({
 	link: { type: Types.Url },
 });
 
-Banner.defaultColumns = 'title, type, state, author, publishedDate';
+Banner.defaultColumns = "title, type, state, author, publishedDate";
 Banner.register();

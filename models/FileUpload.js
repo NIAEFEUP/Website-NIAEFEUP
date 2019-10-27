@@ -1,4 +1,4 @@
-let keystone = require('keystone');
+let keystone = require("keystone");
 let Types = keystone.Field.Types;
 
 /**
@@ -7,13 +7,13 @@ let Types = keystone.Field.Types;
  * A database model for uploading images to the local file system
  */
 
-let FileUpload = new keystone.List('FileUpload');
+let FileUpload = new keystone.List("FileUpload");
 
 let myStorage = new keystone.Storage({
 	adapter: keystone.Storage.Adapters.FS,
 	fs: {
-		path: keystone.expandPath('./public/uploads/members'), // required; path where the files should be stored
-		publicPath: '/public/uploads/members', // path where files will be served
+		path: keystone.expandPath("./public/uploads/members"), // required; path where the files should be stored
+		publicPath: "/public/uploads/members", // path where files will be served
 	},
 });
 
@@ -36,5 +36,5 @@ FileUpload.add({
 });
 
 
-FileUpload.defaultColumns = 'name';
+FileUpload.defaultColumns = "name";
 FileUpload.register();

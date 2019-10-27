@@ -9,7 +9,7 @@
 
 exports.create = {
 	User: [
-		{ 'name.first': 'Admin', 'name.last': 'User', 'email': 'admin@niaefeup.pt', 'password': 'admin', 'isAdmin': true, 'position': 'Admin', 'permissionGroupValue': 0 },
+		{ "name.first": "Admin", "name.last": "User", "email": "admin@niaefeup.pt", "password": "admin", "isAdmin": true, "position": "Admin", "permissionGroupValue": 0 },
 	],
 };
 

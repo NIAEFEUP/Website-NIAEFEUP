@@ -1,9 +1,34 @@
 {
-  "extends": "keystone",
-  "globals": {
-	"jQuery": true
-  },
-  "rules": {
-	"no-var": 2
-  }
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+        "document": true,
+        "jQuery": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "rules": {
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "require-atomic-updates": "off",
+        "no-prototype-builtins": "off"
+    }
 }

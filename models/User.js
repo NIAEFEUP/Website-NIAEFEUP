@@ -1,14 +1,14 @@
-let keystone = require('keystone');
+let keystone = require("keystone");
 let Types = keystone.Field.Types;
 
 
 const PERMISSION_GROUP = {
-	ADMIN: 'Admin',
-	PRESIDENT: 'Presidente',
-	VICE_PRESIDENT: 'Vice-Presidente',
-	BOARD: 'Board',
-	MEMBER: 'Membro',
-	RECRUIT: 'Recruta',
+	ADMIN: "Admin",
+	PRESIDENT: "Presidente",
+	VICE_PRESIDENT: "Vice-Presidente",
+	BOARD: "Board",
+	MEMBER: "Membro",
+	RECRUIT: "Recruta",
 };
 
 module.exports.PERMISSION_GROUP = PERMISSION_GROUP;
@@ -17,20 +17,20 @@ module.exports.PERMISSION_GROUP = PERMISSION_GROUP;
  * User Model
  * ==========
  */
-let User = new keystone.List('User');
+let User = new keystone.List("User");
 
 User.add({
 	name: { type: Types.Name, required: true, index: true },
 	email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
 	password: { type: Types.Password, initial: true, required: true },
-	photo_path: { type: String, label: 'Photo path on server', default: '/images/members/default-profile.jpg' },
+	photo_path: { type: String, label: "Photo path on server", default: "/images/members/default-profile.jpg" },
 	linkedin: { type: Types.Url },
 	github: { type: Types.Url },
 	website: { type: Types.Url },
 	about: { type: Types.Textarea },
-	public: { type: Boolean, label: 'Is the profile public?', initial: true },
-}, 'Permissions', {
-	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
+	public: { type: Boolean, label: "Is the profile public?", initial: true },
+}, "Permissions", {
+	isAdmin: { type: Boolean, label: "Can access Keystone", index: true },
 	permissionGroupValue: {
 		type: Types.Select,
 		numeric: true,
@@ -54,18 +54,18 @@ User.add({
 
 
 // Provide access to Keystone
-User.schema.virtual('canAccessKeystone').get(function () {
+User.schema.virtual("canAccessKeystone").get(function () {
 	return this.isAdmin;
 });
 
 // Get permissionGroup in {value, label} format
-User.schema.virtual('permissionGroup').get(function () {
-	let permissions = this.schema.path('permissionGroupValue').options.options;
+User.schema.virtual("permissionGroup").get(function () {
+	let permissions = this.schema.path("permissionGroupValue").options.options;
 	return permissions.find(perm => perm.value === this.permissionGroupValue);
 });
 
 // Get permissionGroup in {value, label} format
-User.schema.virtual('positionLabel').get(function () {
+User.schema.virtual("positionLabel").get(function () {
 	return this.position || this.permissionGroup.label;
 });
 
@@ -75,7 +75,7 @@ User.schema.virtual('positionLabel').get(function () {
  * @param {string} permGroupLabel label of the permission group to get the value of
  */
 module.exports.getPermGroupValue = function getPermGroupValue (permGroupLabel) {
-	let permissions = User.schema.path('permissionGroupValue').options.options;
+	let permissions = User.schema.path("permissionGroupValue").options.options;
 	return permissions.find(perm => perm.label === permGroupLabel).value;
 };
 
@@ -83,10 +83,10 @@ module.exports.getPermGroupValue = function getPermGroupValue (permGroupLabel) {
 /**
  * Relationships
  */
-User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
+User.relationship({ ref: "Post", path: "posts", refPath: "author" });
 
 /**
  * Registration
  */
-User.defaultColumns = 'name, email, isAdmin, permissionGroupValue';
+User.defaultColumns = "name, email, isAdmin, permissionGroupValue";
 User.register();

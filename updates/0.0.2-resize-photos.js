@@ -1,9 +1,9 @@
-const sharp = require('sharp');
-const fs = require('fs');
-const util = require('util');
+const sharp = require("sharp");
+const fs = require("fs");
+const util = require("util");
 const writeFile = util.promisify(fs.writeFile);
 
-const imagesPath = './public/uploads/members/';
+const imagesPath = "./public/uploads/members/";
 
 const resizeImage = function (file) {
 	return sharp(`${imagesPath}${file}`)
@@ -19,7 +19,7 @@ const resizeImage = function (file) {
 exports.create = function (done) {
 	const promise = Promise.resolve();
 	fs.readdirSync(imagesPath).forEach(file => {
-		if (file.toLowerCase().includes('.jpg') || file.toLowerCase().includes('.jpeg')) {
+		if (file.toLowerCase().includes(".jpg") || file.toLowerCase().includes(".jpeg")) {
 			promise
 				.then(() => resizeImage(file))
 				.catch((err) => {

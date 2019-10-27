@@ -1,11 +1,11 @@
-const keystone = require('keystone');
+const keystone = require("keystone");
 
 exports = module.exports = function (req, res) {
 	let view = new keystone.View(req, res);
 	let locals = res.locals;
 
 	// Set locals
-	locals.section = 'blog';
+	locals.section = "blog";
 	locals.filters = {
 		post: req.params.post,
 	};
@@ -14,11 +14,11 @@ exports = module.exports = function (req, res) {
 	};
 
 	// Load the current post
-	view.on('init', function (next) {
-		let q = keystone.list('Post').model.findOne({
-			state: 'published',
+	view.on("init", function (next) {
+		let q = keystone.list("Post").model.findOne({
+			state: "published",
 			slug: locals.filters.post,
-		}).populate('author categories');
+		}).populate("author categories");
 
 		q.exec(function (err, result) {
 			locals.data.post = result;
@@ -27,8 +27,8 @@ exports = module.exports = function (req, res) {
 	});
 
 	// Load other posts
-	view.on('init', function (next) {
-		let q = keystone.list('Post').model.find().where('state', 'published').sort('-publishedDate').populate('author').limit('4');
+	view.on("init", function (next) {
+		let q = keystone.list("Post").model.find().where("state", "published").sort("-publishedDate").populate("author").limit("4");
 
 		q.exec(function (err, results) {
 			locals.data.posts = results;
@@ -37,5 +37,5 @@ exports = module.exports = function (req, res) {
 	});
 
 	// Render the view
-	view.render('post');
+	view.render("post");
 };
