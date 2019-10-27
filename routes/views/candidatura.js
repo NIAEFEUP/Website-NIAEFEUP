@@ -40,8 +40,16 @@ exports.create = function (req, res) {
 			const novaCand = new Candidato.model(req.body);
 
 			Candidato.model.findOne({
-				email: req.body.email,
-				fase_candidatura: req.body.fase_candidatura,
+				$or: [
+					{$and: [
+						{fase_candidatura: req.body.fase_candidatura},
+						{numero_up: req.body.numero_up},
+					]},
+					{$and: [
+						{fase_candidatura: req.body.fase_candidatura},
+						{email: req.body.email},
+					]}
+				]
 			}).select("_id").lean()
 				.then((exists) => {
 					if (exists) {
