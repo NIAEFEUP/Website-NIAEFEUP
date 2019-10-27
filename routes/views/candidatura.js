@@ -5,6 +5,7 @@ const User = keystone.list("User");
 const FaseCandidatura = keystone.list("FaseCandidatura");
 const email_wrapper = require("../utils/email_wrapper");
 
+
 exports = module.exports = function (req, res) {
 	const view = new keystone.View(req, res);
 

@@ -28,7 +28,6 @@ exports.send = function (req, res, next) {
 
 					// Why?
 					const message = "<div>" + text + "</div>";
-
 					let mailOptions = {
 						from: process.env.GMAIL_ADDRESS,
 						bcc: emails_candidatos,

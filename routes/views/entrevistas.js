@@ -196,6 +196,7 @@ exports.close = function (req, res) {
 
 				Promise.all(
 					results.map(candidato => {
+
 						return new Promise((resolve) => {
 
 
@@ -350,8 +351,6 @@ exports.reject = function (req, res) {
 					if (err || !candidato) {
 						failedCandidates = [...failedCandidates, idOfCandidate];
 					} else {
-
-
 						let message = "<p> Olá " + candidato.name.first + " " + candidato.name.last + ",</p>";
 						message += " <p> Infelizmente, este ano, devido a um número muito elevado de candidatos, foi necessário filtrar alguns candidatos, tendo por base a sua candidatura. </p>";
 						message += " <p> Deste modo, não iremos prosseguir com o teu processo de recrutamento. </p>";
@@ -369,14 +368,12 @@ exports.reject = function (req, res) {
 						email_wrapper.sendMail(mailOptions, (error) => {
 							if (error) {
 								console.log("ERROR SENDING REJECT MAIL TO " + candidato.name.first + " " + candidato.name.last);
+
 								failedCandidates = [...failedCandidates, idOfCandidate];
 							}
 						});
-
 					}
-
 					resolve();
-
 				});
 			});
 		})
