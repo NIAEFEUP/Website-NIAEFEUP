@@ -14,7 +14,7 @@ let Candidato = new keystone.List("Candidato", {
 
 Candidato.add({
 	name: { type: Types.Name, required: true },
-	numero_up: { type: Types.Number, required: true, unique: true, initial: true },
+	numero_up: { type: Types.Number, required: true,  initial: true },
 	email: { type: Types.Email, required: true, initial: true },
 	curso: { type: String, required: true, initial: true },
 	ano_curricular: { type: Types.Number, required: true, initial: true },
