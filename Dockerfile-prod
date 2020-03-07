@@ -1,0 +1,21 @@
+# Production deployment dockerfile
+# Use node 8-LTS
+FROM node:8
+
+WORKDIR /usr/src/app
+
+# Install PM2 to launch application with monitoring capabilities
+RUN npm install pm2@latest -g
+
+COPY package.json package-lock.json ./
+
+# Install Node Packages (only production)
+RUN npm install --production
+
+# Copying app source
+COPY src/ src/
+
+# Copying .env files
+COPY .env* ./
+
+CMD ["pm2-runtime", "start", "src/keystone.js", "-i", "max", "--name", "ni-website"]

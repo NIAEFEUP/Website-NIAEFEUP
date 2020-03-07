@@ -1,4 +1,4 @@
-public/js/bootstrap
-public/js/jquery
-public/js/mixitup.min.js
-public/js/google_maps.js
+src/public/js/bootstrap
+src/public/js/jquery
+src/public/js/mixitup.min.js
+src/public/js/google_maps.js
