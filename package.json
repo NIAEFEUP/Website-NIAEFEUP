@@ -9,7 +9,7 @@
     "datatables.net-bs": "^1.10.16",
     "dotenv": "4.0.0",
     "jquery": "^3.2.1",
-    "keystone": "4.0.0-beta.5",
+    "keystone": "4.2.1",
     "keystone-email": "1.0.5",
     "lodash": "^4.13.1",
     "node-sass": "4.5.0",
@@ -30,9 +30,9 @@
     "mocha": "^5.0.5"
   },
   "scripts": {
-    "lint": "eslint .",
-    "test": "./node_modules/.bin/mocha tests/init.js tests/unit/**",
-    "start": "node keystone.js",
+    "lint": "eslint src/",
+    "test": "./node_modules/.bin/mocha src/tests/init.js src/tests/unit/**",
+    "start": "node src/keystone.js",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect",
     "prepare": "npm run snyk-protect"

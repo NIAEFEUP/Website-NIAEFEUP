@@ -1,7 +1,6 @@
 .env
 public/uploads/members/*
 public/styles/site.css
-package-lock.json
 
 # Logs
 logs
@@ -37,5 +36,3 @@ node_modules
 
 #Idea Folder
 .idea/
-
-*.min.*
