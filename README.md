@@ -52,13 +52,15 @@ Mais informações sobre este ficheiro estão disponíveis abaixo.
   ```
 Para iniciar:
  ```bash
-  nodemon keystone
+  nodemon src/keystone.js
   ```
 
   Desta forma, cada vez que houver alterações no código, a aplicação é recompilada e reiniciada para aplicar as alterações efetuadas.
 
   - Para reiniciar manualmente, escrever `rs` no terminal
-  - Para terminar, enviar sinal SIGTERM `^C` 
+  - Para terminar, enviar sinal SIGTERM `^C`
+
+  Também é possivel correr o projeto com Docker, através no `docker-compose.yml` disponivel. Usa `docker-compose up [--build]` para iniciar tanto o servidor como uma base de dados mongodb. No .env deves especificar o seguinte `MONGO_URI`: `mongodb://mongo/<nome-da-db-que-quiseres>` 
 
 ### Estrutura do projeto
 

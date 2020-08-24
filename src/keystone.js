@@ -30,11 +30,10 @@ keystone.init({
 	"auth": true,
 	"user model": "User",
 	"mongo options": {
-		server: {
-			keepAlive: 1,
-			reconnectTries: Number.MAX_VALUE,
-			reconnectInterval: 1500,
-		},
+		
+		keepAlive: 1,
+		reconnectTries: Number.MAX_VALUE,
+		reconnectInterval: 1500,
 	},
 });
 
