@@ -93,3 +93,4 @@ Keystone.js: Entry point do website.
 * `SLACK_INVITE` - Link do invite para Slack
 * `GOOGLE_GROUPS_INVITE` - Link do invite para Google Groups
 * `GOOGLE_DRIVE_INVITE` - Link do invite para Google Drive
+* `CLOUDINARY_URL` - Url da API do Cloudinary para a CDN (apenas aplicável a production)

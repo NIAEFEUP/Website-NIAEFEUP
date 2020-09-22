@@ -5,6 +5,12 @@ const FileData = keystone.list("FileUpload");
 const User = keystone.list("User");
 const util = require("util");
 const writeFile = util.promisify(fs.writeFile);
+const cloudinary = require("cloudinary").v2;
+const promisify = require("util").promisify;
+const upload = promisify(cloudinary.uploader.upload);
+
+
+const CLOUDINARY_URL = process.env.CLOUDINARY_URL;
 
 const getUserPhotoModel = function (userId) {
 	return new Promise((resolve, reject) => {
@@ -23,15 +29,20 @@ const deleteFile = function (model) {
 
 			// Resolve and delete the file asynchronously
 			resolve(true);
-			const filePath = model.url;
-			const full_path = process.cwd() + "/public" + filePath;
-			fs.unlink(full_path, (err) => {
-				if (err) {
-					console.log(err);
-				} else {
-					console.log("Successfully deleted " + full_path);
-				}
-			});
+			if(CLOUDINARY_URL){
+				const { attributes1: cloudinary_id } = model;
+				cloudinary.uploader.destroy(cloudinary_id);
+			} else {
+				const filePath = model.url;
+				const full_path = process.cwd() + "/public" + filePath;
+				fs.unlink(full_path, (err) => {
+					if (err) {
+						console.log(err);
+					} else {
+						console.log("Successfully deleted " + full_path);
+					}
+				});
+			}
 		});
 	});
 };
@@ -45,26 +56,25 @@ const removePhotoByUserId = function (userId) {
 		});
 };
 
-const createPhoto = function (req) {
-	return new Promise((resolve, reject) => {
-		const item = new FileData.model();
-		const userId = req.user._id;
+const cdnUpload = (data) => upload(`data:image/jpeg;base64,${data.toString("base64")}`);
 
-		item.getUpdateHandler(req).process(req.files, (err) => {
-			if (err) return reject(err);
+const createPhoto = async function (req, data) {
+	const item = new FileData.model();
+	const userId = req.user._id;
+	item.fileType = item.file.mimetype;
+	item.createdTimeStamp = new Date();
+	item.name = userId;
+	if (CLOUDINARY_URL){
+		const img = await cdnUpload(data);
+		item.url = img.secure_url;
+		item.attributes1 = img.public_id;
+	} else {
+		await writeFile(req.files.file_upload.path, data);
+		const new_path = "/uploads/members/" + item.file.filename;
+		item.url = new_path;
+	}
 
-			const new_path = "/uploads/members/" + item.file.filename;
-			item.name = userId;
-			item.fileType = item.file.mimetype;
-			item.url = new_path;
-			item.createdTimeStamp = new Date();
-
-			item.save((err) => {
-				if (err) return reject(err);
-				resolve(item);
-			});
-		});
-	});
+	return item.save();
 };
 
 const updateUserPhoto = function (userId, photo) {
@@ -104,10 +114,8 @@ exports.update = async function (req, res) {
 		req.files.file_upload.mimetype = "image/jpeg";
 		req.files.file_upload.size = info.size;
 
-		await writeFile(req.files.file_upload.path, data);
-
 		const oldPhoto = await getUserPhotoModel(userId);
-		const newPhoto = await createPhoto(req);
+		const newPhoto = await createPhoto(req, data);
 		if (oldPhoto) {
 			await deleteFile(oldPhoto);
 		}
