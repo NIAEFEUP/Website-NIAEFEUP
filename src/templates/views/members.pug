@@ -50,7 +50,7 @@ block content
 												a.fab.fa-github.fa-icon-border(href=direction_member.github, title='Github')
 											if direction_member.website
 												a.fa.fa-globe.fa-icon-border(href=direction_member.website, title='Website')
-			// MEMBROS
+		// MEMBROS
 		section#active-members
 			.row
 				each member in members
@@ -70,24 +70,26 @@ block content
 											a.fab.fa-github.fa-icon-border(href=member.github, title='Github')
 										if member.website
 											a.fa.fa-globe.fa-icon-border(href=member.website, title='Website')
-		section#recruits
-			h3.text-center#members-subtitle.center-block RECRUTAS
-			.row
-				each recruta in recrutas
-					.col-md-3.col-sm-4.col-xs-12
-						.team-member
-							a(href="./member/"+recruta._id)
-								img.img-responsive(src=recruta.photo_path, alt='recruta')
-								aside.info-member
-									div
-										h4 #{recruta.name.first} #{recruta.name.last}
-										em #{recruta.positionLabel}
-										hr
-									nav.social
-										if recruta.linkedin
-											a.fab.fa-linkedin.fa-icon-border(href=recruta.linkedin, title='LinkedIn')
-										if recruta.github
-											a.fab.fa-github.fa-icon-border(href=recruta.github, title='Github')
-										if recruta.website
-											a.fa.fa-globe.fa-icon-border(href=recruta.website, title='Website')
+		// RECRUTAS
+		if recrutas.length > 0
+			section#recruits
+				h3.text-center#members-subtitle.center-block RECRUTAS
+				.row
+					each recruta in recrutas
+						.col-md-3.col-sm-4.col-xs-12
+							.team-member
+								a(href="./member/"+recruta._id)
+									img.img-responsive(src=recruta.photo_path, alt='recruta')
+									aside.info-member
+										div
+											h4 #{recruta.name.first} #{recruta.name.last}
+											em #{recruta.positionLabel}
+											hr
+										nav.social
+											if recruta.linkedin
+												a.fab.fa-linkedin.fa-icon-border(href=recruta.linkedin, title='LinkedIn')
+											if recruta.github
+												a.fab.fa-github.fa-icon-border(href=recruta.github, title='Github')
+											if recruta.website
+												a.fa.fa-globe.fa-icon-border(href=recruta.website, title='Website')
 	header#members-dividor
