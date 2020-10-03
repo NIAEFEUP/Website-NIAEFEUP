@@ -20,6 +20,7 @@
 const keystone = require("keystone");
 const middleware = require("./middleware");
 const importRoutes = keystone.importer(__dirname);
+const ROUTE_PREFIX = process.env.ROUTE_PREFIX || "/";
 
 // Common Middleware
 keystone.pre("routes", middleware.initLocals);
@@ -31,38 +32,43 @@ const routes = {
 	api: importRoutes("./api"),
 };
 
+
 // Setup Route Bindings
 exports = module.exports = function (app) {
+	const router = keystone.createRouter();
+
 	// Views
-	app.get("/", routes.views.home);
-	app.get("/signin", middleware.requireUser, routes.views.home);
-	app.get("/profile", middleware.requireUser, routes.views.profile);
-	app.post("/profile", middleware.User_Password, routes.views.profile.update);
-	app.get("/members", routes.views.members);
-	app.get("/member/:id", routes.views.member);
-	app.get("/blog/:category?", routes.views.blog);
-	app.get("/blog/post/:post", routes.views.post);
+	router.get("/", routes.views.home);
+	router.get("/signin", middleware.requireUser, routes.views.home);
+	router.get("/profile", middleware.requireUser, routes.views.profile);
+	router.post("/profile", middleware.User_Password, routes.views.profile.update);
+	router.get("/members", routes.views.members);
+	router.get("/member/:id", routes.views.member);
+	router.get("/blog/:category?", routes.views.blog);
+	router.get("/blog/post/:post", routes.views.post);
 
-	app.get("/email", middleware.requirePresidency, routes.views.email);
-	app.post("/email", middleware.requirePresidency, routes.views.email.send);
-
-
-	app.get("/candidatura", middleware.nonUser, routes.views.candidatura);
-	app.post("/candidatura", middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
+	router.get("/email", middleware.requirePresidency, routes.views.email);
+	router.post("/email", middleware.requirePresidency, routes.views.email.send);
 
 
-	app.get("/entrevistas", middleware.requireMember, routes.views.entrevistas);
-	app.post("/entrevistas_accept", middleware.requirePresidency, routes.views.entrevistas.approve);
-	app.post("/entrevistas/close", middleware.requirePresidency, routes.views.entrevistas.close);
-	app.post("/entrevistas/notificar", middleware.requirePresidency, routes.views.entrevistas.notify);
-	app.post("/entrevistas/rejeitar", middleware.requirePresidency, routes.views.entrevistas.reject);
-	app.get("/entrevista/:id", middleware.requireMember, routes.views.entrevista);
-	app.post("/entrevista", middleware.requireMember, routes.views.entrevista.create);
-	app.post("/entrevista/delete/:id", middleware.requireBoard, routes.views.entrevista.delete);
+	router.get("/candidatura", middleware.nonUser, routes.views.candidatura);
+	router.post("/candidatura", middleware.nonUser, middleware.validateApplication, routes.views.candidatura.create);
 
-	app.get("/portfolio", routes.views.projetos);
+
+	router.get("/entrevistas", middleware.requireMember, routes.views.entrevistas);
+	router.post("/entrevistas_accept", middleware.requirePresidency, routes.views.entrevistas.approve);
+	router.post("/entrevistas/close", middleware.requirePresidency, routes.views.entrevistas.close);
+	router.post("/entrevistas/notificar", middleware.requirePresidency, routes.views.entrevistas.notify);
+	router.post("/entrevistas/rejeitar", middleware.requirePresidency, routes.views.entrevistas.reject);
+	router.get("/entrevista/:id", middleware.requireMember, routes.views.entrevista);
+	router.post("/entrevista", middleware.requireMember, routes.views.entrevista.create);
+	router.post("/entrevista/delete/:id", middleware.requireBoard, routes.views.entrevista.delete);
+
+	router.get("/portfolio", routes.views.projetos);
 
 	// Photo Upload Routes
-	app.post("/api/profile/photo/update", middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.update);
-	app.post("/api/profile/photo/remove", middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.remove);
+	router.post("/api/profile/photo/update", middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.update);
+	router.post("/api/profile/photo/remove", middleware.requireUser, keystone.middleware.api, routes.api.profilephoto.remove);
+
+	app.use(ROUTE_PREFIX, router);
 };

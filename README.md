@@ -94,3 +94,4 @@ Keystone.js: Entry point do website.
 * `GOOGLE_GROUPS_INVITE` - Link do invite para Google Groups
 * `GOOGLE_DRIVE_INVITE` - Link do invite para Google Drive
 * `CLOUDINARY_URL` - Url da API do Cloudinary para a CDN (apenas aplicável a production)
+* `ROUTE_PREFIX` - Prefixo opcional da raiz das rotas
