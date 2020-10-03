@@ -30,6 +30,8 @@ block content
   div.container
     div.container
       h1.text-center CANDIDATOS
+      div.container.col-sm-10
+        p Número de candidatos: #{candidatos.length}
       section
         form(method='POST' action='/entrevistas_accept')
           div.container.col-sm-1
