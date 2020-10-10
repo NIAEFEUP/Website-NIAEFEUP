@@ -147,9 +147,6 @@
         left: 15px;
         overflow: hidden;
         transition: 0.75s ease;
-        @media (max-width: 991px) and (min-width: 768px) {
-            display: none;
-        }
         a {
             font-size: 20px;
             @media (min-width: 768px) {
