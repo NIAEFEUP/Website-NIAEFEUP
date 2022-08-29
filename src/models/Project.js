@@ -14,7 +14,7 @@ let Project = new keystone.List("Project", {
 let localStorage = new keystone.Storage({
 	adapter: keystone.Storage.Adapters.FS,
 	fs: {
-		path: "./public/images/projects/",
+		path: "./src/public/images/projects/",
 		publicPath: "/images/projects/",
 	},
 });
