@@ -69,8 +69,8 @@ const createPhoto = async function (req, data) {
 		item.url = img.secure_url;
 		item.attributes1 = img.public_id;
 	} else {
-		await writeFile(req.files.file_upload.path, data);
-		const new_path = "/uploads/members/" + item.file.filename;
+		await writeFile("src/public/uploads/members/" + item._id + ".jpg", data);
+		const new_path = "/uploads/members/" + item._id + ".jpg";
 		item.url = new_path;
 	}
 
@@ -104,8 +104,7 @@ exports.update = async function (req, res) {
 		// Resize and crop image
 		let file = req.files.file_upload.path;
 		const { data, info } = await sharp(file)
-			.resize(700, 500)
-			.crop(sharp.strategy.attention)
+			.resize(700, 500, { fit: 'cover', position: sharp.strategy.attention })
 			.jpeg({ progressive: true, quality: 60 })
 			.toBuffer({ resolveWithObject: true });
 
