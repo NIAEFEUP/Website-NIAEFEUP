@@ -14,7 +14,7 @@ const CVsPath = 'src/public/uploads/cvs/';
 const uploadCV = async function(name, file) {
   const currentDate = Date.now();
   const item = new FileData.model();
-  item.fileType = item.file.mimetype;
+  item.fileType = file.mimetype;
   const fileExtension = file.mimetype.substr(
       file.mimetype.lastIndexOf('/') + 1, file.mimetype.length);
   item.createdTimeStamp = currentDate;
@@ -24,8 +24,8 @@ const uploadCV = async function(name, file) {
     fs.mkdirSync(CVsPath);
   }
   await copyFile(file.path, CVsPath + item.name);
-  const new_path = '/uploads/cvs/' + item.name;
-  item.url = new_path;
+  const newPath = '/uploads/cvs/' + item.name;
+  item.url = newPath;
 
   return item.save();
 };
@@ -119,7 +119,18 @@ exports.create = function(req, res) {
               res.redirect('/candidatura');
             } else {
               if (req.files.cv) {
-                console.log('ola');
+                if (req.files.cv.mimetype !== "application/pdf") {
+                  req.flash(
+                    'error',
+                    'O CV tem de ser um ficheiro PDF!');
+                  res.redirect('/candidatura');
+                } else if (req.files.cv.size > 5000000) {
+                  req.flash(
+                    'error',
+                    'O CV não pode ter mais de 5MB!');
+                  res.redirect('/candidatura');
+                }
+
                 uploadCV(req.body['name.first'], req.files['cv'])
                     .then((val, err) => {
                       if (err) {
