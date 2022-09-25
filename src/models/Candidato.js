@@ -23,6 +23,7 @@ Candidato.add({
 	linkedin: { type: Types.Url },
 	github: { type: Types.Url },
 	website: { type: Types.Url },
+	cv : { type: String },
 	tecnologias: { type: String },
 	entrevistado: { type: Types.Boolean, default: false, initial: false },
 	data_entrevista: { type: Types.Datetime },
