@@ -124,11 +124,13 @@ exports.create = function(req, res) {
                     'error',
                     'O CV tem de ser um ficheiro PDF!');
                   res.redirect('/candidatura');
+                  return;
                 } else if (req.files.cv.size > 5000000) {
                   req.flash(
                     'error',
                     'O CV não pode ter mais de 5MB!');
                   res.redirect('/candidatura');
+                  return;
                 }
 
                 uploadCV(req.body['name.first'], req.files['cv'])
