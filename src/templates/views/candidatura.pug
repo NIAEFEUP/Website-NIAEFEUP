@@ -14,7 +14,7 @@ block content
           br
           smth Queres falar connosco? Passa na B315 e conhece-nos melhor.
 
-    form#form-of-candidacy(method='POST' action='/candidatura')
+    form#form-of-candidacy(method='POST' action='/candidatura' enctype="multipart/form-data")
       .row
         .col-sm-5
           .row
@@ -74,6 +74,11 @@ block content
               i.fa.fa-globe.fa-icon
               label(for='Website') Website :
             input#field.form-control(type='url', placeholder='Website' name='website')
+
+          div.form-group
+            label(for='cv_upload') CV (Opcional): 
+            input#cv_upload(type='file', name='cv')
+
           div.form-group
             input#field.form-control(type='hidden', name='fase_candidatura', value=(locals.fase_candidatura ? locals.fase_candidatura._id : -1))
       .row
