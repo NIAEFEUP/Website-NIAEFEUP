@@ -113,11 +113,10 @@ exports.create = function (req, res) {
 	let info = req.body;
 	info.data = new Date();
 
-
 	let pergunta_key;
 	let perguntas_respostas = [];
 	for (pergunta_key in info) {
-		if (info.hasOwnProperty(pergunta_key) && /pergunta-*/.test(pergunta_key)) {
+		if (info.hasOwnProperty(pergunta_key) && /pergunta-*/.test(pergunta_key) && info[pergunta_key]) {
 
 			perguntas_respostas.push({
 				pergunta_candidatura: pergunta_key.replace("pergunta-", ""),

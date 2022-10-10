@@ -14,7 +14,7 @@ let RespostaCandidatura = new keystone.List("RespostaCandidatura", {
 });
 
 RespostaCandidatura.add({
-	resposta: { type: Types.Text, required: true, initial: true },
+	resposta: { type: Types.Text, initial: true },
 	pergunta_candidatura: { type: Types.Relationship, ref: "PerguntaCandidatura", required: true, initial: true, unique: false },
 	candidato: { type: Types.Relationship, ref: "Candidato", required: true, initial: true, unique: false },
 });
