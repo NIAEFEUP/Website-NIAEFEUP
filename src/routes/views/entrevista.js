@@ -126,6 +126,11 @@ exports.create = function (req, res) {
 	}
 
 	let cand_id = info.candidato_id;
+	if (perguntas_respostas.length === 0) {
+		req.flash("error", "Precisas de responder a pelo menos 1 pergunta!");
+		res.redirect(`/entrevista/${cand_id}`);
+		return;
+	}
 
 	Promise.all(
 		perguntas_respostas.map(function (pergunta_resposta) {
