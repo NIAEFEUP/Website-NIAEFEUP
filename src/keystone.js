@@ -32,8 +32,8 @@ keystone.init({
 	"mongo options": {
 		
 		keepAlive: 1,
-		reconnectTries: Number.MAX_VALUE,
-		reconnectInterval: 1500,
+		reconnectTries: 24 * 60, // 1 day at 60s intervals
+		reconnectInterval: 60000,
 	},
 });
 
